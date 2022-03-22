@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-    <h1 class="text-3xl">Tes 123</h1>
+    <button class="bg-red-500 p-2 rounded-md">Butto</button>
     </body>
 </html>
