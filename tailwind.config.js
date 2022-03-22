@@ -5,7 +5,16 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+            green: {
+                10: '#47BF71'
+            }
+        }
+    },
+    fontFamily: {
+        openSans: ['Open Sans', 'sans-serif']
+    },
   },
   plugins: [],
 }
