@@ -31,7 +31,7 @@
                             {{-- <input class="bg-green-400 mb-5" type="checkbox" name="checkbox" id="">
                             <label for="checkbox" class="text-sm opacity-50">By clicking continue, you agree to our terms and conditions</label> --}}
                             <br>
-                            <button class="bg-green-10 w-[500px] h-[40px] rounded-md text-white font-semibold hover:bg-green-700" type="submit">Continue</button>
+                            <button class="bg-green-10 w-[500px] h-[40px] rounded-md text-white font-semibold hover:bg-green-500 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300" type="submit">Continue</button>
                         </form>
                         <p class="pt-4">Already have an account? <a href="" class="text-green-10 hover:text-green-700">Log in</a></p>
                     </div>
