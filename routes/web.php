@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+    //return view('home/landingpage',[
+        //'title' => 'Landing Page',
+    //]);
+//});
+
+//Route::get('/login', function () {
+    //return view('auth/login',[
+        //'title' => 'Login',
+    //]);
+//});
+
+//Route::get('/register', function () {
+    //return view('auth/register',[
+        //'title' => 'Register',
+    //]);
+//});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.landingpage', ['title'=>'Landing Page']);
 });
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
