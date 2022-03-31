@@ -4,12 +4,8 @@
     <div class="min-h-screen bg-gray-200 font-openSans">
         <div class="flex justify-center relative items-center justify-items-center pt-6">
             <div class="bg-gradient-to-t from-[#47BF71] to-[#67DA8F] w-[450px] h-[600px] rounded-tl-xl rounded-bl-xl shadow-lg">
-                <img class="m-auto scale-75" src="/img/illustration1.svg" alt="">
-                <div class="-mt-7">
-                    <h1 class="text-center font-bold text-white text-2xl">Find The Right Parts <br> For Your Need</h1>
-                    <p class="text-center pt-3 text-sm text-white ">With BengkelAE you don’t need to worry <br> about
-                        replacing your vehicle spare parts!</p>
-                </div>
+                <img class="mt-12 scale-75" src="/img/icon_login.png" alt="">
+
             </div>
             <div class="bg-white w-[600px] h-[600px] rounded-tr-xl rounded-br-xl shadow-lg">
                 <div class="pt-10">
@@ -19,7 +15,7 @@
                         </div>
                     </div>
                     <div class="text-center pt-6">
-                        <h1 class="text-2xl font-bold">Create Your Free Account!</h1>
+                        <h1 class="text-2xl font-bold">Welcome Back!</h1>
                         <p class="text-sm font-light pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas <br> nulla magna, in interdum purus tempus at.</p>
                     </div>
 
@@ -30,10 +26,12 @@
                             {{-- <br> --}}
                             {{-- <input class="bg-green-400 mb-5" type="checkbox" name="checkbox" id="">
                             <label for="checkbox" class="text-sm opacity-50">By clicking continue, you agree to our terms and conditions</label> --}}
+
+
                             <br>
-                            <button class="bg-green-10 w-[500px] h-[40px] rounded-md text-white font-semibold hover:bg-green-500 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300" type="submit">Continue</button>
+                            <button class="bg-green-10 w-[500px] h-[40px] rounded-md text-white font-semibold hover:bg-green-700" type="submit">Login</button>
                         </form>
-                        <p class="pt-4">Already have an account? <a href="" class="text-green-10 hover:text-green-700">Log in</a></p>
+                        <p class="pt-4">Don't have an account yet? <a href="/register" class="text-green-10 hover:text-green-700">Register</a></p>
                     </div>
                 </div>
             </div>
