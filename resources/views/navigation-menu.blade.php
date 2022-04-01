@@ -106,6 +106,24 @@
                                 </x-jet-dropdown-link>
                             @endif
 
+                            @if (Auth::user()->hasRole('user'))
+                                <x-jet-dropdown-link href="#">
+                                    Anda User
+                                </x-jet-dropdown-link>
+                            @endif
+
+                            @if (Auth::user()->hasRole('admin'))
+                                <x-jet-dropdown-link href="#">
+                                    Anda Admin
+                                </x-jet-dropdown-link>
+                            @endif
+
+                            @if (Auth::user()->hasRole('superadmin'))
+                                <x-jet-dropdown-link href="#">
+                                    Anda Super Admin
+                                </x-jet-dropdown-link>
+                            @endif
+
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->

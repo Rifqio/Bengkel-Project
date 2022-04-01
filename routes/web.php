@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CheckController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +34,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home.landingpage', ['title'=>'Landing Page']);
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//All Role
+Route::middleware(['auth:sanctum','verified'])->group(function () {
+    Route::get('/dashboard',[CheckController::class, 'dashboard'])->name('dashboard');
+});
+//Admin
+Route::middleware(['auth:sanctum','verified', 'role:admin|superadmin'])->group(function () {
+    Route::get('/welcome', function () {
+        echo 'Halo Admin';
+    });
+});
+//SuperAdmin
+Route::middleware(['auth:sanctum','verified', 'role:superadmin'])->group(function () {
+    Route::get('/welcomeSuper', function () {
+        echo 'Halo SuperAdmin';
+    });
+});

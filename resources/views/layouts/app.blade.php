@@ -38,10 +38,6 @@
                 {{ $slot }}
             </main>
         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 4c5a3584e4d9efc79404e4672d2d401dbd5cf054
         @stack('modals')
 
         @livewireScripts
