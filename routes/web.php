@@ -13,20 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+//return view('home/landingpage',[
+//'title' => 'Landing Page',
+//]);
+//});
+
+//Route::get('/login', function () {
+//return view('auth/login',[
+//'title' => 'Login',
+//]);
+//});
+
+//Route::get('/register', function () {
+//return view('auth/register',[
+//'title' => 'Register',
+//]);
+//});
+
 Route::get('/', function () {
-    return view('auth/landingpage',[
-        'title' => 'Landing Page',
-    ]);
+    return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/login', function () {
-    return view('auth/login',[
-        'title' => 'Login',
-    ]);
-});
+//Auth Route
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', 'App\Http\Controllers\DashboardController@index')
+    ->name('dashboard');
 
-Route::get('/register', function () {
-    return view('auth/register',[
-        'title' => 'Register',
-    ]);
-});

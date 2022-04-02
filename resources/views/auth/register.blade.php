@@ -1,62 +1,60 @@
-@extends('layout.layout')
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <x-jet-authentication-card-logo />
+        </x-slot>
 
-@section('container')
-    <div class="min-h-screen bg-gray-200 font-openSans">
-        <div class="flex justify-center relative items-center justify-items-center pt-6">
-            <div
-                class="bg-gradient-to-t from-[#47BF71] to-[#67DA8F] w-[450px] h-[600px] rounded-tl-xl rounded-bl-xl shadow-lg">
-                <img class="scale-75" src="/img/illustration1.svg" alt="">
-                <div class="-mt-6">
-                    <p class="text-center text-white text-2xl font-bold mb-4">Find The Right Parts <br> For Your Need</p>
-                    <p class="text-center text-white text-sm font-light">With BengkelAE you don’t need to worry <br>
-                        about replacing your vehicle spare parts!</p>
-                </div>
+        <x-jet-validation-errors class="mb-4" />
+
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <div>
+                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-            <div class="bg-white w-[600px] h-[600px] rounded-tr-xl rounded-br-xl shadow-lg">
-                <div class="pt-10">
-                    <div class="flex justify-center">
-                        <div class="bg-gray-100 w-24 h-24 rounded-full">
-                            <img class="m-auto pt-4 scale-90" src="/img/user.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="text-center pt-6">
-                        <h1 class="text-2xl font-bold">Create Your Account!</h1>
-                        <p class="text-sm font-light pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                            egestas <br> nulla magna, in interdum purus tempus at.</p>
-                    </div>
 
-                    <div class="text-center pt-5">
-                        <form action="">
-                            <input
-                                class="border border-gray-200 w-[500px] h-10 rounded-md pl-4 mb-5 focus:outline-none focus:border-green-500 focus:ring-green-500 focus:ring-1"
-                                type="text" placeholder="Email">
+            <div class="mt-4">
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
 
-                            <input
-                                class="border border-gray-200 w-[500px] h-10 rounded-md pl-4 mb-5 focus:outline-none focus:border-green-500 focus:ring-green-500 focus:ring-1"
-                                type="password" placeholder="Password">
-                            <input
-                                class="border border-gray-200 w-[500px] h-10 rounded-md pl-4 mb-5 focus:outline-none focus:border-green-500 focus:ring-green-500 focus:ring-1"
-                                type="password" placeholder=" Repeat Password">
-                            {{-- <br> --}}
-                            {{-- <input class="bg-green-400 mb-5" type="checkbox" name="checkbox" id="">
-                            <label for="checkbox" class="text-sm opacity-50">By clicking continue, you agree to our terms and conditions</label> --}}
-                            <div>
-                                <p class="text-sm ml-0">By clicking continue you’re agree to our <a href=""
-                                        class="text-green-500">Terms & Conditions </a> and <a href=""
-                                        class="text-green-500"> Privacy Policy</a></p>
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                <div class="mt-4">
+                    <x-jet-label for="terms">
+                        <div class="flex items-center">
+                            <x-jet-checkbox name="terms" id="terms"/>
+
+                            <div class="ml-2">
+                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                                ]) !!}
                             </div>
-
-                            <br>
-                            <button
-                                class="bg-green-10 w-[500px] h-[40px] rounded-md text-white font-semibold hover:bg-green-700"
-                                type="submit">Continue</button>
-                        </form>
-                        <p class="pt-4">Already have an account? <a href="/login"
-                                class="text-green-10 hover:text-green-700">Log in</a></p>
-                    </div>
+                        </div>
+                    </x-jet-label>
                 </div>
-            </div>
-        </div>
+            @endif
 
-    </div>
-@endsection
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-jet-button class="ml-4">
+                    {{ __('Register') }}
+                </x-jet-button>
+            </div>
+        </form>
+    </x-jet-authentication-card>
+</x-guest-layout>
