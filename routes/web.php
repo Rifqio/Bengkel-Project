@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,39 +15,28 @@ use App\Http\Controllers\CheckController;
 */
 
 //Route::get('/', function () {
-    //return view('home/landingpage',[
-        //'title' => 'Landing Page',
-    //]);
+//return view('home/landingpage',[
+//'title' => 'Landing Page',
+//]);
 //});
 
 //Route::get('/login', function () {
-    //return view('auth/login',[
-        //'title' => 'Login',
-    //]);
+//return view('auth/login',[
+//'title' => 'Login',
+//]);
 //});
 
 //Route::get('/register', function () {
-    //return view('auth/register',[
-        //'title' => 'Register',
-    //]);
+//return view('auth/register',[
+//'title' => 'Register',
+//]);
 //});
 
-Route::get('/', function () {
-    return view('home.landingpage', ['title'=>'Landing Page']);
+Route::get('/landing', function () {
+    return view('home.landingpage', ['title' => 'Landing Page']);
 });
-//All Role
-Route::middleware(['auth:sanctum','verified'])->group(function () {
-    Route::get('/dashboard',[CheckController::class, 'dashboard'])->name('dashboard');
-});
-//Admin
-Route::middleware(['auth:sanctum','verified', 'role:admin|superadmin'])->group(function () {
-    Route::get('/welcome', function () {
-        echo 'Halo Admin';
-    });
-});
-//SuperAdmin
-Route::middleware(['auth:sanctum','verified', 'role:superadmin'])->group(function () {
-    Route::get('/welcomeSuper', function () {
-        echo 'Halo SuperAdmin';
-    });
-});
+
+Route::get('/', [DashboardController::class, 'switchView']);
+
+//Auth Route
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');

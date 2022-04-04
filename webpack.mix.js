@@ -20,3 +20,16 @@ mix.js('resources/js/app.js', 'public/js')
 if (mix.inProduction()) {
     mix.version();
 }
+
+mix.options({
+    hmrOptions: {
+        host: 'localhost',
+        port: '8080'
+    },
+});
+
+mix.webpackConfig({
+    devServer: {
+        port: '8080'
+    },
+});
