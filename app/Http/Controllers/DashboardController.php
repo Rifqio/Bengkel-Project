@@ -9,10 +9,18 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->hasRole('user')) {
-            return view('user.userdashboard',['title' => 'Dashboard']);
-        } else if (Auth::user()->hasRole('admin')) {
+        if(Auth::user()->hasRole('admin')) {
             return view('admin.admindashboard');
+        }else{
+            return view('home.landingpage',['title' => 'Landing Page']);
+        }
+    }
+
+    public function switchView(){
+        if(Auth::check()){
+            return view('admin.admindashboard');
+        }else{
+            return view('user.userdashboard',['title' => 'Dashboard']);
         }
     }
 }

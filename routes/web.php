@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CheckController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +32,11 @@ use Illuminate\Support\Facades\Route;
 //]);
 //});
 
-Route::get('/', function () {
+Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-//Auth Route
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard', 'App\Http\Controllers\DashboardController@index')
-    ->name('dashboard');
+Route::get('/', [DashboardController::class, 'switchView']);
 
+//Auth Route
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');

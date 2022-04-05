@@ -21,14 +21,19 @@
     <body class="font-sans antialiased">
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
-
+            @if (Auth::check())
+                @livewire('navigation-menu')
+            @else
+                <br>
+                <center>
+                    <h1>Ini Halaman Guest</h1>
+                </center>
+            @endif
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
-
         @stack('modals')
 
         @livewireScripts
