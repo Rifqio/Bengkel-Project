@@ -12,7 +12,7 @@ class DashboardController extends Controller
         if(Auth::user()->hasRole('admin')) {
             return view('admin.admindashboard');
         }else{
-            return view('home.landingpage',['title' => 'Landing Page']);
+            return view('user.userdashboard',['title' => 'Landing Page']);
         }
     }
 
@@ -20,7 +20,7 @@ class DashboardController extends Controller
         if(Auth::check()){
             return view('admin.admindashboard');
         }else{
-            return view('user.userdashboard',['title' => 'Dashboard']);
+            return view('home.landingpage',['title' => 'Dashboard']);
         }
     }
 }

@@ -14,29 +14,12 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-//Route::get('/', function () {
-//return view('home/landingpage',[
-//'title' => 'Landing Page',
-//]);
-//});
-
-//Route::get('/login', function () {
-//return view('auth/login',[
-//'title' => 'Login',
-//]);
-//});
-
-//Route::get('/register', function () {
-//return view('auth/register',[
-//'title' => 'Register',
-//]);
-//});
-
 Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/', [DashboardController::class, 'switchView']);
-
+Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
 //Auth Route
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(('auth'));
+
+
