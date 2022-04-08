@@ -17,11 +17,11 @@ return [
             'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'admin' => [
+        'employee' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'user' => [
+        'mitra' => [
             'profile' => 'r,u',
         ],
     ],

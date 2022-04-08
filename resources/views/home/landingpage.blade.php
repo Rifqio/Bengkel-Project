@@ -96,6 +96,9 @@
             <div class="mt-3 sm:mt-0 sm:ml-3">
               <a href="/register" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-500 bg-gray-100 hover:bg-gray-200 md:py-4 md:text-lg md:px-10"> Register </a>
             </div>
+            <div class="mt-3 sm:mt-0 sm:ml-3">
+              <a href="/logout" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-500 bg-gray-100 hover:bg-gray-200 md:py-4 md:text-lg md:px-10"> Logout </a>
+            </div>
           </div>
         </div>
       </main>
