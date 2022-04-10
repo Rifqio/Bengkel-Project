@@ -10,11 +10,11 @@ class DashboardController extends Controller
     public function index()
     {
         if(Auth::user()->hasRole('employee')) {
-            echo 'admin';
+            echo 'loggin as employee';
         }elseif(Auth::user()->hasRole('superadmin')){
-            echo 'superadmin';
+            echo 'loggin as superadmin';
         }elseif(Auth::user()->hasRole('mitra')){
-            echo 'mitra';
+            echo 'loggin as mitra';
         }
     }
 
