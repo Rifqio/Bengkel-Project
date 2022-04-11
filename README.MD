@@ -9,3 +9,5 @@
 4. Jika tidak maka diarahkan ke landing page untuk login atau register sebagai ('Mitra')
 
 - Menambah user dashboard (Frontend)
+(11 April 2022)
+- Menambah migrasi dan relasi antar tabel
