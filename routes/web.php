@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -21,7 +22,8 @@ Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/', [DashboardController::class, 'switchView']);
+Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
+
 
 //Route Create New Employee/Mitra Via SuperAdmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee' ,[AuthController::class,'CreateEmployeeView']);
@@ -47,5 +49,8 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Protected Route
-Route::middleware(['auth', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 Route::middleware(['auth', 'verified'])->get('/logout' ,[DashboardController::class,'logout'])->name('logout');
+
+// For testing only
+Route::get('test', [TestController::class, 'index']);
