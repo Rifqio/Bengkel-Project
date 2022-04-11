@@ -22,7 +22,7 @@ Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
+Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
 
 //Route Create New Employee/Mitra Via SuperAdmin
@@ -54,3 +54,4 @@ Route::middleware(['auth', 'verified'])->get('/logout' ,[DashboardController::cl
 
 // For testing only
 Route::get('test', [TestController::class, 'index']);
+Route::get('/email-test', [TestController::class, 'TestEmail']);

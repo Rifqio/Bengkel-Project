@@ -106,13 +106,13 @@
                             </x-jet-dropdown-link>
                             @endif
 
-                            @if (Auth::user()->hasRole('user'))
+                            @if (Auth::user()->hasRole('mitra'))
                             <x-jet-dropdown-link href="#">
-                                Anda User
+                                Anda Mitra
                             </x-jet-dropdown-link>
                             @endif
 
-                            @if (Auth::user()->hasRole('admin'))
+                            @if (Auth::user()->hasRole('employee'))
                             <x-jet-dropdown-link href="#">
                                 Anda Admin
                             </x-jet-dropdown-link>
