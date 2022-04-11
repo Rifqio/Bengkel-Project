@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
 /*
@@ -19,7 +20,8 @@ Route::get('/landing', function () {
 });
 
 Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
-//Auth Route
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(('auth'));
 
+// For testing only
+Route::get('test', [TestController::class, 'index']);
 
