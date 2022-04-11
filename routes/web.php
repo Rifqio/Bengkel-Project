@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +23,35 @@ Route::get('/landing', function () {
 });
 
 Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(('auth'));
+// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(('auth'));
 
 // For testing only
 Route::get('test', [TestController::class, 'index']);
 
+
+//Route Create New Employee/Mitra Via SuperAdmin
+Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee' ,[AuthController::class,'CreateEmployeeView']);
+Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee' ,[AuthController::class,'CreateEmployee']);
+
+//Route Confirmation Email
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/dashboard');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+//Route Send Notification
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+//Route Resend Email
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+//Protected Route
+Route::middleware(['auth', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::middleware(['auth', 'verified'])->get('/logout' ,[DashboardController::class,'logout'])->name('logout');
