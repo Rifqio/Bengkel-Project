@@ -17,24 +17,6 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::get('/', function () {
-//return view('home/landingpage',[
-//'title' => 'Landing Page',
-//]);
-//});
-
-//Route::get('/login', function () {
-//return view('auth/login',[
-//'title' => 'Login',
-//]);
-//});
-
-//Route::get('/register', function () {
-//return view('auth/register',[
-//'title' => 'Register',
-//]);
-//});
-
 Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
