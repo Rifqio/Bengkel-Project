@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -17,29 +18,16 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::get('/', function () {
-//return view('home/landingpage',[
-//'title' => 'Landing Page',
-//]);
-//});
-
-//Route::get('/login', function () {
-//return view('auth/login',[
-//'title' => 'Login',
-//]);
-//});
-
-//Route::get('/register', function () {
-//return view('auth/register',[
-//'title' => 'Register',
-//]);
-//});
-
 Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/', [DashboardController::class, 'switchView']);
+Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
+// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(('auth'));
+
+// For testing only
+Route::get('test', [TestController::class, 'index']);
+
 
 //Route Create New Employee/Mitra Via SuperAdmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee' ,[AuthController::class,'CreateEmployeeView']);
