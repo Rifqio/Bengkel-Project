@@ -15,14 +15,12 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
-            $table->foreignId('store_id');
+            $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('brand');
-            $table->string('desc');
+            $table->string('desc')->nullable();
             $table->bigInteger('price');
             $table->string('image')->nullable();
-            // $table->timestamp('updated_at')->nullable();
             $table->timestamps();
         });
     }
