@@ -7,6 +7,8 @@ use App\Models\Item;
 use App\Models\Store;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,34 +19,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Item::create([
-        //     'name' => 'Oli 1',
-        //     'price' => 50000,
-        //     'category_id' => 2,
-        //     'store_id' => 1
-        // ]);
-        Store::create([
-            'name' => 'Toko 1',
-            'location' => 'Banjarsari'
+        $this->call(LaratrustSeeder::class);
+        //SuperAdmin
+        DB::table('users')->insert([
+            'name' => 'SuperAdmin',
+            'email' => 'super@test.test',
+            'nik' => '1234567890123456',
+            'email_verified_at' => '2022-04-11 05:44:48',
+            'password' => Hash::make('rahasia21'),
         ]);
-        Category::create([
-            'name' => 'Exhaust',
-            'slug' => 'exhaust'
+        DB::table('role_user')->insert([
+            'role_id' => 1,
+            'user_id' => 1,
+            'user_type' => 'App\Models\User',
         ]);
-        Category::create([
-            'name' => 'Engine Oil',
-            'slug' => 'engine-oil'
-        ]);
-        Category::create([
-            'name' => 'Tools',
-            'slug' => 'tools'
-        ]);
-        // \App\Models\User::factory(10)->create();
-        // Item::factory(10)->create();
-        // foreach (Item::all() as $item) {
-        //     $store = Store::inRandomOrder()->take(rand(1,3))->pluck('id');
-        //     $item->store()->attach($store);
-        // }
-        // $this->call(LaratrustSeeder::class);
     }
 }

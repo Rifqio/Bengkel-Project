@@ -22,11 +22,7 @@ Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/', [DashboardController::class, 'switchView'])->name('dashboard')->middleware('guest');
-// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(('auth'));
-
-// For testing only
-Route::get('test', [TestController::class, 'index']);
+Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
 
 //Route Create New Employee/Mitra Via SuperAdmin
@@ -53,5 +49,9 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Protected Route
-Route::middleware(['auth', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 Route::middleware(['auth', 'verified'])->get('/logout' ,[DashboardController::class,'logout'])->name('logout');
+
+// For testing only
+Route::get('test', [TestController::class, 'index']);
+Route::get('/email-test', [TestController::class, 'TestEmail']);
