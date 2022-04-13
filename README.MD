@@ -8,8 +8,13 @@
 3. Jika punya role (super, admin) dia akan masuk ke dashboard
 4. Jika tidak maka diarahkan ke landing page untuk login atau register sebagai ('Mitra')
 
+## (9 April 2022)
 - Menambah user dashboard (Frontend)
-- Menambah migrasi dan relasi antar tabel (11 April 2022)
+
+## (11 April 2022)
+- Menambah migrasi dan relasi antar tabel 
+
+## (13 April 2022)
 - Membuat Map, integrasi db dan map
 - Membuat Superadmin dan Admin melalui superadmin
-- Menambah template admin untuk view (13 April 2022)
+- Menambah template admin untuk view 
