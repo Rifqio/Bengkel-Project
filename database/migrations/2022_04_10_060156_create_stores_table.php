@@ -15,11 +15,18 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('store_name');
+            $table->time('open');
+            $table->time('close');
             $table->string('address');
-            $table->string('geo_location');
-            $table->bigInteger('phone');
+            $table->string('phone_store');
+            $table->string('status_activation');
+            $table->foreignId('id_mitra')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('store_image')->nullable();
+            $table->string('lat');
+            $table->string('long');
             $table->timestamps();
+            //Kurang id kecamatan
         });
     }
 

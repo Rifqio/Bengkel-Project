@@ -12,6 +12,6 @@ class Store extends Model
 
     public function item()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Item::class,'item_store','store_id','item_id');
     }
 }

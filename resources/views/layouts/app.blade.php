@@ -17,6 +17,10 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        <!--Map-->
+        <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+        <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     </head>
     <body class="font-sans antialiased">
 

@@ -55,3 +55,7 @@ Route::middleware(['auth', 'verified'])->get('/logout' ,[DashboardController::cl
 // For testing only
 Route::get('test', [TestController::class, 'index']);
 Route::get('/email-test', [TestController::class, 'TestEmail']);
+Route::get('/test-create-product', [TestController::class, 'TestCreateProductView']);
+Route::post('/test-create-product', [TestController::class, 'TestCreateProductStore']);
+Route::get('/test-input-product', [TestController::class, 'TestInputProductView']);
+Route::post('/test-input-product', [TestController::class, 'TestInputProductStore']);
