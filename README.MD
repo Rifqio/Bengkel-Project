@@ -18,3 +18,8 @@
 - Membuat Map, integrasi db dan map
 - Membuat Superadmin dan Admin melalui superadmin
 - Menambah template admin untuk view 
+- Menambah read list user has role employee (Redirect ke Superadmin dashboard)
+
+Note
+- Untuk superadmin blade (Superadmin/dashboardadmin)
+- Untuk Admin atau employee (Admin/dashboardadmin)
