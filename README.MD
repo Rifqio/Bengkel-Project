@@ -10,3 +10,4 @@
 
 - Menambah user dashboard (Frontend)
 - Menambah migrasi dan relasi antar tabel (11 April 2022)
+- Menambah template admin untuk view (13 April 2022)
