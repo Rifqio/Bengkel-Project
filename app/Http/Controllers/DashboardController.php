@@ -22,7 +22,7 @@ class DashboardController extends Controller
 
     public function GuestView()
     {
-        return view('user.userdashboard', ['title' => 'Dashboard']);
+        return view('home.landingpage', ['title' => 'Dashboard']);
     }
 
     public function logout()
