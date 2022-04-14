@@ -20,6 +20,11 @@
 - Menambah template admin untuk view 
 - Menambah read list user has role employee (Redirect ke Superadmin dashboard)
 
+## (14 April 2022)
+- Membuat Registrasi Bengkel (Employee)
+- Menampilkan Notifikasi
+
 Note
 - Untuk superadmin blade (Superadmin/dashboardadmin)
 - Untuk Admin atau employee (Admin/dashboardadmin)
+- Untuk Coba Email Gunakan Mailtrap
