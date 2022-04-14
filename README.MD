@@ -20,7 +20,7 @@
 - Menambah template admin untuk view 
 - Menambah read list user has role employee (Redirect ke Superadmin dashboard)
 
-## (13 April 2022)
+## (14 April 2022)
 - Membuat Registrasi Bengkel (Employee)
 - Menampilkan Notifikasi
 
