@@ -50,7 +50,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 //Protected Route
 Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-Route::middleware(['auth', 'verified'])->get('/logout' ,[DashboardController::class,'logout'])->name('logout');
+Route::middleware(['auth', 'verified'])->get('/logout' ,[AuthController::class,'logout'])->name('logout');
 
 // For testing only
 Route::get('test', [TestController::class, 'index']);
