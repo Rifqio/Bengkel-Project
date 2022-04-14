@@ -24,5 +24,13 @@
         <button type="submit">Submit</button>
     </form>
 </body>
-
+ <script>
+    navigator.geolocation.getCurrentPosition(getLatLon);
+        function getLatLon(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        console.log("Latitude is "+latitude);
+        console.log("Longitude is "+longitude);
+    }
+ </script>
 </html>
