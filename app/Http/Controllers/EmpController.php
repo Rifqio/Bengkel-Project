@@ -8,10 +8,7 @@ use Illuminate\Http\Request;
 class EmpController extends Controller
 {
     public function StoreValidationView(){
-        $data = Store::join('users', 'stores.id', '=', 'users.id')
-                ->where('status_activation', 0)
-               ->get();
-        //$data = Store::where('status_activation', 1)->get();
+        $data = Store::where('status_activation', 0)->get();
         return view('admin.validasi-bengkel', [
             'stores' => $data,
         ]);

@@ -310,10 +310,10 @@
                                     {{$s->store_name}}
                                 </td>
                                 <td>
-                                    {{$s->name}}
+                                    {{$s->users->name}}
                                 </td>
                                 <td>
-                                    {{$s->email}}
+                                    {{$s->users->email}}
                                 </td>
                                 <td>
                                     {{$s->phone_store}}
