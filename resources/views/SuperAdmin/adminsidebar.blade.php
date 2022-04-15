@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="/">
+                <a class="nav-link {{ Request::is('newdashboard') ? 'active' : '' }}" href="/newdashboard">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -22,60 +22,21 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/create-employee">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Create SuperAdmin/Employee</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/argon/pages/tables.html">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Tables</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/argon/pages/billing.html">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Billing</span>
-                </a>
-            </li>
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/argon/pages/profile.html">
+                <a class="nav-link {{ Request::is('newdashboard/create*') ? 'active' : '' }} " href="/newdashboard/create">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Profile</span>
+                    <span class="nav-link-text ms-1">Create Employee</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/argon/pages/sign-in.html">
+                <a class="nav-link {{ Request::is('newdashboard/show') ? 'active' : '' }} " href="/newdashboard/show">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/argon/pages/sign-up.html">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-collection text-info text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Sign Up</span>
+                    <span class="nav-link-text ms-1">User List</span>
                 </a>
             </li>
         </ul>
