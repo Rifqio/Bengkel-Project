@@ -75,6 +75,7 @@ Route::get('/test-create-product', [TestController::class, 'TestCreateProductVie
 Route::post('/test-create-product', [TestController::class, 'TestCreateProductStore']);
 Route::get('/test-input-product', [TestController::class, 'TestInputProductView']);
 Route::post('/test-input-product', [TestController::class, 'TestInputProductStore']);
+Route::post('/test-image', [TestController::class, 'TestImage']);
 
 
 //admin

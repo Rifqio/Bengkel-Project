@@ -73,4 +73,11 @@ class TestController extends Controller
         // detach untuk delete
         return redirect('test');
     }
+
+    public function TestImage(Request $request){
+        $user = request()->user();
+        $name = time()."_".$request->file('photo')->getClientOriginalName();
+        $request->file('photo')->move(public_path('data_bengkel/'.$request->store_name."_".$user->email.'/ktp'), $name);
+        dd($name);
+    }
 }

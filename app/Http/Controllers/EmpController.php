@@ -17,7 +17,6 @@ class EmpController extends Controller
     public function StoreValidation(Request $request){
         $store = Store::find(request()->id);
         $store->update($request->except(['_token', 'id']));
-        //dd($request->except(['_token']));
         return redirect()->back();
     }
 }

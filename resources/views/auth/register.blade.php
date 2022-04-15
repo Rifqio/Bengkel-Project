@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
 
             <div>
@@ -22,6 +22,16 @@
             <div class="mt-4">
                 <x-jet-label for="nik" value="{{ __('Nomor Induk Kependudukan') }}" />
                 <x-jet-input id="nik" class="block mt-1 w-full" type="number" name="nik" :value="old('nik')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="npwp" value="{{ __('NPWP') }}" />
+                <x-jet-input id="npwp" class="block mt-1 w-full" type="number" name="npwp" :value="old('npwp')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="photo" value="{{ __('Foto KTP') }}" />
+                <x-jet-input id="photo" class="block mt-1 w-full" type="file" name="photo" :value="old('ktp')" required />
             </div>
 
             <div class="mt-4">
