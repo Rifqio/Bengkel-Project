@@ -30,9 +30,10 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
-//SuperAdmin
-Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee' ,[AuthController::class,'CreateEmployeeView']);
-Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee' ,[AuthController::class,'CreateEmployee']);
+
+// Route Create New Employee/Mitra Via SuperAdmin
+Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee', [AuthController::class, 'CreateEmployeeView']);
+Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee', [AuthController::class, 'CreateEmployee']);
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
@@ -42,7 +43,7 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return redirect('/newdashboard');
+    return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 //Route Send Notification
@@ -59,11 +60,10 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 //Dashboard Route
 Route::resource('newdashboard', NewDashboardController::class)->middleware(['auth', 'verified']);
-Route::resource('newdashboard/employee-list', NewDashboardController::class)->middleware(['auth', 'verified']);
 
 //Protected Route
-// Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-Route::middleware(['auth', 'verified'])->get('/logout' ,[AuthController::class,'logout'])->name('logout');
+Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
 // For testing only
 Route::get('test', [TestController::class, 'index']);
@@ -72,3 +72,15 @@ Route::get('/test-create-product', [TestController::class, 'TestCreateProductVie
 Route::post('/test-create-product', [TestController::class, 'TestCreateProductStore']);
 Route::get('/test-input-product', [TestController::class, 'TestInputProductView']);
 Route::post('/test-input-product', [TestController::class, 'TestInputProductStore']);
+
+
+//admin
+Route::get('/ListAdmin', function () {
+    return view('admin/listadmindashboard');
+});
+Route::get('/ListMitra', function () {
+    return view('admin/listmitra');
+});
+Route::get('/editadmin', function () {
+    return view('admin/listadminedit');
+});

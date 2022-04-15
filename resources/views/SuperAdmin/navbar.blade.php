@@ -10,6 +10,8 @@
                         Dashboard
                     @elseif(Request::is('newdashboard/create'))
                         Create Employee
+                    @elseif(Request::is('newdashboard/show'))
+                        Employee List
                     @endif
                 </li>
             </ol>
@@ -18,6 +20,8 @@
                     Dashboard
                 @elseif(Request::is('newdashboard/create'))
                     Create Employee
+                @elseif(Request::is('newdashboard/show'))
+                    Employee List
                 @endif
             </h6>
         </nav>
