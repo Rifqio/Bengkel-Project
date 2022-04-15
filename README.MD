@@ -25,6 +25,10 @@
 - Membuat Registrasi Bengkel (Employee)
 - Menampilkan Notifikasi
 
+##(15 April 2022)
+- Form Create User By Admin
+- Validasi Bengkel (Dikit Lagi)
+
 Note
 - Untuk superadmin blade (Superadmin/dashboardadmin)
 - Untuk Admin atau employee (Admin/dashboardadmin)
