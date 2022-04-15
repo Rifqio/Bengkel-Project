@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,9 +13,10 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('employee')) {
-            return view('employee.em-dashboard');
-        } elseif (Auth::user()->hasRole('superadmin')) {
             return view('admin.admindashboard');
+        } elseif (Auth::user()->hasRole('superadmin')) {
+            $employe = User::whereRoleIs(['employee'])->get();
+            return view('SuperAdmin.admindashboard', ['employee'=>$employe,]);
         } elseif (Auth::user()->hasRole('mitra')) {
             echo 'loggin as mitra';
         } else {
@@ -38,12 +40,5 @@ class DashboardController extends Controller
             'location' => $data,
             'title' => 'Dashboard'
         ]);
-    }
-
-    public function logout()
-    {
-        $user = request()->user();
-        Auth::logout($user);
-        return redirect('/');
     }
 }

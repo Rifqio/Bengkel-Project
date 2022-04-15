@@ -1,4 +1,5 @@
 # DOKUMENTASI PROJECT
+(BUAT BRANCH SENDIRI, JANGAN KE PUSH DI BRANCH LAIN)
 
 - Fitur Registrasi JetStream (Verification Email, Privacy and Policy) gunakan mailtrap untuk uji coba email
     doc (https://jetstream.laravel.com/2.x/installation.html, https://laratrust.santigarcor.me/docs/7.x/usage/roles-and-permissions.html#setting-things-up)
@@ -18,3 +19,13 @@
 - Membuat Map, integrasi db dan map
 - Membuat Superadmin dan Admin melalui superadmin
 - Menambah template admin untuk view 
+- Menambah read list user has role employee (Redirect ke Superadmin dashboard)
+
+## (14 April 2022)
+- Membuat Registrasi Bengkel (Employee)
+- Menampilkan Notifikasi
+
+Note
+- Untuk superadmin blade (Superadmin/dashboardadmin)
+- Untuk Admin atau employee (Admin/dashboardadmin)
+- Untuk Coba Email Gunakan Mailtrap
