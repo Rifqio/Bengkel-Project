@@ -5,7 +5,7 @@
         @include('SuperAdmin.navbar')
         <!-- End Navbar -->
         <div class="container-fluid py-4">
-            <form action="/newdashboard/employee-list" method="post">
+            <form action="/newdashboard" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
@@ -46,8 +46,9 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect2">Role</label>
                                             <select class="form-control" id="exampleFormControlSelect2">
-                                                <option>Superadmin</option>
-                                                <option>Admin</option>
+                                                @foreach ($roles as $role )
+                                                    <option value={{ $role->id }}>{{ $role->display_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

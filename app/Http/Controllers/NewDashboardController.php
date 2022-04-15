@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Role;
 use App\Models\Store;
 use App\Models\User;
 use Carbon\Carbon;
@@ -58,7 +59,9 @@ class NewDashboardController extends Controller
      */
     public function create()
     {
-        return view('SuperAdmin.createAdmin.index');
+        return view('SuperAdmin.createAdmin.index', [
+            'roles' => Role::all()
+        ]);
     }
 
     /**
