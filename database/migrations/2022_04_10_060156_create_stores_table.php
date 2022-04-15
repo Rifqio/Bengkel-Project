@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('status_activation');
             $table->foreignId('id_mitra')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('store_image')->nullable();
-            $table->string('lat');
-            $table->string('long');
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
             $table->timestamps();
             //Kurang id kecamatan
         });

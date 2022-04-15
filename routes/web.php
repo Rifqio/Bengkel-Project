@@ -6,6 +6,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewDashboardController;
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 /*
@@ -25,10 +27,16 @@ Route::get('/landing', function () {
 
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
+//Notification
+Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
-//Route Create New Employee/Mitra Via SuperAdmin
+//SuperAdmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee' ,[AuthController::class,'CreateEmployeeView']);
 Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee' ,[AuthController::class,'CreateEmployee']);
+
+//Mitra
+Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
+Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[MitraController::class, 'StoreRegisterSubmit']);
 
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
