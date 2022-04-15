@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NewDashboardController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 /*
@@ -32,8 +33,8 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employ
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
-    return redirect('/dashboard');
+
+    return redirect('/newdashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 //Route Send Notification
@@ -44,12 +45,16 @@ Route::get('/email/verify', function () {
 //Route Resend Email
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
- 
+
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+//Dashboard Route
+Route::resource('newdashboard', NewDashboardController::class)->middleware(['auth', 'verified']);
+Route::resource('newdashboard/employee-list', NewDashboardController::class)->middleware(['auth', 'verified']);
+
 //Protected Route
-Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+// Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 Route::middleware(['auth', 'verified'])->get('/logout' ,[AuthController::class,'logout'])->name('logout');
 
 // For testing only
