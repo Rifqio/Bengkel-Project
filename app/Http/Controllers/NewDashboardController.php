@@ -26,7 +26,12 @@ class NewDashboardController extends Controller
             return view('admin.admindashboard');
         } elseif (Auth::user()->hasRole('superadmin')) {
             $employe = User::whereRoleIs(['employee'])->get();
-            return view('SuperAdmin.admindashboard', ['employee'=>$employe,]);
+            return view('SuperAdmin.admindashboard', [
+                'employee'=>$employe,
+                'total_users' => User::count(),
+                'total_stores' => Store::count(),
+                'total_items' => Item::count(),
+            ]);
         } elseif (Auth::user()->hasRole('mitra')) {
             echo 'loggin as mitra';
         } else {
@@ -59,7 +64,7 @@ class NewDashboardController extends Controller
      */
     public function create()
     {
-        return view('SuperAdmin.createAdmin.index', [
+        return view('SuperAdmin.crud.create', [
             'roles' => Role::all()
         ]);
     }
@@ -100,7 +105,7 @@ class NewDashboardController extends Controller
 
             DB::commit();
 
-            return redirect('/dashboard');
+            return redirect('/newdashboard')->with('success', 'User has been created');
         }catch(\Exception $e){
             DB::rollback();
             echo 'Error Exception';
@@ -127,9 +132,12 @@ class NewDashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('SuperAdmin.crud.edit',[
+            'users' => $user,
+            'roles' => Role::all(),
+        ]);
     }
 
     /**

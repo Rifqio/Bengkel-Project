@@ -11,7 +11,7 @@
                     @elseif(Request::is('newdashboard/create'))
                         Create Employee
                     @elseif(Request::is('newdashboard/show'))
-                        Employee List
+                        User List
                     @endif
                 </li>
             </ol>
@@ -21,7 +21,7 @@
                 @elseif(Request::is('newdashboard/create'))
                     Create Employee
                 @elseif(Request::is('newdashboard/show'))
-                    Employee List
+                    User List
                 @endif
             </h6>
         </nav>
@@ -34,7 +34,7 @@
             </div>
             <ul class="navbar-nav justify-content-end">
                 <form action="/logout" method="post">
-                    <button type="submit" class="btn btn-danger"> Logout </button>
+                    <button type="submit" class="btn btn-danger m-auto"> Logout </button>
                     @csrf
                 </form>
             </ul>

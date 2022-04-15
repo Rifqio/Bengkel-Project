@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Employee List</h6>
+                            <h6>User List</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -45,8 +45,8 @@
                                                 {{-- <p class="text-xs font-weight-bold mb-0">{{ $user->roles }}</p> --}}
                                             </td>
                                             <td class="align-middle text-center">
-                                                <i class="ni ni-ruler-pencil"></i>
-                                                <i class="ni ni-fat-remove" ></i>
+                                                <a class="btn btn-link text-dark px-3 mb-0" href="/newdashboard/{{ $user->id }}/edit"><i class="fas fa-pencil-alt text-dark me-2"></i>Edit</a>
+                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach
