@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function GuestView()
     {
         //return view('user.userdashboard', ['title' => 'Dashboard']);
-        $store = Store::all();
+        $store = Store::where('status_activation', 1)->get();
         $data = [];
         foreach($store as $s){
             $data[] = [

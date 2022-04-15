@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmpController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -36,6 +37,10 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employ
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
 Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[MitraController::class, 'StoreRegisterSubmit']);
+
+//Employee
+Route::middleware(['auth', 'verified', 'role:employee'])->get('/validasi-bengkel' ,[EmpController::class, 'StoreValidationView']);
+Route::middleware(['auth', 'verified', 'role:employee'])->post('/validasi-bengkel' ,[EmpController::class, 'StoreValidation']);
 
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {

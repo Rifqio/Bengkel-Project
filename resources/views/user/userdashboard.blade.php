@@ -35,7 +35,7 @@
     
             map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
                 .on('locationfound', function(e){
-                    var circle = L.circle([e.latitude, e.longitude], e.accuracy/2, {
+                    var circle = L.circle([e.latitude, e.longitude], e.accuracy/10, {
                         weight: 1,
                         color: 'red',
                         fillColor: '#cacaca',
