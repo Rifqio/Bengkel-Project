@@ -120,7 +120,6 @@ class NewDashboardController extends Controller
      */
     public function show(User $user)
     {
-        //$emp = User::whereRoleIs(['employee'])->get();
         $users = User::all();
         
         return view('SuperAdmin.employeeList.index', [

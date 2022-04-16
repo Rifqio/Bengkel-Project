@@ -42,6 +42,8 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[
 //Employee
 Route::middleware(['auth', 'verified', 'role:employee'])->get('/validasi-bengkel' ,[EmpController::class, 'StoreValidationView']);
 Route::middleware(['auth', 'verified', 'role:employee'])->post('/validasi-bengkel' ,[EmpController::class, 'StoreValidation']);
+Route::middleware(['auth', 'verified', 'role:employee'])->get('/list-mitra' ,[EmpController::class, 'ListMitraView']);
+Route::middleware(['auth', 'verified', 'role:employee'])->post('list-mitra/{id}/update' ,[EmpController::class, 'UpdateDataMitra']);
 
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
