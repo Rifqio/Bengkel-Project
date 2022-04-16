@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Mitra',
             'email' => 'mitra@test.test',
             'nik' => '1234567890121156',
+            'npwp' => '1234567890120854',
             'email_verified_at' => '2022-04-11 05:44:48',
             'password' => Hash::make('rahasia21'),
         ]);
@@ -42,6 +43,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Mitra2',
             'email' => 'mitra2@test.test',
             'nik' => '1234567890121154',
+            'npwp' => '1234567890120054',
             'email_verified_at' => '2022-04-11 05:44:48',
             'password' => Hash::make('rahasia21'),
         ]);

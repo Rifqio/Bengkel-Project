@@ -26,9 +26,11 @@ class MitraController extends Controller
             'phone_store' => ['required', 'max:12', 'min:11'],
             'address' => 'required',
         ]);
+
         if(!$validatedData){
             return redirect('store-register');
         }
+        
         Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,

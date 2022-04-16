@@ -3,6 +3,8 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -24,17 +26,37 @@ class CreateNewUser implements CreatesNewUsers
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:users,nik'],
+            'npwp' => ['required', 'string', 'max:16', 'min:16', 'unique:users,npwp'],
             'password' => $this->passwordRules(),
+            'photo' => ['mimes:jpeg,png,jpg,gif'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        $user = User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'nik' => $input['nik'],
-            'password' => Hash::make($input['password']),
-        ]);
-        $user->attachRole('mitra');
-        return $user;
+        DB::beginTransaction();
+        try{
+            if (isset($input['photo'])) {
+                $name = time()."_".$input['photo']->getClientOriginalName();
+                $input['photo']->move(public_path('data_user/'.$input['email'].'/ktp'), $name);
+            }
+
+            $user = User::create([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'nik' => $input['nik'],
+                'npwp' => $input['npwp'],
+                'ktp' => $name,
+                'password' => Hash::make($input['password']),
+            ]);
+            
+            $user->attachRole('mitra');
+
+            DB::commit();
+
+            return $user;
+        }catch(\Exception $e){
+            File::deleteDirectory(public_path('data_user/'.$input['email']));
+            DB::rollback();
+            echo 'Error Gan';
+        }
     }
 }

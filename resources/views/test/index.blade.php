@@ -29,7 +29,7 @@
 <script>
     var loadMap = function (id) {
         var data= {!! json_encode($location) !!}
-        var map = L.map(id);
+        var map = L.map(id, { zoomControl: false });
         var tile_url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
         var layer = L.tileLayer(tile_url, {
             attribution: 'OSM'
@@ -39,7 +39,7 @@
         map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
             .on('locationfound', function(e){
                 L.marker([e.latitude, e.longitude], markerOptions).addTo(map);
-                var circle = L.circle([e.latitude, e.longitude], e.accuracy/2, {
+                var circle = L.circle([e.latitude, e.longitude], e.accuracy/20, {
                     weight: 1,
                     color: 'blue',
                     fillColor: '#cacaca',

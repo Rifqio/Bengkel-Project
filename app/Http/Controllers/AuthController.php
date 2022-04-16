@@ -13,20 +13,19 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-    public function CreateEmployeeView(){
-        return view('SuperAdmin.create-employee');
-    }
-
     public function CreateEmployee(Request $request)
     {
-        Validator::make($request->except(['_token']), [
+        $valid = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:users,nik'],
             'role' => ['required'],
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:8',
-        ])->validate();
+        ]);
+        if(!$valid){
+            return redirect()->back();
+        }
         DB::beginTransaction();
         try{
             $user = User::create([
@@ -52,8 +51,8 @@ class AuthController extends Controller
             DB::rollback();
             echo 'Error Exception';
         }
-
     }
+
 
     public function logout()
     {
