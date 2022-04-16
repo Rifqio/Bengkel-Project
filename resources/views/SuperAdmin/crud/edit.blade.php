@@ -16,14 +16,14 @@
                     {{ session('loginError') }}
                 </div>
             @endif
-            <form action="/newdashboard" method="post">
+            <form action="/newdashboard/{{ $user->id }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <p class="mb-0">Add Superadmin</p>
+                                    <p class="mb-0">Edit User</p>
                                     <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                             <label for="name"
                                                 class="form-control-label  @error('name') is-invalid @enderror">Name</label>
                                             <input class="form-control" name="name" type="text"
-                                                value="{{ old('name') }}">
+                                                value="{{ old('name', $user->name) }}">
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -48,7 +48,7 @@
                                         <div class="form-group">
                                             <label for="nik"
                                                 class="form-control-label @error('nik') is-invalid @enderror">NIK</label>
-                                            <input class="form-control" name="nik" type="text" value="">
+                                            <input class="form-control" name="nik" type="text" value="{{ old('nik', $user->nik) }}">
                                             @error('nik')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -64,7 +64,7 @@
                                         <div class="form-group">
                                             <label for="email" class="form-control-label">Email address</label>
                                             <input class="form-control @error('email') is-invalid @enderror" name="email"
-                                                type="email" value="">
+                                                type="email" value={{ old('email', $user->email) }}>
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

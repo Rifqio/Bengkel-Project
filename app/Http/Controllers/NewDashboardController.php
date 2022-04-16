@@ -135,7 +135,7 @@ class NewDashboardController extends Controller
     public function edit(User $user)
     {
         return view('SuperAdmin.crud.edit',[
-            'users' => $user,
+            'user' => $user,
             'roles' => Role::all(),
         ]);
     }
