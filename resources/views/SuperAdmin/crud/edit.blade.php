@@ -16,7 +16,7 @@
                     {{ session('loginError') }}
                 </div>
             @endif
-            <form action="/newdashboard/{{ $user->id }}" method="post">
+            <form action="{{url('update-employee')}}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
@@ -36,7 +36,7 @@
                                             <label for="name"
                                                 class="form-control-label  @error('name') is-invalid @enderror">Name</label>
                                             <input class="form-control" name="name" type="text"
-                                                value="{{ old('name', $user->name) }}">
+                                                value="{{$user->name}}">
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -48,7 +48,7 @@
                                         <div class="form-group">
                                             <label for="nik"
                                                 class="form-control-label @error('nik') is-invalid @enderror">NIK</label>
-                                            <input class="form-control" name="nik" type="text" value="{{ old('nik', $user->nik) }}">
+                                            <input class="form-control" name="nik" type="text" value="{{$user->nik}}">
                                             @error('nik')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -64,7 +64,8 @@
                                         <div class="form-group">
                                             <label for="email" class="form-control-label">Email address</label>
                                             <input class="form-control @error('email') is-invalid @enderror" name="email"
-                                                type="email" value={{ old('email', $user->email) }}>
+                                                type="email" value="{{$user->email}}">
+                                            <input name="id" type="hidden" value="{{$user->id}}">
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -75,36 +76,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect2">Role</label>
-                                            <select class="form-control" id="exampleFormControlSelect2">
+                                            <select class="form-control" id="exampleFormControlSelect2" name="role">
                                                 @foreach ($roles as $role)
                                                     <option value={{ $role->id }}>{{ $role->display_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="form-control-label  @error('password') is-invalid @enderror">Password</label>
-                                            <input class="form-control" type="password" name="password" required
-                                                autocomplete="new-password" value="{{ old('password') }}">
-                                            @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Repeat
-                                                Password</label>
-                                            <input class="form-control" type="password" name="password_confirmation"
-                                                required autocomplete="new-password" value="">
-                                        </div>
-                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
