@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Store;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
@@ -69,5 +72,12 @@ class TestController extends Controller
         $bengkel->item()->attach(request('item'));
         // detach untuk delete
         return redirect('test');
+    }
+
+    public function TestImage(Request $request){
+        $user = request()->user();
+        $name = time()."_".$request->file('photo')->getClientOriginalName();
+        $request->file('photo')->move(public_path('data_bengkel/'.$request->store_name."_".$user->email.'/ktp'), $name);
+        dd($name);
     }
 }

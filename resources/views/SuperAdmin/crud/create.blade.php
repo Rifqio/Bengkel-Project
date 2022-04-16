@@ -16,7 +16,7 @@
                     {{ session('loginError') }}
                 </div>
             @endif
-            <form action="/newdashboard" method="post">
+            <form action="{{ url('create-employee') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
@@ -37,11 +37,6 @@
                                                 class="form-control-label  @error('name') is-invalid @enderror">Name</label>
                                             <input class="form-control" name="name" type="text"
                                                 value="{{ old('name') }}">
-                                            @error('name')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -49,11 +44,6 @@
                                             <label for="nik"
                                                 class="form-control-label @error('nik') is-invalid @enderror">NIK</label>
                                             <input class="form-control" name="nik" type="text" value="">
-                                            @error('nik')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -65,17 +55,12 @@
                                             <label for="email" class="form-control-label">Email address</label>
                                             <input class="form-control @error('email') is-invalid @enderror" name="email"
                                                 type="email" value="">
-                                            @error('email')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect2">Role</label>
-                                            <select class="form-control" id="exampleFormControlSelect2">
+                                            <select class="form-control" id="exampleFormControlSelect2" name="role">
                                                 @foreach ($roles as $role)
                                                     <option value={{ $role->id }}>{{ $role->display_name }}</option>
                                                 @endforeach
@@ -88,11 +73,6 @@
                                                 class="form-control-label  @error('password') is-invalid @enderror">Password</label>
                                             <input class="form-control" type="password" name="password" required
                                                 autocomplete="new-password" value="{{ old('password') }}">
-                                            @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -104,7 +84,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

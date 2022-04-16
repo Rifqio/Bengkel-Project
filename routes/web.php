@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\CheckController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewDashboardController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NotificationController;
@@ -25,19 +24,23 @@ Route::get('/landing', function () {
     return view('home.landingpage', ['title' => 'Landing Page']);
 });
 
-Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
+//Benahi
+Route::get('/', [NewDashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
 
 // Route Create New Employee/Mitra Via SuperAdmin
-Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee', [AuthController::class, 'CreateEmployeeView']);
 Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee', [AuthController::class, 'CreateEmployee']);
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
 Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[MitraController::class, 'StoreRegisterSubmit']);
+
+//Employee
+Route::middleware(['auth', 'verified', 'role:employee'])->get('/validasi-bengkel' ,[EmpController::class, 'StoreValidationView']);
+Route::middleware(['auth', 'verified', 'role:employee'])->post('/validasi-bengkel' ,[EmpController::class, 'StoreValidation']);
 
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -62,8 +65,8 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::resource('newdashboard', NewDashboardController::class)->middleware(['auth', 'verified']);
 
 //Protected Route
-Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::middleware(['auth', 'verified'])->get('/logout', [DashboardController::class, 'logout'])->name('logout');
+Route::middleware(['auth', 'verified'])->get('/dashboard', [NewDashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // For testing only
 Route::get('test', [TestController::class, 'index']);
@@ -72,6 +75,7 @@ Route::get('/test-create-product', [TestController::class, 'TestCreateProductVie
 Route::post('/test-create-product', [TestController::class, 'TestCreateProductStore']);
 Route::get('/test-input-product', [TestController::class, 'TestInputProductView']);
 Route::post('/test-input-product', [TestController::class, 'TestInputProductStore']);
+Route::post('/test-image', [TestController::class, 'TestImage']);
 
 
 //admin

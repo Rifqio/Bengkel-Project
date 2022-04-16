@@ -26,7 +26,7 @@
         <h5>Belum Ada Notifikasi</h5>
     @endforelse
     <!--Kurang Form Input File-->
-    <form action="{{url('store-register')}}" method="POST"> 
+    <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data"> 
         @csrf
         <input type="text" name="store_name" placeholder="Nama Bengkel"><br>
         <input type="time" name="open" placeholder="Jam Buka"><br>
