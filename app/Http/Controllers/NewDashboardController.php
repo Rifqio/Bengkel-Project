@@ -120,9 +120,11 @@ class NewDashboardController extends Controller
      */
     public function show(User $user)
     {
-
+        //$emp = User::whereRoleIs(['employee'])->get();
+        $users = User::all();
+        
         return view('SuperAdmin.employeeList.index', [
-            'users' => User::all(),
+            'users' => $users,
         ]);
     }
 
@@ -132,10 +134,12 @@ class NewDashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
+        
         return view('SuperAdmin.crud.edit',[
-            'users' => $user,
+            'user' => $user,
             'roles' => Role::all(),
         ]);
     }

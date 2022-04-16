@@ -33,6 +33,7 @@ Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
 // Route Create New Employee/Mitra Via SuperAdmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee', [AuthController::class, 'CreateEmployee']);
+Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/update-employee', [AuthController::class, 'UpdateEmployee']);
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);

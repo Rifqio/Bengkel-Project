@@ -42,11 +42,11 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{-- <p class="text-xs font-weight-bold mb-0">{{ $user->roles }}</p> --}}
+                                                <p class="text-xs font-weight-bold mb-0">{{ $user->roles->first()->name }}</p>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <a class="btn btn-link text-dark px-3 mb-0" href="/newdashboard/{{ $user->id }}/edit"><i class="fas fa-pencil-alt text-dark me-2"></i>Edit</a>
-                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Deactive</a>
                                             </td>
                                         </tr>
                                         @endforeach

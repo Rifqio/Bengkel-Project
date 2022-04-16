@@ -53,6 +53,20 @@ class AuthController extends Controller
         }
     }
 
+    public function UpdateEmployee(Request $request){
+        $valid = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'nik' => ['required', 'string', 'max:16', 'min:16'],
+        ]);
+        if(!$valid){
+            return redirect()->back();
+        }
+        $user_data = User::find($request->id);
+        $user_data->update($request->except(['_token', 'id']));
+        return redirect('/dashboard');
+    }
+
 
     public function logout()
     {
