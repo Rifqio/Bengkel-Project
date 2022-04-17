@@ -43,10 +43,10 @@ class AuthController extends Controller
                 ('Email dan Password Employee');
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
-            
+
             DB::commit();
-            
-            return redirect('/dashboard');
+
+            return redirect('newdashboard/show')->with('success', 'User has been created');
         }catch(\Exception $e){
             DB::rollback();
             echo 'Error Exception';
@@ -64,7 +64,14 @@ class AuthController extends Controller
         }
         $user_data = User::find($request->id);
         $user_data->update($request->except(['_token', 'id']));
-        return redirect('/dashboard');
+        return redirect('newdashboard/show')->with('success', 'User has been updated');
+    }
+
+    public function DeleteEmployee($id)
+    {
+        $users = User::findOrFail($id);
+        $users->delete();
+        return redirect('newdashboard/show')->with('success', 'User has been deleted');
     }
 
 

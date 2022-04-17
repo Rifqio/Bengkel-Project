@@ -27,11 +27,6 @@
         <div class="min-h-screen bg-gray-100">
             @if (Auth::check())
                 @livewire('navigation-menu')
-            @else
-                <br>
-                <center>
-                    <h1>Ini Halaman Guest</h1>
-                </center>
             @endif
             <!-- Page Content -->
             <main>

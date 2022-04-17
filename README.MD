@@ -13,12 +13,12 @@
 - Menambah user dashboard (Frontend)
 
 ## (11 April 2022)
-- Menambah migrasi dan relasi antar tabel 
+- Menambah migrasi dan relasi antar tabel
 
 ## (13 April 2022)
 - Membuat Map, integrasi db dan map
 - Membuat Superadmin dan Admin melalui superadmin
-- Menambah template admin untuk view 
+- Menambah template admin untuk view
 - Menambah read list user has role employee (Redirect ke Superadmin dashboard)
 
 ## (14 April 2022)
@@ -34,3 +34,6 @@ Note
 - Untuk superadmin blade (Superadmin/dashboardadmin)
 - Untuk Admin atau employee (Admin/dashboardadmin)
 - Untuk Coba Email Gunakan Mailtrap
+
+## (16 April 2022)
+- Fitur CRUD untuk Superadmin sudah bisa digunakan

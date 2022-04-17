@@ -122,7 +122,7 @@ class NewDashboardController extends Controller
     {
         //$emp = User::whereRoleIs(['employee'])->get();
         $users = User::all();
-        
+
         return view('SuperAdmin.employeeList.index', [
             'users' => $users,
         ]);
@@ -137,7 +137,7 @@ class NewDashboardController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         return view('SuperAdmin.crud.edit',[
             'user' => $user,
             'roles' => Role::all(),
@@ -162,8 +162,9 @@ class NewDashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect('dashboard')->with('success', 'User has been deleted');
     }
 }
