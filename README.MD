@@ -37,3 +37,6 @@ Note
 
 ## (16 April 2022)
 - Fitur CRUD untuk Superadmin sudah bisa digunakan
+
+## (17 April 2022)
+- Fix newdashboard route jadi dashboard

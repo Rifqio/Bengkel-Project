@@ -55,7 +55,7 @@
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <a class="btn btn-link text-dark px-3 mb-0"
-                                                        href="/newdashboard/{{ $user->id }}/edit"><i
+                                                        href="/dashboard/{{ $user->id }}/edit"><i
                                                             class="fas fa-pencil-alt text-dark me-2"></i>Edit</a>
                                                     <form action="{{url('delete-employee').'/'.$user->id}}" method="post"
                                                         class="d-inline">

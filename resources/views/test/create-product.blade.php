@@ -10,10 +10,13 @@
 
 <body>
     <!-- You can actually customize padding on a select element: -->
-    <form action="{{url('test-create-product')}}" method="POST"> 
+    <form action="{{url('test-create-product')}}" method="POST">
         @csrf
+        <label for="name">Name</label>
         <input type="text" name="name">
+        <label for="brand">Brand</label>
         <input type="text" name="brand">
+        <label for="price">Price</label>
         <input type="number" name="price">
         <select class="px-4 py-3 rounded-full" name="category">
             <option selected>Pilih category</option>

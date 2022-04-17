@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\NewDashboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 */
 
 //Benahi
-Route::get('/', [NewDashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
+Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
@@ -64,11 +64,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Dashboard Route
-Route::resource('newdashboard', NewDashboardController::class)->middleware(['auth', 'verified']);
+Route::resource('dashboard', DashboardController::class)->except(['destroy','update','store'])->middleware(['auth', 'verified']);
 
 //Protected Route
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [NewDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

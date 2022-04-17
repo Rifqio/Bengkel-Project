@@ -46,7 +46,7 @@ class AuthController extends Controller
 
             DB::commit();
 
-            return redirect('newdashboard/show')->with('success', 'User has been created');
+            return redirect('dashboard/show')->with('success', 'User has been created');
         }catch(\Exception $e){
             DB::rollback();
             echo 'Error Exception';
@@ -64,14 +64,14 @@ class AuthController extends Controller
         }
         $user_data = User::find($request->id);
         $user_data->update($request->except(['_token', 'id']));
-        return redirect('newdashboard/show')->with('success', 'User has been updated');
+        return redirect('dashboard/show')->with('success', 'User has been updated');
     }
 
     public function DeleteEmployee($id)
     {
         $users = User::findOrFail($id);
         $users->delete();
-        return redirect('newdashboard/show')->with('success', 'User has been deleted');
+        return redirect('dashboard/show')->with('success', 'User has been deleted');
     }
 
 
