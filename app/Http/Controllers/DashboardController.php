@@ -48,12 +48,20 @@ class DashboardController extends Controller
             $data[] = [
                 $s->store_name,
                 $s->lat,$s->long,
+                $s->id,
             ];
         }
         return view('user.userdashboard' , [
             'items' => Item::all(),
             'location' => $data,
             'title' => 'Dashboard'
+        ]);
+    }
+
+    public function StoreView($id){
+        $data = Store::find($id);
+        return view('user.store-view' , [
+            'data' => $data,
         ]);
     }
 
