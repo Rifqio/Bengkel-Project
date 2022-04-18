@@ -23,7 +23,7 @@
                         <div class="card">
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <p class="mb-0">Add Superadmin</p>
+                                    <p class="mb-0">Edit User</p>
                                     <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
                                 </div>
                             </div>

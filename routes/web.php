@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\NewDashboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -20,30 +20,33 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/landing', function () {
-    return view('home.landingpage', ['title' => 'Landing Page']);
-});
-
 //Benahi
-Route::get('/', [NewDashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
+Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
-
-// Route Create New Employee/Mitra Via SuperAdmin
-Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee', [AuthController::class, 'CreateEmployee']);
-Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/update-employee', [AuthController::class, 'UpdateEmployee']);
+Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthController::class)->group(function () {
+    Route::post('/create-employee',  'CreateEmployee');
+    Route::post('/update-employee', 'UpdateEmployee');
+    Route::delete('/delete-employee/{user}', 'DeleteEmployee');
+});
 
 //Mitra
-Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
-Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[MitraController::class, 'StoreRegisterSubmit']);
+Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
+    Route::get('/store-register', 'StoreRegisterView');
+    Route::post('/store-register', 'StoreRegisterSubmit');
+});
 
 //Employee
-Route::middleware(['auth', 'verified', 'role:employee'])->get('/validasi-bengkel' ,[EmpController::class, 'StoreValidationView']);
-Route::middleware(['auth', 'verified', 'role:employee'])->post('/validasi-bengkel' ,[EmpController::class, 'StoreValidation']);
-Route::middleware(['auth', 'verified', 'role:employee'])->get('/list-mitra' ,[EmpController::class, 'ListMitraView']);
-Route::middleware(['auth', 'verified', 'role:employee'])->post('list-mitra/{id}/update' ,[EmpController::class, 'UpdateDataMitra']);
+Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
+    //Route::get('/validasi-bengkel', 'StoreValidationView');
+    //Route::post('/validasi-bengkel', 'StoreValidation');
+    Route::middleware(['auth', 'verified', 'role:employee'])->get('/validasi-bengkel' ,[EmpController::class, 'StoreValidationView']);
+    Route::middleware(['auth', 'verified', 'role:employee'])->post('/validasi-bengkel' ,[EmpController::class, 'StoreValidation']);
+    Route::middleware(['auth', 'verified', 'role:employee'])->get('/list-mitra' ,[EmpController::class, 'ListMitraView']);
+    Route::middleware(['auth', 'verified', 'role:employee'])->post('list-mitra/{id}/update' ,[EmpController::class, 'UpdateDataMitra']);
+});
 
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -65,20 +68,24 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Dashboard Route
-Route::resource('newdashboard', NewDashboardController::class)->middleware(['auth', 'verified']);
+Route::resource('dashboard', DashboardController::class)->except(['destroy','update','store'])->middleware(['auth', 'verified']);
 
 //Protected Route
-Route::middleware(['auth', 'verified'])->get('/dashboard', [NewDashboardController::class, 'index'])->name('dashboard');
-Route::middleware(['auth', 'verified'])->get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 // For testing only
-Route::get('test', [TestController::class, 'index']);
-Route::get('/email-test', [TestController::class, 'TestEmail']);
-Route::get('/test-create-product', [TestController::class, 'TestCreateProductView']);
-Route::post('/test-create-product', [TestController::class, 'TestCreateProductStore']);
-Route::get('/test-input-product', [TestController::class, 'TestInputProductView']);
-Route::post('/test-input-product', [TestController::class, 'TestInputProductStore']);
-Route::post('/test-image', [TestController::class, 'TestImage']);
+Route::controller(TestController::class)->group(function () {
+    Route::get('test', 'index');
+    Route::get('/email-test', 'TestEmail');
+    Route::get('/test-create-product', 'TestCreateProductView');
+    Route::post('/test-create-product', 'TestCreateProductStore');
+    Route::get('/test-input-product', 'TestInputProductView');
+    Route::post('/test-input-product', 'TestInputProductStore');
+    Route::post('/test-image', 'TestImage');
+});
 
 
 //admin

@@ -6,21 +6,21 @@
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a>
                 </li>
                 <li class="breadcrumb-item text-sm text-white active">
-                    @if (Request::is('newdashboard'))
+                    @if (Request::is('dashboard'))
                         Dashboard
-                    @elseif(Request::is('newdashboard/create'))
+                    @elseif(Request::is('dashboard/create'))
                         Create Employee
-                    @elseif(Request::is('newdashboard/show'))
+                    @elseif(Request::is('dashboard/show'))
                         User List
                     @endif
                 </li>
             </ol>
             <h6 class="font-weight-bolder text-white mb-0">
-                @if (Request::is('newdashboard'))
+                @if (Request::is('dashboard'))
                     Dashboard
-                @elseif(Request::is('newdashboard/create'))
+                @elseif(Request::is('dashboard/create'))
                     Create Employee
-                @elseif(Request::is('newdashboard/show'))
+                @elseif(Request::is('dashboard/show'))
                     User List
                 @endif
             </h6>
