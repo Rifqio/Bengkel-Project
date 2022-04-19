@@ -21,6 +21,7 @@ class TestController extends Controller
             $data[] = [
                 $s->store_name,
                 $s->lat,$s->long,
+                $s->id,
             ];
         }
         return view('test.index' , [
@@ -45,12 +46,6 @@ class TestController extends Controller
     }
 
     public function TestCreateProductStore(){
-        $category=Category::find(request('category'));
-        $category->item()->create([
-             'name' => request('name'),
-             'brand' => request('brand'),
-             'price' => request('price'),
-        ]);
         Item::create([
             'name' => request('name'),
             'brand' => request('brand'),

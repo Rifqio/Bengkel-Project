@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-class DashboardController extends Controller
+class NewDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,27 +41,18 @@ class DashboardController extends Controller
 
     public function GuestView()
     {
-        //return view('user.userdashboard', ['title' => 'Dashboard']);
         $store = Store::where('status_activation', 1)->get();
         $data = [];
         foreach($store as $s){
             $data[] = [
                 $s->store_name,
                 $s->lat,$s->long,
-                $s->id,
             ];
         }
         return view('user.userdashboard' , [
             'items' => Item::all(),
             'location' => $data,
             'title' => 'Dashboard'
-        ]);
-    }
-
-    public function StoreView($id){
-        $data = Store::find($id);
-        return view('user.store-view' , [
-            'data' => $data,
         ]);
     }
 
@@ -85,7 +76,39 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        Validator::make($request->except(['_token']), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:users,nik'],
+            'role' => ['required'],
+            'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:8',
+        ])->validate();
+        DB::beginTransaction();
+        try{
+            $user = User::create([
+                'name' => request()->name,
+                'email' => request()->email,
+                'nik' => request()->nik,
+                'email_verified_at' => Carbon::now()->toDateTimeString(),
+                'password'=> Hash::make(request()->password),
+            ]);
+            $user->attachRole($request->role);
+
+            $data = array('name'=>request()->name, 'email'=>request()->email, 'password'=> request()->password);
+            Mail::send('email.em-sa-email', $data, function($message) {
+                $message->to(request()->email, 'Test Email')->subject
+                ('Email dan Password Employee');
+                $message->from(Auth::user()->email, Auth::user()->name);
+            });
+
+            DB::commit();
+
+            return redirect('/newdashboard')->with('success', 'User has been created');
+        }catch(\Exception $e){
+            DB::rollback();
+            echo 'Error Exception';
+        }
     }
 
     /**
@@ -96,9 +119,8 @@ class DashboardController extends Controller
      */
     public function show(User $user)
     {
-        //$emp = User::whereRoleIs(['employee'])->get();
         $users = User::all();
-
+        
         return view('SuperAdmin.employeeList.index', [
             'users' => $users,
         ]);
@@ -113,7 +135,7 @@ class DashboardController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-
+        
         return view('SuperAdmin.crud.edit',[
             'user' => $user,
             'roles' => Role::all(),
@@ -138,9 +160,8 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        User::destroy($user->id);
-        return redirect('dashboard')->with('success', 'User has been deleted');
+        //
     }
 }

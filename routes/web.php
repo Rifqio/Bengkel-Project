@@ -22,10 +22,12 @@ use Illuminate\Http\Request;
 
 //Benahi
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
+Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
+//SuperAdmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthController::class)->group(function () {
     Route::post('/create-employee',  'CreateEmployee');
     Route::post('/update-employee', 'UpdateEmployee');
@@ -40,8 +42,10 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
 
 //Employee
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
-    Route::get('/validasi-bengkel', 'StoreValidationView');
-    Route::post('/validasi-bengkel', 'StoreValidation');
+    Route::get('/validasi-bengkel' , 'StoreValidationView');
+    Route::post('/validasi-bengkel' , 'StoreValidation');
+    Route::get('/list-mitra' ,'ListMitraView');
+    Route::post('list-mitra/{id}/update' ,'UpdateDataMitra');
 });
 
 //Route Confirmation Email
