@@ -23,9 +23,13 @@ use Illuminate\Http\Request;
 //Benahi
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 
+//Dashboard Route
+Route::resource('dashboard', DashboardController::class)->except(['destroy','update','store'])->middleware(['auth', 'verified']);
+
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
+//Superadmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthController::class)->group(function () {
     Route::post('/create-employee',  'CreateEmployee');
     Route::post('/update-employee', 'UpdateEmployee');
@@ -63,8 +67,6 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-//Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy','update','store'])->middleware(['auth', 'verified']);
 
 //Protected Route
 Route::middleware(['auth', 'verified'])->group(function () {
