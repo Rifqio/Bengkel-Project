@@ -162,19 +162,20 @@
 <script>
     var loadMap = function (id) {
         var data= {!! json_encode($location) !!}
-        var map = L.map(id, { zoomControl: false });
-        var tile_url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+        var map = L.map(id);
+        var tile_url = 'https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ';
         var layer = L.tileLayer(tile_url, {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            attribution: 'BengkelAE',
             maxZoom: 18,
         });
         map.addLayer(layer);
 
         map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
             .on('locationfound', function(e){
-                L.marker([e.latitude, e.longitude], {
+                user = L.marker([e.latitude, e.longitude], {
                     icon: User,
                 }).addTo(map);
+                console.log(e.latitude, e.longitude);
                 var circle = L.circle([e.latitude, e.longitude], e.accuracy/20, {
                     weight: 1,
                     color: 'blue',
@@ -182,16 +183,21 @@
                     fillOpacity: 0.2
                 });
                 map.addLayer(circle);
-                //coba
                 var marker = [];
+                var distance = [];
                 var i;
                 for (var i = 0; i < data.length; i++){
                     marker[i] = new L.marker([data[i][1],data[i][2]], {
                         win_url: data[i][3],
                         icon:  fontAwesomeIcon,
                     }).bindPopup("Bengkel "+data[i][0]);
+                    from = marker[i].getLatLng();
+                    to = user.getLatLng();
                     marker[i].addTo(map);
                     marker[i].on('click', onClick);
+                    distance[i] = from.distanceTo(to).toFixed(0)/1000;
+                    minim = Math.min.apply(Math, distance);
+                    console.log(Math.min.apply(Math, distance));
                 }
                 function onClick(e) {
                     window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';

@@ -8,8 +8,24 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <title>Bengkel</title>
+    <style>
+        path.leaflet-interactive.animate {
+            stroke-dasharray: 1920;
+            stroke-dashoffset: 1920;
+            animation: dash 20s linear 3s forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
   </head>
   <body>
     <!--Profile Bengkel-->
@@ -56,7 +72,11 @@
                 @endforeach
             </tbody>
         </table>
-    </div>  
+    </div>
+    <br>
+    <h2>Maps Directions</h2>
+    <button class="btn btn-primary" onclick="goMaps()">Buka Rute (Gmaps)</button>
+    <div id = "map" style = "width:100%; height:580px;"></div> 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -67,5 +87,36 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+    <script>
+        var data= {!! json_encode($latlong) !!}
+
+        var map = L.map('map');
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        map.locate({setView: true, watch: true})
+            .on('locationfound', function(e){
+                lat = e.latitude;
+                long = e.longitude;
+                L.Routing.control({
+                waypoints: [
+                    L.latLng(lat, long),
+                    L.latLng(data[0], data[1])
+                ],
+                    lineOptions: {
+                    styles: [{className: 'animate'}]
+                },
+                    routeWhileDragging: true
+                }).addTo(map);
+            })
+        .on('locationerror', function(e){
+            console.log(e);
+            alert("Location access denied.");
+        });
+    function goMaps(){
+        window.location = "http://maps.google.com/?ll="+data[0]+','+data[1];
+    }
+    </script>
   </body>
 </html>
