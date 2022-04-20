@@ -64,7 +64,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy','update','store'])->middleware(['auth', 'verified']);
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
 
 //Protected Route
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -93,4 +93,8 @@ Route::get('/ListMitra', function () {
 });
 Route::get('/editadmin', function () {
     return view('admin/listadminedit');
+});
+
+Route::get('/sparepart', function () {
+    return view('user/usersparepart');
 });
