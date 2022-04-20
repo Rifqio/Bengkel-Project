@@ -37,13 +37,23 @@
                                                 class="form-control-label  @error('name') is-invalid @enderror">Name</label>
                                             <input class="form-control" name="name" type="text"
                                                 value="{{ old('name') }}">
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nik"
                                                 class="form-control-label @error('nik') is-invalid @enderror">NIK</label>
-                                            <input class="form-control" name="nik" type="text" value="">
+                                            <input class="form-control" name="nik" type="text" value="{{ old('nik') }}">
+                                            @error('nik')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +64,12 @@
                                         <div class="form-group">
                                             <label for="email" class="form-control-label">Email address</label>
                                             <input class="form-control @error('email') is-invalid @enderror" name="email"
-                                                type="email" value="">
+                                                type="email" value="{{ old('email') }}">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -73,6 +88,11 @@
                                                 class="form-control-label  @error('password') is-invalid @enderror">Password</label>
                                             <input class="form-control" type="password" name="password" required
                                                 autocomplete="new-password" value="{{ old('password') }}">
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -80,22 +80,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // For testing only
 Route::controller(TestController::class)->group(function () {
     Route::get('test', 'index');
-    Route::get('/email-test', 'TestEmail');
-    Route::get('/test-create-product', 'TestCreateProductView');
-    Route::post('/test-create-product', 'TestCreateProductStore');
-    Route::get('/test-input-product', 'TestInputProductView');
-    Route::post('/test-input-product', 'TestInputProductStore');
-    Route::post('/test-image', 'TestImage');
+    Route::get('email-test', 'TestEmail');
+    Route::get('test-create-product', 'TestCreateProductView');
+    Route::post('test-create-product', 'TestCreateProductStore');
+    Route::get('test-input-product', 'TestInputProductView');
+    Route::post('test-input-product', 'TestInputProductStore');
+    Route::post('test-image', 'TestImage');
+    Route::get('login-test', 'TestLogin');
 });
 
-
-//admin
-Route::get('/ListAdmin', function () {
-    return view('admin/listadmindashboard');
-});
-Route::get('/ListMitra', function () {
-    return view('admin/listmitra');
-});
-Route::get('/editadmin', function () {
-    return view('admin/listadminedit');
-});
