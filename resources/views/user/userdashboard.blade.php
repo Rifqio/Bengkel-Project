@@ -139,6 +139,8 @@
             @livewire('menu')
         </div>
         <center>
+            <center><h1 class="text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1></center>
+            <div class="container" id='rekomen'><!--Content--></div>
             <div id="show" style="width:100%; height:580px;">
                 <!--Content-->
             </div>
@@ -162,7 +164,7 @@
 <script>
     var loadMap = function (id) {
         var data= {!! json_encode($location) !!}
-        var map = L.map(id);
+        var map = L.map(id,{wheelPxPerZoomLevel: 150});
         var tile_url = 'https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ';
         var layer = L.tileLayer(tile_url, {
             attribution: 'BengkelAE',
@@ -170,22 +172,23 @@
         });
         map.addLayer(layer);
 
-        map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
+        map.locate({setView: true, watch: false})
             .on('locationfound', function(e){
+                var marker = [];
+                var distance = [];
+                var namestore = [];
+                var idstore = [];
+                var i;
                 user = L.marker([e.latitude, e.longitude], {
                     icon: User,
                 }).addTo(map);
-                console.log(e.latitude, e.longitude);
-                var circle = L.circle([e.latitude, e.longitude], e.accuracy/20, {
+                var circle = L.circle([e.latitude, e.longitude], e.accuracy/10, {
                     weight: 1,
                     color: 'blue',
                     fillColor: '#cacaca',
                     fillOpacity: 0.2
                 });
                 map.addLayer(circle);
-                var marker = [];
-                var distance = [];
-                var i;
                 for (var i = 0; i < data.length; i++){
                     marker[i] = new L.marker([data[i][1],data[i][2]], {
                         win_url: data[i][3],
@@ -196,8 +199,21 @@
                     marker[i].addTo(map);
                     marker[i].on('click', onClick);
                     distance[i] = from.distanceTo(to).toFixed(0)/1000;
-                    minim = Math.min.apply(Math, distance);
-                    console.log(Math.min.apply(Math, distance));
+                    namestore[i] = data[i][0];
+                    idstore[i] = data[i][3];
+                }
+                for(var i=0; i<marker.length; i++){
+                    if(distance[i]<=1){
+                        console.log(distance[i]);
+                        console.log(namestore[i]);
+                        var button = document.createElement("a");
+                        button.type = 'button';
+                        button.innerHTML = '<b>'+namestore[i]+'</b><br>'+distance[i]+'Km';
+                        button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
+                        button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
+                        button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        document.getElementById("rekomen").appendChild(button);
+                    }
                 }
                 function onClick(e) {
                     window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
