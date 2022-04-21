@@ -75,4 +75,8 @@ class TestController extends Controller
         $request->file('photo')->move(public_path('data_bengkel/'.$request->store_name."_".$user->email.'/ktp'), $name);
         dd($name);
     }
+
+    public function map(){
+        return view('test.map');
+    }
 }

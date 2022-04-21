@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <title>Bengkel</title>
     <style>
         path.leaflet-interactive.animate {
@@ -75,8 +77,7 @@
     </div>
     <br>
     <h2>Maps Directions</h2>
-    <button class="btn btn-primary" onclick="goMaps()">Buka Rute (Gmaps)</button>
-    <div id = "map" style = "width:100%; height:580px;"></div> 
+    <div class="container" id = "map" style = "width:100%; height:580px;"></div> 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -89,34 +90,60 @@
     -->
     <script>
         var data= {!! json_encode($latlong) !!}
+        //Baru
+        var map_init = L.map('map', {
+            center: [data[0], data[1]],
+            zoom: 8
+        });
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map_init);
+        L.Control.geocoder().addTo(map_init);
+        if (!navigator.geolocation) {
+            console.log("Your browser doesn't support geolocation feature!")
+        } else {
+            navigator.geolocation.getCurrentPosition(mapRoute);
+            setInterval(() => {
+                navigator.geolocation.getCurrentPosition(getPosition)
+            }, 5000);
+        };
+        var marker, circle, lat, long, accuracy;
 
-        var map = L.map('map');
+        function getPosition(position) {
+            lat = position.coords.latitude
+            long = position.coords.longitude
+            accuracy = position.coords.accuracy
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        map.locate({setView: true, watch: true})
-            .on('locationfound', function(e){
-                lat = e.latitude;
-                long = e.longitude;
+            if (marker) {
+                map_init.removeLayer(marker)
+            }
+
+            if (circle) {
+                map_init.removeLayer(circle)
+            }
+
+            marker = L.marker([lat, long])
+            circle = L.circle([lat, long], { radius: accuracy })
+
+            var featureGroup = L.featureGroup([marker, circle]).addTo(map_init)
+
+            map_init.fitBounds(featureGroup.getBounds())
+
+            console.log("Your coordinate is: Lat: " + lat + " Long: " + long + " Accuracy: " + accuracy)
+        }
+        function mapRoute(){
+            navigator.geolocation.getCurrentPosition(cekFunction);
+            function cekFunction(position){
                 L.Routing.control({
                 waypoints: [
-                    L.latLng(lat, long),
-                    L.latLng(data[0], data[1])
+                    L.latLng(position.coords.latitude, position.coords.longitude),
+                    L.latLng(data[0], data[1]),
                 ],
-                    lineOptions: {
-                    styles: [{className: 'animate'}]
-                },
-                    routeWhileDragging: true
-                }).addTo(map);
-            })
-        .on('locationerror', function(e){
-            console.log(e);
-            alert("Location access denied.");
-        });
-    function goMaps(){
-        window.location = "http://maps.google.com/?ll="+data[0]+','+data[1];
-    }
+                routeWhileDragging: false,
+                missingRouteTolerance: 10
+                }).addTo(map_init);
+            }
+        }
     </script>
   </body>
 </html>
