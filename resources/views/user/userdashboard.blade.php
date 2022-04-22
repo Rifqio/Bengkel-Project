@@ -48,7 +48,6 @@
 
                     <!--
                 Mobile menu, show/hide based on menu open state.
-
                 Entering: "duration-150 ease-out"
                   From: "opacity-0 scale-95"
                   To: "opacity-100 scale-100"
@@ -141,7 +140,6 @@
         <center>
             <center><h1 class="text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1></center>
             <div class="container" id='rekomen'><!--Content--></div>
-            <input type="text" name="inputtest" id="inputtest" value="1">
             <div id="show" style="width:100%; height:580px;">
                 <!--Content-->
             </div>
@@ -155,7 +153,6 @@
         iconSize: [20, 20],
         className: 'myDivIcon'
     });
-
     const fontAwesomeIcon = L.divIcon({
         html: '<i class="fa fa-map-marker-alt fa-3x"></i>',
         iconSize: [20, 20],
@@ -172,15 +169,13 @@
             maxZoom: 18,
         });
         map.addLayer(layer);
-        var marker = [];
-        var distance = [];
-        var namestore = [];
-        var idstore = [];
-        var i;
-        locateUserStore();
-        function locateUserStore(){
         map.locate({setView: true, watch: false})
             .on('locationfound', function(e){
+                var marker = [];
+                var distance = [];
+                var namestore = [];
+                var idstore = [];
+                var i;
                 user = L.marker([e.latitude, e.longitude], {
                     icon: User,
                 }).addTo(map);
@@ -191,37 +186,30 @@
                     fillOpacity: 0.2
                 });
                 map.addLayer(circle);
-                loopStore();
-                function loopStore(){
-                    for (var i = 0; i < data.length; i++){
-                        marker[i] = new L.marker([data[i][1],data[i][2]], {
-                            win_url: data[i][3],
-                            icon:  fontAwesomeIcon,
-                        }).bindPopup("Bengkel "+data[i][0]);
-                        from = marker[i].getLatLng();
-                        to = user.getLatLng();
-                        marker[i].addTo(map);
-                        marker[i].on('click', onClick);
-                        distance[i] = from.distanceTo(to).toFixed(0)/1000;
-                        namestore[i] = data[i][0];
-                        idstore[i] = data[i][3];
-                    }
-                    getDistance();
+                for (var i = 0; i < data.length; i++){
+                    marker[i] = new L.marker([data[i][1],data[i][2]], {
+                        win_url: data[i][3],
+                        icon:  fontAwesomeIcon,
+                    }).bindPopup("Bengkel "+data[i][0]);
+                    from = marker[i].getLatLng();
+                    to = user.getLatLng();
+                    marker[i].addTo(map);
+                    marker[i].on('click', onClick);
+                    distance[i] = from.distanceTo(to).toFixed(0)/1000;
+                    namestore[i] = data[i][0];
+                    idstore[i] = data[i][3];
                 }
-                function getDistance(){
-                    user = document.getElementById("inputtest").value
-                    for(var i=0; i<marker.length; i++){
-                        if(distance[i]<=user){
-                            console.log(distance.length);
-                            console.log(namestore.length);
-                            var button = document.createElement("a");
-                            button.type = 'button';
-                            button.innerHTML = '<b>'+namestore[i]+'</b><br>'+distance[i]+'Km';
-                            button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
-                            button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
-                            button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                            document.getElementById("rekomen").appendChild(button);
-                        }
+                for(var i=0; i<marker.length; i++){
+                    if(distance[i]<=1){
+                        console.log(distance[i]);
+                        console.log(namestore[i]);
+                        var button = document.createElement("a");
+                        button.type = 'button';
+                        button.innerHTML = '<b>'+namestore[i]+'</b><br>'+distance[i]+'Km';
+                        button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
+                        button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
+                        button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        document.getElementById("rekomen").appendChild(button);
                     }
                 }
                 function onClick(e) {
@@ -231,16 +219,6 @@
         .on('locationerror', function(e){
             console.log(e);
             alert("Location access denied.");
-        });
-        }
-        //Next Deploy Filter
-        $("#inputtest").on("keyup", function(event) {
-            for(var i=0; i<marker.length; i++){
-                if(distance[i]<=$(this).val()){
-                    console.log(distance[i]);
-                    console.log(namestore[i]);
-                }
-            }
         });
     };
     loadMap('show');
