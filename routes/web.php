@@ -54,7 +54,6 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -90,3 +89,8 @@ Route::controller(TestController::class)->group(function () {
     Route::get('login-test', 'TestLogin');
 });
 
+//Google Login
+Route::controller(AuthController::class)->group(function (){
+    Route::get('/auth/redirect', 'redirectToProvider');
+    Route::get('/auth/callback', 'handleProviderCallback');
+});

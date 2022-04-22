@@ -47,7 +47,7 @@ class CreateNewUser implements CreatesNewUsers
                 'ktp' => $name,
                 'password' => Hash::make($input['password']),
             ]);
-            
+
             $user->attachRole('mitra');
 
             DB::commit();
