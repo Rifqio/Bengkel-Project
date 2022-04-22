@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
-use App\Models\User;
+use Exception;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -80,5 +83,43 @@ class AuthController extends Controller
         $user = request()->user();
         Auth::logout($user);
         return redirect('/');
+    }
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleProviderCallback(Request $request)
+    {
+        try {
+            $user_google    = Socialite::driver('google')->user();
+            $user           = User::where('email', $user_google->getEmail())->first();
+
+            //jika user ada maka langsung di redirect ke halaman home
+            //jika user tidak ada maka simpan ke database
+            //$user_google menyimpan data google account seperti email, foto, dsb
+
+            if($user != null){
+                auth()->login($user, true);
+                return redirect('dashboard');
+            }else{
+                $create = User::Create([
+                    'email'             => $user_google->getEmail(),
+                    'name'              => $user_google->getName(),
+                    'password'          => Hash::make(Str::random(24)),
+                    'email_verified_at' => now()
+                ]);
+
+
+                auth()->login($create, true);
+                return redirect()->intended('/dashboard');
+            }
+
+        } catch (Exception $e) {
+            return redirect('login');
+        }
+
+
     }
 }
