@@ -60,8 +60,10 @@ class DashboardController extends Controller
 
     public function StoreView($id){
         $data = Store::find($id);
+        $latlong = [$data->lat, $data->long];
         return view('user.store-view' , [
             'data' => $data,
+            'latlong' => $latlong,
         ]);
     }
 

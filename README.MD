@@ -40,3 +40,10 @@ Note
 
 ## (17 April 2022)
 - Fix newdashboard route jadi dashboard
+
+## (21 April 2022)
+- Membuat Tracking User Static(Index) dan Dinamis(Store View)
+- Create Route ke Store
+- Kalkulasi Jarak
+- Menampilkan Jarak Terdekat (Range 1 Km)
+- Filtering jarak otw
