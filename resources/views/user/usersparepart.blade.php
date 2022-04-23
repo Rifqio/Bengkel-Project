@@ -13,7 +13,8 @@
 
     <header class="bg-transparent absolute top-0 left-0 w-full items-end z-10">
         <div class="container">
-            <div class="w-32 border-1 ">
+            <div class="flex w-32 border-1 justify-end bg">
+                .
                 <div> Search for a part...</div>
                 <div class="bg-slate-400"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
