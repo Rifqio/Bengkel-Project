@@ -21,6 +21,7 @@ class TestController extends Controller
             $data[] = [
                 $s->store_name,
                 $s->lat,$s->long,
+                $s->id,
             ];
         }
         return view('test.index' , [
@@ -45,12 +46,6 @@ class TestController extends Controller
     }
 
     public function TestCreateProductStore(){
-        $category=Category::find(request('category'));
-        $category->item()->create([
-             'name' => request('name'),
-             'brand' => request('brand'),
-             'price' => request('price'),
-        ]);
         Item::create([
             'name' => request('name'),
             'brand' => request('brand'),
@@ -79,5 +74,9 @@ class TestController extends Controller
         $name = time()."_".$request->file('photo')->getClientOriginalName();
         $request->file('photo')->move(public_path('data_bengkel/'.$request->store_name."_".$user->email.'/ktp'), $name);
         dd($name);
+    }
+
+    public function map(){
+        return view('test.map');
     }
 }

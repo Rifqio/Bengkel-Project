@@ -22,10 +22,15 @@ use Illuminate\Http\Request;
 
 //Benahi
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
+Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
+
+//Dashboard Route
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
 
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
+//SuperAdmin
 Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthController::class)->group(function () {
     Route::post('/create-employee',  'CreateEmployee');
     Route::post('/update-employee', 'UpdateEmployee');
@@ -42,12 +47,13 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
+    Route::get('/list-mitra', 'ListMitraView');
+    Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
 });
 
 //Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -75,24 +81,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // For testing only
 Route::controller(TestController::class)->group(function () {
     Route::get('test', 'index');
-    Route::get('/email-test', 'TestEmail');
-    Route::get('/test-create-product', 'TestCreateProductView');
-    Route::post('/test-create-product', 'TestCreateProductStore');
-    Route::get('/test-input-product', 'TestInputProductView');
-    Route::post('/test-input-product', 'TestInputProductStore');
-    Route::post('/test-image', 'TestImage');
+    Route::get('map', 'map');
+    Route::get('email-test', 'TestEmail');
+    Route::get('test-create-product', 'TestCreateProductView');
+    Route::post('test-create-product', 'TestCreateProductStore');
+    Route::get('test-input-product', 'TestInputProductView');
+    Route::post('test-input-product', 'TestInputProductStore');
+    Route::post('test-image', 'TestImage');
+    Route::get('login-test', 'TestLogin');
 });
 
-
-//admin
-Route::get('/ListAdmin', function () {
-    return view('admin/listadmindashboard');
-});
-Route::get('/ListMitra', function () {
-    return view('admin/listmitra');
-});
-Route::get('/editadmin', function () {
-    return view('admin/listadminedit');
+//Google Login
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/auth/redirect', 'redirectToProvider');
+    Route::get('/auth/callback', 'handleProviderCallback');
 });
 
 Route::get('/sparepart', function () {

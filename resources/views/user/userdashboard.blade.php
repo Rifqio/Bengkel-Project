@@ -48,7 +48,6 @@
 
                     <!--
                 Mobile menu, show/hide based on menu open state.
-
                 Entering: "duration-150 ease-out"
                   From: "opacity-0 scale-95"
                   To: "opacity-100 scale-100"
@@ -139,57 +138,89 @@
             @livewire('menu')
         </div>
         <center>
+            <center><h1 class="text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1></center>
+            <div class="container" id='rekomen'><!--Content--></div>
             <div id="show" style="width:100%; height:580px;">
                 <!--Content-->
             </div>
         </center>
     </div>
-    <script>
-        //Option
-        var userOptions = {
-            title: "Lokasi Anda",
-            clickable: false,
-            draggable: false
-        }
-        var markerOptions = {
-            title: "Lokasi Bengkel",
-            clickable: true,
-            draggable: false,
-        }
-    </script>
-    <script>
-        var loadMap = function(id) {
-            var data = {!! json_encode($location) !!}
-            var map = L.map(id);
-            var tile_url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-            var layer = L.tileLayer(tile_url, {
-                attribution: 'OSM'
-            });
-            map.addLayer(layer);
-
-            map.locate({
-                    setView: true,
-                    watch: true
-                }) /* This will return map so you can do chaining */
-                .on('locationfound', function(e) {
-                    var circle = L.circle([e.latitude, e.longitude], e.accuracy / 10, {
-                        weight: 1,
-                        color: 'red',
-                        fillColor: '#cacaca',
-                        fillOpacity: 0.2
-                    });
-                    L.marker([e.latitude, e.longitude], userOptions).addTo(map);
-                    map.addLayer(circle);
-                    for (var i = 0; i < data.length; i++) {
-                        console.log(data[i][0]);
-                        L.marker([data[i][1], data[i][2]], markerOptions).addTo(map);
-                    }
-                })
-                .on('locationerror', function(e) {
-                    console.log(e);
-                    alert("Location access denied.");
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<script>
+    //Option
+    const User = L.divIcon({
+        html: '<i class="fa fa-crosshairs fa-3x"></i>',
+        iconSize: [20, 20],
+        className: 'myDivIcon'
+    });
+    const fontAwesomeIcon = L.divIcon({
+        html: '<i class="fa fa-map-marker-alt fa-3x"></i>',
+        iconSize: [20, 20],
+        className: 'myDivIcon'
+    });
+</script>
+<script>
+    var loadMap = function (id) {
+        var data= {!! json_encode($location) !!}
+        var map = L.map(id,{wheelPxPerZoomLevel: 150});
+        var tile_url = 'https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ';
+        var layer = L.tileLayer(tile_url, {
+            attribution: 'BengkelAE',
+            maxZoom: 18,
+        });
+        map.addLayer(layer);
+        map.locate({setView: true, watch: false})
+            .on('locationfound', function(e){
+                var marker = [];
+                var distance = [];
+                var namestore = [];
+                var idstore = [];
+                var i;
+                user = L.marker([e.latitude, e.longitude], {
+                    icon: User,
+                }).addTo(map);
+                var circle = L.circle([e.latitude, e.longitude], e.accuracy/10, {
+                    weight: 1,
+                    color: 'blue',
+                    fillColor: '#cacaca',
+                    fillOpacity: 0.2
                 });
-        };
-        loadMap('show');
-    </script>
+                map.addLayer(circle);
+                for (var i = 0; i < data.length; i++){
+                    marker[i] = new L.marker([data[i][1],data[i][2]], {
+                        win_url: data[i][3],
+                        icon:  fontAwesomeIcon,
+                    }).bindPopup("Bengkel "+data[i][0]);
+                    from = marker[i].getLatLng();
+                    to = user.getLatLng();
+                    marker[i].addTo(map);
+                    marker[i].on('click', onClick);
+                    distance[i] = from.distanceTo(to).toFixed(0)/1000;
+                    namestore[i] = data[i][0];
+                    idstore[i] = data[i][3];
+                }
+                for(var i=0; i<marker.length; i++){
+                    if(distance[i]<=1){
+                        console.log(distance[i]);
+                        console.log(namestore[i]);
+                        var button = document.createElement("a");
+                        button.type = 'button';
+                        button.innerHTML = '<b>'+namestore[i]+'</b><br>'+distance[i]+'Km';
+                        button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
+                        button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
+                        button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        document.getElementById("rekomen").appendChild(button);
+                    }
+                }
+                function onClick(e) {
+                    window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
+                }
+            })
+        .on('locationerror', function(e){
+            console.log(e);
+            alert("Location access denied.");
+        });
+    };
+    loadMap('show');
+</script>
 </x-app-layout>
