@@ -35,7 +35,7 @@ class DashboardController extends Controller
         } elseif (Auth::user()->hasRole('mitra')) {
             //Masih View Dummy
             $mitra = User::find(Auth::user()->id);
-            return view('mitra.dashboard-mitra', [
+            return view('mitra.index', [
                 'mitra'=>$mitra,
             ]);
         } else {
@@ -78,9 +78,19 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return view('SuperAdmin.crud.create', [
-            'roles' => Role::all()
-        ]);
+        if (Auth::user()->hasRole('superadmin'))
+        {
+            return view('SuperAdmin.crud.create', [
+                'roles' => Role::all()
+            ]);
+        }
+        elseif (Auth::user()->hasRole('mitra'))
+        {
+            $mitra = User::find(Auth::user()->id);
+            return view('mitra.crud.create', [
+                'mitra' => $mitra
+            ]);
+        }
     }
 
     /**
@@ -91,7 +101,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
     }
 
     /**
