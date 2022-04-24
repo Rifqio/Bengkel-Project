@@ -13,9 +13,13 @@ class MitraController extends Controller
 {
     public function StoreRegisterView(){
         $user = User::find(1);
-        return view('mitra.store-register', [
-            'user' => $user,
-        ]);
+        if(Auth::user()->nik != NULL && Auth::user()->ktp != NULL){
+            return view('mitra.store-register', [
+                'user' => $user,
+            ]);
+        }else{
+            echo 'Lengkapi Data Diri';
+        }
     }
 
     public function StoreRegisterSubmit(Request $request){

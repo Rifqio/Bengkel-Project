@@ -48,7 +48,6 @@
 
                     <!--
                 Mobile menu, show/hide based on menu open state.
-
                 Entering: "duration-150 ease-out"
                   From: "opacity-0 scale-95"
                   To: "opacity-100 scale-100"
@@ -154,7 +153,6 @@
         iconSize: [20, 20],
         className: 'myDivIcon'
     });
-
     const fontAwesomeIcon = L.divIcon({
         html: '<i class="fa fa-map-marker-alt fa-3x"></i>',
         iconSize: [20, 20],
@@ -171,7 +169,6 @@
             maxZoom: 18,
         });
         map.addLayer(layer);
-
         map.locate({setView: true, watch: false})
             .on('locationfound', function(e){
                 var marker = [];

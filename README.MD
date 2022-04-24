@@ -46,4 +46,3 @@ Note
 - Create Route ke Store
 - Kalkulasi Jarak
 - Menampilkan Jarak Terdekat (Range 1 Km)
-- Filtering jarak otw

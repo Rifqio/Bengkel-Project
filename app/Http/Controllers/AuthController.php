@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Laravel\Socialite\Facades\Socialite;
+// use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -110,10 +111,10 @@ class AuthController extends Controller
                     'password'          => Hash::make(Str::random(24)),
                     'email_verified_at' => now()
                 ]);
-
+                $create->attachRole('mitra');
 
                 auth()->login($create, true);
-                return redirect()->intended('/dashboard');
+                return redirect('/dashboard');
             }
 
         } catch (Exception $e) {
