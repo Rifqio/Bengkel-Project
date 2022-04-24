@@ -25,7 +25,7 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy','update','store'])->middleware(['auth', 'verified']);
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
 
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
@@ -45,10 +45,10 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
 
 //Employee
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
-    Route::get('/validasi-bengkel' , 'StoreValidationView');
-    Route::post('/validasi-bengkel' , 'StoreValidation');
-    Route::get('/list-mitra' ,'ListMitraView');
-    Route::post('list-mitra/{id}/update' ,'UpdateDataMitra');
+    Route::get('/validasi-bengkel', 'StoreValidationView');
+    Route::post('/validasi-bengkel', 'StoreValidation');
+    Route::get('/list-mitra', 'ListMitraView');
+    Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
 });
 
 //Route Confirmation Email
@@ -69,6 +69,8 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+//Dashboard Route
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
 
 //Protected Route
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -90,7 +92,11 @@ Route::controller(TestController::class)->group(function () {
 });
 
 //Google Login
-Route::controller(AuthController::class)->group(function (){
+Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/redirect', 'redirectToProvider');
     Route::get('/auth/callback', 'handleProviderCallback');
+});
+
+Route::get('/sparepart', function () {
+    return view('user/usersparepart');
 });
