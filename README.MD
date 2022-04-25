@@ -46,3 +46,8 @@ Note
 - Create Route ke Store
 - Kalkulasi Jarak
 - Menampilkan Jarak Terdekat (Range 1 Km)
+
+## (25 April 2022)
+- Menampilkan data bengkel aktif
+- Menonaktifkan bengkel (super, employ)
+- aktivasi kembali bengkel
