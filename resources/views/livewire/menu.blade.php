@@ -1,8 +1,8 @@
 <div class="py-5 space-y-5 xl:flex xl:space-y-0">
     <div class="bg-white w-[200px] h-[200px] border border-gray-400 rounded-xl drop-shadow-md mx-auto">
         <div>
-            <img class="w-[120px] h-[120px] mx-auto" src="/img/oil.svg" alt="">
-            <h1 class="font-bold">Engine Oil</h1>
+            <img class="w-[120px] h-[120px] mx-auto" src="/img/Mechanic.svg" alt="">
+            <h1 class="font-bold">Nearby Service</h1>
             <p class="text-sm text-gray-500">Find perfect oil for your car</p>
         </div>
     </div>

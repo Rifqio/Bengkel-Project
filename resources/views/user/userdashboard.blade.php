@@ -38,7 +38,7 @@
 
                                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Profile</a>
 
-                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
+                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Gabung jadi Mitra</a>
 
                                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Company</a>
 
