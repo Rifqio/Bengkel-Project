@@ -145,9 +145,7 @@
     </script>
     <script>
         var loadMap = function(id) {
-            var data = {
-                !!json_encode($location) !!
-            }
+            var data = {!!json_encode($location)!!}
             var map = L.map(id, {
                 wheelPxPerZoomLevel: 150
             });
@@ -198,16 +196,14 @@
                             button.type = 'button';
                             button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
                             button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
-                            button.href = '{{ url('
-                            store - view ') }}/' + idstore[i] + '/show';
+                            button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
                             button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                             document.getElementById("rekomen").appendChild(button);
                         }
                     }
 
                     function onClick(e) {
-                        window.location.href = '{{ url('
-                        store - view ') }}/' + this.options.win_url + '/show';
+                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
                     }
                 })
                 .on('locationerror', function(e) {
