@@ -322,7 +322,7 @@
                                     {{$s->address}}
                                 </td>
                                 <td class="align-middle text-sm">
-                                    @if($s->lat && $s->long == NULL)
+                                    @if($s->lat || $s->long == NULL)
                                         <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
                                             Konfirm
                                         </button>
