@@ -42,6 +42,8 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::get('/mitra-profile', 'ProfileView');
+    Route::post('/mitra-profile', 'ProfileUpdate');
 });
 
 //Employee
