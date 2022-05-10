@@ -33,21 +33,32 @@ class ProfileController extends Controller
         if(!$validatedData){
             return redirect('mitra-profile');
         }
-        if (isset($request->profile)) {
-            if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path))){
-                unlink('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path);
+        DB::beginTransaction();
+        try{
+            if (isset($request->profile)) {
+                $name = time()."_".$request->profile->getClientOriginalName();
+                $request->profile->move(public_path('data_user/'.Auth::user()->id.'/profile'), $name);
+                $data = [   'name' => $request->name,
+                    'profile_photo_path' => $name,
+                ];
+            }else{
+                $data = ['name' => $request->name];
             }
-            $name = time()."_".$request->profile->getClientOriginalName();
-            $request->profile->move(public_path('data_user/'.Auth::user()->id.'/profile'), $name);
-            $data = ['name' => $request->name,
-            'profile_photo_path' => $name,
-            ];
-        }else{
-            $data = ['name' => $request->name];
-        }
-        DB::table('users')
+            DB::table('users')
             ->where('id', Auth::user()->id)
             ->update($data);
-        return redirect('profile')->with('status_update', 'Profile updated!');
+            DB::commit();
+            if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path)) && isset($request->profile)){
+                unlink('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path);
+            }
+            $status = 'status_update';
+            $msg = 'Profile Update!';
+        }catch(\Exception $e){
+            unlink('data_user/'.Auth::user()->id.'/profile/'.$name);
+            DB::rollback();
+            $status = 'status_update_fail';
+            $msg = 'Profile Gagal Update!';
+        }
+        return redirect('profile')->with($status, $msg);
     }
 }
