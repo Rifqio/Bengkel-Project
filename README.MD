@@ -54,6 +54,3 @@ Note
 
 ## (10 Mei 2022)
 - Update Profile (Semua Role)
-
-## (12 Mei 2022)
-- Update Data KTP User (OTW)
