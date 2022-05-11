@@ -57,3 +57,4 @@ Note
 
 ## (12 Mei 2022)
 - Update Data KTP User (OTW)
+- Menambah categories view

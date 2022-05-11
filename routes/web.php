@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EmpController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MitraController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,17 @@ Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
 
+//Categories Route
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('sparepart/brakes', 'brakes');
+    Route::get('sparepart/suspension', 'suspension');
+    Route::get('sparepart/drivetrain', 'drivetrain');
+    Route::get('sparepart/electronics', 'electronics');
+    Route::get('sparepart/exhaust', 'exhaust');
+    Route::get('sparepart/oil', 'oil');
+    Route::get('sparepart/wheels', 'wheels');
+    Route::get('sparepart/tools', 'tools');
+});
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
@@ -105,12 +117,14 @@ Route::controller(TestController::class)->group(function () {
     Route::get('login-test', 'TestLogin');
 });
 
+
 //Google Login
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/redirect', 'redirectToProvider');
     Route::get('/auth/callback', 'handleProviderCallback');
 });
 
-Route::get('/sparepart', function () {
-    return view('user/usersparepart');
+
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('sparepart', 'index');
 });
