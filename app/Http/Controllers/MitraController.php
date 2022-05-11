@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\User;
 use App\Notifications\StoreRegister;
-use Faker\Core\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +38,7 @@ class MitraController extends Controller
             return redirect('store-register');
         }
         
-        Store::create([
+        $store = Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,
             'close' => request()->close,
@@ -54,36 +54,5 @@ class MitraController extends Controller
         Notification::send($user, new StoreRegister($notif));
 
         return redirect('store-register');
-    }
-
-    public function ProfileView(){
-        $user = User::find(Auth::user()->id);
-        return view('mitra.profile-mitra', [
-            'user' => $user,
-        ]);
-    }
-
-    public function ProfileUpdate(Request $request){
-        $validatedData = $request->validate([
-            'name' => 'required', 'string', 'max:255',
-            'profile' => 'mimes:jpeg,png,jpg',
-        ]);
-        if(!$validatedData){
-            return redirect('mitra-profile');
-        }
-        if (isset($request->profile)) {
-            unlink('data_user/'.$request->email.'/profile/'.Auth::user()->profile_photo_path);
-            $name = time()."_".$request->profile->getClientOriginalName();
-            $request->profile->move(public_path('data_user/'.$request->email.'/profile'), $name);
-            $data = ['name' => $request->name,
-            'profile_photo_path' => $name,
-            ];
-        }else{
-            $data = ['name' => $request->name];
-        }
-        DB::table('users')
-            ->where('id', Auth::user()->id)
-            ->update($data);
-        return redirect('mitra-profile')->with('status_update', 'Profile updated!');
     }
 }

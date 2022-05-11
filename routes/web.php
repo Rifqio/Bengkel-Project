@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 /*
@@ -42,8 +43,12 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
-    Route::get('/mitra-profile', 'ProfileView');
-    Route::post('/mitra-profile', 'ProfileUpdate');
+});
+
+//Profile
+Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'ProfileView');
+    Route::post('/profile', 'ProfileUpdate');
 });
 
 //Employee
