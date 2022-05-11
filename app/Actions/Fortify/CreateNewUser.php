@@ -25,10 +25,10 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:users,nik'],
-            // 'npwp' => ['required', 'string', 'max:16', 'min:16', 'unique:users,npwp'],
+            'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:users,nik'],
+            'npwp' => ['string', 'max:16', 'min:16', 'unique:users,npwp'],
             'password' => $this->passwordRules(),
-            'photo' => ['mimes:jpeg,png,jpg,gif'],
+            'photo' => ['mimes:jpeg,png,jpg,gif', 'max:2048'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 

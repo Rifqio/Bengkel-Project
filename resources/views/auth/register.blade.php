@@ -26,7 +26,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="npwp" value="{{ __('NPWP') }}" />
-                <x-jet-input id="npwp" class="block mt-1 w-full" type="number" name="npwp" :value="old('npwp')" required />
+                <x-jet-input id="npwp" class="block mt-1 w-full" type="number" name="npwp" :value="old('npwp')" />
             </div>
 
             <div class="mt-4">

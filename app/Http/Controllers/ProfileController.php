@@ -39,8 +39,8 @@ class ProfileController extends Controller
                 $name = time()."_".$request->profile->getClientOriginalName();
                 $request->profile->move(public_path('data_user/'.Auth::user()->id.'/profile'), $name);
                 $data = [   'name' => $request->name,
-                    'profile_photo_path' => $name,
-                ];
+                            'profile_photo_path' => $name,
+                        ];
             }else{
                 $data = ['name' => $request->name];
             }
