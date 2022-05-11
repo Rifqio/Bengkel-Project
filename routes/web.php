@@ -7,6 +7,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 /*
@@ -43,12 +45,24 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::post('/store-register', 'StoreRegisterSubmit');
 });
 
+//Profile
+Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'ProfileView');
+    Route::post('/profile', 'ProfileUpdate');
+});
+
 //Employee
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
     Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
+});
+
+//Store Controller
+Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
+    Route::get('/list-bengkel', 'StoreView');
+    Route::post('/non-aktif', 'StoreUpdateStatus');
 });
 
 //Route Confirmation Email

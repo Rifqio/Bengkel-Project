@@ -46,3 +46,14 @@ Note
 - Create Route ke Store
 - Kalkulasi Jarak
 - Menampilkan Jarak Terdekat (Range 1 Km)
+
+## (25 April 2022)
+- Menampilkan data bengkel aktif
+- Menonaktifkan bengkel (super, employ)
+- aktivasi kembali bengkel
+
+## (10 Mei 2022)
+- Update Profile (Semua Role)
+
+## (12 Mei 2022)
+- Update Data KTP User (OTW)

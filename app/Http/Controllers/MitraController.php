@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\User;
 use App\Notifications\StoreRegister;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class MitraController extends Controller
 {
@@ -35,7 +38,7 @@ class MitraController extends Controller
             return redirect('store-register');
         }
         
-        Store::create([
+        $store = Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,
             'close' => request()->close,
