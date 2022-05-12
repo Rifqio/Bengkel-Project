@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Store;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Tzsk\Otp\Facades\Otp;
 
 class TestController extends Controller
 {
@@ -78,5 +76,18 @@ class TestController extends Controller
 
     public function map(){
         return view('test.map');
+    }
+
+    public function otp(){
+        $unique_secret = 'mitra@test.test';
+        $otp = otp()->digits(6)->expiry(10)->make($unique_secret);
+        //session(["otp_reset_email"=>$otp, "unique_secret"=>$unique_secret]);
+        dd($otp);
+    }
+
+    public function otpValidation(){
+        $unique_secret = session("unique_secret");
+        $otp = session("otp_reset_email");
+        dd(Otp::digits(6)->expiry(10)->check($otp, $unique_secret));
     }
 }

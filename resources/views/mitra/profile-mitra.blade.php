@@ -37,6 +37,7 @@
         <div class="container">
             <img style="max-width: 50px; height:auto; border-radius:50%;" src="{{ asset('data_user/'.$user->id.'/profile/'.$user->profile_photo_path) }}" alt="{{$user->profile_photo_path}}">
         </div>
+        <a href="{{url('otp-confirmation')}}">Ubah Email Password</a>
         <form method="post" action="{{url('profile')}}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

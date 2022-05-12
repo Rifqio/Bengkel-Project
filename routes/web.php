@@ -90,12 +90,18 @@ Route::resource('dashboard', DashboardController::class)->except(['destroy', 'up
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/otp-confirmation', [AuthController::class, 'resetEmailPassword'])->name('otp');
+    Route::post('/otp-confirmation', [AuthController::class, 'otpValidation']);
+    Route::get('/update-email-pw', [AuthController::class, 'resetEmailPasswordView']);
+    Route::post('/update-email-pw', [AuthController::class, 'resetEmailPasswordStore']);
 });
 
 // For testing only
 Route::controller(TestController::class)->group(function () {
     Route::get('test', 'index');
     Route::get('map', 'map');
+    Route::get('otp', 'otp');
+    Route::get('otp-validation', 'otpValidation');
     Route::get('email-test', 'TestEmail');
     Route::get('test-create-product', 'TestCreateProductView');
     Route::post('test-create-product', 'TestCreateProductStore');
