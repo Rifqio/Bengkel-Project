@@ -67,7 +67,6 @@
                                                             onclick="return confirm('Are you sure you want to delete this user?')"><i
                                                                 class="far fa-trash-alt me-2"></i>Delete</button>
                                                     </form>
-
                                                 </td>
                                             </tr>
                                         @endforeach
