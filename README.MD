@@ -54,7 +54,10 @@ Note
 
 ## (10 Mei 2022)
 - Update Profile (Semua Role)
+<<<<<<< HEAD
 
 ## (12 Mei 2022)
 - Update Data KTP User (OTW)
 - Menambah categories view
+=======
+>>>>>>> f9c34732de3f10661e3a43e6202c4c2db4222757
