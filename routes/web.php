@@ -37,7 +37,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employ
 Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
 Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[MitraController::class, 'StoreRegisterSubmit']);
 
-//Route Confirmation Email
+//Route Confirmation Email OKe
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
