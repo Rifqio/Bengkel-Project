@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MitraController;
@@ -64,11 +64,13 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
 });
 
 //Employee
+Route::resource('list-mitra', EmpController::class);
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
-    Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
+    Route::post('/update-mitra', 'UpdateDataMitra');
+    // Route::delete('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
@@ -77,7 +79,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(
     Route::post('/non-aktif', 'StoreUpdateStatus');
 });
 
-//Route Confirmation Email OKe
+//Route Confirmation Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/dashboard');
@@ -124,7 +126,7 @@ Route::controller(TestController::class)->group(function () {
 });
 
 
-//Google Login
+//Google Login Halo
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/redirect', 'redirectToProvider');
     Route::get('/auth/callback', 'handleProviderCallback');
