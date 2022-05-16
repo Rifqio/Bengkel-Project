@@ -14,4 +14,9 @@ class Store extends Model
     {
         return $this->belongsToMany(Item::class,'item_store','store_id','item_id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class,'id_mitra');
+    }
 }

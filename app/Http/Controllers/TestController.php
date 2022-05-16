@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Tzsk\Otp\Facades\Otp;
 
 class TestController extends Controller
 {
@@ -18,6 +19,7 @@ class TestController extends Controller
             $data[] = [
                 $s->store_name,
                 $s->lat,$s->long,
+                $s->id,
             ];
         }
         return view('test.index' , [
@@ -42,12 +44,6 @@ class TestController extends Controller
     }
 
     public function TestCreateProductStore(){
-        $category=Category::find(request('category'));
-        $category->item()->create([
-             'name' => request('name'),
-             'brand' => request('brand'),
-             'price' => request('price'),
-        ]);
         Item::create([
             'name' => request('name'),
             'brand' => request('brand'),
@@ -69,5 +65,29 @@ class TestController extends Controller
         $bengkel->item()->attach(request('item'));
         // detach untuk delete
         return redirect('test');
+    }
+
+    public function TestImage(Request $request){
+        $user = request()->user();
+        $name = time()."_".$request->file('photo')->getClientOriginalName();
+        $request->file('photo')->move(public_path('data_bengkel/'.$request->store_name."_".$user->email.'/ktp'), $name);
+        dd($name);
+    }
+
+    public function map(){
+        return view('test.map');
+    }
+
+    public function otp(){
+        $unique_secret = 'mitra@test.test';
+        $otp = otp()->digits(6)->expiry(10)->make($unique_secret);
+        //session(["otp_reset_email"=>$otp, "unique_secret"=>$unique_secret]);
+        dd($otp);
+    }
+
+    public function otpValidation(){
+        $unique_secret = session("unique_secret");
+        $otp = session("otp_reset_email");
+        dd(Otp::digits(6)->expiry(10)->check($otp, $unique_secret));
     }
 }

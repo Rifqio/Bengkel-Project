@@ -2,8 +2,7 @@
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
-        data-scroll="false">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -42,12 +41,10 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bell cursor-pointer"></i>
                         </a>
-                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                            aria-labelledby="dropdownMenuButton">
+                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
                                     <div class="d-flex py-1">
@@ -70,8 +67,7 @@
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
                                     <div class="d-flex py-1">
                                         <div class="my-auto">
-                                            <img src="/argon/img/small-logos/logo-spotify.svg"
-                                                class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                                            <img src="/argon/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
                                             <h6 class="text-sm font-weight-normal mb-1">
@@ -89,20 +85,14 @@
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
                                     <div class="d-flex py-1">
                                         <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <title>credit-card</title>
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
-                                                        fill-rule="nonzero">
+                                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                                         <g transform="translate(1716.000000, 291.000000)">
                                                             <g transform="translate(453.000000, 454.000000)">
-                                                                <path class="color-background"
-                                                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
-                                                                    opacity="0.593633743"></path>
-                                                                <path class="color-background"
-                                                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                                <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                                                <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
                                                                 </path>
                                                             </g>
                                                         </g>
@@ -137,21 +127,22 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                                    <h5 class="font-weight-bolder">
-                                        $53,000
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                        since yesterday
-                                    </p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Paling laku</p>
+                                    <h6 class="font-weight-bolder">
+                                        Mesin Diesel
+                                    </h6>
+
                                 </div>
                             </div>
-                            <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                            <div class="col-3 text-end ">
+                                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
                                     <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <p class="mb-0">
+                                    dari 20-02-2022
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -163,19 +154,17 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">User Baru</p>
                                     <h5 class="font-weight-bolder">
                                         2,300
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
+                                        Sekarang
                                     </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
                                     <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -189,21 +178,22 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-                                    <h5 class="font-weight-bolder">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Mitra Baru</p>
+                                    <h6 class="font-weight-bolder">
                                         +3,462
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                        since last quarter
-                                    </p>
+                                    </h6>
+
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
+                            </div>
+                            <div class="raw">
+                                <p class="mb-0">
+                                    Sejak Tahun Lalu
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -215,20 +205,21 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                                    <h5 class="font-weight-bolder">
-                                        $103,430
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                                    </p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Penjualan</p>
+                                    <h6 class="font-weight-bolder">
+                                        RP 103.430
+                                    </h6>
+
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                     <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <p class="mb-0"> than last month
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -267,13 +258,11 @@
         </div>
     </div>
     </div>
-    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev">
+    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next">
+    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
@@ -286,7 +275,7 @@
             <div class="card ">
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Sales by Country</h6>
+                        <h6 class="mb-2">Negara yang Terjual</h6>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -299,8 +288,8 @@
                                             <img src="/argon/img/icons/flags/US.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">United States</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Negara:</p>
+                                            <h6 class="text-sm mb-0">Amerika</h6>
                                         </div>
                                     </div>
                                 </td>
@@ -313,7 +302,7 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$230,900</h6>
+                                        <h6 class="text-sm mb-0">RP 10.000.000</h6>
                                     </div>
                                 </td>
                                 <td class="align-middle text-sm">
@@ -330,8 +319,8 @@
                                             <img src="/argon/img/icons/flags/DE.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Germany</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Negara:</p>
+                                            <h6 class="text-sm mb-0">Jerman</h6>
                                         </div>
                                     </div>
                                 </td>
@@ -344,7 +333,7 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$440,000</h6>
+                                        <h6 class="text-sm mb-0">RP 440,000</h6>
                                     </div>
                                 </td>
                                 <td class="align-middle text-sm">
@@ -361,7 +350,7 @@
                                             <img src="/argon/img/icons/flags/GB.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
+                                            <p class="text-xs font-weight-bold mb-0">Negara:</p>
                                             <h6 class="text-sm mb-0">Great Britain</h6>
                                         </div>
                                     </div>
@@ -375,7 +364,7 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$190,700</h6>
+                                        <h6 class="text-sm mb-0">RP 190,700</h6>
                                     </div>
                                 </td>
                                 <td class="align-middle text-sm">
@@ -392,7 +381,7 @@
                                             <img src="/argon/img/icons/flags/BR.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
+                                            <p class="text-xs font-weight-bold mb-0">Negara:</p>
                                             <h6 class="text-sm mb-0">Brasil</h6>
                                         </div>
                                     </div>
@@ -406,7 +395,7 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$143,960</h6>
+                                        <h6 class="text-sm mb-0">RP 143,960</h6>
                                     </div>
                                 </td>
                                 <td class="align-middle text-sm">
@@ -421,6 +410,78 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header pb-0 p-3">
+                    <h6 class="mb-0">Categories</h6>
+                </div>
+                <div class="card-body p-3">
+                    <ul class="list-group">
+                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                    <i class="ni ni-mobile-button text-white opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-1 text-dark text-sm">Devices</h6>
+                                    <span class="text-xs">250 in stock, <span class="font-weight-bold">346+
+                                            sold</span></span>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                    <i class="ni ni-tag text-white opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-1 text-dark text-sm">Tickets</h6>
+                                    <span class="text-xs">123 closed, <span class="font-weight-bold">15
+                                            open</span></span>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                    <i class="ni ni-box-2 text-white opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-1 text-dark text-sm">Error logs</h6>
+                                    <span class="text-xs">1 is active, <span class="font-weight-bold">40
+                                            closed</span></span>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                    <i class="ni ni-satisfied text-white opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-1 text-dark text-sm">Happy users</h6>
+                                    <span class="text-xs font-weight-bold">+ 430</span>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
     <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -443,16 +504,13 @@
                                 Tim</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                target="_blank">About Us</a>
+                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                target="_blank">Blog</a>
+                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                target="_blank">License</a>
+                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
                         </li>
                     </ul>
                 </div>
@@ -486,16 +544,12 @@
             </div>
             <a href="javascript:void(0)" class="switch-trigger background-color">
                 <div class="badge-colors my-2 text-start">
-                    <span class="badge filter bg-gradient-primary active" data-color="primary"
-                        onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
                     <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
                     <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-                    <span class="badge filter bg-gradient-success" data-color="success"
-                        onclick="sidebarColor(this)"></span>
-                    <span class="badge filter bg-gradient-warning" data-color="warning"
-                        onclick="sidebarColor(this)"></span>
-                    <span class="badge filter bg-gradient-danger" data-color="danger"
-                        onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
                 </div>
             </a>
             <!-- Sidenav Type -->
@@ -504,44 +558,35 @@
                 <p class="text-sm">Choose between 2 different sidenav types.</p>
             </div>
             <div class="d-flex">
-                <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
-                    onclick="sidebarType(this)">White</button>
-                <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
-                    onclick="sidebarType(this)">Dark</button>
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default" onclick="sidebarType(this)">Dark</button>
             </div>
             <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
             <!-- Navbar Fixed -->
             <div class="d-flex my-3">
                 <h6 class="mb-0">Navbar Fixed</h6>
                 <div class="form-check form-switch ps-0 ms-auto my-auto">
-                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed"
-                        onclick="navbarFixed(this)">
+                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
                 </div>
             </div>
             <hr class="horizontal dark my-sm-4">
             <div class="mt-2 mb-5 d-flex">
                 <h6 class="mb-0">Light / Dark</h6>
                 <div class="form-check form-switch ps-0 ms-auto my-auto">
-                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
-                        onclick="darkMode(this)">
+                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
                 </div>
             </div>
             <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
                 Download</a>
-            <a class="btn btn-outline-dark w-100"
-                href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View
+            <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View
                 documentation</a>
             <div class="w-100 text-center">
-                <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
-                    data-icon="octicon-star" data-size="large" data-show-count="true"
-                    aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
                 <h6 class="mt-3">Thank you for sharing!</h6>
-                <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
-                    class="btn btn-dark mb-0 me-2" target="_blank">
+                <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
                     <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
-                    class="btn btn-dark mb-0 me-2" target="_blank">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
                     <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
                 </a>
             </div>

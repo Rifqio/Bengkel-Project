@@ -1,14 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\CheckController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,27 +23,63 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/landing', function () {
-    return view('home.landingpage', ['title' => 'Landing Page']);
-});
-
+//Benahi
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
+Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
+//Dashboard Route
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
+
+//Categories Route
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('sparepart/brakes', 'brakes');
+    Route::get('sparepart/suspension', 'suspension');
+    Route::get('sparepart/drivetrain', 'drivetrain');
+    Route::get('sparepart/electronics', 'electronics');
+    Route::get('sparepart/exhaust', 'exhaust');
+    Route::get('sparepart/oil', 'oil');
+    Route::get('sparepart/wheels', 'wheels');
+    Route::get('sparepart/tools', 'tools');
+});
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
 //SuperAdmin
-Route::middleware(['auth', 'verified', 'role:superadmin'])->get('/create-employee' ,[AuthController::class,'CreateEmployeeView']);
-Route::middleware(['auth', 'verified', 'role:superadmin'])->post('/create-employee' ,[AuthController::class,'CreateEmployee']);
+Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthController::class)->group(function () {
+    Route::post('/create-employee',  'CreateEmployee');
+    Route::post('/update-employee', 'UpdateEmployee');
+    Route::delete('/delete-employee/{user}', 'DeleteEmployee');
+});
 
 //Mitra
-Route::middleware(['auth', 'verified', 'role:mitra'])->get('/store-register' ,[MitraController::class, 'StoreRegisterView']);
-Route::middleware(['auth', 'verified', 'role:mitra'])->post('/store-register' ,[MitraController::class, 'StoreRegisterSubmit']);
+Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
+    Route::get('/store-register', 'StoreRegisterView');
+    Route::post('/store-register', 'StoreRegisterSubmit');
+});
+
+//Profile
+Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'ProfileView');
+    Route::post('/profile', 'ProfileUpdate');
+});
+
+//Employee
+Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
+    Route::get('/validasi-bengkel', 'StoreValidationView');
+    Route::post('/validasi-bengkel', 'StoreValidation');
+    Route::get('/list-mitra', 'ListMitraView');
+    Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
+});
+
+//Store Controller
+Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
+    Route::get('/list-bengkel', 'StoreView');
+    Route::post('/non-aktif', 'StoreUpdateStatus');
+});
 
 //Route Confirmation Email OKe
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -52,18 +91,46 @@ Route::get('/email/verify', function () {
 //Route Resend Email
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
- 
+
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+//Dashboard Route
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
+
 //Protected Route
-Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-Route::middleware(['auth', 'verified'])->get('/logout' ,[AuthController::class,'logout'])->name('logout');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/otp-confirmation', [AuthController::class, 'resetEmailPassword'])->name('otp');
+    Route::post('/otp-confirmation', [AuthController::class, 'otpValidation']);
+    Route::get('/update-email-pw', [AuthController::class, 'resetEmailPasswordView']);
+    Route::post('/update-email-pw', [AuthController::class, 'resetEmailPasswordStore']);
+});
 
 // For testing only
-Route::get('test', [TestController::class, 'index']);
-Route::get('/email-test', [TestController::class, 'TestEmail']);
-Route::get('/test-create-product', [TestController::class, 'TestCreateProductView']);
-Route::post('/test-create-product', [TestController::class, 'TestCreateProductStore']);
-Route::get('/test-input-product', [TestController::class, 'TestInputProductView']);
-Route::post('/test-input-product', [TestController::class, 'TestInputProductStore']);
+Route::controller(TestController::class)->group(function () {
+    Route::get('test', 'index');
+    Route::get('map', 'map');
+    Route::get('otp', 'otp');
+    Route::get('otp-validation', 'otpValidation');
+    Route::get('email-test', 'TestEmail');
+    Route::get('test-create-product', 'TestCreateProductView');
+    Route::post('test-create-product', 'TestCreateProductStore');
+    Route::get('test-input-product', 'TestInputProductView');
+    Route::post('test-input-product', 'TestInputProductStore');
+    Route::post('test-image', 'TestImage');
+    Route::get('login-test', 'TestLogin');
+});
+
+
+//Google Login
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/auth/redirect', 'redirectToProvider');
+    Route::get('/auth/callback', 'handleProviderCallback');
+});
+
+
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('sparepart', 'index');
+});

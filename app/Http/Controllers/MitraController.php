@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\User;
 use App\Notifications\StoreRegister;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class MitraController extends Controller
 {
     public function StoreRegisterView(){
         $user = User::find(1);
-        return view('mitra.store-register', [
-            'user' => $user,
-        ]);
+        if(Auth::user()->nik != NULL && Auth::user()->ktp != NULL){
+            return view('mitra.store-register', [
+                'user' => $user,
+            ]);
+        }else{
+            echo 'Lengkapi Data Diri';
+        }
     }
 
     public function StoreRegisterSubmit(Request $request){
@@ -26,10 +33,12 @@ class MitraController extends Controller
             'phone_store' => ['required', 'max:12', 'min:11'],
             'address' => 'required',
         ]);
+
         if(!$validatedData){
             return redirect('store-register');
         }
-        Store::create([
+        
+        $store = Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,
             'close' => request()->close,

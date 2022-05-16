@@ -16,22 +16,18 @@
         @livewireStyles
 
         <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
-
         <!--Map-->
         <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
         <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     </head>
     <body class="font-sans antialiased">
 
         <div class="min-h-screen bg-gray-100">
             @if (Auth::check())
                 @livewire('navigation-menu')
-            @else
-                <br>
-                <center>
-                    <h1>Ini Halaman Guest</h1>
-                </center>
             @endif
             <!-- Page Content -->
             <main>
