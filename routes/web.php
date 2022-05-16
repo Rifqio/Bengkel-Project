@@ -107,3 +107,8 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('/sparepart', function () {
     return view('user/usersparepart');
 });
+
+//syita nyoba
+Route::get('/register_temp', function () {
+    return view('auth.register_temp');
+});
