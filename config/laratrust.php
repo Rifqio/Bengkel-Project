@@ -115,7 +115,7 @@ return [
         /**
          * Will be used only if the teams functionality is enabled.
          */
-        'teams' => 'teams',
+        //'teams' => 'teams',
 
         'role_user' => 'role_user',
 
@@ -309,7 +309,7 @@ return [
         | Enable/Disable the permissions assignment to the users.
         |
         */
-        'assign_permissions_to_user' => true,
+        'assign_permissions_to_user' => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -319,7 +319,7 @@ return [
         | Enable/Disable the possibility to create permissions from the panel.
         |
         */
-        'create_permissions' => true,
+        'create_permissions' => false,
 
         /*
         |--------------------------------------------------------------------------

@@ -16,6 +16,13 @@ class StoreSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('kota')->insert([
+            'name' => 'Surakarta',
+        ]);
+        DB::table('kecamatan')->insert([
+            'name' => 'Jebres',
+            'kota_id' => 1,
+        ]);
         DB::table('stores')->insert([
             'store_name' => 'Nathan B',
             'open' => Carbon::now()->toDateTimeString(),
@@ -24,6 +31,7 @@ class StoreSeeder extends Seeder
             'phone_store' => '928389123',
             'status_activation' => 1,
             'id_mitra' => 2,
+            'id_kecamatan' => 1,
             'store_image' => '2dawdw',
             'lat' => '-7.564549075372528',
             'long' => '110.84062825432814',
@@ -38,6 +46,7 @@ class StoreSeeder extends Seeder
             'phone_store' => '928389103',
             'status_activation' => 1,
             'id_mitra' => 3,
+            'id_kecamatan' => 1,
             'store_image' => '3dawdw',
             'lat' => '-7.561835732657607',
             'long' => '110.84882803103476',
