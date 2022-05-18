@@ -29,7 +29,16 @@ class EmpController extends Controller
     }
 
     public function UpdateDataMitra(Request $request){
-        
+        $validateData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255'],
+            'nik' => ['required', 'string', 'max:16', 'min:16'],
+            // 'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:posts'],
+            'npwp' => ['required', 'string', 'max:16', 'min:16', ],
+        ]);
+        if(!$validateData){
+            return redirect()->back();
+        }
         $model = User::find(request()->id);
         $model->update($request->except(['id']));
         return redirect('list-mitra')->with('success_update', 'User has been updated');
@@ -37,7 +46,7 @@ class EmpController extends Controller
 
     public function DeleteDataMitra($id){
         // dd($n);
-        $users = User::find($id);
+            $users = User::find($id);
             $users->delete();
             return redirect('list-mitra')->with('success', 'User has been deleted');;
     }

@@ -1,12 +1,6 @@
 @extends('admin.adminlayout')
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
-   {{-- Notifikasi Update --}}
-   @if (session('success_update'))
-        <div class="alert alert-success col-lg-8`">
-            {{ session('success_update') }}
-        </div>
-    @endif
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
@@ -280,6 +274,12 @@
         <div class="">
             <div class="card">
                 <div class="card-header pb-0 p-3">
+                    {{-- Notifikasi Update --}}
+                        @if (session('success_update'))
+                             <div class="alert alert-success col-lg-8`">
+                             {{ session('success_update') }}
+                            </div>
+                        @endif
                     <h6 class="mb-0">List Mitra</h6>
                     <button type="button" class="btn btn-danger">+ Tambah</button>
                 </div>
@@ -321,12 +321,18 @@
                                                             <div class="card-body">
                                                               <form role="form text-left" action="/update-mitra" method="post">
                                                                 @csrf
-                                                                <div class="input-group mb-3">
-                                                                  <input type="hidden" name="id" class="form-control" placeholder="" value="{{$u->id}}" aria-label="Password" aria-describedby="password-addon">
+                                                                <div class="input-group mb-3"> 
+                                                                <input type="hidden" name="id" class="form-control" placeholder="" value="{{$u->id}}" aria-label="Password" aria-describedby="password-addon">
                                                                 </div>
                                                                 <label>Nama Mitra</label>
                                                                 <div class="input-group mb-3">
-                                                                  <input type="text" name="name" class="form-control" placeholder="Nama Mitra" value="{{$u->name}}" aria-label="Password" aria-describedby="password-addon">
+                                                                  <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
+                                                                  placeholder="Nama Mitra" value="{{$u->name}}" aria-label="Password" aria-describedby="password-addon" autofocus>
+                                                                  @error('name')
+                                                                  <div class="invalid-feedback">
+                                                                      {{ $message }}
+                                                                  </div>
+                                                              @enderror
                                                                 </div>
                                                                 <label>Email</label>
                                                                 <div class="input-group mb-3">
@@ -334,11 +340,21 @@
                                                                 </div>
                                                                 <label>NIK</label>
                                                                 <div class="input-group mb-3">
-                                                                  <input type="text" name="nik" class="form-control" value="{{$u->nik}}" placeholder="Nomor Induk Kependudukan">
+                                                                  <input type="text" name="nik" class="form-control  @error('nik') is-invalid @enderror" value="{{$u->nik}}" placeholder="Nomor Induk Kependudukan">
+                                                                  @error('nik')
+                                                                  <div class="invalid-feedback">
+                                                                      {{ $message }}
+                                                                  </div>
+                                                              @enderror
                                                                 </div>
                                                                 <label>NPWP</label>
                                                                 <div class="input-group mb-3">
-                                                                  <input type="text" name="npwp" class="form-control" value="{{$u->npwp}}" placeholder="Masukkan NPWP">
+                                                                  <input type="text" name="npwp" class="form-control @error('npwp') is-invalid @enderror" value="{{$u->npwp}}" placeholder="Masukkan NPWP">
+                                                                  @error('npwp')
+                                                                  <div class="invalid-feedback">
+                                                                      {{ $message }}
+                                                                  </div>
+                                                              @enderror
                                                                 </div>
                                                                 {{-- <label>Password</label>
                                                                 <div class="input-group mb-3">
