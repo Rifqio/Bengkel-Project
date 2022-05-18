@@ -29,15 +29,16 @@ class EmpController extends Controller
     }
 
     public function UpdateDataMitra(Request $request){
+        
         $model = User::find(request()->id);
         $model->update($request->except(['id']));
-        return redirect('list-mitra')->with('success', 'User has been updated');
-}
+        return redirect('list-mitra')->with('success_update', 'User has been updated');
+    }
 
-public function destroy($id)
-{
-    $users = User::find($id);
-        $users->delete();
-        return redirect('list-mitra');
-}
+    public function DeleteDataMitra($id){
+        // dd($n);
+        $users = User::find($id);
+            $users->delete();
+            return redirect('list-mitra')->with('success', 'User has been deleted');;
+    }
 }

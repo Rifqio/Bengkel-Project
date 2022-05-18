@@ -1,6 +1,12 @@
 @extends('admin.adminlayout')
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
+   {{-- Notifikasi Update --}}
+   @if (session('success_update'))
+        <div class="alert alert-success col-lg-8`">
+            {{ session('success_update') }}
+        </div>
+    @endif
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
@@ -298,13 +304,9 @@
                                                     <td class="pt-3">{{$u->name}}</td>
                                                     <td class="pt-3">{{$u->roles->first()->display_name}}</td>
                                                     <td>
-                                                        {{-- <a href="{{ url('emp/'.$u->id.'UpdateDataMitra') }}"></a> --}}
+                            
                                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{$u->id}}">Edit</button>
-                                                        <form action="{{ url('list-mitra/'.$u->id) }}" method="post" class="d-inline">
-                                                            {{-- @method('delete') --}}
-                                                            @csrf
-                                                            <button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button>
-                                                        </form>
+                                                        <a href="{{ url('delete-mitra/'.$u->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                                     </td>
                                                 </tr>
                                                 <!--Edit Form-->

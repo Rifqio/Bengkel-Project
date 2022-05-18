@@ -70,7 +70,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
     Route::post('/update-mitra', 'UpdateDataMitra');
-    // Route::delete('/delete-mitra/{id}', 'DeleteDataMitra');
+    Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
