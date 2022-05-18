@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-// use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Validator;
+use Tzsk\Otp\Facades\Otp;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -120,7 +119,70 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return redirect('login');
         }
+    }
 
+    public function resetEmailPassword(){
+        $unique_secret = Auth::user()->email;
+        $otp = otp()->digits(6)->expiry(10)->make($unique_secret);
+        session(["otp_reset_email"=>$otp, "unique_secret"=>$unique_secret]);
+        $data = array('otp'=>$otp);
+        try {
+            Mail::send('email.otp', $data, function($message) {
+                $message->to(Auth::user()->email, 'Test OTP')->subject
+                ('Masukkan Kode OTP');
+                $message->from(Auth::user()->email, Auth::user()->name);
+            });
+            return view('auth.confirm-otp', ['otp' => $otp]);
+        } catch (Exception $ex) {
+            echo "We've got errors!";
+        }
+    }
 
+    public function otpValidation(Request $request){
+        $unique_secret = Auth::user()->email;
+        $otp = $request->otp;
+        $valid = Otp::digits(6)->expiry(10)->check($otp, $unique_secret);
+        if($valid){
+            session(["otp_reset_email"=>$otp]);
+            return redirect('/update-email-pw');
+        }else{
+            echo 'Otp Tidak Valid';
+        }
+    }
+
+    public function resetEmailPasswordView(){
+        $unique_secret = Auth::user()->email;
+        $otp = session("otp_reset_email");
+        $valid = Otp::digits(6)->expiry(10)->check($otp, $unique_secret);
+        if($valid){
+            return view('auth.reset-email-password', ['user' => Auth::user()]);
+        }else{
+            echo 'Otp Tidak Valid';
+        }
+    }
+
+    public function resetEmailPasswordStore(Request $request){
+        if($request->email != Auth::user()->email){
+            $valid = $request->validate([
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required'],
+                'password_confirmation' => ['required', 'same:password'],
+            ]);
+        }else{
+            $valid = $request->validate([
+                'email' => ['required'],
+                'password' => ['required'],
+                'password_confirmation' => ['required', 'same:password'],
+            ]);
+        }
+        if(!$valid){
+            return redirect()->back();
+        }
+        $user_data = User::find(Auth::user()->id);
+        $user_data->update(['email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        Auth::logout(request()->user());
+        return redirect('/');
     }
 }

@@ -7,7 +7,7 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <h1 class="text-white mb-4">Welcome, {{ auth()->user()->name }}</h1>
-               
+
                 @if ($mitra->nik == null)
                     <div class="alert alert-danger" role="alert">
                         Anda Belum Isi NIK
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-4 text-end">
                                     <div
-                                        class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                         <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                 </div>

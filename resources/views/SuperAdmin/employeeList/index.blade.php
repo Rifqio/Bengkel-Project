@@ -54,9 +54,11 @@
                                                         {{ $user->roles->first()->name }}</p>
                                                 </td>
                                                 <td class="align-middle text-center">
+                                                    @if($user->roles->first()->name == 'employee')
                                                     <a class="btn btn-link text-dark px-3 mb-0"
                                                         href="/dashboard/{{ $user->id }}/edit"><i
-                                                            class="fas fa-pencil-alt text-dark me-2"></i>Edit</a>
+                                                        class="fas fa-pencil-alt text-dark me-2"></i>Edit</a>
+                                                    @endif
                                                     <form action="{{url('delete-employee').'/'.$user->id}}" method="post"
                                                         class="d-inline">
                                                         @csrf
@@ -65,7 +67,6 @@
                                                             onclick="return confirm('Are you sure you want to delete this user?')"><i
                                                                 class="far fa-trash-alt me-2"></i>Delete</button>
                                                     </form>
-
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -26,9 +26,9 @@ class CreateNewUser implements CreatesNewUsers
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:users,nik'],
-            'npwp' => ['required', 'string', 'max:16', 'min:16', 'unique:users,npwp'],
+            'npwp' => ['string', 'max:16', 'min:16', 'unique:users,npwp'],
             'password' => $this->passwordRules(),
-            'photo' => ['mimes:jpeg,png,jpg,gif'],
+            'photo' => ['mimes:jpeg,png,jpg,gif', 'max:2048'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
@@ -36,9 +36,7 @@ class CreateNewUser implements CreatesNewUsers
         try{
             if (isset($input['photo'])) {
                 $name = time()."_".$input['photo']->getClientOriginalName();
-                $input['photo']->move(public_path('data_user/'.$input['email'].'/ktp'), $name);
             }
-
             $user = User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
@@ -47,11 +45,11 @@ class CreateNewUser implements CreatesNewUsers
                 'ktp' => $name,
                 'password' => Hash::make($input['password']),
             ]);
-
+            if (isset($input['photo'])) {
+                $input['photo']->move(public_path('data_user/'.DB::getPdo()->lastInsertId().'/ktp'), $name);
+            }
             $user->attachRole('mitra');
-
             DB::commit();
-
             return $user;
         }catch(\Exception $e){
             File::deleteDirectory(public_path('data_user/'.$input['email']));

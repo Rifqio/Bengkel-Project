@@ -1,15 +1,16 @@
 <?php
-
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EmpController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MitraController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\StoreController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\NotificationController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,17 @@ Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
 
+//Categories Route
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('sparepart/brakes', 'brakes');
+    Route::get('sparepart/suspension', 'suspension');
+    Route::get('sparepart/drivetrain', 'drivetrain');
+    Route::get('sparepart/electronics', 'electronics');
+    Route::get('sparepart/exhaust', 'exhaust');
+    Route::get('sparepart/oil', 'oil');
+    Route::get('sparepart/wheels', 'wheels');
+    Route::get('sparepart/tools', 'tools');
+});
 //Notification
 Route::get('/mark-read', [NotificationController::class, 'MarkAsAllRead']);
 
@@ -42,6 +54,12 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+});
+
+//Profile
+Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'ProfileView');
+    Route::post('/profile', 'ProfileUpdate');
 });
 
 //Employee
@@ -83,12 +101,18 @@ Route::resource('dashboard', DashboardController::class)->except(['destroy', 'up
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/otp-confirmation', [AuthController::class, 'resetEmailPassword'])->name('otp');
+    Route::post('/otp-confirmation', [AuthController::class, 'otpValidation']);
+    Route::get('/update-email-pw', [AuthController::class, 'resetEmailPasswordView']);
+    Route::post('/update-email-pw', [AuthController::class, 'resetEmailPasswordStore']);
 });
 
 // For testing only
 Route::controller(TestController::class)->group(function () {
     Route::get('test', 'index');
     Route::get('map', 'map');
+    Route::get('otp', 'otp');
+    Route::get('otp-validation', 'otpValidation');
     Route::get('email-test', 'TestEmail');
     Route::get('test-create-product', 'TestCreateProductView');
     Route::post('test-create-product', 'TestCreateProductStore');
@@ -103,12 +127,14 @@ Route::controller(TestController::class)->group(function () {
     });
 });
 
+
 //Google Login
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/redirect', 'redirectToProvider');
     Route::get('/auth/callback', 'handleProviderCallback');
 });
 
-Route::get('/sparepart', function () {
-    return view('user/usersparepart');
+
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('sparepart', 'index');
 });
