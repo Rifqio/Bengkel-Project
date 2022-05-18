@@ -122,6 +122,9 @@
  
     </div>
 
+    <center>
+        <img class="mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+    </center>
     <div class="py-12">
         <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
             <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1>
@@ -130,7 +133,20 @@
         </div>
         <center>
             <center>
-                <h1 class="text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1>
+                <img class="h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+            </center>
+
+            <!-- BERGABUNG MENJADI MITRA -->
+            <div class="mt-5 sm:mt-8 mt-3 sm:mt-0 sm:ml-3">
+                <a href="/register" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-500 bg-gray-100 hover:bg-gray-200 md:py-4 md:text-lg md:px-10">
+                    Register 
+                </a>
+            </div>
+            <center>
+                <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+            </center>
+            <center>
+                <h1 class="mt-5 sm:mt-8 text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1>
             </center>
             <div class="container" id='rekomen'>
                 <!--Content-->

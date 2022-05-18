@@ -96,6 +96,11 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-input-product', 'TestInputProductStore');
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
+
+    //syita nyoba
+    Route::get('/register_view_test', function () {
+        return view('auth.register_temp');
+    });
 });
 
 //Google Login
@@ -106,9 +111,4 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::get('/sparepart', function () {
     return view('user/usersparepart');
-});
-
-//syita nyoba
-Route::get('/register_temp', function () {
-    return view('auth.register_temp');
 });
