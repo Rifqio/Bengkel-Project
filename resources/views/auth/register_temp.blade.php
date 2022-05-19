@@ -38,73 +38,86 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 
-				<div class="flex justify">
-                    <div class="bg-gray-100 w-24 h-24 rounded-full hover:bg-gray-300">
-                       <a href="/"><img class="m-auto pt-4 scale-90 2xl:pt-5 " src="/register_login/images/logo register.png" alt=""></a>
-                    </div>
-                </div>
-				
+					<div class="flex justify">
+						<div class="bg-gray-100 w-24 h-24 rounded-full hover:bg-gray-300">
+							<a href="/"><img class="m-auto pt-4 scale-90 2xl:pt-5 " src="/register_login/images/logo register.png" alt=""></a>
+						</div>
+					</div>
+
 					<span class="login100-form-title p-b-43">
 						Create Your Free Account!
 					</span>
 
-
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
+					<div>
+						<x-jet-label for="name" value="{{ __('Name') }}" />
+						<x-jet-input id="name" class="block mt-10 w-full form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
 					</div>
 
-
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Password</span>
+					<div class="mt-4">
+						<x-jet-label for="email" value="{{ __('Email') }}" />
+						<x-jet-input id="email" class="block mt-1 w-full form-control" type="email" name="email" :value="old('email')" required />
 					</div>
 
-					<div class="flex-sb-m w-full p-t-3 p-b-32">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
-
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
-						</div>
+					<div class="mt-4">
+						<x-jet-label for="nik" value="{{ __('Nomor Induk Kependudukan') }}" />
+						<x-jet-input id="nik" class="block mt-1 w-full form-control" type="number" name="nik" :value="old('nik')" required />
 					</div>
 
+					<div class="mt-4">
+						<x-jet-label for="npwp" value="{{ __('NPWP') }}" />
+						<x-jet-input id="npwp" class="block mt-1 w-full form-control" type="number" name="npwp" :value="old('npwp')" />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="photo" value="{{ __('Foto KTP') }}" />
+						<x-jet-input id="photo" class="block mt-1 w-full" type="file" name="photo" :value="old('ktp')" required />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="password" value="{{ __('Password') }}" />
+						<x-jet-input id="password" class="block mt-1 w-full form-control" type="password" name="password" required autocomplete="new-password" />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+						<x-jet-input id="password_confirmation" class="block mt-1 w-full form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
+					</div>
+
+					<div class="mb-3 form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Check me out</label>
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="terms">
+							<div class="flex items-center">
+								<x-jet-checkbox name="terms" id="terms" />
+								<div class="ml-2">
+									{!! __('I agree to the :terms_of_service and :privacy_policy', [
+									'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+									'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+									]) !!}
+								</div>
+							</div>
+						</x-jet-label>
+					</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							Register
 						</button>
 					</div>
-
-					<div class="text-center p-t-46 p-b-20">
-						<span class="txt2">
-							or sign up using
-						</span>
+					<div class="d-flex flex-row-reverse">
+						<div class="p-2">Already have an account? <a href="/login" class="link-secondary ">Login</a></div>
 					</div>
 
-					<div class="login100-form-social flex-c-m">
-						<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-							<i class="fa fa-facebook-f" aria-hidden="true"></i>
-						</a>
+			</div>
+			</form>
 
-						<a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
-
-				<div class="login100-more" style="background-image: url('images/bg-01.jpg');">
-				</div>
+			<div class="login100-more" style="background-image: url('images/bg-01.jpg');">
 			</div>
 		</div>
+	</div>
 	</div>
 
 

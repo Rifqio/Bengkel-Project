@@ -51,7 +51,7 @@
           </div>
           
         </div>
-        <a href="/login"><img src="/img/button_login.png"  alt=""></a>
+        <a href="/register"><img src="/img/button_login.png"  alt=""></a>
   
          
             <!--

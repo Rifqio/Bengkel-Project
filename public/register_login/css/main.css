@@ -208,13 +208,13 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: #f2f2f2;
+  background: rgba(103, 218, 143, 1);
 }
 
 
 .wrap-login100 {
   width: 100%;
-  background: #fff;
+  background: rgba(103, 218, 143, 1);
   overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
@@ -478,7 +478,7 @@ input.input100 {
   width: 100%;
   height: 50px;
   border-radius: 10px;
-  background: #6675df;
+  background: rgba(103, 218, 143, 1);
 
   font-family: Montserrat-Bold;
   font-size: 12px;
