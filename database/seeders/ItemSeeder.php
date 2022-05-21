@@ -1,0 +1,53 @@
+<?php
+
+namespace Database\Seeders;
+
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+class ItemSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('items')->insert([
+            'id' => '1',
+            'category_id' => '1',
+            'name' => 'Brake A',
+            'slug' => 'brakes',
+            'brand' => 'Brand A',
+            'desc' => 'Description',
+            'price' => 200000,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('items')->insert([
+            'id' => '2',
+            'category_id' => '1',
+            'name' => 'Brake B',
+            'slug' => 'brakes',
+            'brand' => 'Brand B',
+            'desc' => 'Description',
+            'price' => 200000,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('items')->insert([
+            'id' => '3',
+            'category_id' => '6',
+            'name' => 'Oil A',
+            'slug' => 'oil',
+            'brand' => 'Brand Oil A',
+            'desc' => 'Description',
+            'price' => 50000,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+    }
+}
