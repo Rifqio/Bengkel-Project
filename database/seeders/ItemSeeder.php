@@ -38,6 +38,7 @@ class ItemSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
         DB::table('items')->insert([
             'id' => '3',
             'category_id' => '6',
@@ -48,6 +49,30 @@ class ItemSeeder extends Seeder
             'price' => 50000,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('item_store')->insert([
+            'item_id' => 1,
+            'store_id' => 1,
+            'price' => 200000
+        ]);
+
+        DB::table('item_store')->insert([
+            'item_id' => 1,
+            'store_id' => 2,
+            'price' => 225000
+        ]);
+
+        DB::table('item_store')->insert([
+            'item_id' => 3,
+            'store_id' => 1,
+            'price' => 50000
+        ]);
+
+        DB::table('item_store')->insert([
+            'item_id' => 3,
+            'store_id' => 2,
+            'price' => 45000
         ]);
     }
 }
