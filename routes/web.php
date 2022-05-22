@@ -134,6 +134,8 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
+    Route::get('sparepart/brakes/{id}', 'brakeDetails');
+    Route::get('sparepart/oil/{id}', 'oilDetails');
 });
 
 Route::get('/product', function () {
