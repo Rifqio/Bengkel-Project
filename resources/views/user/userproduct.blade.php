@@ -13,7 +13,7 @@
 
 
     <Section id="banner" class="bg-gradient-to-r from-green-200 to-green-600">
-        <div class="px-36 py-8">
+        <div class="px-36 py-4">
             <div class="flex border-2 shadow-sm rounded-lg bg-slate-100">
                 <div class="content-center py-3 rounded-l-lg px-2 "><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -22,7 +22,7 @@
                     </svg></div>
                 <div class="rounded-lg w-full ">
                     <form action="">
-                        <input type="text" placeholder="Search for a part..." class="py-3 border-none rounded-r-lg w-full bg-slate-100 ">
+                        <input type="text" placeholder="Search for a part..." class="py-3 border-none rounded-r-lg w-full bg-slate-100  focus:ring-green-500 ">
                     </form>
                 </div>
             </div>
@@ -34,14 +34,13 @@
         <div class="container mx-auto justify-center">
             <div class="flex flex-wrap justify-center ">
 
-
-                <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="justify-items-centercenter border-2 border-green-200 bg-slate-50 rounded-l px-5 py-10 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105">
+                <div class="w-[240px] h-[240px] p-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-28 px-5">
+                    <div class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105">
                         <div class="flex justify-center"><img src="img/product/G1.png" alt="Gambar-product" width="80%">
                         </div>
                         <div class="text-center ">
                             <h1 class="p-3 text-2xl font-bold group-hover:text-white">Brakes</h1>
-                            <h4 class="group-hover:text-slate-100">The system is designed to use pressure and friction to stop.</h4>
+                            <h4 class="group-hover:text-slate-100">Rp123123123</h4>
                         </div>
                         <div class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
                             <a href="" class="block">
