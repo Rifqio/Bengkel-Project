@@ -107,3 +107,12 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('/sparepart', function () {
     return view('user/usersparepart');
 });
+
+
+Route::get('/loginview', function () {
+    return view('template/loginview');
+});
+
+Route::get('/registerview', function () {
+    return view('template/registerview');
+});
