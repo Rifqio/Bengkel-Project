@@ -63,11 +63,13 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
 });
 
 //Employee
+Route::resource('list-mitra', EmpController::class);
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
-    Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
+    Route::post('/update-mitra', 'UpdateDataMitra');
+    // Route::delete('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
@@ -120,10 +122,15 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-input-product', 'TestInputProductStore');
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
+
+    //syita nyoba
+    Route::get('/register_view_test', function () {
+        return view('auth.register_temp');
+    });
 });
 
 
-//Google Login
+//Google Login Halo
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/redirect', 'redirectToProvider');
     Route::get('/auth/callback', 'handleProviderCallback');
