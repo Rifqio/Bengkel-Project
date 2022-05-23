@@ -39,19 +39,19 @@
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
   
-              <a href="#" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              <a href="/" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
   
-              <a href="#" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Feature</a>
+              <a href="#our_features" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Feature</a>
   
-              <a href="/register" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gabung menjadi mitra</a>
+              <a href="#gabung_mitra" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Gabung menjadi mitra</a>
             
-              <a href="#" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+              <a href="#About_us" class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
 
             </div>
           </div>
           
         </div>
-        <a href="/login"><img src="/img/button_login.png"  alt=""></a>
+        <a href="/register"><img src="/img/button_login.png"  alt=""></a>
   
          
             <!--
@@ -105,10 +105,7 @@
                                 <a href="/login" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
                                     Login </a>
                             </div>
-                            <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="/register" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-500 bg-gray-100 hover:bg-gray-200 md:py-4 md:text-lg md:px-10">
-                                    Register </a>
-                            </div>
+                            
                         </div>
                         @endauth
                     </div>
@@ -122,15 +119,64 @@
  
     </div>
 
+    <center>
+        <img class="mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+    </center>
     <div class="py-12">
+        <!-- FEATURES -->
         <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
+            <h5 ID="our_features" class="text-green-500 mt-5 font-semibold capitalize pb-2 ">Our Features</h5>
             <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1>
-            {{-- Menu dalam dashboard --}}
-            @livewire('menu')
         </div>
         <center>
             <center>
-                <h1 class="text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1>
+                <img class="mt-5 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+            </center>
+
+            <!-- BERGABUNG MENJADI MITRA -->
+            <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
+                <h5 id="gabung_mitra" class="text-green-500 mt-5 font-semibold capitalize pb-2 ">MITRA</h5>
+                <h1 class="text-xl font-semibold capitalize pb-4">MARI BERGABUNG MENJADI MITRA KAMI</h1>
+            </div>
+            <div class="mt-5 sm:mt-8 mt-3 sm:mt-0 sm:ml-3">
+                <a href="/register" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
+                    Register 
+                </a>
+            </div>
+            <center>
+                <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+            </center>
+            <!-- ABOUT -->
+            <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
+                <h5 id="About_us" class="text-green-500 mt-5 font-semibold capitalize pb-2 ">ABOUT US</h5>
+            </div>
+            <p class="text-xl text-left font-semibold capitalize pb-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro animi libero non tempora minus, quasi, quisquam consectetur eos sapiente expedita quibusdam earum id cumque sunt? At quaerat quo ullam quas.
+            </p>
+            <div class="card bg-success p-2 text-dark bg-opacity-25" 
+            style="width: 20rem; height:250px; background:rgba(196, 196, 196, 1);">
+                <div class="card-body">
+                    <div class="login100-form-social flex-c-m">
+                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <img class="mt-4 h-6  object-cover  md:w-20 " src="/img/logo_telpon.png" alt="">
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <img class="mt-5 h-6  object-cover  md:w-20 " src="/img/logo_telpon.png" alt="">
+                        </a>
+                    </div>
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+            <center>
+                <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
+            </center>
+            <center>
+                <h1 class="mt-5 sm:mt-8 text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1>
             </center>
             <div class="container" id='rekomen'>
                 <!--Content-->
@@ -156,9 +202,7 @@
     </script>
     <script>
         var loadMap = function(id) {
-            var data = {
-                !!json_encode($location) !!
-            }
+            var data = {!!json_encode($location)!!}
             var map = L.map(id, {
                 wheelPxPerZoomLevel: 150
             });
@@ -209,16 +253,14 @@
                             button.type = 'button';
                             button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
                             button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
-                            button.href = '{{ url('
-                            store - view ') }}/' + idstore[i] + '/show';
+                            button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
                             button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                             document.getElementById("rekomen").appendChild(button);
                         }
                     }
 
                     function onClick(e) {
-                        window.location.href = '{{ url('
-                        store - view ') }}/' + this.options.win_url + '/show';
+                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
                     }
                 })
                 .on('locationerror', function(e) {

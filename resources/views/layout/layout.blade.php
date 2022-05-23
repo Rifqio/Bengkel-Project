@@ -12,7 +12,7 @@
 </head>
 <body>
     @yield('container')
-    
+
     @livewireScripts
 </body>
 </html>

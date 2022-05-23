@@ -28,12 +28,16 @@ class EmpController extends Controller
         ]);
     }
 
-    public function UpdateDataMitra($id, Request $request){
-        //dd($request->except(['_token']));
-        //Untuk Shallom
-        //Tambahkan Validasi Input
-        //Update Data dan Delete Data
-        $user = User::find($id);
-        dd($user);
-    }
+    public function UpdateDataMitra(Request $request){
+        $model = User::find(request()->id);
+        $model->update($request->except(['id']));
+        return redirect('list-mitra')->with('success', 'User has been updated');
+}
+
+public function destroy($id)
+{
+    $users = User::find($id);
+        $users->delete();
+        return redirect('list-mitra');
+}
 }
