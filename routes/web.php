@@ -52,8 +52,11 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
+    Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('/store-update', 'StoreUpdate');
+
 });
 
 //Profile
@@ -69,7 +72,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
     Route::post('/update-mitra', 'UpdateDataMitra');
-    // Route::delete('/delete-mitra/{id}', 'DeleteDataMitra');
+    Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
