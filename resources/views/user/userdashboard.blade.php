@@ -146,6 +146,7 @@
             <center>
                 <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
             </center>
+        </center>
             <!-- ABOUT -->
             <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
                 <h5 id="About_us" class="text-green-500 mt-5 font-semibold capitalize pb-2 ">ABOUT US</h5>
@@ -153,13 +154,22 @@
             <p class="text-xl text-left font-semibold capitalize pb-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro animi libero non tempora minus, quasi, quisquam consectetur eos sapiente expedita quibusdam earum id cumque sunt? At quaerat quo ullam quas.
             </p>
+            <div class="container px-10">
+                <div class="border rounded-lg shadow-lg p-10">
+                    <img src="/img/logo_telpon.png" alt="telepon" width="35" class="float-right">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quas illum, neque corrupti sequi ullam distinctio nisi ex! Architecto \
+                        ratione sed, dolore quaerat nesciunt tenetur temporibus unde aut fuga aspernatur.
+                    </p>
+                </div>
+            </div>
             <div class="card bg-success p-2 text-dark bg-opacity-25" 
             style="width: 20rem; height:250px; background:rgba(196, 196, 196, 1);">
-                <div class="card-body">
+                <div class="card-body" >
                     <div class="login100-form-social flex-c-m">
-                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-                            <img class="mt-4 h-6  object-cover  md:w-20 " src="/img/logo_telpon.png" alt="">
-                        </a>
+                        <p href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <img class="mt-4 h-6  object-cover  md:w-20 "zsrc="/img/logo_telpon.png" alt="">
+                            (+62)81225967157
+                        </p>
 
                         <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
                             <img class="mt-5 h-6  object-cover  md:w-20 " src="/img/logo_telpon.png" alt="">
@@ -172,6 +182,7 @@
                     <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
+        <center>
             <center>
                 <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
             </center>
