@@ -112,9 +112,7 @@ class DashboardController extends Controller
      */
     public function show(User $user)
     {
-        //$emp = User::whereRoleIs(['employee'])->get();
-        $users = User::all();
-
+        $users = User::whereRoleIs(['employee', 'mitra'])->get();
         return view('SuperAdmin.employeeList.index', [
             'users' => $users,
         ]);
@@ -129,7 +127,6 @@ class DashboardController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-
         return view('SuperAdmin.crud.edit',[
             'user' => $user,
             'roles' => Role::all(),
