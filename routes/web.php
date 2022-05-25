@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NotificationController;
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
@@ -132,4 +134,10 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
+    Route::get('sparepart/brakes/{id}', 'brakeDetails');
+    Route::get('sparepart/oil/{id}', 'oilDetails');
+});
+
+Route::get('/product', function () {
+    return view('user/userproduct');
 });
