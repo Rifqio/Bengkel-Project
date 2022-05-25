@@ -154,14 +154,7 @@
             <p class="text-xl text-left font-semibold capitalize pb-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro animi libero non tempora minus, quasi, quisquam consectetur eos sapiente expedita quibusdam earum id cumque sunt? At quaerat quo ullam quas.
             </p>
-            <div class="container mx-auto">
-                <div class="border rounded-lg shadow-lg p-10">
-                    <img src="/img/logo_telpon.png" alt="telepon" width="35" class="float-left mr-3">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quas illum, neque corrupti sequi ullam distinctio nisi ex! Architecto \
-                        ratione sed, dolore quaerat nesciunt tenetur temporibus unde aut fuga aspernatur.
-                    </p>
-                </div>
-            </div>
+            
             <div class="card bg-success p-2 text-dark bg-opacity-25" 
             style="width: 20rem; height:250px; background:rgba(196, 196, 196, 1);">
                 <div class="card-body" >
