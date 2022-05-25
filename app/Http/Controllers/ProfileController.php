@@ -44,13 +44,15 @@ class ProfileController extends Controller
             }else{
                 $data = ['name' => $request->name];
             }
+            if(Auth::user()->profile_photo_path != NULL){
+                if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path)) && isset($request->profile)){
+                    unlink('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path);
+                }
+            }
             DB::table('users')
             ->where('id', Auth::user()->id)
             ->update($data);
             DB::commit();
-            if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path)) && isset($request->profile)){
-                unlink('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path);
-            }
             $status = 'status_update';
             $msg = 'Profile Update!';
         }catch(\Exception $e){
