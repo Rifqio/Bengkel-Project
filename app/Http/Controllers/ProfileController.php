@@ -33,6 +33,7 @@ class ProfileController extends Controller
         if(!$validatedData){
             return redirect('mitra-profile');
         }
+        $old_image = User::find(Auth::user()->id)->profile_photo_path;
         DB::beginTransaction();
         try{
             if (isset($request->profile)) {
@@ -44,19 +45,20 @@ class ProfileController extends Controller
             }else{
                 $data = ['name' => $request->name];
             }
-            if(Auth::user()->profile_photo_path != NULL){
-                if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path)) && isset($request->profile)){
-                    unlink('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile_photo_path);
-                }
-            }
             DB::table('users')
             ->where('id', Auth::user()->id)
             ->update($data);
             DB::commit();
+            if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'. $old_image)) && isset($request->profile)){
+                unlink('data_user/'.Auth::user()->id.'/profile/'.$old_image);
+            }
             $status = 'status_update';
             $msg = 'Profile Update!';
         }catch(\Exception $e){
-            unlink('data_user/'.Auth::user()->id.'/profile/'.$name);
+            if(isset($request->profile)){
+                $name = time()."_".$request->profile->getClientOriginalName();
+                unlink('data_user/'.Auth::user()->id.'/profile/'.$name);
+            }
             DB::rollback();
             $status = 'status_update_fail';
             $msg = 'Profile Gagal Update!';
