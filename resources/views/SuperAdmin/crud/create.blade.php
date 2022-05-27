@@ -77,7 +77,9 @@
                                             <label for="exampleFormControlSelect2">Role</label>
                                             <select class="form-control" id="exampleFormControlSelect2" name="role">
                                                 @foreach ($roles as $role)
-                                                    <option value={{ $role->id }}>{{ $role->display_name }}</option>
+                                                    @if($role->name != 'mitra')
+                                                        <option value={{ $role->id }}>{{ $role->display_name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>

@@ -323,17 +323,20 @@
                                 </td>
                                 <td class="align-middle text-sm">
                                     @if($s->lat || $s->long == NULL)
-                                        <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
-                                            Konfirm
-                                        </button>
-                                    @else
                                         <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#act{{$s->id}}">
                                             Aktifkan
                                         </button>
+                                    @else
+                                        <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
+                                            Konfirm
+                                        </button>
                                     @endif
-                                    <button class="btn text-white" style="background-color: red">
-                                        Delete
-                                    </button>
+                                        <button class="btn text-white" style="background-color: red">
+                                            Delete
+                                        </button>
+                                        <button type="button" class="btn btn-block bg-gradient-info mb-3" data-bs-toggle="modal" data-bs-target="#detail{{$s->id}}">
+                                            Detail
+                                        </button>
                                 </td>
                                 <!--Modal Konfirmasi-->
                                 <div class="modal fade" id="conf{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -398,6 +401,42 @@
                                         </form>
                                         </div>
                                       </div>
+                                    </div>
+                                </div>
+                                <!-- Modal Detail -->
+                                <div class="modal fade" id="detail{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">New message to @CT</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nama Bengkel:</label>
+                                                <input type="text" class="form-control" value="{{$s->store_name}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Pemilik:</label>
+                                                <input type="text" class="form-control" value="{{$s->users->name}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Telefon Bengkel:</label>
+                                                <input type="text" class="form-control" value="{{$s->phone_store}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Tanggal Diajukan:</label>
+                                                <input type="text" class="form-control" value="{{$s->updated_at}}" id="recipient-name" readonly>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </tr>
