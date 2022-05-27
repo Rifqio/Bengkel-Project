@@ -87,11 +87,12 @@
                   To: "opacity-0 scale-95"
               -->
 
-                <main class=" bg-white  mx-auto max-w-7xl 2xl:max-w-max px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                <main class="bg-white  mx-auto max-w-7xl 2xl:max-w-max px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                     
                     <div class="sm:text-center lg:text-left">
                         <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                            <span class="text-black xl:inline ">Make Your Problem Easier With BengkelAE </span>
+                            Make Your Problem 
+                            Easier With BengkelAE
 
                         </h1>
                         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
@@ -185,8 +186,10 @@
             <div class="container" id='rekomen'>
                 <!--Content-->
             </div>
-            <div id="show" style="width:100%; height:580px;">
-                <!--Content-->
+            <div class="row">
+                <div id="show" style="width:70%; height:380px;">
+                    <!--Content-->
+                </div>
             </div>
         </center>
     </div>
@@ -250,7 +253,7 @@
                         idstore[i] = data[i][3];
                     }
                     for (var i = 0; i < marker.length; i++) {
-                        if (distance[i] <= 1) {
+                        if (distance[i] <= 3) {
                             console.log(distance[i]);
                             console.log(namestore[i]);
                             var button = document.createElement("a");
