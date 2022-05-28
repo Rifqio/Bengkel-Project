@@ -33,7 +33,6 @@ class DashboardController extends Controller
                 'total_items' => Item::count(),
             ]);
         } elseif (Auth::user()->hasRole('mitra')) {
-            //Masih View Dummy
             $mitra = User::find(Auth::user()->id);
             return view('mitra.index', [
                 'mitra'=>$mitra,

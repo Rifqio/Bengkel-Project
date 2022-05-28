@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NotificationController;
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +54,11 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
+    Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('/store-update', 'StoreUpdate');
+
 });
 
 //Profile
@@ -69,7 +74,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
     Route::post('/update-mitra', 'UpdateDataMitra');
-    // Route::delete('/delete-mitra/{id}', 'DeleteDataMitra');
+    Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
@@ -141,4 +146,8 @@ Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
     Route::get('sparepart/brakes/{id}', 'brakeDetails');
     Route::get('sparepart/oil/{id}', 'oilDetails');
+});
+
+Route::get('/product', function () {
+    return view('user/userproduct');
 });
