@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Search;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
     use HasFactory;
+    use Search;
     protected $guarded = ['id'];
 
     public function category()
@@ -19,4 +21,8 @@ class Item extends Model
     {
         return $this->belongsToMany(Store::class,'item_store','item_id','store_id');
     }
+
+    protected $searchable = [
+        'name',
+    ];
 }

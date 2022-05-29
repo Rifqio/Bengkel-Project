@@ -24,6 +24,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 1);
         return view('items.index', [
             'items' => $items,
+            'title' => 'Brake List'
         ]);
     }
 
@@ -56,11 +57,53 @@ class CategoriesController extends Controller
         ]);
     }
 
+    public function suspensionDetails(Item $id)
+    {
+        $data =
+            DB::table("items")
+            ->join("item_store", function ($join) {
+                $join->on("items.id", "=", "item_store.item_id");
+            })
+            ->join("stores", function ($join) {
+                $join->on("item_store.store_id", "=", "stores.id");
+            })
+            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->where("items.category_id", "=", 2)
+            ->where("items.id", "=", $id->id)
+            ->get();
+
+        return view('items.details', [
+            'item' => $id,
+            'data' => $data,
+        ]);
+    }
+
     public function drivetrain()
     {
         $items = Item::get()->where('category_id', '=', 3);
         return view('items.index', [
             'items' => $items,
+        ]);
+    }
+
+    public function drivetrainDetails(Item $id)
+    {
+        $data =
+            DB::table("items")
+            ->join("item_store", function ($join) {
+                $join->on("items.id", "=", "item_store.item_id");
+            })
+            ->join("stores", function ($join) {
+                $join->on("item_store.store_id", "=", "stores.id");
+            })
+            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->where("items.category_id", "=", 3)
+            ->where("items.id", "=", $id->id)
+            ->get();
+
+        return view('items.details', [
+            'item' => $id,
+            'data' => $data,
         ]);
     }
 
@@ -72,11 +115,53 @@ class CategoriesController extends Controller
         ]);
     }
 
+    public function electronicsDetails(Item $id)
+    {
+        $data =
+            DB::table("items")
+            ->join("item_store", function ($join) {
+                $join->on("items.id", "=", "item_store.item_id");
+            })
+            ->join("stores", function ($join) {
+                $join->on("item_store.store_id", "=", "stores.id");
+            })
+            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->where("items.category_id", "=", 4)
+            ->where("items.id", "=", $id->id)
+            ->get();
+
+        return view('items.details', [
+            'item' => $id,
+            'data' => $data,
+        ]);
+    }
+
     public function exhaust()
     {
         $items = Item::get()->where('category_id', '=', 5);
         return view('items.index', [
             'items' => $items,
+        ]);
+    }
+
+    public function exhaustDetails(Item $id)
+    {
+        $data =
+            DB::table("items")
+            ->join("item_store", function ($join) {
+                $join->on("items.id", "=", "item_store.item_id");
+            })
+            ->join("stores", function ($join) {
+                $join->on("item_store.store_id", "=", "stores.id");
+            })
+            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->where("items.category_id", "=", 5)
+            ->where("items.id", "=", $id->id)
+            ->get();
+
+        return view('items.details', [
+            'item' => $id,
+            'data' => $data,
         ]);
     }
 
@@ -116,11 +201,51 @@ class CategoriesController extends Controller
         ]);
     }
 
+    public function wheelsDetails(Item $id)
+    {
+        $data =
+            DB::table("items")
+            ->join("item_store", function ($join) {
+                $join->on("items.id", "=", "item_store.item_id");
+            })
+            ->join("stores", function ($join) {
+                $join->on("item_store.store_id", "=", "stores.id");
+            })
+            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->where("items.category_id", "=", 7)
+            ->get();
+
+        return view('items.details', [
+            'item' => $id,
+            'data' => $data
+        ]);
+    }
+
     public function tools()
     {
         $items = Item::get()->where('category_id', '=', 8);
         return view('items.index', [
             'items' => $items,
+        ]);
+    }
+
+    public function toolsDetails(Item $id)
+    {
+        $data =
+            DB::table("items")
+            ->join("item_store", function ($join) {
+                $join->on("items.id", "=", "item_store.item_id");
+            })
+            ->join("stores", function ($join) {
+                $join->on("item_store.store_id", "=", "stores.id");
+            })
+            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->where("items.category_id", "=", 8)
+            ->get();
+
+        return view('items.details', [
+            'item' => $id,
+            'data' => $data
         ]);
     }
 }

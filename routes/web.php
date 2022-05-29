@@ -136,6 +136,11 @@ Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
     Route::get('sparepart/brakes/{id}', 'brakeDetails');
     Route::get('sparepart/oil/{id}', 'oilDetails');
+    Route::get('sparepart/suspension/{id}', 'suspensionDetails');
+    Route::get('sparepart/electronics/{id}', 'electronicsDetails');
+    Route::get('sparepart/exhaust/{id}', 'exhaustDetails');
+    Route::get('sparepart/wheels/{id}', 'wheelsDetails');
+    Route::get('sparepart/tools/{id}', 'toolsDetails');
 });
 
 Route::get('/product', function () {
