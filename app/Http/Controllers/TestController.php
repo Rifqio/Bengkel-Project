@@ -48,6 +48,7 @@ class TestController extends Controller
             'name' => request('name'),
             'brand' => request('brand'),
             'price' => request('price'),
+            'slug' => request('category'),
             'category_id' => request('category'),
         ]);
         return redirect('test');

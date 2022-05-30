@@ -16,7 +16,9 @@
     </section>
     <section id="card text-center">
         <div class="container mx-auto justify-center">
-            @yield('content')
+            <div class="flex flex-wrap justify-center ">
+                @yield('content')
+            </div>
         </div>
     </section>
     @livewireScripts

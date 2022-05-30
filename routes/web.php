@@ -29,7 +29,8 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
+
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
 Route::controller(CategoriesController::class)->group(function () {
@@ -56,6 +57,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('create-product', 'create_product');
 });
 
 //Profile

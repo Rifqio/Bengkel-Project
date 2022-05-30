@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Store;
+use App\Models\Item;
 use App\Models\User;
-use App\Notifications\StoreRegister;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Notification;
+use App\Models\Store;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\StoreRegister;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Notification;
 
 class MitraController extends Controller
 {
+    public function create_product()
+    {
+        if (Auth::user()->hasRole('mitra'))
+        {
+            Item::create([
+                'name' => request('name'),
+                'brand' => request('brand'),
+                'price' => request('price'),
+                'category_id' => request('category'),
+            ]);
+            return redirect('dashboard');
+        }
+    }
     public function StoreRegisterView(){
         $user = User::find(1);
         if(Auth::user()->nik != NULL && Auth::user()->ktp != NULL){
@@ -37,7 +51,7 @@ class MitraController extends Controller
         if(!$validatedData){
             return redirect('store-register');
         }
-        
+
         $store = Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,

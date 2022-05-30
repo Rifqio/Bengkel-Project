@@ -65,10 +65,50 @@
                                                         @method('delete')
                                                         <button class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                             onclick="return confirm('Are you sure you want to delete this user?')"><i
-                                                                class="far fa-trash-alt me-2"></i>Delete</button>
+                                                        class="far fa-trash-alt me-2"></i>Delete</button>
                                                     </form>
+                                                    <br>
+                                                    <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal" data-bs-target="#info{{$user->id}}">
+                                                        Informasi
+                                                    </button>
                                                 </td>
                                             </tr>
+                                            <!-- Modal Info Pengguna-->
+                                            <div class="modal fade" id="info{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Data Pengguna</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Nama Pengguna:</label>
+                                                            <input type="text" value="{{$user->name}}" class="form-control" value="Creative Tim" id="recipient-name" readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Email:</label>
+                                                            <input type="text" class="form-control" id="message-text" value="{{$user->email}}" readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">NIK:</label>
+                                                            <input type="text" class="form-control" id="message-text" value="{{$user->nik}}" readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">NPWP:</label>
+                                                            <input type="text" class="form-control" id="message-text" value="{{$user->npwp}}" readonly>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                 </table>
