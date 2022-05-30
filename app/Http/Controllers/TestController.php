@@ -63,7 +63,7 @@ class TestController extends Controller
 
     public function TestInputProductStore(){
         $bengkel = Store::find(request('store'));
-        $bengkel->item()->attach(request('item'));
+        $bengkel->item()->attach(request('item'), ['price' => request('price')]);
         // detach untuk delete
         return redirect('test');
     }
