@@ -14,7 +14,7 @@ class ProfileController extends Controller
     public function ProfileView(){
         $user = User::find(Auth::user()->id);
         if(Auth::user()->hasRole('mitra')){
-           $redirect = 'mitra.profile-mitra';
+           $redirect = 'mitra.profile.index';
         }elseif(Auth::user()->hasRole('superadmin')){
             $redirect = 'SuperAdmin.profile-superadmin';
         }elseif(Auth::user()->hasRole('employee')){

@@ -58,6 +58,7 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
     Route::post('create-product', 'create_product');
+    Route::get('bengkel-list', 'bengkel_list');
 });
 
 //Profile

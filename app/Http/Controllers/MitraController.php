@@ -29,10 +29,10 @@ class MitraController extends Controller
         }
     }
     public function StoreRegisterView(){
-        $user = User::find(1);
+        $mitra = User::find(Auth::user()->id);
         if(Auth::user()->nik != NULL && Auth::user()->ktp != NULL){
-            return view('mitra.store-register', [
-                'user' => $user,
+            return view('mitra.addBengkel.index', [
+                'mitra' => $mitra,
             ]);
         }else{
             echo 'Lengkapi Data Diri';
@@ -68,5 +68,23 @@ class MitraController extends Controller
         Notification::send($user, new StoreRegister($notif));
 
         return redirect('store-register');
+    }
+
+    public function bengkel_list()
+    {
+        $mitra = User::find(Auth::user()->id);
+        $data =
+        DB::table("stores")
+        ->join("users", function($join){
+            $join->on("stores.id_mitra", "=", "users.id");
+        })
+        ->select("stores.store_name", "stores.address")
+        ->where("users.id", "=", auth()->user()->id)
+        ->get();
+        // dd($data);
+       return view('mitra.bengkelList.index', [
+           'data' => $data,
+           'mitra' => $mitra
+       ]);
     }
 }

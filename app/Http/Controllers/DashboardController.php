@@ -61,6 +61,11 @@ class DashboardController extends Controller
         }
     }
 
+    public function profile()
+    {
+        return 'Hello';
+    }
+
     public function GuestView()
     {
         //return view('user.userdashboard', ['title' => 'Dashboard']);
@@ -97,11 +102,14 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->hasRole('superadmin')) {
+        if (Auth::user()->hasRole('superadmin'))
+        {
             return view('SuperAdmin.crud.create', [
                 'roles' => Role::all()
             ]);
-        } elseif (Auth::user()->hasRole('mitra')) {
+        }
+        elseif (Auth::user()->hasRole('mitra'))
+        {
             $mitra = User::find(Auth::user()->id);
             $categories = Category::all();
             return view('mitra.crud.create', [
