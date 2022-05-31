@@ -13,7 +13,7 @@
                                 <div class="flex items-center justify-between w-full md:w-auto">
                                     <a href="#">
                                         <span class="sr-only">Workflow</span>
-                                        <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg">
+                                        <h1 class="font-extralight text-2xl font-bold">BAE</h1>
                                     </a>
                                     <div class="-mr-2 flex items-center md:hidden">
                                         <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
@@ -29,11 +29,10 @@
                             <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
                                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
 
-                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Profile</a>
+                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Categories</a>
 
-                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
+                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">About Us</a>
 
-                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Company</a>
 
                             </div>
                         </nav>
@@ -52,7 +51,7 @@
                         <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div class="px-5 pt-4 flex items-center justify-between">
                                 <div>
-                                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+                                    <h1>BengkelAE</h1>
                                 </div>
                                 <div class="-mr-2">
                                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -65,13 +64,11 @@
                                 </div>
                             </div>
                             <div class="px-2 pt-2 pb-3 space-y-1">
-                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Product</a>
+                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</a>
 
-                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Features</a>
+                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Categories</a>
 
-                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Marketplace</a>
-
-                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Company</a>
+                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About Us</a>
                             </div>
                             <a href="#" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                                 Log in </a>
@@ -86,9 +83,7 @@
 
                         </h1>
                         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-                            Elit
-                            sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+                            BengelAE atau juga di sebut BAE menyediakan fitur-fitur yang membantu Customer untuk mencari bengkel terdekat yang secara online</p>
                         @auth
                         @else
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -112,9 +107,6 @@
     </div>
 
     <div class="py-12">
-        <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
-            <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1> 
-        </div>
         <center>
             <center>
                 <h1 class="text-xl font-semibold capitalize pb-4">Rekomendasi Bengkel Terdekat</h1>
@@ -143,7 +135,9 @@
     </script>
     <script>
         var loadMap = function(id) {
-            var data = {!!json_encode($location)!!}
+            var data = {
+                !!json_encode($location) !!
+            }
             var map = L.map(id, {
                 wheelPxPerZoomLevel: 150
             });
@@ -194,14 +188,16 @@
                             button.type = 'button';
                             button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
                             button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
-                            button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
+                            button.href = '{{ url('
+                            store - view ') }}/' + idstore[i] + '/show';
                             button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                             document.getElementById("rekomen").appendChild(button);
                         }
                     }
 
                     function onClick(e) {
-                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
+                        window.location.href = '{{ url('
+                        store - view ') }}/' + this.options.win_url + '/show';
                     }
                 })
                 .on('locationerror', function(e) {
