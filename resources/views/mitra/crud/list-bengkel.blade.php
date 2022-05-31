@@ -47,9 +47,9 @@
                                                             <td class="pt-3">{{$s->long}}</td>
                                                             <td>
                                     
-                                                                <a href="{{ url('') }}" class=""><button type="button" class="btn btn-warning" >Edit</button></a>
+                                                                <a href="/store-edit/{{ $s->id }}" class=""><button type="button" class="btn btn-warning" >Edit</button></a>
                                                                 {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{$s->id}}">Edit</button> --}}
-                                                                <a href="{{ url('delete-mitra/'.$s->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
+                                                                <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                                             </td>
                                                         </tr>
                                                         @endforeach

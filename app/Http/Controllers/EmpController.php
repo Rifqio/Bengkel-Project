@@ -31,7 +31,7 @@ class EmpController extends Controller
         ]);
     }
 
-    public function UpdateDataMitra(Request $request)
+    public function UpdateDataMitra(Request $request, User $model)
     {
         $validateData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -43,7 +43,7 @@ class EmpController extends Controller
         if (!$validateData) {
             return redirect()->back();
         }
-        $model = User::find($request()->id);
+        // $model = User::find($request()->id);
         $model->update($request->except(['id']));
         return redirect('list-mitra')->with('success_update', 'User has been updated');
     }

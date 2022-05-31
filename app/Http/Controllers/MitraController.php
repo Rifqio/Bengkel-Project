@@ -24,25 +24,45 @@ class MitraController extends Controller
         return view('mitra.crud.list-bengkel', [
             'users' => $users,
             'stores' => $data_condition
+        ])->with('success_update', 'Store Sudah Tertambah');
+        
+    }
+    public function StoreEdit($id)
+    {
+        $store = Store::where('id', $id)->get();
+        return view('mitra.crud.update-bengkel', [
+            'stores' => $store
+            
         ]);
         
+    }
+
+    public function DeleteBengkel($id)
+    {
+        // dd($id);
+        $store = Store::find($id);
+        $store->delete();
+        return redirect('list-store')->with('success_update', 'Store Has Been Deleted');
     }
 
     public function StoreUpdate(Request $request)
     {
         $validateData = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255'],
-            'nik' => ['required', 'string', 'max:16', 'min:16'],
-            // 'nik' => ['required', 'string', 'max:16', 'min:16', 'unique:posts'],
-            'npwp' => ['required', 'string', 'max:16', 'min:16',],
+            'store_name' => ['required', 'string', 'max:255'],
+            'open' => ['required'],
+            'close' => ['required'],
+            'address' => ['required', 'string'],
+            'phone_store' => ['required', 'number'],
+            // 'store_image' => ['required', 'string'],
+            
+            
         ]);
         if (!$validateData) {
             return redirect()->back();
         }
-        $model = User::find($request()->id);
+        $model = Store::find($request()->id);
         $model->update($request->except(['id']));
-        return redirect('list-mitra')->with('success_update', 'User has been updated');
+        return redirect('list-store')->with('success_update', 'Store has been updated');
     }
 
     public function StoreRegisterView()
