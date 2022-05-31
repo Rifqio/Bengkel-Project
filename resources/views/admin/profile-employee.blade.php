@@ -12,7 +12,7 @@
 
 <body>
   <div class="container">
-
+    
     <br>
     <div class="container">
       <img style="max-width: 50px; height:auto; border-radius:50%;" src="{{ asset('data_user/'.$user->id.'/profile/'.$user->profile_photo_path) }}" alt="{{$user->profile_photo_path}}">
