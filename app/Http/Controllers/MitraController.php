@@ -60,6 +60,7 @@ class MitraController extends Controller
             'address' =>request()->address,
             'status_activation' => 0,
             'id_mitra' => Auth::user()->id,
+            'id_kecamatan' => 1, //Nanti Diganti
             'store_image' => request()->store_image,
         ]);
 

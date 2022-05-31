@@ -146,24 +146,10 @@ class DashboardController extends Controller
         }
         elseif (Auth::user()->hasRole('mitra'))
         {
-            $data = DB::table("users")
-            ->join("stores", function($join){
-                $join->on("users.id", "=", "stores.id_mitra");
-            })
-            ->join("items", function($join){
-                $join;
-            })
-            ->join("item_store", function($join){
-                $join->on("items.id", "=", "item_store.item_id")
-                ->where("stores.id", "=", "item_store.store_id");
-            })
-            ->select("items.name")
-            ->where("users.id", "=", auth()->user()->id)
-            ->get();
-
+            $store = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
             return view('mitra.productList.index',
             [
-                'data' => $data
+                'data' => $store
             ]);
         }
     }
