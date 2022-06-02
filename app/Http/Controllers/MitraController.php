@@ -18,7 +18,8 @@ class MitraController extends Controller
     {
         $users = User::whereRoleIs(['mitra'])->get();
         // $data = Store::all();
-        $data_condition = Store::where("id_mitra", "=", "6")->get(); 
+        // Auth::user()->id;
+        $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->get(); 
         // return ['stores' =>$data_condition,
         //         'users'=>$users];
         return view('mitra.crud.list-bengkel', [
@@ -52,7 +53,7 @@ class MitraController extends Controller
             'open' => ['required'],
             'close' => ['required'],
             'address' => ['required', 'string'],
-            'phone_store' => ['required', 'number'],
+            'phone_store' => ['required'],
             // 'store_image' => ['required', 'string'],
             
             
@@ -60,9 +61,11 @@ class MitraController extends Controller
         if (!$validateData) {
             return redirect()->back();
         }
-        $model = Store::find($request()->id);
-        $model->update($request->except(['id']));
+        $model = Store::find($request->id);
+        $model->update($request->except(['id', '_token']));
         return redirect('list-store')->with('success_update', 'Store has been updated');
+        
+        
     }
 
     public function StoreRegisterView()
