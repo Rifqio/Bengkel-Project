@@ -73,15 +73,11 @@
                                 </div>
                             </div>
                             <div class="px-2 pt-2 pb-3 space-y-1">
-                                <a href="#"
-                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</a>
+                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</a>
 
-                                <a href="#"
-                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Categories</a>
+                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Categories</a>
 
-                                <a href="#"
-                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About
-                                    Us</a>
+                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About Us</a>
                             </div>
                             <a href="#"
                                 class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
@@ -97,10 +93,8 @@
                             <span class="text-green-500 xl:inline">BengkelAE</span>
 
                         </h1>
-                        <p
-                            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            BengelAE atau juga di sebut BAE menyediakan fitur-fitur yang membantu Customer untuk mencari
-                            bengkel terdekat yang secara online</p>
+                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            BengelAE atau juga di sebut BAE menyediakan fitur-fitur yang membantu Customer untuk mencari bengkel terdekat yang secara online</p>
                         @auth
                         @else
                             <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -215,7 +209,8 @@
                     }
 
                     function onClick(e) {
-                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
+                        window.location.href = '{{ url('
+                        store - view ') }}/' + this.options.win_url + '/show';
                     }
                 })
                 .on('locationerror', function(e) {
