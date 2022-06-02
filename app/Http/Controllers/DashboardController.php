@@ -26,7 +26,9 @@ class DashboardController extends Controller
     {
         if (Auth::user()->hasRole('employee')) {
             return view('admin.admindashboard');
-        } elseif (Auth::user()->hasRole('superadmin')) {
+        }
+        elseif (Auth::user()->hasRole('superadmin'))
+        {
             $employe = User::whereRoleIs(['employee'])->get();
             return view('SuperAdmin.admindashboard', [
                 'employee' => $employe,
@@ -34,7 +36,9 @@ class DashboardController extends Controller
                 'total_stores' => Store::count(),
                 'total_items' => Item::count(),
             ]);
-        } elseif (Auth::user()->hasRole('mitra')) {
+        }
+        elseif (Auth::user()->hasRole('mitra'))
+        {
             //Masih View Dummy
             $data = DB::table("users")
                 ->join("stores", function ($join) {
@@ -56,7 +60,9 @@ class DashboardController extends Controller
                 'mitra' => $mitra,
                 'data' => $data
             ]);
-        } else {
+        }
+
+        else {
             return view('user.userdashboard', ['title' => 'Landing Page']);
         }
     }
@@ -146,10 +152,12 @@ class DashboardController extends Controller
         }
         elseif (Auth::user()->hasRole('mitra'))
         {
+            $mitra = User::find(Auth::user()->id);
             $store = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
             return view('mitra.productList.index',
             [
-                'data' => $store
+                'data' => $store,
+                'mitra' => $mitra
             ]);
         }
     }
