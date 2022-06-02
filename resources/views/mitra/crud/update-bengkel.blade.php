@@ -20,7 +20,7 @@
     <!--Kurang Form Input File-->
     <form action="/store-update" method="POST" enctype="multipart/form-data"> 
         @csrf
-        {{-- <input type="hidden" name="store_name" placeholder="Nama Bengkel" value="{{ $s->id}}">  --}}
+        <input type="hidden" name="id" placeholder="Nama Bengkel" value="{{ $s->id}}"> 
         {{-- @error('store_name')
         <div class="invalid-feedback">
             {{ $message }}
@@ -55,7 +55,8 @@
         </div> 
         @enderror
         <br>
-        <textarea name="address" cols="30" rows="10" placeholder="Alamat Bengkel"  value="{{ $s->address }}" class="form-control @error('address') is-invalid @enderror">
+        <textarea name="address" cols="30" rows="10" placeholder="Alamat Bengkel"  class="form-control @error('address') is-invalid @enderror">
+            {{ $s->address }}
             @error('address')
             <div class="invalid-feedback">
                 {{ $message }}
