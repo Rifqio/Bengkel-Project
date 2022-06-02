@@ -4,137 +4,87 @@
     <!-- Navbar -->
     @include('admin.navbar')
     <!-- End Navbar -->
+    </div>
     <div class="container-fluid py-4">
-        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                <i class="ni ni-camera-compact text-dark opacity-10"></i>
-            </div>
-            <h5 class="text-white mb-1">Get started with Argon</h5>
-            <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.
-            </p>
+        <div class="row">
+            <h1 class="text-white mb-4">LIST MITRA</h1>
         </div>
     </div>
-    <div class="carousel-item h-100" style="background-image: url('/argon/img/carousel-2.jpg');
-      background-size: cover;">
-        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-            </div>
-            <h5 class="text-white mb-1">Faster way to create web pages</h5>
-            <p>That’s my skill. I’m not really specifically talented at anything except for the
-                ability to learn.</p>
-        </div>
-    </div>
-    <div class="carousel-item h-100" style="background-image: url('/argon/img/carousel-3.jpg');
-      background-size: cover;">
-        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                <i class="ni ni-trophy text-dark opacity-10"></i>
-            </div>
-            <h5 class="text-white mb-1">Share with us your design tips!</h5>
-            <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.
-            </p>
-        </div>
-    </div>
-    </div>
-    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="row mt-4 ms-3">
-        <div class="col-lg-12 mb-lg-0 mb-4">
-            <div class="card">
-                <div class="card-header pb-0 p-3">
-                    {{-- Notifikasi Update --}}
-                        @if (session('success_update'))
-                             <div class="alert alert-success col-lg-8`">
-                             {{ session('success_update') }}
-                            </div>
-                        @endif
-                    <h6 class="mb-0">List Mitra</h6>
-                    <button type="button" class="btn btn-danger">+ Tambah</button>
-                </div>
-                <div class="table-responsive">
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <div class="table-responsive">
-                                    <table class="table align-items-center ">
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Role</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($users as $u)
-                                                <tr>
-                                                    <td class="pt-3">{{$loop->iteration}}</td>
-                                                    <td class="pt-3">{{$u->name}}</td>
-                                                    <td class="pt-3">{{$u->roles->first()->display_name}}</td>
-                                                    <td>
-                            
-                                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{$u->id}}">Edit</button>
-                                                        <a href="{{ url('delete-mitra/'.$u->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
-                                                    </td>
-                                                </tr>
-                                                <!--Edit Form-->
-                                                <div class="modal fade" id="edit{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-                                                      <div class="modal-content">
-                                                        <div class="modal-body p-0">
-                                                          <div class="card card-plain">
-                                                            <div class="card-header pb-0 text-left">
-                                                              <h3 class="font-weight-bolder text-info text-gradient">Edit Data Mitra</h3>
-                                                            </div>
-                                                            <div class="card-body">
-                                                              <form role="form text-left" action="/update-mitra" method="post">
-                                                                @csrf
-                                                                <div class="input-group mb-3"> 
+
+    <div class="row mt-2 ms-3">
+        <div class="col-lg-10 mb-lg-0 mb-2">
+
+            <div class="table-responsive">
+                <li class="card card-frame vstack gap-2 col-md-8 mx-auto">
+                    <div class="d-flex align-items-center">
+                        <table class="table align-items-center ">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $u)
+                                <tr class="text-center">
+                                    <td class="pt-3">{{$loop->iteration}}</td>
+                                    <td class="pt-3">{{$u->name}}</td>
+                                    <td class="pt-3">{{$u->roles->first()->display_name}}</td>
+                                    <td>
+
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{$u->id}}">Edit</button>
+                                        <a href="{{ url('delete-mitra/'.$u->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <!--Edit Form-->
+                                <div class="modal fade" id="edit{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-0">
+                                                <div class="card card-plain">
+                                                    <div class="card-header pb-0 text-left">
+                                                        <h3 class="font-weight-bolder text-info text-gradient">Edit Data Mitra</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <form role="form text-left" action="/update-mitra" method="post">
+                                                            @csrf
+                                                            <div class="input-group mb-3">
                                                                 <input type="hidden" name="id" class="form-control" placeholder="" value="{{$u->id}}" aria-label="Password" aria-describedby="password-addon">
+                                                            </div>
+                                                            <label>Nama Mitra</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Mitra" value="{{$u->name}}" aria-label="Password" aria-describedby="password-addon" autofocus>
+                                                                @error('name')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
                                                                 </div>
-                                                                <label>Nama Mitra</label>
-                                                                <div class="input-group mb-3">
-                                                                  <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
-                                                                  placeholder="Nama Mitra" value="{{$u->name}}" aria-label="Password" aria-describedby="password-addon" autofocus>
-                                                                  @error('name')
-                                                                  <div class="invalid-feedback">
-                                                                      {{ $message }}
-                                                                  </div>
-                                                              @enderror
+                                                                @enderror
+                                                            </div>
+                                                            <label>Email</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="email" name="email" class="form-control" value="{{$u->email}}" aria-label="Email" aria-describedby="email-addon" readonly>
+                                                            </div>
+                                                            <label>NIK</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="nik" class="form-control  @error('nik') is-invalid @enderror" value="{{$u->nik}}" placeholder="Nomor Induk Kependudukan">
+                                                                @error('nik')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
                                                                 </div>
-                                                                <label>Email</label>
-                                                                <div class="input-group mb-3">
-                                                                  <input type="email" name="email" class="form-control" value="{{$u->email}}" aria-label="Email" aria-describedby="email-addon" readonly>
+                                                                @enderror
+                                                            </div>
+                                                            <label>NPWP</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="npwp" class="form-control @error('npwp') is-invalid @enderror" value="{{$u->npwp}}" placeholder="Masukkan NPWP">
+                                                                @error('npwp')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
                                                                 </div>
-                                                                <label>NIK</label>
-                                                                <div class="input-group mb-3">
-                                                                  <input type="text" name="nik" class="form-control  @error('nik') is-invalid @enderror" value="{{$u->nik}}" placeholder="Nomor Induk Kependudukan">
-                                                                  @error('nik')
-                                                                  <div class="invalid-feedback">
-                                                                      {{ $message }}
-                                                                  </div>
-                                                              @enderror
-                                                                </div>
-                                                                <label>NPWP</label>
-                                                                <div class="input-group mb-3">
-                                                                  <input type="text" name="npwp" class="form-control @error('npwp') is-invalid @enderror" value="{{$u->npwp}}" placeholder="Masukkan NPWP">
-                                                                  @error('npwp')
-                                                                  <div class="invalid-feedback">
-                                                                      {{ $message }}
-                                                                  </div>
-                                                              @enderror
-                                                                </div>
-                                                                {{-- <label>Password</label>
+                                                                @enderror
+                                                            </div>
+                                                            {{-- <label>Password</label>
                                                                 <div class="input-group mb-3">
                                                                   <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                                                                 </div>
@@ -142,25 +92,25 @@
                                                                 <div class="input-group mb-3">
                                                                   <input type="password" name="password_confirmation" class="form-control" placeholder="Password Confirmation" aria-label="Password" aria-describedby="password-addon">
                                                                 </div> --}}
-                                                                <div class="text-center">
-                                                                  <button type="submit" class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update Data</button>
-                                                                </div>
-                                                              </form>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update Data</button>
                                                             </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
+                                                        </form>
                                                     </div>
-                                                </div>     
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    
-                </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                </li>
+
             </div>
+
         </div>
     </div>
 </main>
