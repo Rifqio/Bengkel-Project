@@ -53,7 +53,7 @@
                                     {{$s->address}}
                                 </td>
                                 <td class="align-middle text-sm">
-                                    @if($s->lat || $s->long == NULL)
+                                    @if($s->lat == NULL || $s->long == NULL)
                                     <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
                                         Konfirm
                                     </button>
@@ -62,9 +62,12 @@
                                         Aktifkan
                                     </button>
                                     @endif
-                                    <button class="btn text-white" style="background-color: red">
-                                        Delete
-                                    </button>
+                                        <button class="btn text-white" style="background-color: red">
+                                            Delete
+                                        </button>
+                                        <button type="button" class="btn btn-block bg-gradient-info mb-3" data-bs-toggle="modal" data-bs-target="#detail{{$s->id}}">
+                                            Detail
+                                        </button>
                                 </td>
                                 <!--Modal Konfirmasi-->
                                 <div class="modal fade" id="conf{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">

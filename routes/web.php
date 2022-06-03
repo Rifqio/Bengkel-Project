@@ -29,7 +29,8 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
+
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
 Route::controller(CategoriesController::class)->group(function () {
@@ -149,8 +150,22 @@ Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
     Route::get('sparepart/brakes/{id}', 'brakeDetails');
     Route::get('sparepart/oil/{id}', 'oilDetails');
+    Route::get('sparepart/suspension/{id}', 'suspensionDetails');
+    Route::get('sparepart/electronics/{id}', 'electronicsDetails');
+    Route::get('sparepart/exhaust/{id}', 'exhaustDetails');
+    Route::get('sparepart/wheels/{id}', 'wheelsDetails');
+    Route::get('sparepart/tools/{id}', 'toolsDetails');
 });
 
 Route::get('/product', function () {
     return view('user/userproduct');
+});
+Route::get('/loginn', function () {
+    return view('auth/loginn');
+});
+Route::get('/registerr', function () {
+    return view('auth/registerr');
+});
+Route::get('/forget', function () {
+    return view('auth/forget');
 });
