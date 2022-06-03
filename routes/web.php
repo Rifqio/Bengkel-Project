@@ -29,7 +29,6 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route

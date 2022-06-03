@@ -9,8 +9,15 @@
 
   <br>
   <div class="container">
-    <img style="max-width: 50px; height:auto; border-radius:50%;" src="{{ asset('data_user/'.$user->id.'/profile/'.$user->profile_photo_path) }}" alt="{{$user->profile_photo_path}}">
     <div class="fixed-bottom card card-frame vstack gap-2 col-md-5 mx-auto ">
+      <!-- tampilan foto diprofil -->
+      <div class="position-relative">
+        <div class="position-absolute top-50 start-50 translate-middle">
+          <div class="col-md-17 mx-auto">
+            <img style="max-width: 100px; height: 100px; border-radius:50%; " src="{{ asset('data_user/'.$user->id.'/profile/'.$user->profile_photo_path) }}" alt="{{$user->profile_photo_path}}">
+          </div>
+        </div>
+      </div>
       <div class="card-body">
         {{-- Notifikasi Error --}}
         @if ($errors->any())
