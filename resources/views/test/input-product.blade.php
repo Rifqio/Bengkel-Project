@@ -21,9 +21,10 @@
         <select class="px-4 py-3 rounded-full" name="store">
             <option selected>Pilih Bengkel</option>
             @foreach($store as $s)
-            <option value="{{$s->id}}">{{$s->store_name}}</option>
+                <option value="{{$s->id}}">{{$s->store_name}}</option>
             @endforeach
         </select>
+        <input type="number" name="price" placeholder="Masukkan Harga">
         <button type="submit">Submit</button>
     </form>
 </body>

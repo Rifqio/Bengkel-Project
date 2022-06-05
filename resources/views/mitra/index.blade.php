@@ -26,7 +26,7 @@
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Products</p>
                                         <h5 class="font-weight-bolder">
-                                            10
+                                            5
                                         </h5>
                                     </div>
                                 </div>

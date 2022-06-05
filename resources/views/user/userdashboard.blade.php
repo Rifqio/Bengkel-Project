@@ -1,4 +1,5 @@
 <x-app-layout>
+<<<<<<< HEAD
     
     <!-- This example requires Tailwind CSS v2.0+ -->
 <nav class="bg-white">
@@ -73,6 +74,47 @@
    
   </nav>
   
+=======
+    <div class="relative bg-white overflow-hidden">
+        <div class="2xl:max-w-full 2xl:mx-10 xl:max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                    fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
+
+                <div>
+                    <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+                        <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start"
+                            aria-label="Global">
+                            <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                                <div class="flex items-center justify-between w-full md:w-auto">
+                                    <a href="#">
+                                        <span class="sr-only">Workflow</span>
+                                        <h1 class="font-extralight text-2xl font-bold">BAE</h1>
+                                    </a>
+                                    <div class="-mr-2 flex items-center md:hidden">
+                                        <button type="button"
+                                            class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                            aria-expanded="false">
+                                            <span class="sr-only">Open main menu</span>
+                                            <!-- Heroicon name: outline/menu -->
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 6h16M4 12h16M4 18h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
+
+                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Categories</a>
+
+                                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">About Us</a>
+>>>>>>> 4872b9beef0f640766a83c266d1314ea87543ede
 
 
    
@@ -87,17 +129,16 @@
                   To: "opacity-0 scale-95"
               -->
 
-                <main class=" bg-white  mx-auto max-w-7xl 2xl:max-w-max px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                <main class="bg-white  mx-auto max-w-7xl 2xl:max-w-max px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                     
                     <div class="sm:text-center lg:text-left">
                         <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                            <span class="text-black xl:inline ">Make Your Problem Easier With BengkelAE </span>
+                            Make Your Problem 
+                            Easier With BengkelAE
 
                         </h1>
                         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-                            Elit
-                            sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+                            BengelAE atau juga di sebut BAE menyediakan fitur-fitur yang membantu Customer untuk mencari bengkel terdekat yang secara online</p>
                         @auth
                         @else
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -146,6 +187,7 @@
             <center>
                 <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
             </center>
+        </center>
             <!-- ABOUT -->
             <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
                 <h5 id="About_us" class="text-green-500 mt-5 font-semibold capitalize pb-2 ">ABOUT US</h5>
@@ -153,13 +195,15 @@
             <p class="text-xl text-left font-semibold capitalize pb-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro animi libero non tempora minus, quasi, quisquam consectetur eos sapiente expedita quibusdam earum id cumque sunt? At quaerat quo ullam quas.
             </p>
+            
             <div class="card bg-success p-2 text-dark bg-opacity-25" 
             style="width: 20rem; height:250px; background:rgba(196, 196, 196, 1);">
-                <div class="card-body">
+                <div class="card-body" >
                     <div class="login100-form-social flex-c-m">
-                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-                            <img class="mt-4 h-6  object-cover  md:w-20 " src="/img/logo_telpon.png" alt="">
-                        </a>
+                        <p href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <img class="mt-4 h-6  object-cover  md:w-20 "zsrc="/img/logo_telpon.png" alt="">
+                            (+62)81225967157
+                        </p>
 
                         <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
                             <img class="mt-5 h-6  object-cover  md:w-20 " src="/img/logo_telpon.png" alt="">
@@ -172,6 +216,7 @@
                     <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
+        <center>
             <center>
                 <img class=" mt-5 sm:mt-8 h-6  object-cover  md:w-40 " src="/img/titik_pemisah.svg" alt="">
             </center>
@@ -181,8 +226,10 @@
             <div class="container" id='rekomen'>
                 <!--Content-->
             </div>
-            <div id="show" style="width:100%; height:580px;">
-                <!--Content-->
+            <div class="row">
+                <div id="show" style="width:70%; height:380px;">
+                    <!--Content-->
+                </div>
             </div>
         </center>
     </div>
@@ -202,11 +249,12 @@
     </script>
     <script>
         var loadMap = function(id) {
-            var data = {!!json_encode($location)!!}
+            var data = {!! json_encode($location) !!}
             var map = L.map(id, {
                 wheelPxPerZoomLevel: 150
             });
-            var tile_url = 'https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ';
+            var tile_url =
+                'https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ';
             var layer = L.tileLayer(tile_url, {
                 attribution: 'BengkelAE',
                 maxZoom: 18,
@@ -246,21 +294,24 @@
                         idstore[i] = data[i][3];
                     }
                     for (var i = 0; i < marker.length; i++) {
-                        if (distance[i] <= 1) {
+                        if (distance[i] <= 3) {
                             console.log(distance[i]);
                             console.log(namestore[i]);
                             var button = document.createElement("a");
                             button.type = 'button';
                             button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
-                            button.style.cssText += 'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
+                            button.style.cssText +=
+                                'color:black;background-color:yellow;margin:3px; margin-bottom:10px;';
                             button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
-                            button.className += " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            button.className +=
+                                " inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                             document.getElementById("rekomen").appendChild(button);
                         }
                     }
 
                     function onClick(e) {
-                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
+                        window.location.href = '{{ url('
+                        store - view ') }}/' + this.options.win_url + '/show';
                     }
                 })
                 .on('locationerror', function(e) {

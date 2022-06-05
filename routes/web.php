@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NotificationController;
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
 Route::controller(CategoriesController::class)->group(function () {
@@ -52,8 +54,14 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
+    Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::get('/store-edit/{id}', 'StoreEdit');
+    Route::post('/store-update', 'StoreUpdate');
+    Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
+    
+
 });
 
 //Profile
@@ -69,7 +77,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
     Route::post('/update-mitra', 'UpdateDataMitra');
-    // Route::delete('/delete-mitra/{id}', 'DeleteDataMitra');
+    Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
@@ -135,6 +143,26 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
+    Route::get('sparepart/brakes/{id}', 'brakeDetails');
+    Route::get('sparepart/oil/{id}', 'oilDetails');
+    Route::get('sparepart/suspension/{id}', 'suspensionDetails');
+    Route::get('sparepart/electronics/{id}', 'electronicsDetails');
+    Route::get('sparepart/exhaust/{id}', 'exhaustDetails');
+    Route::get('sparepart/wheels/{id}', 'wheelsDetails');
+    Route::get('sparepart/tools/{id}', 'toolsDetails');
+});
+
+Route::get('/product', function () {
+    return view('user/userproduct');
+});
+Route::get('/loginn', function () {
+    return view('auth/loginn');
+});
+Route::get('/registerr', function () {
+    return view('auth/registerr');
+});
+Route::get('/forget', function () {
+    return view('auth/forget');
 });
 
  //Route login dan register 

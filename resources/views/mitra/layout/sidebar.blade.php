@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link {{
-                    Request::is('dashboard/show') ? 'active' : '' }} " href="{{url('store-register')}}">
+                    Request::is('store-register') ? 'active' : '' }} " href="{{url('store-register')}}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
@@ -62,7 +62,7 @@
             
             <li class="nav-item">
                 <a class="nav-link {{
-                    Request::is('dashboard/show') ? 'active' : '' }} " href="/dashboard/show">
+                    Request::is('dashboard/show') ? 'active' : '' }} " href="/list-store">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
