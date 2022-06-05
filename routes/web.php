@@ -123,11 +123,7 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
 
-    //syita nyoba
-    Route::get('/register_view_test', function () {
-        return view('auth.register_temp');
-    });
-});
+});  
 
 
 //Google Login Halo
@@ -141,11 +137,11 @@ Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
 });
 
-
-Route::get('/loginview', function () {
-    return view('template/loginview');
+ //Route login dan register 
+Route::get('/register_view_test', function () {
+    return view('auth.register_temp');
 });
 
-Route::get('/registerview', function () {
-    return view('template/registerview');
+Route::get('/login_view_test', function () {
+    return view('auth.login_temp');
 });

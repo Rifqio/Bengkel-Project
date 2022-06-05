@@ -36,7 +36,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Add Products</span>
+                    <span class="nav-link-text ms-1">Add Sparepart</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -46,7 +46,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Product List</span>
+                    <span class="nav-link-text ms-1">List Sparepart</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -59,6 +59,7 @@
                     <span class="nav-link-text ms-1">Add Bengkel</span>
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link {{
                     Request::is('dashboard/show') ? 'active' : '' }} " href="/dashboard/show">
@@ -66,7 +67,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Bengkel List</span>
+                    <span class="nav-link-text ms-1">List Bengkel </span>
                 </a>
             </li>
         </ul>
