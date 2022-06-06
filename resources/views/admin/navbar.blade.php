@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item text-sm text-white active">
                     @if (Request::is('dashboard'))
                         Dashboard
-                    @elseif(Request::is('dashboard/create'))
+                    ;   @elseif(Request::is('dashboard/create'))
                         Create Employee
                     @elseif(Request::is('dashboard/show'))
                         User List
