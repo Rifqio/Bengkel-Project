@@ -56,7 +56,7 @@
             <label for="pp" class="form-label">Update Foto Profile</label>
             <input type="file" name="profile" class="form-control" id="pp">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-success">Submit</button>
         </form>
       </div>
     </div>

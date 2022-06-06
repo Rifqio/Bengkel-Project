@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/argon/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/argon/img/favicon.png">
   <title>
-    Superadmin Dashboard
+    SuperAdmin Dashboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -32,6 +32,7 @@
   <script src="/argon/js/core/bootstrap.min.js"></script>
   <script src="/argon/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="/argon/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="/argon/js/plugins/chartjs.min.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
