@@ -18,6 +18,7 @@ class Store extends Model
         'phone_store',
         'status_activation',
         'id_mitra',
+        'id_kecamatan',
         'store_image',
         'lat',
         'long'

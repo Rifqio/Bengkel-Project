@@ -10,7 +10,8 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('profile')}}">
+                
+                <a class="nav-link active" href="{{url('profile')}}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
@@ -35,7 +36,7 @@
                     <span class="nav-link-text ms-1">Validasi Bengkel</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link active" href="{{url('list-bengkel')}}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -45,27 +46,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{url('list-mitra')}}">
+                <a class="nav-link active" href="{{url('list-mitra')}}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-badge text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">List Mitra</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-settings text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Approve Bengkel</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Pending Bengkel</span>
                 </a>
             </li>
         </ul>
