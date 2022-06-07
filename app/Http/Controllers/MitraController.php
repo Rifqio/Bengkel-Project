@@ -67,7 +67,6 @@ class MitraController extends Controller
         $notif = 'Pendaftaran Bengkel Sedang Diproses';
         $user = User::find(1);
         Notification::send($user, new StoreRegister($notif));
-
         return redirect('store-register');
     }
 

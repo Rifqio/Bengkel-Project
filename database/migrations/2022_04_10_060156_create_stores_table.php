@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('store_image')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
