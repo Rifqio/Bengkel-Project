@@ -125,6 +125,9 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-input-product', 'TestInputProductStore');
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
+    // Route::get('view-reservasi', 'reservasiView');
+    // Route::post('view-reservasi', 'reservasiStore');
+    // Route::get('reservasi', 'reservasi');
 });
 
 
