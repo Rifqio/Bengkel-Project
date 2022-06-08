@@ -29,6 +29,7 @@
                                                         <th>Gambar Bengkel</th>
                                                         <th>Latitude</th>
                                                         <th>Longtiude</th>
+                                                        <th>Kecamatan</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -45,6 +46,7 @@
                                                             <td class="pt-3">{{$s->store_image}}</td>
                                                             <td class="pt-3">{{$s->lat}}</td>
                                                             <td class="pt-3">{{$s->long}}</td>
+                                                            <td class="pt-3">{{$s->id_kecamatan}}</td>
                                                             <td>
                                     
                                                                 <a href="/store-edit/{{ $s->id }}" class=""><button type="button" class="btn btn-warning" >Edit</button></a>

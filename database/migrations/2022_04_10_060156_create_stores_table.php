@@ -20,13 +20,15 @@ return new class extends Migration
             $table->time('close');
             $table->string('address');
             $table->string('phone_store');
+            // $table->string('kuota_reservasi')->nullable();
             $table->string('status_activation');
             $table->foreignId('id_mitra')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_kecamatan')->constrained('kecamatan')->onUpdate('cascade')->onDelete('cascade');
             $table->string('store_image')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
-            //Kurang id kecamatan
         });
     }
 

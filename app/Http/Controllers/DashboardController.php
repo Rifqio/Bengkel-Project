@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\Role;
-use App\Models\Store;
 use App\Models\User;
-use Carbon\Carbon;
+use App\Models\Store;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+
 class DashboardController extends Controller
 {
     /**
@@ -24,22 +26,35 @@ class DashboardController extends Controller
     {
         if (Auth::user()->hasRole('employee')) {
             return view('admin.admindashboard');
-        } elseif (Auth::user()->hasRole('superadmin')) {
+        }
+        elseif (Auth::user()->hasRole('superadmin'))
+        {
             $employe = User::whereRoleIs(['employee'])->get();
             return view('SuperAdmin.admindashboard', [
-                'employee'=>$employe,
+                'employee' => $employe,
                 'total_users' => User::count(),
                 'total_stores' => Store::count(),
                 'total_items' => Item::count(),
             ]);
-        } elseif (Auth::user()->hasRole('mitra')) {
+        }
+        elseif (Auth::user()->hasRole('mitra'))
+        {
+            $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
             $mitra = User::find(Auth::user()->id);
             return view('mitra.index', [
-                'mitra'=>$mitra,
+                'data' => $data->count(),
+                'mitra' => $mitra,
             ]);
-        } else {
+        }
+
+        else {
             return view('user.userdashboard', ['title' => 'Landing Page']);
         }
+    }
+
+    public function profile()
+    {
+        return 'Hello';
     }
 
     public function GuestView()
@@ -47,24 +62,25 @@ class DashboardController extends Controller
         //return view('user.userdashboard', ['title' => 'Dashboard']);
         $store = Store::where('status_activation', 1)->get();
         $data = [];
-        foreach($store as $s){
+        foreach ($store as $s) {
             $data[] = [
                 $s->store_name,
-                $s->lat,$s->long,
+                $s->lat, $s->long,
                 $s->id,
             ];
         }
-        return view('user.userdashboard' , [
+        return view('user.userdashboard', [
             'items' => Item::all(),
             'location' => $data,
             'title' => 'Dashboard'
         ]);
     }
 
-    public function StoreView($id){
+    public function StoreView($id)
+    {
         $data = Store::find($id);
         $latlong = [$data->lat, $data->long];
-        return view('user.store-view' , [
+        return view('user.store-view', [
             'data' => $data,
             'latlong' => $latlong,
         ]);
@@ -86,8 +102,10 @@ class DashboardController extends Controller
         elseif (Auth::user()->hasRole('mitra'))
         {
             $mitra = User::find(Auth::user()->id);
+            $categories = Category::all();
             return view('mitra.crud.create', [
-                'mitra' => $mitra
+                'mitra' => $mitra,
+                'categories' => $categories
             ]);
         }
     }
@@ -100,7 +118,6 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -111,12 +128,23 @@ class DashboardController extends Controller
      */
     public function show(User $user)
     {
-        //$emp = User::whereRoleIs(['employee'])->get();
-        $users = User::all();
-
-        return view('SuperAdmin.employeeList.index', [
-            'users' => $users,
-        ]);
+        if (Auth::user()->hasRole('superadmin'))
+        {
+            $users = User::whereRoleIs(['employee', 'mitra'])->get();
+            return view('SuperAdmin.employeeList.index', [
+                'users' => $users,
+            ]);
+        }
+        elseif (Auth::user()->hasRole('mitra'))
+        {
+            $mitra = User::find(Auth::user()->id);
+            $store = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
+            return view('mitra.productList.index',
+            [
+                'data' => $store,
+                'mitra' => $mitra
+            ]);
+        }
     }
 
     /**
@@ -128,8 +156,7 @@ class DashboardController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-
-        return view('SuperAdmin.crud.edit',[
+        return view('SuperAdmin.crud.edit', [
             'user' => $user,
             'roles' => Role::all(),
         ]);

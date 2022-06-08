@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NotificationController;
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,8 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-Route::resource('dashboard', DashboardController::class)->except(['destroy', 'update', 'store'])->middleware(['auth', 'verified']);
+
+Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
 Route::controller(CategoriesController::class)->group(function () {
@@ -61,6 +63,8 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     
 
+    Route::post('create-product', 'create_product');
+    Route::get('bengkel-list', 'bengkel_list');
 });
 
 //Profile
@@ -83,6 +87,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
 Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
     Route::get('/list-bengkel', 'StoreView');
     Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('reject-bengkel/{id}', 'RejectBengkel');
 });
 
 //Route Confirmation Email
@@ -129,6 +134,9 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-input-product', 'TestInputProductStore');
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
+    // Route::get('view-reservasi', 'reservasiView');
+    // Route::post('view-reservasi', 'reservasiStore');
+    // Route::get('reservasi', 'reservasi');
 });
 
 
@@ -141,4 +149,24 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(CategoriesController::class)->group(function () {
     Route::get('sparepart', 'index');
+    Route::get('sparepart/brakes/{id}', 'brakeDetails');
+    Route::get('sparepart/oil/{id}', 'oilDetails');
+    Route::get('sparepart/suspension/{id}', 'suspensionDetails');
+    Route::get('sparepart/electronics/{id}', 'electronicsDetails');
+    Route::get('sparepart/exhaust/{id}', 'exhaustDetails');
+    Route::get('sparepart/wheels/{id}', 'wheelsDetails');
+    Route::get('sparepart/tools/{id}', 'toolsDetails');
+});
+
+Route::get('/product', function () {
+    return view('user/userproduct');
+});
+Route::get('/loginn', function () {
+    return view('auth/loginn');
+});
+Route::get('/registerr', function () {
+    return view('auth/registerr');
+});
+Route::get('/forget', function () {
+    return view('auth/forget');
 });

@@ -31,6 +31,7 @@
     <script src="/argon/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/argon/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
+
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
           var options = {

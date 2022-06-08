@@ -113,8 +113,7 @@
 
     <div class="py-12">
         <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
-            <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1>
-            
+            <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1> 
         </div>
         <center>
             <center>
@@ -189,8 +188,6 @@
                     }
                     for (var i = 0; i < marker.length; i++) {
                         if (distance[i] <= 1) {
-                            console.log(distance[i]);
-                            console.log(namestore[i]);
                             var button = document.createElement("a");
                             button.type = 'button';
                             button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
@@ -200,7 +197,6 @@
                             document.getElementById("rekomen").appendChild(button);
                         }
                     }
-
                     function onClick(e) {
                         window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
                     }
