@@ -132,11 +132,7 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
 
-    //syita nyoba
-    Route::get('/register_view_test', function () {
-        return view('auth.register_temp');
-    });
-});
+});  
 
 
 //Google Login Halo
@@ -168,4 +164,13 @@ Route::get('/registerr', function () {
 });
 Route::get('/forget', function () {
     return view('auth/forget');
+});
+
+ //Route login dan register 
+Route::get('/register_view_test', function () {
+    return view('auth.register_temp');
+});
+
+Route::get('/login_view_test', function () {
+    return view('auth.login_temp');
 });

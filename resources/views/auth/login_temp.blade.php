@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Register</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -45,13 +45,10 @@
 					</div>
 
 					<span class="login100-form-title p-b-43">
-						Create Your Free Account!
+						Hello Again!
 					</span>
 
-					<div>
-						<x-jet-label for="name" value="{{ __('Name') }}" />
-						<x-jet-input id="name" class="block mt-10 w-full form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-					</div>
+					
 
 					<div class="mt-4">
 						<x-jet-label for="email" value="{{ __('Email') }}" />
@@ -59,56 +56,25 @@
 					</div>
 
 					<div class="mt-4">
-						<x-jet-label for="nik" value="{{ __('Nomor Induk Kependudukan') }}" />
-						<x-jet-input id="nik" class="block mt-1 w-full form-control" type="number" name="nik" :value="old('nik')" required />
-					</div>
-
-					<div class="mt-4">
-						<x-jet-label for="npwp" value="{{ __('NPWP') }}" />
-						<x-jet-input id="npwp" class="block mt-1 w-full form-control" type="number" name="npwp" :value="old('npwp')" />
-					</div>
-
-					<div class="mt-4">
-						<x-jet-label for="photo" value="{{ __('Foto KTP') }}" />
-						<x-jet-input id="photo" class="block mt-1 w-full" type="file" name="photo" :value="old('ktp')" required />
-					</div>
-
-					<div class="mt-4">
 						<x-jet-label for="password" value="{{ __('Password') }}" />
 						<x-jet-input id="password" class="block mt-1 w-full form-control" type="password" name="password" required autocomplete="new-password" />
 					</div>
 
-					<div class="mt-4">
-						<x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-						<x-jet-input id="password_confirmation" class="block mt-1 w-full form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
-					</div>
-
+					
 					<div class="mb-3 form-check">
 						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Check me out</label>
+						<label class="form-check-label" for="exampleCheck1">Remember me</label>
 					</div>
 
-					<div class="mt-4">
-						<x-jet-label for="terms">
-							<div class="flex items-center">
-								<x-jet-checkbox name="terms" id="terms" />
-								<div class="ml-2">
-									{!! __('I agree to the :terms_of_service and :privacy_policy', [
-									'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-									'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-									]) !!}
-								</div>
-							</div>
-						</x-jet-label>
-					</div>
+					
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Register
+							Login
 						</button>
 					</div>
 					<div class="d-flex flex-row-reverse">
-						<div class="p-2">Already have an account? <a href="/login" class="link-secondary ">Login</a></div>
+						<div class="p-2">Don`t have an account? <a href="/register" class="link-secondary ">Register</a></div>
 					</div>
 
 			</div>
