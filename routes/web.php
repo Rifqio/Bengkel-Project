@@ -84,6 +84,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
 Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
     Route::get('/list-bengkel', 'StoreView');
     Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('reject-bengkel/{id}', 'RejectBengkel');
 });
 
 //Route Confirmation Email
