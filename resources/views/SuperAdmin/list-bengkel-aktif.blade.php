@@ -4,48 +4,18 @@
     <!-- Navbar -->
     @include('SuperAdmin.navbar')
     <!-- End Navbar -->
-
-    <div class="carousel-item h-100" style="background-image: url('/argon/img/carousel-2.jpg');
-      background-size: cover;">
-        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-            </div>
-            <h5 class="text-white mb-1">Faster way to create web pages</h5>
-            <p>That’s my skill. I’m not really specifically talented at anything except for the
-                ability to learn.</p>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <h1 class="text-white mb-4">LIST BENGKEL AKTIF</h1>
         </div>
     </div>
-    <div class="carousel-item h-100" style="background-image: url('/argon/img/carousel-3.jpg');
-      background-size: cover;">
-        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                <i class="ni ni-trophy text-dark opacity-10"></i>
-            </div>
-            <h5 class="text-white mb-1">Share with us your design tips!</h5>
-            <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.
-            </p>
-        </div>
-    </div>
-    </div>
-    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-    </div>
-    </div>
-    </div>
+    
     <div class="row mt-4">
         <div class="col-lg-12 mb-lg-0 mb-4">
             <div class="card ">
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Sales by Country</h6>
+                        <h6 class="mb-2"></h6>
                     </div>
                 </div>
                 <div class="table-responsive">

@@ -12,6 +12,8 @@
                         Create Employee
                     @elseif(Request::is('dashboard/show'))
                         User List
+                    @elseif(Request::is('list-bengkel'))
+                        Bengkel Aktif
                     @endif
                 </li>
             </ol>
@@ -22,6 +24,8 @@
                     Create Employee
                 @elseif(Request::is('dashboard/show'))
                     User List
+                @elseif(Request::is('list-bengkel'))
+                    Bengkel Aktif
                 @endif
             </h6>
         </nav>

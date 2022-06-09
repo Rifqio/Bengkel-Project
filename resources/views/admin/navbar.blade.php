@@ -8,20 +8,28 @@
                 <li class="breadcrumb-item text-sm text-white active">
                     @if (Request::is('dashboard'))
                         Dashboard
-                    @elseif(Request::is('dashboard/create'))
-                        Create Employee
-                    @elseif(Request::is('dashboard/show'))
-                        User List
+                    @elseif(Request::is('profile'))
+                        Profile
+                    @elseif(Request::is('validasi-bengkel'))
+                        Validasi Bengkel
+                    @elseif(Request::is('list-bengkel'))
+                        Bengkel Aktif
+                    @elseif(Request::is('list-mitra'))
+                        List Mitra
                     @endif
                 </li>
             </ol>
             <h6 class="font-weight-bolder text-white mb-0">
                 @if (Request::is('dashboard'))
                     Dashboard
-                @elseif(Request::is('dashboard/create'))
-                    Create Employee
-                @elseif(Request::is('dashboard/show'))
-                    User List
+                @elseif(Request::is('profile'))
+                    Profile
+                @elseif(Request::is('validasi-bengkel'))
+                    Validasi Bengkel
+                @elseif(Request::is('list-bengkel'))
+                    Bengkel Aktif
+                @elseif(Request::is('list-mitra'))
+                    List Mitra
                 @endif
             </h6>
         </nav>
