@@ -12,7 +12,7 @@
     </div>
 
     <div class="row mt-2 ms-3">
-        <div class="col-lg-10 mb-lg-0 mb-2">
+        <div class="col-lg-30 mb-lg-0 mb-2">
             <div class="table-responsive">
                 <li class="card card-frame vstack gap-2 col-md-8 mx-auto">
                     <div class="d-flex align-items-center">
