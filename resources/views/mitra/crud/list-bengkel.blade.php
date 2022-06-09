@@ -25,7 +25,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="table responsive">
+                    <div class="table-responsive">
                         <table class="table align-items-center">
                             <tbody>
                                 <tr class="text-center">
