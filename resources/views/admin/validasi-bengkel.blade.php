@@ -1,16 +1,13 @@
 @extends('admin.adminlayout')
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
-
     <!-- Navbar -->
     @include('admin.navbar')
     <!-- End Navbar -->
-
     <div class="container-fluid py-4">
         <div class="row">
             <h1 class="text-white mb-4">VALIDASI BENGKEL</h1>
         </div>
-
     </div>
     <div class="row mt-4">
         <div class="col-lg-12 mb-lg-0 mb-4">
@@ -20,17 +17,26 @@
                         <h6 class="mb-2"></h6>
                     </div>
                 </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table align-items-center ">
                         <tbody>
                             <tr>
                                 <th>No</th>
                                 <th>Store Name</th>
-                                <th>owner</th>
-                                <th>email</th>
                                 <th>Phone</th>
                                 <th>Address</th>
-                                <th>Action</th>
+                                <th>
+                                    <center>Action</center>
+                                </th>
                             </tr>
                             @foreach($stores as $s)
                             <tr>
@@ -41,34 +47,69 @@
                                     {{$s->store_name}}
                                 </td>
                                 <td>
-                                    {{$s->users->name}}
-                                </td>
-                                <td>
-                                    {{$s->users->email}}
-                                </td>
-                                <td>
                                     {{$s->phone_store}}
                                 </td>
                                 <td class="align-middle text-sm">
                                     {{$s->address}}
                                 </td>
                                 <td class="align-middle text-sm">
-                                    @if($s->lat == NULL || $s->long == NULL)
-                                    <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
-                                        Konfirm
-                                    </button>
-                                    @else
+                                    @if($s->lat && $s->long != NULL)
                                     <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#act{{$s->id}}">
                                         Aktifkan
                                     </button>
+                                    @else
+                                    <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
+                                        Konfirm
+                                    </button>
+                                    <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#rej{{$s->id}}">
+                                        Reject
+                                    </button>
                                     @endif
-                                        <button class="btn text-white" style="background-color: red">
-                                            Delete
-                                        </button>
-                                        <button type="button" class="btn btn-block bg-gradient-info mb-3" data-bs-toggle="modal" data-bs-target="#detail{{$s->id}}">
-                                            Detail
-                                        </button>
+                                    <button class="btn text-white" style="background-color: red">
+                                        Delete
+                                    </button>
+                                    <button type="button" class="btn btn-block bg-gradient-info mb-3" data-bs-toggle="modal" data-bs-target="#detail{{$s->id}}">
+                                        Detail
+                                    </button>
                                 </td>
+                                <!--Modal Reject-->
+                                <div class="modal fade" id="rej{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Form Reject Bengkel</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <form method="POST" action="{{ url('reject-bengkel/'.$s->id) }}">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Nama Bengkel:</label>
+                                                        <input type="text" class="form-control" value="{{$s->store_name}}" id="recipient-name" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Pemilik:</label>
+                                                        <input type="text" class="form-control" value="{{$s->users->name}}" id="recipient-name" readonly>
+                                                        <input type="hidden" class="form-control" name="email" value="{{$s->users->email}}" id="recipient-name" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">NIK Pemilik:</label>
+                                                        <input type="text" class="form-control" value="{{$s->users->nik}}" id="recipient-name" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Masukkan Alasan:</label>
+                                                        <textarea class="form-control" name="alasan" aria-label="With textarea" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn bg-gradient-warning" data-bs-dismiss="modal">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!--Modal Konfirmasi-->
                                 <div class="modal fade" id="conf{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
@@ -134,6 +175,46 @@
                         </div>
                     </div>
                 </div>
+                <!-- Modal Detail -->
+                <div class="modal fade" id="detail{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">New message to @CT</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Nama Bengkel:</label>
+                                        <input type="text" class="form-control" value="{{$s->store_name}}" id="recipient-name" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Pemilik:</label>
+                                        <input type="text" class="form-control" value="{{$s->users->name}}" id="recipient-name" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Email:</label>
+                                        <input type="text" class="form-control" value="{{$s->users->email}}" id="recipient-name" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Telefon Bengkel:</label>
+                                        <input type="text" class="form-control" value="{{$s->phone_store}}" id="recipient-name" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Tanggal Diajukan:</label>
+                                        <input type="text" class="form-control" value="{{$s->updated_at}}" id="recipient-name" readonly>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </tr>
                 @endforeach
                 </tbody>
@@ -142,9 +223,7 @@
         </div>
     </div>
     </div>
-    </div>
 </main>
-
 <script>
     navigator.geolocation.getCurrentPosition(getLatLon);
 

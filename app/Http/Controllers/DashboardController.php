@@ -36,12 +36,14 @@ class DashboardController extends Controller
                 'total_stores' => Store::count(),
                 'total_items' => Item::count(),
             ]);
-        } elseif (Auth::user()->hasRole('mitra')) {
+        }
+        elseif (Auth::user()->hasRole('mitra'))
+        {
+            $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
             $mitra = User::find(Auth::user()->id);
-            $data = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
-            return view('mitra.mitradashboard', [
+            return view('mitra.index', [
+                'data' => $data->count(),
                 'mitra' => $mitra,
-                'data' => $data
             ]);
         }
 
