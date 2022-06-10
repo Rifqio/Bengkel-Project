@@ -88,12 +88,13 @@
                                   </div>
                                 </div>
                             </div>
+
                             <!-- Modal Detail -->
                             <div class="modal fade" id="detail{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">New message to @CT</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Detail List Bengkel aktif</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
@@ -115,6 +116,18 @@
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">Tanggal Diajukan:</label>
                                             <input type="text" class="form-control" value="{{$s->updated_at}}" id="recipient-name" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Gambar Bengkel</label>
+                                            <input type="text" class="form-control" value="{{$s->store_image}}" id="recipient-name" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Latitude</label>
+                                            <input type="text" class="form-control" value="{{$s->lat}}" id="recipient-name" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Longtiude</label>
+                                            <input type="text" class="form-control" value="{{$s->long}}" id="recipient-name" readonly>
                                         </div>
                                     </form>
                                     </div>

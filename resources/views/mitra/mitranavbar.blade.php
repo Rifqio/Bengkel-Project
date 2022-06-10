@@ -12,6 +12,12 @@
                         Create Employee
                     @elseif(Request::is('dashboard/show'))
                         User List
+                    @elseif(Request::is('store-register'))
+                        Add Bengkel
+                    @elseif(Request::is('list-store'))
+                        List Bengkel
+                    @elseif(Request::is('profile'))
+                        Profile
                     @endif
                 </li>
             </ol>
@@ -22,6 +28,12 @@
                     Create Employee
                 @elseif(Request::is('dashboard/show'))
                     User List
+                @elseif(Request::is('store-register'))
+                    Add Bengkel
+                @elseif(Request::is('list-store'))
+                    List Bengkel
+                @elseif(Request::is('profile'))
+                    Profile
                 @endif
             </h6>
         </nav>

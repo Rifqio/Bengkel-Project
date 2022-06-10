@@ -12,8 +12,12 @@
                     <div class="card-header pb-0 p-3">
                         {{-- Notifikasi Update --}}
                         @if (session('success_update'))
-                        <div class="alert alert-success col-lg-8`">
+                        <div class="alert alert-success text-center mx-auto alert-dismissible fade show" role="alert">
                             {{ session('success_update') }}
+                            <strong>Success!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         @endif
 
@@ -31,35 +35,156 @@
                                 <tr class="text-center">
                                     <th>No</th>
                                     <th>Nama Bengkel</th>
-                                    <th>Jam Buka</th>
-                                    <th>Jam Tutup</th>
                                     <th>Alamat Bengkel</th>
                                     <th>No. Telpon</th>
-                                    <th>Status Aktivasi</th>
-                                    <th>Gambar Bengkel</th>
-                                    <th>Latitude</th>
-                                    <th>Longtiude</th>
                                     <th>Action</th>
                                 </tr>
                                 @foreach ($stores as $s)
                                 <tr class="text-center">
                                     <td class="pt-3">{{$loop->iteration}}</td>
                                     <td class="pt-3">{{$s->store_name}}</td>
-                                    <td class="pt-3">{{$s->open}}</td>
-                                    <td class="pt-3">{{$s->close}}</td>
                                     <td class="pt-3">{{$s->address}}</td>
                                     <td class="pt-3">{{$s->phone_store}}</td>
-                                    <td class="pt-3">{{$s->status_activation}}</td>
-                                    <td class="pt-3">{{$s->store_image}}</td>
-                                    <td class="pt-3">{{$s->lat}}</td>
-                                    <td class="pt-3">{{$s->long}}</td>
                                     <td>
-
-                                        <a href="/store-edit/{{ $s->id }}" class=""><button type="button" class="btn btn-warning">Edit</button></a>
-                                        {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{$s->id}}">Edit</button> --}}
-                                        <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
+                                        <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Edit</button>
+                                        <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#detail-bengkel{{$s->id}}">Detail</button>
+                                        <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn bg-gradient-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                     </td>
                                 </tr>
+
+
+                                <!-- Edit List Bengkel -->
+                                <div class="modal fade" id="edit-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-0">
+                                                <div class="card card-plain">
+                                                    <div class="card-header pb-0 text-left">
+                                                        <h3 class="font-weight-bolder text-info text-gradient">Edit Data Bengkel</h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <form role="form text-left" action="/store-update" method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="id" class="form-control" placeholder="Id Bengkel" value="{{ $s->id}}">
+                                                            {{-- @error('store_name')
+                                                                <div class="invalid-feedback">
+                                                                {{$message}}
+                                                                </div> @enderror --}}
+                                                            <label>Nama Bengkel</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="store_name" class="form-control @error('store_name') is-invalid @enderror" placeholder="Nama Bengkel" value="{{ $s->store_name }}" class="form-control @error('store_name') is-invalid @enderror">
+                                                                @error('store_name')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Jam Buka</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="time" name="open" class="form-control  @error('open') is-invalid @enderror" placeholder="Jam Buka" value="{{ $s->open }}" class="form-control @error('open') is-invalid @enderror">
+                                                                @error('open')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                            </div>
+                                                            <label>Jam Tutup</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="time" name="close" class="form-control  @error('close') is-invalid @enderror" placeholder="Jam Tutup" value="{{ $s->close }}" class="form-control @error('close') is-invalid @enderror">
+                                                                @error('close')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Nomer Telp Bengkel</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="number" name="phone_store" class="form-control  @error('number') is-invalid @enderror" placeholder="No Telp Bengkel" value="{{ $s->phone_store }}" class="form-control @error('phone_store') is-invalid @enderror">
+                                                                @error('phone_store')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Alamat Bengkel</label>
+                                                            <div class="input-group mb-3">
+                                                                <textarea name="address" cols="30" rows="10" placeholder="Alamat Bengkel" class="form-control @error('address') is-invalid @enderror">
+                                                                    {{ $s->address }}
+                                                                    @error('address')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                                </textarea>
+                                                            </div>
+                                                            <input type="hidden" name="store_image" value="Dummy"><br>
+                                                            <button type="submit" class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update Data</button>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Detail -->
+                                <div class="modal fade" id="detail-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail List Bengkel</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nama Bengkel:</label>
+                                                <input type="text" class="form-control" value="{{$s->store_name}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Jam Buka</label>
+                                                <input type="text" class="form-control" value="{{$s->open}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Jam Tutup</label>
+                                                <input type="text" class="form-control" value="{{$s->close}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Alamat Bengkel</label>
+                                                <input type="text" class="form-control" value="{{$s->address}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">No. Telpon</label>
+                                                <input type="text" class="form-control" value="{{$s->phone_store}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Status Aktivasi</label>
+                                                <input type="text" class="form-control" value="{{$s->status_activation}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Gambar Bengkel</label>
+                                                <input type="text" class="form-control" value="{{$s->store_image}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Latitude</label>
+                                                <input type="text" class="form-control" value="{{$s->lat}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Longtiude</label>
+                                                <input type="text" class="form-control" value="{{$s->long}}" id="recipient-name" readonly>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                                 @endforeach
                             </tbody>
                         </table>
@@ -68,6 +193,10 @@
             </div>
         </div>
     </div>
+    </div>
+
+
+
 
 </main>
 @endsection

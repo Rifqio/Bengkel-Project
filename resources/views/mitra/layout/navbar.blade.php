@@ -15,6 +15,8 @@
                             Product List
                         @elseif(Request::is('list-store'))
                             List Bengkel
+                        @elseif(Request::is('profile'))
+                            Profile
                         @endif
                     </li>
                 </ol>
@@ -29,6 +31,8 @@
                         Add Bengkel
                     @elseif(Request::is('list-store'))
                         List Bengkel
+                    @elseif(Request::is('profile'))
+                        Profile
                     @endif
                 </h6>
             @elseif (Auth::user()->hasRole('superadmin'))
@@ -46,6 +50,8 @@
                             Add Bengkel
                         @elseif(Request::is('list-store'))
                             List Bengkel
+                        @elseif(Request::is('profile'))
+                            Profile
                         @endif
                     </li>
                 </ol>
@@ -60,6 +66,8 @@
                         Add Bengkel
                     @elseif(Request::is('list-store'))
                         List Bengkel
+                    @elseif(Request::is('profile'))
+                        Profile
                     @endif
                 </h6>
             @endif
