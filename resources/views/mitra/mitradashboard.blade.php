@@ -2,7 +2,7 @@
 @section('content')
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
-        @include('mitra.navbarmitra')
+        @include('mitra.mitranavbar')
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
