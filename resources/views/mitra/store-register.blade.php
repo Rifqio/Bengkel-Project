@@ -33,7 +33,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Add Bengkel</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                                <button type="submit" class="btn btn-success btn-sm ms-auto">Submit</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -54,9 +54,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="brand"
-                                            class="form-control-label @error('brand') is-invalid @enderror">Jam Buka</label>
-                                        <input class="form-control" name="brand" type="text" value="{{ old('brand') }}">
-                                        @error('brand')
+                                            class="form-control-label @error('open') is-invalid @enderror">Jam Buka</label>
+                                        <input class="form-control" name="open" type="time" value="{{ old('open') }}">
+                                        @error('open')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -67,10 +67,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
-                                            class="form-control-label @error('price') is-invalid @enderror">Jam Tutup</label>
-                                        <input class="form-control" id="price" name="price" type="text"
-                                            value="{{ old('price') }}">
-                                        @error('price')
+                                            class="form-control-label @error('close') is-invalid @enderror">Jam Tutup</label>
+                                        <input class="form-control" id="close" name="close" type="time" value="{{ old('close') }}">
+                                        @error('close')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -78,7 +77,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="brand"
                                             class="form-control-label @error('brand') is-invalid @enderror">Kecamatan</label>
@@ -103,21 +102,21 @@
                                         </div>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="address"  name="address" rows="3" placeholder="Alamat Bengkel"></textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    <input type="number" class="form-control" name="phone_store" id="phone_store" placeholder="No Telepon Bengkel">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Toko</label>
-                                    <input class="form-control" type="file" id="formFile">
+                                    <input class="form-control" type="file" id="store_image" name="store_image" value="Dummy">
                                 </div>
                             </div>
 
