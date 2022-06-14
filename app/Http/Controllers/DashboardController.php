@@ -59,7 +59,7 @@ class DashboardController extends Controller
 
     public function GuestView()
     {
-        //return view('user.userdashboard', ['title' => 'Dashboard']);
+
         $store = Store::where('status_activation', 1)->get();
         $data = [];
         foreach ($store as $s) {
@@ -69,7 +69,7 @@ class DashboardController extends Controller
                 $s->id,
             ];
         }
-        return view('user.userdashboard', [
+        return view('user.user-dashboard', [
             'items' => Item::all(),
             'location' => $data,
             'title' => 'Dashboard'
