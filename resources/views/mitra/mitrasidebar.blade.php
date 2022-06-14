@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ URL::asset('css/style_mmitrasidebar.css'); }}">
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -9,7 +10,6 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
-         
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}" href="{{url('profile')}}">
                     <div
@@ -69,5 +69,16 @@
                 </a>
             </li>
         </ul>
+
+        <div class="main-content">
+            <div id="menu-button">
+                <input type="checkbox" id="menu-checkbox">
+                <label for="menu-checkbox" id="menu-label">
+                    <div id="hamburger"></div>
+                </label>
+            </div>
+        </div>
     </div>
+
+    <script src="{{ URL::asset('js/script_mitrasidebar.js') }}"></script>
 </aside>
