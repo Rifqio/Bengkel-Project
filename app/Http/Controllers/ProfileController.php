@@ -14,7 +14,7 @@ class ProfileController extends Controller
     public function ProfileView(){
         $user = User::find(Auth::user()->id);
         if(Auth::user()->hasRole('mitra')){
-           $redirect = 'mitra.profile.index';
+           $redirect = 'mitra.mitraprofile';
         }elseif(Auth::user()->hasRole('superadmin')){
             $redirect = 'SuperAdmin.profile-superadmin';
         }elseif(Auth::user()->hasRole('employee')){
@@ -49,8 +49,10 @@ class ProfileController extends Controller
             ->where('id', Auth::user()->id)
             ->update($data);
             DB::commit();
-            if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'. $old_image)) && isset($request->profile)){
-                unlink('data_user/'.Auth::user()->id.'/profile/'.$old_image);
+            if($old_image != NULL){
+                if(File::exists(public_path('data_user/'.Auth::user()->id.'/profile/'. $old_image)) && isset($request->profile)){
+                    unlink('data_user/'.Auth::user()->id.'/profile/'.$old_image);
+                }
             }
             $status = 'status_update';
             $msg = 'Profile Update!';

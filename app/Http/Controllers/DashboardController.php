@@ -39,26 +39,11 @@ class DashboardController extends Controller
         }
         elseif (Auth::user()->hasRole('mitra'))
         {
-            //Masih View Dummy
-            $data = DB::table("users")
-                ->join("stores", function ($join) {
-                    $join->on("users.id", "=", "stores.id_mitra");
-                })
-                ->join("items", function ($join) {
-                    $join;
-                })
-                ->join("item_store", function ($join) {
-                    $join->on("items.id", "=", "item_store.item_id")
-                        ->where("stores.id", "=", "item_store.store_id");
-                })
-                ->selectRaw("COUNT(items.id)")
-                ->where("users.id", "=", auth()->user()->id)
-                ->get();
+            $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
             $mitra = User::find(Auth::user()->id);
-
             return view('mitra.index', [
+                'data' => $data->count(),
                 'mitra' => $mitra,
-                'data' => $data
             ]);
         }
 
@@ -74,7 +59,7 @@ class DashboardController extends Controller
 
     public function GuestView()
     {
-        //return view('user.userdashboard', ['title' => 'Dashboard']);
+
         $store = Store::where('status_activation', 1)->get();
         $data = [];
         foreach ($store as $s) {
@@ -84,7 +69,7 @@ class DashboardController extends Controller
                 $s->id,
             ];
         }
-        return view('user.userdashboard', [
+        return view('user.user-dashboard', [
             'items' => Item::all(),
             'location' => $data,
             'title' => 'Dashboard'

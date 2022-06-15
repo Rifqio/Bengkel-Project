@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Item;
 use App\Models\Store;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Models\Category;
+use App\Models\Reservasi;
+use Carbon\Carbon;
 use Tzsk\Otp\Facades\Otp;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
 {
@@ -91,4 +94,30 @@ class TestController extends Controller
         $otp = session("otp_reset_email");
         dd(Otp::digits(6)->expiry(10)->check($otp, $unique_secret));
     }
+
+    // public function reservasi(){
+    //     $data = Reservasi::all();
+    //     foreach($data as $d){
+    //         echo $d->reservasi_time_start;
+    //         // echo '</br>';
+    //         // echo $d->users;
+    //     }
+    // }
+
+    // public function reservasiView(){
+    //     $store = Store::all();
+    //     return view('test.test-reservasi' , [
+    //         'store' => $store,
+    //     ]);
+    // }
+
+    // public function reservasiStore(Request $request){
+    //     // $payments = Reservasi::where('date', $request->tgl)
+    //     // ->whereNotBetween('reservasi_time_start', [$request->waktu ,'21:00:00'])
+    //     // ->get();
+    //     //echo new Carbon($request->waktu);
+    //     $data =  Carbon::parse($request->waktu);
+    //     echo $data->addHours()->format('H:i:s');
+    //     //return $payments;
+    // }
 }
