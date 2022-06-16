@@ -67,5 +67,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+
+    
+
+    <div class="card w-75">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nama Pengguna</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nama pengguna">
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Update Foto Profile</label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <a href="#" class="btn btn-primary">Submit</a>
+        </div>
+      </div>
   </body>
 </html>

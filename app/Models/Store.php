@@ -9,7 +9,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Store extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $table = "stores";
+    protected $guarded = ['id', 'id_mitra', 'lat', 'long'];
+    protected $fillable = [
+        'store_name',
+        'open',
+        'close',
+        'address',
+        'phone_store',
+        'status_activation',
+        'id_mitra',
+        'id_kecamatan',
+        'store_image',
+        'lat',
+        'long'
+    ];
 
     public function item()
     {
