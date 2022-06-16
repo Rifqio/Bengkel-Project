@@ -14,6 +14,7 @@
     <!-- Nucleo Icons -->
     <link href="/argon/css/nucleo-icons.css" rel="stylesheet" />
     <link href="/argon/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
@@ -25,13 +26,45 @@
     <link href="/argon/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/argon/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+    <style>
+        @media only screen and (max-width: 719px) {
+            #show {
+                height: 200vw;
+                width:100%;
+                z-index: 1;
+            }
+
+            .web-menu{
+                display: none;
+            }
+
+            #mobile-nav{
+                position: fixed;
+                bottom: 0px;
+            }
+        }
+        @media only screen and (min-width: 720px) {
+            #show {
+                height: 50vw;
+                width:100%;
+                z-index: 1;
+            }
+
+            .mobile-menu{
+                display: none;
+            }
+
+            #mobile-nav{
+                display: none;
+            }
+        }
+    </style>
 </head>
 
-<body class="g-sidenav-show bg-gray-100">
-    <div class="min-height-300 bg-primary position-absolute w-100"></div>
+<body class="g-sidenav-show">
+    {{-- <div class="min-height-300 bg-primary position-absolute w-100"></div> --}}
     {{-- @include('SuperAdmin.adminsidebar') --}}
     @yield('content')
-
     <script src="/argon/js/core/popper.min.js"></script>
     <script src="/argon/js/core/bootstrap.min.js"></script>
     <script src="/argon/js/plugins/perfect-scrollbar.min.js"></script>
