@@ -40,7 +40,8 @@
 
             #mobile-nav{
                 position: fixed;
-                bottom: 0px;
+                bottom: -1px;
+                z-index:12;
             }
         }
         @media only screen and (min-width: 720px) {

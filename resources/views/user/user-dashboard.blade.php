@@ -3,7 +3,7 @@
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur"
-        data-scroll="false" style="z-index:10; top: 0px; position:absolute; width:100%">
+        data-scroll="false" style="z-index:10; top: 0px; position:fixed; width:100%">
         <div class="container-fluid" style="padding-left: 100px; padding-right: 100px;">
             <div class="input-group" style="width:100%;">
                 <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
@@ -14,12 +14,6 @@
     <!-- End Navbar -->
     <div class="container-fluid" style="padding:0;">
         <center>
-            {{-- <center>
-                <h1 class="text-xl font-semibold capitalize">Rekomendasi Bengkel Terdekat</h1>
-            </center> --}}
-            {{-- <div class="container-fluid mb-2" id='rekomen'>
-                <!--Content-->
-            </div> --}}
             <div id="show">
                 <!--Content-->
             </div>
@@ -46,7 +40,7 @@
                     </div>
                 </div>
                 <div class="container mt-5">
-                    <button type="button" class="btn bg-gradient-info" style="width:100%;">Bengkel Terdekat</button>
+                    <button type="button" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#terdekat" style="width:100%;">Bengkel Terdekat</button>
                     <br><br>
                     <button type="button" class="btn bg-gradient-danger" style="width:100%;">Gabung Menjadi Mitra</button>
                 </div>
@@ -105,6 +99,25 @@
             </center>
         </div>
     </div>
+    {{-- Modal --}}
+    <div class="modal fade" id="terdekat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rekomendasi Bengkel Terdekat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid mb-2" id='rekomen'>
+                    <!--Content-->
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    {{-- Modal --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script>
         //Option
