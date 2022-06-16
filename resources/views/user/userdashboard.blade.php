@@ -1,28 +1,68 @@
 <x-app-layout>
 
+
+
     <div class="relative">
         <div id="show" style="width: 100%; height:500px">
             <!-- <img src="{{ asset('img/map.jpg') }}" alt=""> -->
         </div>
         <div class="absolute top-0 mt-5 w-full" style="; ">
-            <div class=" mb-0 w-1/3 mx-auto">
-                <input type="text" id="searchbengkel" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
+            <div class=" mb-3 w-1/3 mx-auto">
+                <input type="text" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
+                <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
+                </input>
             </div>
-            <ul id="resultbengkel" class="list-outside hover:list-inside w-1/3 rounded-lg" style="background:white; margin-left: auto; margin-right:auto;">
-                
-            </ul>
         </div>
     </div>
 
 
     <section id=" card text-center " class="bg-green-500 pb-20">
 
+
+        <div class="container mx-auto py-5">
+            <div class="flex justify-center">
+        <!-- Button trigger modal -->
+                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out " data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
+            Pencet nanti keluar modal 
+                </button>   
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
+                <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                    <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+                            Modal title
+                        </h5>
+                        <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body relative p-4">
+                        <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <p>This content should appear at the bottom after you scroll.</p>
+                    </div>
+                    <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                        <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="container mx-auto justify-center pt-10">
             <div class="flex justify-center">
-                <button type="button" class="bg-slate-300 px-10 py-1 border-2 border-slate-400 text-green-600 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg ">Show All</button>
-            </div>   
-        
-        <div class="flex flex-wrap justify-center ">
+                <button type="button" class="bg-slate-300 px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button>
+            </div>
+
+            <div class="flex flex-wrap justify-center ">
 
                 <div class="w-[240px] h-[240px] p-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-28 px-5">
                     <div class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105">
@@ -137,7 +177,7 @@
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Reza Richard M S</p>
                     </div>
                 </div>
-                <div class="xl:flex ">
+                <div class="xl:flex 2xl:flex lg:block md:flex ">
                     <div class="pb-5 group"><img src="img/Team/rifqi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Rifqi Oktario</p>
                     </div>
@@ -145,7 +185,7 @@
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Nizamuddin Aulia</p>
                     </div>
                 </div>
-                <div class=" md:block lg:flex flex ">
+                <div class="flex md:flex sm:block ">
                     <div class="pb-5 group"><img src="img/Team/samuel.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Samuel Steven P H</p>
                     </div>
@@ -157,7 +197,6 @@
                     <div class="pb-5 group"><img src="img/Team/regita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Regita Cahya Wulan</p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -186,7 +225,6 @@
             </div>
         </div>
     </footer>
-       {{-- Modal --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script>
         //Option
@@ -267,27 +305,5 @@
                 });
         };
         loadMap('show');
-    </script>
-    <script> 
-        function fetch_user_data(query = '')
-        {
-          $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-           url:"{{ url('/search-bengkel-ajax') }}",
-           method:'POST',
-           data:{query:query},
-           success:function(response)
-           {
-            $('#resultbengkel').html(response);
-            console.log(response);
-           }
-          })
-        }
-        $(document).on('keyup', '#searchbengkel', function(){
-          var word = $(this).val();
-          fetch_user_data(word);
-        });
     </script>
 </x-app-layout>
