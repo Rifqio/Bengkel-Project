@@ -1,17 +1,16 @@
 <x-app-layout>
 
-
-
     <div class="relative">
         <div id="show" style="width: 100%; height:500px">
             <!-- <img src="{{ asset('img/map.jpg') }}" alt=""> -->
         </div>
         <div class="absolute top-0 mt-5 w-full" style="; ">
-            <div class=" mb-3 w-1/3 mx-auto">
+            <div class=" mb-0 w-1/3 mx-auto">
                 <input type="text" id="searchbengkel" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
-                    <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
-                </input>
             </div>
+            <ul id="resultbengkel" class="list-outside hover:list-inside w-1/3 rounded-lg" style="background:white; margin-left: auto; margin-right:auto;">
+                
+            </ul>
         </div>
     </div>
 
@@ -281,7 +280,7 @@
            data:{query:query},
            success:function(response)
            {
-            //$('#tbody').html(response);
+            $('#resultbengkel').html(response);
             console.log(response);
            }
           })
