@@ -57,11 +57,14 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('/store-update', 'StoreUpdate');
     Route::get('/store-edit/{id}', 'StoreEdit');
     Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
-    
-
+    Route::post('create-product', 'create_product');
+    Route::get('bengkel-list', 'bengkel_list');
+    // Route::get('/list-reject-store', 'ListRejectStore');
+    // Route::get('/list-banding-store', 'StoreBandingList');
 });
 
 //Profile
@@ -81,10 +84,14 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
 });
 
 //Store Controller
-Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
+Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->controller(StoreController::class)->group(function () {
     Route::get('/list-bengkel', 'StoreView');
+    Route::get('/reject-bengkel', 'StoreReject');
+    Route::get('/banding-bengkel', 'StoreBanding');
     Route::post('/non-aktif', 'StoreUpdateStatus');
-    Route::post('reject-bengkel/{id}', 'RejectBengkel');
+    Route::post('/reject-bengkel/{id}', 'RejectBengkel');
+    Route::get('/store-banding/{id}', 'StoreBandingEdit');
+    Route::post('/store-banding', 'StoreBandingUpdate');
 });
 
 //Route Confirmation Email
@@ -166,7 +173,12 @@ Route::get('/forget', function () {
     return view('auth/forget');
 });
 
- //Route login dan register 
+Route::get('/user', function () {
+    return view('user/dashboard');
+});
+
+// Route login dan register 
+
 Route::get('/register_view_test', function () {
     return view('auth.register_temp');
 });

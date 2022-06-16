@@ -55,7 +55,7 @@
                                     <div class="form-group">
                                         <label for="brand"
                                             class="form-control-label @error('brand') is-invalid @enderror">Jam Buka</label>
-                                        <input class="form-control" name="brand" type="text" value="{{ old('brand') }}">
+                                        <input class="form-control" name="brand" type="time" value="{{ old('brand') }}">
                                         @error('brand')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label for="price"
                                             class="form-control-label @error('price') is-invalid @enderror">Jam Tutup</label>
-                                        <input class="form-control" id="price" name="price" type="text"
+                                        <input class="form-control" id="price" name="price" type="time"
                                             value="{{ old('price') }}">
                                         @error('price')
                                         <div class="invalid-feedback">
