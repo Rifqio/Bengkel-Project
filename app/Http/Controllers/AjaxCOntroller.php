@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use Illuminate\Http\Request;
 
-class AjaxCOntroller extends Controller
+class AjaxController extends Controller
 {
     public function searchStore(Request $request){
         $query = $request->get('query');
@@ -15,7 +15,7 @@ class AjaxCOntroller extends Controller
             if($data->count() > 0){
                 foreach($data as $d){
                     $output .= '
-                        <li class="text-left" style="padding:5px;"><a href="/store-view/'.$d->id.'/show">'.$d->store_name.', '.$d->kecamatan->name.'</a></li>
+                        <li class="text-left" style="padding:5px;"><b><a href="/store-view/'.$d->id.'/show">'.$d->store_name.', '.$d->kecamatan->name.', '.$d->kecamatan->kota->name.'</a></b></li>
                     ';
                 }
             }else{
