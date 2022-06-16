@@ -8,7 +8,7 @@
         </div>
         <div class="absolute top-0 mt-5 w-full" style="; ">
             <div class=" mb-3 w-1/3 mx-auto">
-                <input type="text" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
+                <input type="text" id="searchbengkel" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
                     <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
                 </input>
             </div>
@@ -268,5 +268,27 @@
                 });
         };
         loadMap('show');
+    </script>
+    <script> 
+        function fetch_user_data(query = '')
+        {
+          $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+           url:"{{ url('/search-bengkel-ajax') }}",
+           method:'POST',
+           data:{query:query},
+           success:function(response)
+           {
+            //$('#tbody').html(response);
+            console.log(response);
+           }
+          })
+        }
+        $(document).on('keyup', '#searchbengkel', function(){
+          var word = $(this).val();
+          fetch_user_data(word);
+        });
     </script>
 </x-app-layout>
