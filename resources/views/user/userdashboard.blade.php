@@ -19,16 +19,6 @@
 
     <section id=" card text-center " class="bg-green-500 pb-20">
 
-
-        <div class="container mx-auto py-5">
-            <div class="flex justify-center">
-        <!-- Button trigger modal -->
-                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ">
-            Pencet nanti keluar modal 
-                </button>   
-            </div>
-        </div>
-
         <div class="container mx-auto justify-center pt-10">
             <div class="flex justify-center">
                 <button type="button" class="bg-slate-300 px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button>
