@@ -57,6 +57,7 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('/store-update', 'StoreUpdate');
     Route::get('/store-edit/{id}', 'StoreEdit');
     Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
@@ -166,7 +167,12 @@ Route::get('/forget', function () {
     return view('auth/forget');
 });
 
- //Route login dan register 
+Route::get('/user', function () {
+    return view('user/dashboard');
+});
+
+// Route login dan register 
+
 Route::get('/register_view_test', function () {
     return view('auth.register_temp');
 });

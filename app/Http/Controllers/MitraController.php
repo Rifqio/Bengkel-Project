@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\Notification;
 
 class MitraController extends Controller
 {
+
+    public function create_product()
+    {
+        if (Auth::user()->hasRole('mitra'))
+        {
+            Item::create([
+                'name' => request('name'),
+                'brand' => request('brand'),
+                'price' => request('price'),
+                'category_id' => request('category'),
+            ]);
+            return redirect('dashboard');
+        }
+    }
+    public function StoreRegisterView(){
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
@@ -71,6 +86,10 @@ class MitraController extends Controller
 
     public function StoreRegisterView()
     {
+<<<<<<< HEAD
+>>>>>>> bengkel/syita
+=======
+>>>>>>> bengkel/main
         $user = User::find(1);
         if (Auth::user()->nik != NULL && Auth::user()->ktp != NULL) {
             return view('mitra.store-register', [
