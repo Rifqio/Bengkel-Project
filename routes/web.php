@@ -167,9 +167,11 @@ Route::controller(CategoriesController::class)->group(function () {
 Route::get('/product', function () {
     return view('user/userproduct');
 });
-Route::get('/loginn', function () {
-    return view('auth/loginn');
-});
+
+// Route::get('/login', function () {
+//     return view('auth/loginn');
+// })->name('login');
+
 Route::get('/registerr', function () {
     return view('auth/registerr');
 });
