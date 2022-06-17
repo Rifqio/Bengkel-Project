@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Reservasi;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Store extends Model
 {
@@ -18,6 +19,7 @@ class Store extends Model
         'phone_store',
         'status_activation',
         'id_mitra',
+        'id_kecamatan',
         'store_image',
         'lat',
         'long'
@@ -32,4 +34,8 @@ class Store extends Model
     {
         return $this->belongsTo(User::class,'id_mitra');
     }
+
+    // public function reservasi(){
+    //     return $this->hasMany(Reservasi::class);
+    // }
 }

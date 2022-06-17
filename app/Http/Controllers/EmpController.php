@@ -41,9 +41,9 @@ class EmpController extends Controller
             'npwp' => ['required', 'string', 'max:16', 'min:16',],
         ]);
         if (!$validateData) {
-            return redirect()->back();
+            return redirect('list-mitra');
         }
-        $model = User::find($request()->id);
+        $model = User::find($request->id);
         $model->update($request->except(['id']));
         return redirect('list-mitra')->with('success_update', 'User has been updated');
     }

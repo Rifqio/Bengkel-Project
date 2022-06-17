@@ -1,23 +1,29 @@
 <x-app-layout>
 
 
-    <div class="relative">
-        <div>
-            <img src="{{ asset('img/map.jpg') }}" alt="">
-        </div>
 
-        <div class="absolute top-0 mt-5" style="left:36%; ">
-            <div class=" mb-3 xl:w-96">
-                <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal
-        text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleText0" placeholder="Text input" />
+    <div class="relative">
+        <div id="show" style="width: 100%; height:500px">
+            <!-- <img src="{{ asset('img/map.jpg') }}" alt=""> -->
+        </div>
+        <div class="absolute top-0 mt-5 w-full" style="; ">
+            <div class=" mb-3 w-1/3 mx-auto">
+                <input type="text" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
+                    <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
+                </input>
             </div>
         </div>
-
     </div>
+
+
     <section id=" card text-center " class="bg-green-500 pb-20">
 
-        <div class="container mx-auto justify-center">
-            <div class="flex flex-wrap justify-center ">
+        <div class="container mx-auto justify-center pt-10">
+            <div class="flex justify-center">
+                <button type="button" class="bg-slate-300 px-10 py-1 border-2 border-slate-400 text-green-600 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg ">Show All</button>
+            </div>   
+        
+        <div class="flex flex-wrap justify-center ">
 
                 <div class="w-[240px] h-[240px] p-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-28 px-5">
                     <div class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105">
@@ -98,7 +104,7 @@
         </div>
 
         <div class="container mx-auto">
-            <div class="bg-white shadow-lg rounded-xl h-full ">
+            <div class="bg-white shadow-lg rounded-xl  ">
                 <div class="p-10 text-center mx-20">
                     <h1 class="font-allison font-semibold text-8xl py-10">Bengkel AE</h1>
                     <p class="text-xl leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aut aperiam corrupti! Necessitatibus voluptatibus est qui fuga a odio optio aut hic sint, ad reprehenderit ab ut! Reprehenderit, adipisci alias ipsum non voluptatibus quia id magnam laudantium itaque earum odio iure repellendus et voluptatem blanditiis, iste rem? Perferendis consequatur suscipit, quisquam, vitae quidem repellendus pariatur ipsam qui cupiditate excepturi, earum non sunt explicabo nesciunt blanditiis perspiciatis. Similique, sapiente totam repellendus ducimus fuga maiores voluptatum laudantium eaque voluptates deserunt ea odio ipsa aperiam nisi dolores repellat ex facere ullam. Beatae at culpa soluta libero porro rerum! Mollitia animi inventore reiciendis iste!</p>
@@ -156,9 +162,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </section>
 
     <footer class="bg-black pt-12 pb-12">
@@ -184,7 +187,86 @@
             </div>
         </div>
     </footer>
-
-
-
+       {{-- Modal --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script>
+        //Option
+        const User = L.divIcon({
+            html: '<i class="fa fa-crosshairs fa-3x"></i>',
+            iconSize: [20, 20],
+            className: 'myDivIcon'
+        });
+        const fontAwesomeIcon = L.divIcon({
+            html: '<i class="fa fa-map-marker-alt fa-3x"></i>',
+            iconSize: [20, 20],
+            className: 'myDivIcon'
+        });
+    </script>
+    <script>
+        var loadMap = function(id) {
+            var data = {!!json_encode($location)!!}
+            var map = L.map(id, {
+                wheelPxPerZoomLevel: 150
+            });
+            var tile_url = 'https://api.mapbox.com/styles/v1/nathansoetopo/cl27uglwc009q14lnw7oiv50v/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF0aGFuc29ldG9wbyIsImEiOiJjbDI3dWFhNWUwMWJmM2lzejAxZXRrbncxIn0.sd9zf5aYlRhrFf5Bxp6ySQ';
+            var layer = L.tileLayer(tile_url, {
+                attribution: 'BengkelAE',
+                maxZoom: 18,
+            });
+            map.addLayer(layer);
+            map.locate({
+                    setView: true,
+                    watch: false
+                })
+                .on('locationfound', function(e) {
+                    var marker = [];
+                    var distance = [];
+                    var namestore = [];
+                    var idstore = [];
+                    var i;
+                    user = L.marker([e.latitude, e.longitude], {
+                        icon: User,
+                    }).addTo(map);
+                    var circle = L.circle([e.latitude, e.longitude], e.accuracy / 10, {
+                        weight: 1,
+                        color: 'blue',
+                        fillColor: '#cacaca',
+                        fillOpacity: 0.2
+                    });
+                    map.addLayer(circle);
+                    for (var i = 0; i < data.length; i++) {
+                        marker[i] = new L.marker([data[i][1], data[i][2]], {
+                            win_url: data[i][3],
+                            icon: fontAwesomeIcon,
+                        }).bindPopup("Bengkel " + data[i][0]);
+                        from = marker[i].getLatLng();
+                        to = user.getLatLng();
+                        marker[i].addTo(map);
+                        marker[i].on('click', onClick);
+                        distance[i] = from.distanceTo(to).toFixed(0) / 1000;
+                        namestore[i] = data[i][0];
+                        idstore[i] = data[i][3];
+                    }
+                    for (var i = 0; i < marker.length; i++) {
+                        if (distance[i] <= 1) {
+                            var button = document.createElement("a");
+                            button.type = 'button';
+                            button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
+                            button.style.cssText += 'margin:3px; margin-bottom:10px;';
+                            button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
+                            button.className += "btn btn-primary"
+                            document.getElementById("rekomen").appendChild(button);
+                        }
+                    }
+                    function onClick(e) {
+                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
+                    }
+                })
+                .on('locationerror', function(e) {
+                    console.log(e);
+                    alert("Location access denied.");
+                });
+        };
+        loadMap('show');
+    </script>
 </x-app-layout>

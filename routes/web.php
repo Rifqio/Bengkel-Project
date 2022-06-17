@@ -29,7 +29,6 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
@@ -59,6 +58,11 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
     Route::post('/store-update', 'StoreUpdate');
+    Route::get('/store-edit/{id}', 'StoreEdit');
+    Route::post('/store-update', 'StoreUpdate');
+    Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
+    
+
 });
 
 //Profile
@@ -81,6 +85,7 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
 Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
     Route::get('/list-bengkel', 'StoreView');
     Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('reject-bengkel/{id}', 'RejectBengkel');
 });
 
 //Route Confirmation Email
@@ -128,11 +133,7 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
 
-    //syita nyoba
-    Route::get('/register_view_test', function () {
-        return view('auth.register_temp');
-    });
-});
+});  
 
 
 //Google Login Halo
@@ -168,4 +169,14 @@ Route::get('/forget', function () {
 
 Route::get('/user', function () {
     return view('user/dashboard');
+});
+
+// Route login dan register 
+
+Route::get('/register_view_test', function () {
+    return view('auth.register_temp');
+});
+
+Route::get('/login_view_test', function () {
+    return view('auth.login_temp');
 });

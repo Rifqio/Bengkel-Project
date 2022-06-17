@@ -28,13 +28,15 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
+                            <div class="px-2 pt-2 pb-3 space-y-1">
+                                <a href="#"
+                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Product</a>
 
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Profile</a>
+                                <a href="#"
+                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Features</a>
 
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
+                                <a href="#"
+                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Marketplace</a>
 
                             <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Company</a>
 
@@ -67,6 +69,9 @@
                                     </svg>
                                 </button>
                             </div>
+                            <a href="#"
+                                class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
+                                Log in </a>
                         </div>
                         <div class="px-2 pt-2 pb-3 space-y-1">
                             <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Product</a>
@@ -81,6 +86,35 @@
                             Log in </a>
                     </div>
                 </div>
+
+                <main
+                    class="mt-10 mx-auto max-w-7xl 2xl:max-w-max px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                            <span class="text-green-500 xl:inline">BengkelAE</span>
+
+                        </h1>
+                        <p
+                            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit
+                            sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+                        @auth
+                        @else
+                            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                                <div class="rounded-md shadow">
+                                    <a href="/login"
+                                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
+                                        Login </a>
+                                </div>
+                                <div class="mt-3 sm:mt-0 sm:ml-3">
+                                    <a href="/register"
+                                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-500 bg-gray-100 hover:bg-gray-200 md:py-4 md:text-lg md:px-10">
+                                        Register </a>
+                                </div>
+                            </div>
+                        @endauth
+                    </div>
+                </main>
             </div>
 
             <main class="mt-10 mx-auto max-w-7xl 2xl:max-w-max px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
@@ -110,19 +144,21 @@
             </main>
         </div>
     </div>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 2xl:w-3/4">
-        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="/img/bengkel2.jpg" alt="">
+
+
+
+    <div class="py-12">
+        <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
+            <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1>
+            {{-- Menu dalam dashboard --}}
+            @livewire('menu')
+
+        </div>
     </div>
-</div>
 
-
-
-<div class="py-12">
-    <div class="max-w-5xl px-2 md:px-0 mx-auto text-center md:max-w-7xl">
-        <h1 class="text-xl font-semibold capitalize pb-4">Hi how can we help you today?</h1>
-        {{-- Menu dalam dashboard --}}
-        @livewire('menu')
-
+    <div class="text-center p-9 bg-gray-200">
+        <span>© 2022 Copyright:</span>
+        <a class="text-gray-600 font-semibold" href="">BengkelAE</a>
     </div>
 </div>
 

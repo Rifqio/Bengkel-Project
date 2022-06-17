@@ -40,7 +40,7 @@
 
 					<div class="flex justify">
 						<div class="bg-gray-100 w-24 h-24 rounded-full hover:bg-gray-300">
-							<a href="/"><img class="m-auto pt-4 scale-90 2xl:pt-5 " src="/register_login/images/logo register.png" alt=""></a>
+							<a href="/"><img class="rounded mx-auto d-block " src="/register_login/images/logo register.png" alt=""></a>
 						</div>
 					</div>
 
