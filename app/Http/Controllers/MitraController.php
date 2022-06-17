@@ -33,17 +33,14 @@ class MitraController extends Controller
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
-        // $data = Store::all();
-        // Auth::user()->id;
-        $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->get(); 
-        // return ['stores' =>$data_condition,
-        //         'users'=>$users];
+        $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get(); 
         return view('mitra.crud.list-bengkel', [
             'users' => $users,
-            'stores' => $data_condition
+            'stores' => $data_condition,
         ])->with('success_update', 'Store Sudah Tertambah');
         
     }
+
     public function StoreEdit($id)
     {
         $store = Store::where('id', $id)->get();
@@ -56,7 +53,7 @@ class MitraController extends Controller
 
     public function DeleteBengkel($id)
     {
-        // dd($id);
+   
         $store = Store::find($id);
         $store->delete();
         return redirect('list-store')->with('success_update', 'Store Has Been Deleted');
@@ -79,9 +76,7 @@ class MitraController extends Controller
         }
         $model = Store::find($request->id);
         $model->update($request->except(['id', '_token']));
-        return redirect('list-store')->with('success_update', 'Store has been updated');
-        
-        
+        return redirect('list-store')->with('success_update', 'Store has been updated'); 
     }
 
     public function StoreRegisterView()
@@ -132,21 +127,28 @@ class MitraController extends Controller
         return redirect('store-register');
     }
 
-    public function bengkel_list()
-    {
-        $mitra = User::find(Auth::user()->id);
-        $data =
-        DB::table("stores")
-        ->join("users", function($join){
-            $join->on("stores.id_mitra", "=", "users.id");
-        })
-        ->select("stores.store_name", "stores.address")
-        ->where("users.id", "=", auth()->user()->id)
-        ->get();
-        // dd($data);
-       return view('mitra.bengkelList.index', [
-           'data' => $data,
-           'mitra' => $mitra
-       ]);
-    }
+
+   
+    
+
+  
+
+
+    // public function bengkel_list()
+    // {
+    //     $mitra = User::find(Auth::user()->id);
+    //     $data =
+    //     DB::table("stores")
+    //     ->join("users", function($join){
+    //         $join->on("stores.id_mitra", "=", "users.id");
+    //     })
+    //     ->select("stores.store_name", "stores.address")
+    //     ->where("users.id", "=", auth()->user()->id)
+    //     ->get();
+    //     // dd($data);
+    //    return view('mitra.bengkelList.index', [
+    //        'data' => $data,
+    //        'mitra' => $mitra
+    //    ]);
+    // }
 }
