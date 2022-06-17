@@ -35,24 +35,6 @@ class DashboardController extends Controller
                 'total_items' => Item::count(),
             ]);
         } elseif (Auth::user()->hasRole('mitra')) {
-<<<<<<< HEAD
-            //Masih View Dummy
-            $data = DB::table("users")
-                ->join("stores", function ($join) {
-                    $join->on("users.id", "=", "stores.id_mitra");
-                })
-                ->join("items", function ($join) {
-                    $join;
-                })
-                ->join("item_store", function ($join) {
-                    $join->on("items.id", "=", "item_store.item_id")
-                        ->where("stores.id", "=", "item_store.store_id");
-                })
-                ->selectRaw("COUNT(items.id)")
-                ->where("users.id", "=", auth()->user()->id)
-                ->get();
-=======
->>>>>>> bengkel/syita
             $mitra = User::find(Auth::user()->id);
 
             return view('mitra.index', [

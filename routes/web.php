@@ -58,12 +58,7 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
-<<<<<<< HEAD
-    Route::post('create-product', 'create_product');
-=======
     Route::post('/store-update', 'StoreUpdate');
-
->>>>>>> bengkel/syita
 });
 
 //Profile
@@ -169,4 +164,8 @@ Route::get('/registerr', function () {
 });
 Route::get('/forget', function () {
     return view('auth/forget');
+});
+
+Route::get('/user', function () {
+    return view('user/dashboard');
 });
