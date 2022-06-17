@@ -13,6 +13,10 @@
                             Add Product
                         @elseif(Request::is('dashboard/show'))
                             Product List
+                        @elseif(Request::is('list-store'))
+                            List Bengkel
+                        @elseif(Request::is('profile'))
+                            Profile
                         @endif
                     </li>
                 </ol>
@@ -25,6 +29,10 @@
                         Product List
                     @elseif(Request::is('store-register'))
                         Add Bengkel
+                    @elseif(Request::is('list-store'))
+                        List Bengkel
+                    @elseif(Request::is('profile'))
+                        Profile
                     @endif
                 </h6>
             @elseif (Auth::user()->hasRole('superadmin'))
@@ -38,6 +46,12 @@
                             Create Employee
                         @elseif(Request::is('dashboard/show'))
                             User List
+                        @elseif(Request::is('store-register'))
+                            Add Bengkel
+                        @elseif(Request::is('list-store'))
+                            List Bengkel
+                        @elseif(Request::is('profile'))
+                            Profile
                         @endif
                     </li>
                 </ol>
@@ -50,6 +64,10 @@
                         Product List
                     @elseif(Request::is('store-register'))
                         Add Bengkel
+                    @elseif(Request::is('list-store'))
+                        List Bengkel
+                    @elseif(Request::is('profile'))
+                        Profile
                     @endif
                 </h6>
             @endif
@@ -57,65 +75,8 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                @if ($mitra->ktp || $mitra->npwp || $mitra->nik == null)
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bell cursor-pointer"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end  px-2 py-3 me-sm-n4">
-                            @if ($mitra->ktp == null)
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
-                                        <div class="d-flex py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">Anda belum upload KTP</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endif
-                            @if ($mitra->npwp == null)
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
-                                        <div class="d-flex py-1">
-                                            <div class="my-auto">
-                                                {{-- Icon --}}
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">Anda belum upload NPWP</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endif
-                            @if ($mitra->nik == null)
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
-                                        <div class="d-flex py-1">
-                                            <div class="my-auto">
-                                                {{-- Icon --}}
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">Anda belum input NIK</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
-                    </li>
-                @endif
-                @if ($mitra->ktp != null && $mitra->nik != null)
-                    <a href="{{ url('store-register') }}"><button class="btn btn-primary">Daftarkan
-                            Bengkel</button></a>
-                @endif
+               
+        
                 <div class="input-group">
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" placeholder="Type here...">

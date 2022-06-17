@@ -90,7 +90,7 @@ class MitraController extends Controller
             return redirect('store-register');
         }
 
-        $store = Store::create([
+        Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,
             'close' => request()->close,
