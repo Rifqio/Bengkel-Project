@@ -11,6 +11,10 @@
                     Profile
                     @elseif(Request::is('validasi-bengkel'))
                     Validasi Bengkel
+                    @elseif(Request::is('banding-bengkel'))
+                    Banding Bengkel
+                    @elseif(Request::is('reject-bengkel'))
+                    Reject Bengkel
                     @elseif(Request::is('list-bengkel'))
                     Bengkel Aktif
                     @elseif(Request::is('list-mitra'))
