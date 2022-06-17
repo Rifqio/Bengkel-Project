@@ -27,13 +27,18 @@ class Store extends Model
 
     public function item()
     {
-        return $this->belongsToMany(Item::class,'item_store','store_id','item_id');
+        return $this->belongsToMany(Item::class, 'item_store', 'store_id', 'item_id');
     }
 
     public function users()
     {
-        return $this->belongsTo(User::class,'id_mitra');
+        return $this->belongsTo(User::class, 'id_mitra');
     }
+
+    // public function getStatus($id = false)
+    // {
+    //     return $this->db->table('stores')->where(['id' => $id])->get->getResutArray()[0];
+    // }
 
     // public function reservasi(){
     //     return $this->hasMany(Reservasi::class);

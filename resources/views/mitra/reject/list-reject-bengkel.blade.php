@@ -8,12 +8,7 @@
                          {{ session('success_update') }}
                         </div>
                     @endif
-                <h6 class="mb-0">List Bengkel</h6>
-                @foreach ($stores as $s)
-                @if($s->status_activation==1)
-                <a href="/store-register" class="btn btn-danger"><button type="button" class="">+ Tambah</button></a>
-                @endif
-                @endforeach
+                <h6 class="mb-0">List Bengkel Reject</h6>
             </div>
                         <div class="card-body p-3">
                             <ul class="list-group">
@@ -34,6 +29,7 @@
                                                         <th>Latitude</th>
                                                         <th>Longtiude</th>
                                                         <th>Kecamatan</th>
+                                                        <th>Alasan Tertolak</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -51,12 +47,10 @@
                                                             <td class="pt-3">{{$s->lat}}</td>
                                                             <td class="pt-3">{{$s->long}}</td>
                                                             <td class="pt-3">{{$s->id_kecamatan}}</td>
+                                                            <td class="pt-3">{{$s->note}}</td>
                                                             <td>
-                                                                @if($s->status_activation == 1)
-                                                                <a href="/store-edit/{{ $s->id }}" class=""><button type="button" class="btn btn-warning" >Edit</button></a>
-                                                                @elseif($s->status_activation == 2)
+                                    
                                                                 <a href="/store-banding/{{ $s->id }}" class=""><button type="button" class="btn btn-warning" >Banding</button></a>
-                                                                @endif
                                                                 <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                                             </td>
                                                         </tr>

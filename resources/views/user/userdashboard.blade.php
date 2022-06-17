@@ -1,4 +1,4 @@
-<x-app-layout>
+ <x-app-layout>
     <div class="relative bg-white overflow-hidden">
         <div class="2xl:max-w-full 2xl:mx-10 xl:max-w-7xl mx-auto">
             <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
