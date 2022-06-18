@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxCOntroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -27,6 +28,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 //Benahi
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
+
+// Ajax
+Route::post('/search-bengkel-ajax', [AjaxCOntroller::class, 'searchStore']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
