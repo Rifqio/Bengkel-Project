@@ -12,6 +12,10 @@ class Kecamatan extends Model
     protected $guarded = ['id'];
 
     public function store(){
-        return $this->hasMany(Kecamatan::class);
+        return $this->hasMany(Store::class);
+    }
+
+    public function kota(){
+        return $this->belongsTo(Kota::class, 'kota_id');
     }
 }

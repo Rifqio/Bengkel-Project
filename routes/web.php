@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AjaxCOntroller;
+use App\Http\Controllers\AjaxController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -30,7 +30,7 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 // Ajax
-Route::post('/search-bengkel-ajax', [AjaxCOntroller::class, 'searchStore']);
+Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
