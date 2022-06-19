@@ -99,7 +99,7 @@
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable" class="bg-blue-400 px-10 py-3 border-2 border-blue-300 text-white font-semibold text-lg  uppercase rounded-lg hover:bg-blue-300  transition ease-in-out shadow-lg mb-10 md:mb-0">Bengkel Terdekat</button>
                 </div>
                 <div>
-                    <button type="button" class="px-10 py-3 border-2 bg-red-600 border-red-500 text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-red-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg"> Login / Register Sebagai Mitra</button>
+                    <a href="/login"><button type="button" class="px-10 py-3 border-2 bg-red-600 border-red-500 text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-red-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg">Login / Register Sebagai Mitra</button></a>
                 </div>
             </div>
         </div>
