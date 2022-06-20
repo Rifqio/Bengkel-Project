@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Dashboard</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>Dashboard</title>
+    <!--Map-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-        @livewireStyles
+    @livewireStyles
 
-        <!-- Scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="{{ mix('js/app.js') }}" defer></script>
-        <!--Map-->
-        <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-        <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    </head>
-    <body class="font-sans antialiased">
+    <!-- Scripts -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    <!--Map-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
-        <div class="min-h-screen bg-gray-100">
-            @if (Auth::check())
-                @livewire('navigation-menu')
-            @endif
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-        @stack('modals')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+</head>
 
-        @livewireScripts
-    </body>
+<body class="font-sans antialiased">
+
+    <div class="min-h-screen bg-gray-100">
+        @if (Auth::check())
+        @livewire('navigation-menu')
+        @endif
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+    </div>
+    @stack('modals')
+
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
+    <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+    <script>
+        import 'tw-elements';
+    </script>
+</body>
+
 </html>

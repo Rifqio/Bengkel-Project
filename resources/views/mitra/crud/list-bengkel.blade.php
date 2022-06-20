@@ -60,14 +60,10 @@
                                     <td class="pt-3">{{$s->kecamatan->kota->name}}</td>
                                     <td class="pt-3">{{$s->store_image}}</td>
                                     <td>
-                                        {{-- <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Edit</button> --}}
-                                        {{-- <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#detail-bengkel{{$s->id}}">Detail</button> --}}
-                                        {{-- <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn bg-gradient-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a> --}}
                                         @if($s->status_activation == 1)
                                         <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Edit</button>
                                         @elseif($s->status_activation == 2)
                                         <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#store-banding/{{ $s->id }}">Banding</button>
-                                        {{-- <a href="/store-banding/{{ $s->id }}" class=""><button type="button" class="btn btn-warning" >Banding</button></a> --}}
                                         @endif
                                         <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#detail-bengkel{{$s->id}}">Detail</button>
                                         <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn bg-gradient-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>

@@ -11,7 +11,7 @@ class Kota extends Model
     protected $table = "kota";
     protected $guarded = ['id'];
 
-    public function kecamatans(){
+    public function kecamatan(){
         return $this->hasMany(Kecamatan::class);
     }
 }

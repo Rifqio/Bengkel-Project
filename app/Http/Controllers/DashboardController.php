@@ -69,7 +69,7 @@ class DashboardController extends Controller
                 $s->id,
             ];
         }
-        return view('user.user-dashboard', [
+        return view('user.userdashboard', [
             'items' => Item::all(),
             'location' => $data,
             'title' => 'Dashboard'

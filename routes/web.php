@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -27,6 +28,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 //Benahi
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
+
+// Ajax
+Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
@@ -57,6 +61,7 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('/store-update', 'StoreUpdate');
     Route::get('/store-edit/{id}', 'StoreEdit');
     Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
@@ -162,9 +167,11 @@ Route::controller(CategoriesController::class)->group(function () {
 Route::get('/product', function () {
     return view('user/userproduct');
 });
-Route::get('/loginn', function () {
-    return view('auth/loginn');
-});
+
+// Route::get('/login', function () {
+//     return view('auth/loginn');
+// })->name('login');
+
 Route::get('/registerr', function () {
     return view('auth/registerr');
 });
@@ -172,7 +179,12 @@ Route::get('/forget', function () {
     return view('auth/forget');
 });
 
- //Route login dan register 
+Route::get('/user', function () {
+    return view('user/dashboard');
+});
+
+// Route login dan register 
+
 Route::get('/register_view_test', function () {
     return view('auth.register_temp');
 });

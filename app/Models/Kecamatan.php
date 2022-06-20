@@ -11,13 +11,11 @@ class Kecamatan extends Model
     protected $table = "kecamatan";
     protected $guarded = ['id'];
 
-    public function kota(){
-        return $this->belongsTo(Kota::class, 'kota_id');
-    }
-
-    public function stores(){
+    public function store(){
         return $this->hasMany(Store::class);
     }
 
-    
+    public function kota(){
+        return $this->belongsTo(Kota::class, 'kota_id');
+    }
 }

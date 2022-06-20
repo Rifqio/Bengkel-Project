@@ -53,10 +53,17 @@
                                 <h6>CREDENTIALS</h6>
                                 <div class="col-md-6">
                                     <div class="form-group">
+<<<<<<< HEAD
                                         <label for="open"
                                             class="form-control-label  @error('open') is-invalid @enderror">Jam Buka</label>
                                         <input class="form-control" name="open" type="time" value="{{ old('open') }}">
                                         @error('open')
+=======
+                                        <label for="brand"
+                                            class="form-control-label @error('brand') is-invalid @enderror">Jam Buka</label>
+                                        <input class="form-control" name="brand" type="time" value="{{ old('brand') }}">
+                                        @error('brand')
+>>>>>>> 36d37bcad4d0b41b41830ed0932ae4a41cf856f0
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

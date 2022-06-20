@@ -39,10 +39,4 @@ class Store extends Model
     {
         return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
     }
-
-
-
-    // public function reservasi(){
-    //     return $this->hasMany(Reservasi::class);
-    // }
 }
