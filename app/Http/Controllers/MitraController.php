@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Kecamatan;
 use App\Models\User;
 use App\Models\Store;
+use App\Models\Kota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\StoreRegister;
@@ -18,10 +20,11 @@ class MitraController extends Controller
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
-        $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get(); 
+        $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get(); 
+        $active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get(); 
         return view('mitra.crud.list-bengkel', [
             'users' => $users,
-            'stores' => $data_condition,
+            'stores' => $active,
         ])->with('success_update', 'Store Sudah Tertambah');
         
     }
@@ -67,9 +70,14 @@ class MitraController extends Controller
     public function StoreRegisterView()
     {
         $user = User::find(1);
+        // $kota = Kota::pluck('name', 'id');
+        $kota = Kota::all();
+        $kecamatan = Kecamatan::all();
         if (Auth::user()->nik != NULL && Auth::user()->ktp != NULL) {
             return view('mitra.store-register', [
                 'user' => $user,
+                'kec' => $kecamatan,
+                'kota' => $kota,
             ]);
         } else {
             echo 'Lengkapi Data Diri';
@@ -90,7 +98,7 @@ class MitraController extends Controller
             return redirect('store-register');
         }
 
-        $store = Store::create([
+        Store::create([
             'store_name' => request()->store_name,
             'open' => request()->open,
             'close' => request()->close,
@@ -98,7 +106,7 @@ class MitraController extends Controller
             'address' => request()->address,
             'status_activation' => 0,
             'id_mitra' => Auth::user()->id,
-            'id_kecamatan' => 1, //Nanti Diganti
+            'id_kecamatan' => request()->id_kecamatan,
             'store_image' => request()->store_image,
         ]);
 

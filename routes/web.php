@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
-use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MitraController;
@@ -29,7 +29,6 @@ Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->m
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 //Dashboard Route
-
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
@@ -138,10 +137,8 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-input-product', 'TestInputProductStore');
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
-    // Route::get('view-reservasi', 'reservasiView');
-    // Route::post('view-reservasi', 'reservasiStore');
-    // Route::get('reservasi', 'reservasi');
-});
+
+});  
 
 
 //Google Login Halo
@@ -173,4 +170,13 @@ Route::get('/registerr', function () {
 });
 Route::get('/forget', function () {
     return view('auth/forget');
+});
+
+ //Route login dan register 
+Route::get('/register_view_test', function () {
+    return view('auth.register_temp');
+});
+
+Route::get('/login_view_test', function () {
+    return view('auth.login_temp');
 });

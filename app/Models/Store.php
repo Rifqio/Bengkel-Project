@@ -35,10 +35,12 @@ class Store extends Model
         return $this->belongsTo(User::class, 'id_mitra');
     }
 
-    // public function getStatus($id = false)
-    // {
-    //     return $this->db->table('stores')->where(['id' => $id])->get->getResutArray()[0];
-    // }
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
+    }
+
+
 
     // public function reservasi(){
     //     return $this->hasMany(Reservasi::class);

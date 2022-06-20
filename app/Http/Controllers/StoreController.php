@@ -15,8 +15,6 @@ class StoreController extends Controller
     public function StoreView()
     {
         $store = Store::where('status_activation', 1)->get();
-        // $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get();
-        // $users = User::whereRoleIs(['mitra'])->get();
         if (Auth::user()->hasRole('employee')) {
             $layout = 'admin.list-bengkel-aktif';
         } elseif (Auth::user()->hasRole('superadmin')) {
@@ -26,21 +24,7 @@ class StoreController extends Controller
         return view($layout, [
                     'stores' => $store,
                 ]);
-        // }elseif(Auth::user()->hasRole('mitra')){
-        //     $layout = 'mitra.crud.list-bengkel';
-        // };
-
-        // if(Auth::user()->hasRole('mitra')){
-        //     return view($layout, [
-        //         'stores' => $store,
-        //         'stores' => $data_condition
-        //     ]);
-        // }else{
-        //     return view($layout, [
-        //         'stores' => $store,
-        //     ]);
-        // }
-    }
+       }
 
     public function StoreReject()
     {
@@ -159,7 +143,7 @@ class StoreController extends Controller
         // }
         // $store = new Store;
         // $status = $store->getStatus($id);
-        // $status = Store::where('status_activation', '=', '0');\
+        // $status = Store::where('status_activation', '=', '0');
         // $status = Store::where('status_activation', '=', '3');
         // $status = $store()->item
         // dd($status);
