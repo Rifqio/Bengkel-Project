@@ -54,9 +54,15 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="brand"
+<<<<<<< HEAD
                                             class="form-control-label @error('open') is-invalid @enderror">Jam Buka</label>
                                         <input class="form-control" name="open" type="time" value="{{ old('open') }}">
                                         @error('open')
+=======
+                                            class="form-control-label @error('brand') is-invalid @enderror">Jam Buka</label>
+                                        <input class="form-control" name="brand" type="time" value="{{ old('brand') }}">
+                                        @error('brand')
+>>>>>>> 27b7c646b5ccfaa666ebac278526015310737bab
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -67,9 +73,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
+<<<<<<< HEAD
                                             class="form-control-label @error('close') is-invalid @enderror">Jam Tutup</label>
                                         <input class="form-control" id="close" name="close" type="time" value="{{ old('close') }}">
                                         @error('close')
+=======
+                                            class="form-control-label @error('price') is-invalid @enderror">Jam Tutup</label>
+                                        <input class="form-control" id="price" name="price" type="time"
+                                            value="{{ old('price') }}">
+                                        @error('price')
+>>>>>>> 27b7c646b5ccfaa666ebac278526015310737bab
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

@@ -2,77 +2,122 @@
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-    @include('SuperAdmin.navbar')
+    <nav class="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur"
+        data-scroll="false" style="z-index:10; top: 0px; position:fixed; width:100%">
+        <div class="container-fluid" style="padding-left: 100px; padding-right: 100px;">
+            <div class="input-group" style="width:100%;">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Type here...">
+            </div>
+        </div>
+    </nav>
     <!-- End Navbar -->
-    <div class="container-fluid">
-        <div class="row">
-            {{-- <h1 class="text-white mb-4">Welcome, User</h1> --}}
-            <div class="col-xl-4 col-md-4 col-4 mb-4 mt-4" style="padding:2px;">
-                <div class="card">
-                    <div class="card-body p-2">
-                        <center>
-                            <div class="row mt-2">
-                                <div class="col-12">
-                                    <div
-                                        class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                        <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="mt-3">Bengkel Terdekat</p>
-                                </div>
-                            </div>
-                        </center>
+    <div class="container-fluid" style="padding:0;">
+        <center>
+            <div id="show">
+                <!--Content-->
+            </div>
+        </center>
+    </div>
+    <div class="container-fluid bg-success">
+        <div class="container" style="padding-top: 8%; padding-bottom: 50px; margin-bottom: 30px;">
+            {{-- Mobile --}}
+            <div class="row mobile-menu">
+                <div class="col-6">
+                    <div class="card card-background move-on-hover">
+                        <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1541451378359-acdede43fdf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80')"></div>
+                        <div class="card-body pt-5">
+                            <h4 class="text-white">Search and Discovery</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-4 col-4 mb-4 mt-4" style="padding:2px;">
-                <div class="card">
-                    <div class="card-body p-2">
-                        <center>
-                            <div class="row mt-2">
-                                <div class="col-12">
-                                    <div
-                                        class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                        <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="mt-3">Bengkel Terdekat</p>
-                                </div>
-                            </div>
-                        </center>
+                <div class="col-6">
+                    <div class="card card-background move-on-hover">
+                        <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1541451378359-acdede43fdf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80')"></div>
+                        <div class="card-body pt-5">
+                            <h4 class="text-white">Search and Discovery</h4>
+                        </div>
                     </div>
                 </div>
+                <div class="container mt-5">
+                    <button type="button" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#terdekat" style="width:100%;">Bengkel Terdekat</button>
+                    <br><br>
+                    <button type="button" class="btn bg-gradient-danger" style="width:100%;">Gabung Menjadi Mitra</button>
+                </div>
             </div>
-            <div class="col-xl-4 col-md-4 col-4 mb-4 mt-4" style="padding:2px;">
-                <div class="card">
-                    <div class="card-body p-2">
-                        <center>
-                            <div class="row mt-2">
-                                <div class="col-12">
-                                    <div
-                                        class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                        <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="mt-3">Bengkel Terdekat</p>
-                                </div>
-                            </div>
-                        </center>
+            {{-- Web --}}
+            <div class="row web-menu">
+                <div class="col-md-3 col-6">
+                    <div class="card card-background move-on-hover">
+                        <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1541451378359-acdede43fdf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80')"></div>
+                        <div class="card-body pt-5">
+                            <h4 class="text-white">Search and Discovery</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card card-background move-on-hover">
+                        <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1541451378359-acdede43fdf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80')"></div>
+                        <div class="card-body pt-5">
+                            <h4 class="text-white">Search and Discovery</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card card-background move-on-hover">
+                        <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1541451378359-acdede43fdf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80')"></div>
+                        <div class="card-body pt-5">
+                            <h4 class="text-white">Search and Discovery</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card card-background move-on-hover">
+                        <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1541451378359-acdede43fdf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80')"></div>
+                        <div class="card-body pt-5">
+                            <h4 class="text-white">Search and Discovery</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="padding:0;">
-        <center>
+    <div class="container-fluid bg-white" id="mobile-nav">
+        <div class="container">
             <center>
-                <h1 class="text-xl font-semibold capitalize">Rekomendasi Bengkel Terdekat</h1>
+            <div class="row">
+                <div class="col-4" style="padding-top: 10px; padding-bottom: 10px;">
+                    <i class="fas fa-home fa-3x"></i>
+                </div>
+                <div class="col-4" style="padding-top: 10px; padding-bottom: 10px;">
+                    <i class="fas fa-info fa-3x"></i>
+                </div>
+                <div class="col-4" style="padding-top: 10px; padding-bottom: 10px;">
+                    <i class="fas fa-map-marked-alt fa-3x"></i>
+                </div>
+            </div>
             </center>
-            <div class="container-fluid mb-2" id='rekomen'>
-                <!--Content-->
-            </div>
-            <div id="show" style="width:100%; height:580px;">
-                <!--Content-->
-            </div>
-        </center>
+        </div>
     </div>
+    {{-- Modal --}}
+    <div class="modal fade" id="terdekat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rekomendasi Bengkel Terdekat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid mb-2" id='rekomen'>
+                    <!--Content-->
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    {{-- Modal --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script>
         //Option
