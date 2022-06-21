@@ -24,8 +24,8 @@ class StoreController extends Controller
         }
 
         return view($layout, [
-                    'stores' => $store,
-                ]);
+            'stores' => $store,
+        ]);
         // }elseif(Auth::user()->hasRole('mitra')){
         //     $layout = 'mitra.crud.list-bengkel';
         // };
@@ -51,15 +51,15 @@ class StoreController extends Controller
             $layout = 'admin.list-bengkel-aktif';
         } elseif (Auth::user()->hasRole('superadmin')) {
             $layout = 'SuperAdmin.list-bengkel-aktif';
-        }elseif(Auth::user()->hasRole('mitra')){
+        } elseif (Auth::user()->hasRole('mitra')) {
             $layout = 'mitra.crud.list-bengkel';
         };
 
-        if(Auth::user()->hasRole('mitra')){
+        if (Auth::user()->hasRole('mitra')) {
             return view($layout, [
                 'stores' => $data_condition
             ]);
-        }else{
+        } else {
             return view($layout, [
                 'stores' => $store,
             ]);
@@ -75,14 +75,14 @@ class StoreController extends Controller
             $layout = 'admin.validasi-bengkel';
         } elseif (Auth::user()->hasRole('superadmin')) {
             $layout = 'SuperAdmin.list-bengkel-aktif';
-        } elseif(Auth::user()->hasRole('mitra')){
+        } elseif (Auth::user()->hasRole('mitra')) {
             $layout = 'mitra.crud.list-bengkel';
         };
-        if(Auth::user()->hasRole('mitra')){
+        if (Auth::user()->hasRole('mitra')) {
             return view($layout, [
                 'stores' => $data_condition
             ]);
-        }else{
+        } else {
             return view($layout, [
                 'stores' => $store,
             ]);
@@ -97,7 +97,7 @@ class StoreController extends Controller
     }
 
     public function RejectBengkel($id, Request $request)
-    {        
+    {
         $note = 'Dengan berbagai pertimbangan dan peninjauan ulang tentang validasi. Bengkel anda ditolak karena:';
         $validated = $request->validate([
             'alasan' => 'required',
@@ -108,7 +108,7 @@ class StoreController extends Controller
         $status = Store::where('status_activation', 0)->get();
         if ($status) {
             $title = 'Pengajuan Bengkel Ditolak';
-        }else{
+        } else {
             $title = 'Banding Bengkel Ditolak';
         }
         $update = Store::where('id', $id)
@@ -159,6 +159,7 @@ class StoreController extends Controller
         // }
         // $store = new Store;
         // $status = $store->getStatus($id);
+        // Test
         // $status = Store::where('status_activation', '=', '0');\
         // $status = Store::where('status_activation', '=', '3');
         // $status = $store()->item
@@ -170,7 +171,6 @@ class StoreController extends Controller
         return view('mitra.reject.update-reject-bengkel', [
             'stores' => $store
         ]);
-        
     }
 
     public function StoreBandingUpdate(Request $request)
@@ -182,16 +182,18 @@ class StoreController extends Controller
             'address' => ['required', 'string'],
             'phone_store' => ['required'],
             // 'store_image' => ['required', 'string'],
-            
-            
+
+
         ]);
         if (!$validateData) {
             return redirect()->back();
         }
-        
+
         $model = Store::find($request->id);
-        $model->update([$request->except(['id', '_token']),
-                        'status_activation' => 3]);
-        return redirect('reject-bengkel')->with('success_update', 'Store has been updated'); 
+        $model->update([
+            $request->except(['id', '_token']),
+            'status_activation' => 3
+        ]);
+        return redirect('reject-bengkel')->with('success_update', 'Store has been updated');
     }
 }
