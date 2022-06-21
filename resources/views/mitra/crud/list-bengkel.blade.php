@@ -24,6 +24,8 @@
                         <div class="position-relative">
                             @if(Request::is('list-store'))
                             <h4 class="mb-0">List Bengkel</h4>
+                            @elseif(Request::is('list-pengajuan-store'))
+                            <h4 class="mb-0">List Pengajuan Bengkel</h4>
                             @elseif(Request::is('reject-bengkel'))
                             <h4 class="mb-0">List Reject Bengkel</h4>
                             @elseif(Request::is('banding-bengkel'))

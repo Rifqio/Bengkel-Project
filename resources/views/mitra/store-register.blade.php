@@ -43,11 +43,11 @@
                                     <div class="form-group">
                                         <label for="name" class="form-control-label  @error('store_name') is-invalid @enderror">Nama Bengkel</label>
                                         <input class="form-control" type="text" name="store_name" placeholder="Nama Bengkel">
-                                        {{-- @error('store_name')
+                                        @error('store_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                 </div>
                                 <h6>CREDENTIALS</h6>
@@ -77,19 +77,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="kota"
-                                            class="form-control-label @error('kota') is-invalid @enderror">Kota</label>
-                                        <input class="form-control" name="kota" type="text" value="{{ old('brand') }}">
-                                        @error('brand')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div> --}}
                                 <div class="col-md-6">
                                     <select name="id_kecamatan" id="">
                                         <option value="">Pilih Kecamatan</option>
@@ -99,28 +86,6 @@
                                     </select>
                                 </div>
                                 <br>
-                                {{-- <div class="col-md-6">
-                                    <select name="kota" id="">
-                                        <option value="">Pilih Kota</option>
-                                        @foreach ($kota as $k)
-                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div> --}}
-                               
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="price"
-                                            class="form-control-label @error('price') is-invalid @enderror">Kelurahan</label>
-                                        <input class="form-control" id="price" name="price" type="text"
-                                            value="{{ old('price') }}">
-                                        @error('price')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div> --}}
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>

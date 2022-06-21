@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Notification;
 class MitraController extends Controller
 {
 
+
     public function create_product()
     {
         if (Auth::user()->hasRole('mitra')) {
@@ -34,11 +35,21 @@ class MitraController extends Controller
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
-        $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
+        // $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
         $active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get();
         return view('mitra.crud.list-bengkel', [
             'users' => $users,
             'stores' => $active,
+        ])->with('success_update', 'Store Sudah Tertambah');
+    }
+
+    public function ListPengajuanStore()
+    {
+        $users = User::whereRoleIs(['mitra'])->get();
+        $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
+        return view('mitra.crud.list-bengkel', [
+            'users' => $users,
+            'stores' => $non_active,
         ])->with('success_update', 'Store Sudah Tertambah');
     }
 
@@ -105,6 +116,8 @@ class MitraController extends Controller
 
         if (!$validatedData) {
             return redirect('store-register');
+        }else{
+            return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
         }
 
         Store::create([
@@ -124,6 +137,15 @@ class MitraController extends Controller
         Notification::send($user, new StoreRegister($notif));
         return redirect('store-register');
     }
+
+    // public function jumlah(){
+    //     // $store = Store::all();
+    //     $store = Store::where('id_mitra', Auth::user()->id)->get();
+    //     return view('mitra.index', [
+    //         'stores' => $store,
+    //         // 'stores' => $active,
+    //     ]);
+    // }
 
     // public function bengkel_list()
     // {

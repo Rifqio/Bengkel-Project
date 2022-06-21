@@ -59,6 +59,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
     Route::get('/list-store', 'ListStore');
+    Route::get('/list-pengajuan-store', 'ListPengajuanStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
     Route::post('/store-update', 'StoreUpdate');

@@ -40,9 +40,17 @@ class DashboardController extends Controller
         elseif (Auth::user()->hasRole('mitra'))
         {
             $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
+            $nonaktif = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 0)->get();
+            $aktif = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
+            $reject = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 2)->get();
+            $banding = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 3)->get();
             $mitra = User::find(Auth::user()->id);
             return view('mitra.index', [
-                'data' => $data->count(),
+                'item' => $data->count(),
+                'non_aktif' => $nonaktif->count(),
+                'aktif' => $aktif->count(),
+                'reject' => $reject->count(),
+                'banding' => $banding->count(),
                 'mitra' => $mitra,
             ]);
         }
