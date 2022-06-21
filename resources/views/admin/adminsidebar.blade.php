@@ -3,7 +3,11 @@
     <link rel="stylesheet" href="{{ URL::asset('css/style_sidebar.css'); }}">
     <!-- <link href="{{ URL::asset('js/sidebar.js') }}" rel="script"> -->
 </head>
+<<<<<<< HEAD
 <aside class="sidenav w-auto bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+=======
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+>>>>>>> daa64d66454681bc762b1530718fc152b767f058
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="  " target="_blank">

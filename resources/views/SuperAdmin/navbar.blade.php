@@ -24,8 +24,15 @@
                     Create Employee
                 @elseif(Request::is('dashboard/show'))
                     User List
+<<<<<<< HEAD
                 @elseif(Request::is('list-bengkel'))
                     Bengkel Aktif
+=======
+                @elseif(Request::is('dashboard/profil'))
+                    Profil List
+                @elseif(Request::is('dashboard/list-bengkel'))
+                    Bengkel List    
+>>>>>>> daa64d66454681bc762b1530718fc152b767f058
                 @endif
             </h6>
         </nav>
