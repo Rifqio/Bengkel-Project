@@ -22,35 +22,40 @@
             </div>
             <div class="container justify-center p-20 mx-auto lg:w-2/3 lg:mr-10 lg:my-auto lg:px-40 lg:py-20 my-24">
                 <img src="/img/account/login1.png" alt="Gambar-login1" width="10%" class="rounded-xl mx-auto pb-3 ">
-
                 <h1 class="text-center text-3xl font-bold py-6 text-gray-600">Hello Again!</h1>
-                <label class="relative block py-2 w-full">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Email ..." type="text" name="search" />
-                </label>
-                <label class="relative block py-2">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Password ..." type="password" name="search" />
-                </label>
-                <div class="flex justify-between py-1 pb-3">
-                    <div class="form-check">
-                        <input class="form-check-input appearance- h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-green-800 checked:border-green-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer " type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
-                            Remember Me
-                        </label>
+                <x-jet-validation-errors class="mb-4" />
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
                     </div>
-                    <div class="text-green-400 hover:text-green-700 active:text-green-800 font-semibold"><a href="">Forget Password ?</a></div>
-                </div>
+                @endif
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <label class="relative block py-2 w-full">
+                        <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Email ..." type="text" name="email" :value="old('email')"  autofocus />
+                    </label>
+                    <label class="relative block py-2">
+                        <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Password ..." type="password" name="password"  autocomplete="current-password" />
+                    </label>
+                    <div class="flex justify-between py-1 pb-3">
+                        <div class="form-check">
+                            <input class="form-check-input appearance- h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-green-800 checked:border-green-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer " type="checkbox" value="" id="remember_me" name="remember">
+                            <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                                Remember Me
+                            </label>
+                        </div>
+                        <div class="text-green-400 hover:text-green-700 active:text-green-800 font-semibold"><a href="{{ route('password.request') }}">Forget Password ?</a></div>
+                    </div>
 
-                <div class="py-3">
-                    <button class="w-full bg-[#47BF71] hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300 justify-center rounded-xl py-2 mt-6 text-white">
-                        <a href="" class="text-center">
-                            Log In
-                        </a>
-                    </button>
-                </div>
-
+                    <div class="py-3">
+                        <button type="submit" class="w-full bg-[#47BF71] hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300 justify-center rounded-xl py-2 mt-6 text-white">
+                                Log In
+                        </button>
+                    </div>
+                </form>
                 <div class="flex justify-center">
                     <p>Don't have an account?</p>
-                    <a href="" class="text-green-400 hover:text-green-700 active:text-green-800 pl-2">Create New Account</a>
+                    <a href="/register" class="text-green-400 hover:text-green-700 active:text-green-800 pl-2">Create New Account</a>
                 </div>
 
             </div>

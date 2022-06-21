@@ -20,7 +20,10 @@
         </center>
     </div>
     <div class="container-fluid bg-success">
-        <div class="container" style="padding-top: 8%; padding-bottom: 50px; margin-bottom: 30px;">
+        <center>
+            <i class="fas fa-angle-up fa-2x"></i>
+        </center>
+        <div class="container" style="padding-top: 5%; padding-bottom: 50px; margin-bottom: 30px;">
             {{-- Mobile --}}
             <div class="row mobile-menu">
                 <div class="col-6">
@@ -79,12 +82,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="container-fluid mt-5">
+                    <div class="row">
+                        <div class="col-md-6" style="padding-left: 60px; padding-right: 60px;">
+                            <button type="button" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#terdekat" style="width:100%;">Bengkel Terdekat</button>
+                        </div>
+                        <div class="col-md-6" style="padding-left: 60px; padding-right: 60px;">
+                            <button type="button" class="btn bg-gradient-danger" style="width:100%;">Gabung Menjadi Mitra</button>
+                        </div>
+                    </div>
+                    <div class="container bg-white mt-5" style="padding: 30px; border-radius: 15px;">
+                        <center>Bengkel AE</center>
+                        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non lorem velit. 
+                        In bibendum odio felis. Morbi vel diam aliquet,venenatis lacus ac, tincidunt nisi.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="container-fluid bg-white" id="mobile-nav">
-        <div class="container">
-            <center>
+        <center>
             <div class="row">
                 <div class="col-4" style="padding-top: 10px; padding-bottom: 10px;">
                     <i class="fas fa-home fa-3x"></i>
@@ -96,8 +113,7 @@
                     <i class="fas fa-map-marked-alt fa-3x"></i>
                 </div>
             </div>
-            </center>
-        </div>
+        </center>
     </div>
     {{-- Modal --}}
     <div class="modal fade" id="terdekat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -6,7 +6,7 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './src/**/*.{html,js}',
+        './resources/views/**/*.blade.{html,js,php}',
         './node_modules/tw-elements/dist/js/**/*.js',
     ],
 
