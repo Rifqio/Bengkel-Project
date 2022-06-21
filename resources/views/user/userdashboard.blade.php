@@ -21,27 +21,55 @@
 
         <div class="container mx-auto justify-center pt-10">
             <div class="flex justify-center">
-                <button type="button" class="bg-slate-300 px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button>
+                <a href="/product" class="bg-slate-300 rounded-lg"><button type="button" class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button></a>
             </div>
 
+         
             <div class="flex flex-wrap justify-center ">
-                @foreach ($categories as $c)
-                <div class="w-[240px] h-[240px] p-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-28 px-5">
-                    <div class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105">
-                        <div class="flex justify-center"><img src="img/product/G1.png" alt="Gambar-product" width="80%">
+
+                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
+                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+                        <div class="flex justify-center"><img src="img/sparepart/Brake.svg" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">{{$c->name}}</h1>
-                            {{-- <h4 class="group-hover:text-slate-100">Rp123123123</h4> --}}
-                        </div>
-                        <div class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
-                            <a href="" class="block">
-                                <h3 class="uppercase font-bold">DETAILS</h3>
-                            </a>
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Brakes</h1>
+                            <h4 class="group-hover:text-slate-100">The system is designed to use pressure and friction to stop.</h4>
                         </div>
                     </div>
-                </div>
-                @endforeach
+                </a>
+
+                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
+                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-10 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+                        <div class="flex justify-center"><img src="img/sparepart/Shock Absorber2.svg" alt="">
+                        </div>
+                        <div class="text-center">
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Chassis and Suspension</h1>
+                            <h4 class="group-hover:text-slate-100">Dampen various vibrations generated from the road surface</h4>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 w-[400px] h-[400px] ">
+                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-12 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+                        <div class="flex justify-center"><img src="img/sparepart/Gearbox3.svg" alt="">
+
+                        </div>
+                        <div class="text-center">
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Drivetrain</h1>
+                            <h4 class="group-hover:text-slate-100">Dampen various vibrations generated from the road surface</h4>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
+                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+                        <div class="flex justify-center"><img src="img/sparepart/Input-Component4.svg" alt="">
+
+                        </div>
+                        <div class="text-center">
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Electronics</h1>
+                            <h4 class="group-hover:text-slate-100">help to keep your car running at its full potential</h4>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
 
