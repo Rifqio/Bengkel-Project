@@ -28,34 +28,36 @@
 
                 <h1 class="text-center text-3xl font-bold lg:pt-4 text-gray-600">Create Your Free Account !</h1>
                 <p class="text-center text-sm font-light py-1 pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nobis dolorum error voluptatum neque commodi beatae alias eaque ratione sed.</p>
+                <form class="login100-form validate-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                @csrf
+                <x-jet-validation-errors class="mb-4" />
                 <label class="relative block py-2 w-full">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Name ..." type="text" name="name" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Name ..." type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                 </label>
                 <label class="relative block py-2 w-full">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Email ..." type="text" name="email" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Email ..." type="text" name="email" :value="old('email')" required/>
                 </label>
                 <label class="relative block py-2 w-full">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Nomor Induk Kependudukan (NIK)" type="number" name="NIK" minlength="16" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Nomor Induk Kependudukan (NIK)" type="number" name="nik" minlength="16" :value="old('nik')" required />
                 </label>
                 <label class="relative block py-2 w-full">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Nomor Pokok Wajib Pajak (NPWP)" type="number" name="NPWP" minlength="16" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Nomor Pokok Wajib Pajak (NPWP)" type="number" minlength="16" name="npwp" :value="old('npwp')"/>
                 </label>
                 <div class="flex justify-center py-3">
                     <div class=" w-full flex">
                         <label for="formFileSm" class="form-label inline-block text-gray-700 w-[120px] align-middle font-bold self-center">Foto KTP :</label>
-                        <input class="w-full form-control block px-2 py-1 text-sm font-normal text-slate-400 italic bg-white bg-clip-padding border border-solid border-slate-300 rounded transition ease-in-out m-0 focus:text-green-700 focus:bg-white focus:border-green-400 focus:outline-none" id="formFileSm" type="file">
+                        <input class="w-full form-control block px-2 py-1 text-sm font-normal text-slate-400 italic bg-white bg-clip-padding border border-solid border-slate-300 rounded transition ease-in-out m-0 focus:text-green-700 focus:bg-white focus:border-green-400 focus:outline-none" id="formFileSm" type="file" name="photo" :value="old('ktp')" required>
                     </div>
                 </div>
                 <label class="relative block py-2">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Password ..." type="password" name="search" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Password ..." type="password" name="password" required autocomplete="new-password" />
                 </label>
                 <label class="relative block py-2">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Konfirmasi Password ..." type="password" name="search" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Konfirmasi Password ..." type="password" name="password_confirmation" required autocomplete="new-password" />
                 </label>
-
                 <div class="flex justify-between py-4 ">
                     <div class="form-check">
-                        <input class="form-check-input appearance- h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-green-800 checked:border-green-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer " type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input appearance- h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-green-800 checked:border-green-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer " type="checkbox" name="terms" id="terms">
                         <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
                             I agree to the terms and
 
@@ -64,15 +66,12 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="py-3">
-                    <button class="w-full bg-[#47BF71] hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300 justify-center rounded-xl py-2 mt-6 text-white">
-                        <a href="" class="text-center">
-                            Log In
-                        </a>
+                    <button type="submit" class="w-full bg-[#47BF71] hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300 justify-center rounded-xl py-2 mt-6 text-white">
+                        Register
                     </button>
                 </div>
-
+                </form>
                 <div class="flex justify-center">
                     <p>Already have an account?</p>
                     <a href="" class="text-green-400 hover:text-green-700 active:text-green-800 pl-2">login</a>

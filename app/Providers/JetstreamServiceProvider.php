@@ -35,7 +35,7 @@ class JetstreamServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function () {
-            return view('auth.register_temp');
+            return view('auth.registerr');
         });
     }
 
