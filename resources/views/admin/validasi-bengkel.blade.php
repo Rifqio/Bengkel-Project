@@ -105,6 +105,7 @@
                                                     <div class="form-group">
                                                         <label for="message-text" class="col-form-label">Masukkan Alasan:</label>
                                                         <textarea class="form-control" name="alasan" aria-label="With textarea" required></textarea>
+                                                        <input type="hidden" value="2" name='test'>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

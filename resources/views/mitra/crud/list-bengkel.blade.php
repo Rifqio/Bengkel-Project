@@ -63,13 +63,12 @@
                                         @if($s->status_activation == 1)
                                         <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Edit</button>
                                         @elseif($s->status_activation == 2)
-                                        <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#store-banding/{{ $s->id }}">Banding</button>
+                                        <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Banding</button>
                                         @endif
                                         <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#detail-bengkel{{$s->id}}">Detail</button>
                                         <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn bg-gradient-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                     </td>
                                 </tr>
-
 
                                 <!-- Edit List Bengkel -->
                                 <div class="modal fade" id="edit-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -81,7 +80,13 @@
                                                         <h3 class="font-weight-bolder text-info text-gradient">Edit Data Bengkel</h3>
                                                     </div>
                                                     <div class="card-body">
+                                                        @foreach($stores as $s)
+                                                        @if($s->status_activation==1)
                                                         <form role="form text-left" action="/store-update" method="post" enctype="multipart/form-data">
+                                                        @elseif($s->status_activation==2)
+                                                        <form role="form text-left" action="/store-banding" method="post" enctype="multipart/form-data">
+                                                        @endif
+                                                        @endforeach
                                                             @csrf
                                                             <input type="hidden" name="id" class="form-control" placeholder="Id Bengkel" value="{{ $s->id}}">
                                                             {{-- @error('store_name')
@@ -146,6 +151,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!-- Modal Detail -->
                                 <div class="modal fade" id="detail-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
