@@ -3,14 +3,10 @@
     <link rel="stylesheet" href="{{ URL::asset('css/style_sidebar.css'); }}">
     <!-- <link href="{{ URL::asset('js/sidebar.js') }}" rel="script"> -->
 </head>
-<<<<<<< HEAD
 <aside class="sidenav w-auto bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
-=======
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
->>>>>>> daa64d66454681bc762b1530718fc152b767f058
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="  " target="_blank">
+        <a class="navbar-brand m-0" href="#" target="_blank">
             <!-- Nyoba bagian lipat sidebar -->
             <div class="main-content">
                 <div id="menu-button">
@@ -48,7 +44,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('validasi-bengkel') ? 'active' : '' }}" href="{{url('validasi-bengkel')}}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i class="ni ni-book-bookmark text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Validasi Bengkel</span>
                 </a>
@@ -66,7 +62,7 @@
                 <a class="nav-link {{ Request::is('reject-bengkel') ? 'active' : '' }}" href="{{url('reject-bengkel')}}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i class="ni ni-bell-55 text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Reject Bengkel</span>
                 </a>
@@ -75,7 +71,7 @@
                 <a class="nav-link {{ Request::is('banding-bengkel') ? 'active' : '' }}" href="{{url('banding-bengkel')}}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i class="ni ni-email-83 text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Banding Bengkel</span>
                 </a>

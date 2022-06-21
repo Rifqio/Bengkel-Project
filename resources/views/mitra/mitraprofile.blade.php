@@ -3,7 +3,7 @@
 
 <main class="main-content position-relative border-radius-lg ">
   <!-- Navbar -->
-  @include('mitra.mitranavbar')
+  @include('mitra.layout.navbar')
   <!-- End Navbar -->
 
   <br>

@@ -33,7 +33,7 @@
                             @endif
                             <div class="position-absolute top-0 top-0 end-0">
                              @if(Request::is('list-store'))
-                            <a href="/store-register" class="btn btn-danger"><button type="button" class="">+ Tambah</button></a>
+                            <a href="/store-register" type="button" class="btn btn-danger">+ Tambah</a>
                             @endif
                             </div>
                         </div>
@@ -49,7 +49,6 @@
                                     <th>No. Telpon</th>
                                     <th>Kecamatan</th>
                                     <th>Kota</th>
-                                    <th>Foto</th>
                                     <th>Action</th>
                                 </tr>
                                 @foreach ($stores as $s)
@@ -60,7 +59,6 @@
                                     <td class="pt-3">{{$s->phone_store}}</td>
                                     <td class="pt-3">{{$s->kecamatan->name}}</td>
                                     <td class="pt-3">{{$s->kecamatan->kota->name}}</td>
-                                    <td class="pt-3">{{$s->store_image}}</td>
                                     <td>
                                         @if($s->status_activation == 1)
                                         <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Edit</button>

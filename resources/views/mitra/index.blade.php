@@ -18,7 +18,7 @@
                 Isi NPWP Jika Ada
             </div>
             @endif
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-2">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-2">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-2">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-2">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-4">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
