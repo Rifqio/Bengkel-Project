@@ -41,18 +41,19 @@
                             <div class="row">
                                 <div class="col-md-15">
                                     <div class="form-group">
-                                        <label for="name" class="form-control-label  @error('name') is-invalid @enderror">Nama Bengkel</label>
+                                        <label for="name" class="form-control-label  @error('store_name') is-invalid @enderror">Nama Bengkel</label>
                                         <input class="form-control" type="text" name="store_name" placeholder="Nama Bengkel">
-                                        @error('name')
+                                        {{-- @error('store_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                 </div>
                                 <h6>CREDENTIALS</h6>
                                 <div class="col-md-6">
                                     <div class="form-group">
+<<<<<<< HEAD
                                         <label for="brand"
 <<<<<<< HEAD
                                             class="form-control-label @error('open') is-invalid @enderror">Jam Buka</label>
@@ -63,6 +64,12 @@
                                         <input class="form-control" name="brand" type="time" value="{{ old('brand') }}">
                                         @error('brand')
 >>>>>>> 27b7c646b5ccfaa666ebac278526015310737bab
+=======
+                                        <label for="open"
+                                            class="form-control-label  @error('open') is-invalid @enderror">Jam Buka</label>
+                                        <input class="form-control" name="open" type="time" value="{{ old('open') }}">
+                                        @error('open')
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -72,6 +79,7 @@
                                
                                 <div class="col-md-6">
                                     <div class="form-group">
+<<<<<<< HEAD
                                         <label for="price"
 <<<<<<< HEAD
                                             class="form-control-label @error('close') is-invalid @enderror">Jam Tutup</label>
@@ -83,6 +91,13 @@
                                             value="{{ old('price') }}">
                                         @error('price')
 >>>>>>> 27b7c646b5ccfaa666ebac278526015310737bab
+=======
+                                        <label for="close"
+                                            class="form-control-label  @error('close') is-invalid @enderror">Jam Tutup</label>
+                                        <input class="form-control" id="close" name="close" type="time"
+                                            value="{{ old('close') }}">
+                                        @error('close')
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -92,18 +107,35 @@
 
                                 {{-- <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="brand"
-                                            class="form-control-label @error('brand') is-invalid @enderror">Kecamatan</label>
-                                        <input class="form-control" name="brand" type="text" value="{{ old('brand') }}">
+                                        <label for="kota"
+                                            class="form-control-label @error('kota') is-invalid @enderror">Kota</label>
+                                        <input class="form-control" name="kota" type="text" value="{{ old('brand') }}">
                                         @error('brand')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
-                                </div>
-                               
+                                </div> --}}
                                 <div class="col-md-6">
+                                    <select name="id_kecamatan" id="">
+                                        <option value="">Pilih Kecamatan</option>
+                                        @foreach ($kec as $k)
+                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br>
+                                {{-- <div class="col-md-6">
+                                    <select name="kota" id="">
+                                        <option value="">Pilih Kota</option>
+                                        @foreach ($kota as $k)
+                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
+                               
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
                                             class="form-control-label @error('price') is-invalid @enderror">Kelurahan</label>
@@ -119,17 +151,41 @@
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+<<<<<<< HEAD
                                     <textarea class="form-control" id="address"  name="address" rows="3" placeholder="Alamat Bengkel"></textarea>
+=======
+                                    <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3">
+                                        @error('address')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div> 
+                                        @enderror
+                                    </textarea>
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
+<<<<<<< HEAD
                                     <input type="number" class="form-control" name="phone_store" id="phone_store" placeholder="No Telepon Bengkel">
+=======
+                                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="08xxxxxxxxxx"
+                                    name="phone_store" value="{{ old('phone_store') }}">
+                                @error('phone_store')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Toko</label>
+<<<<<<< HEAD
                                     <input class="form-control" type="file" id="store_image" name="store_image" value="Dummy">
+=======
+                                    <input class="form-control" type="file" id="formFile" name="store_image">
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
                                 </div>
                             </div>
 

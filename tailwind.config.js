@@ -6,7 +6,7 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './src/**/*.{html,js}',
+        './resources/views/**/*.blade.{html,js,php}',
         './node_modules/tw-elements/dist/js/**/*.js',
     ],
 
@@ -14,6 +14,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                allison: ['Allison', 'sans-serif']
             },
             colors: {
                 'ijo': '#4BC274',

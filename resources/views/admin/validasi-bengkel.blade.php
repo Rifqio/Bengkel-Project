@@ -6,7 +6,11 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
         <div class="row">
+            @if(Request::is('validasi-bengkel'))
             <h1 class="text-white mb-4">VALIDASI BENGKEL</h1>
+            @elseif(Request::is('banding-bengkel'))
+            <h1 class="text-white mb-4">BANDING BENGKEL</h1>
+            @endif
         </div>
     </div>
     <div class="row mt-4">
@@ -101,6 +105,7 @@
                                                     <div class="form-group">
                                                         <label for="message-text" class="col-form-label">Masukkan Alasan:</label>
                                                         <textarea class="form-control" name="alasan" aria-label="With textarea" required></textarea>
+                                                        <input type="hidden" value="2" name='test'>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

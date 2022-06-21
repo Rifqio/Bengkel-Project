@@ -20,7 +20,7 @@ class ItemFactory extends Factory
             'name' => $this->faker->word(),
             'category_id' => mt_rand(1,3),
             'price' => $this->faker->randomNumber(5,true),
-            'store_id' => 
+            // 'store_id' => 
         ];
     }
 }

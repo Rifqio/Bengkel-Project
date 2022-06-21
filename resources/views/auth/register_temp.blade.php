@@ -17,6 +17,7 @@
                 <div class="m-auto px-10">
                     <img src="/img/account/regis.svg" alt="ini-gambar-regis" class="lg:m-auto w-full p-10" width="80%">
 
+<<<<<<< HEAD
                     <p class="text-center font-bold text-gray-100 text-2xl py-5 pt-10">Find The Right Parts For Your Need</p>
 
                     <p class="text-center font-light text-white ">With BengkelAE you don’t need to worry about replacing your vehicle spare parts!</p>
@@ -57,16 +58,101 @@
                         </a>
                     </button>
                 </div>
+=======
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+					@csrf
+					<div class="flex justify">
+						<div class="bg-gray-100 w-24 h-24 rounded-full hover:bg-gray-300">
+							<a href="/"><img class="rounded mx-auto d-block " src="/register_login/images/logo register.png" alt=""></a>
+						</div>
+					</div>
+
+					<span class="login100-form-title p-b-43">
+						Create Your Free Account!
+					</span>
+					<x-jet-validation-errors class="mb-4" />
+					<div>
+						<x-jet-label for="name" value="{{ __('Name') }}" />
+						<x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="email" value="{{ __('Email') }}" />
+						<x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="nik" value="{{ __('Nomor Induk Kependudukan') }}" />
+						<x-jet-input id="nik" class="block mt-1 w-full" type="number" name="nik" :value="old('nik')" required />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="npwp" value="{{ __('NPWP') }}" />
+						<x-jet-input id="npwp" class="block mt-1 w-full" type="number" name="npwp" :value="old('npwp')" />
+					</div>
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
 
                 <div class="flex justify-center">
                     <p>Already have an account?</p>
                     <a href="" class="text-green-400 hover:text-green-700 active:text-green-800 pl-2">login</a>
                 </div>
 
+<<<<<<< HEAD
             </div>
 
         </div>
     </section>
+=======
+					<div class="mt-4">
+						<x-jet-label for="password" value="{{ __('Password') }}" />
+						<x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+					</div>
+
+					<div class="mt-4">
+						<x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+						<x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+					</div>
+
+					<div class="mb-3 form-check">
+						<input type="checkbox" class="form-check-input" name="terms" id="terms">
+						<label class="form-check-label" for="exampleCheck1">Check me out</label>
+					</div>
+
+					{{-- <div class="mt-4">
+						<x-jet-label for="terms">
+							<div class="flex items-center">
+								<x-jet-checkbox name="terms" id="terms" />
+								<div class="ml-2">
+									{!! __('I agree to the :terms_of_service and :privacy_policy', [
+									'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+									'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+									]) !!}
+								</div>
+							</div>
+						</x-jet-label>
+					</div> --}}
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Register
+						</button>
+					</div>
+					<div class="d-flex flex-row-reverse">
+						<div class="p-2">Already have an account? <a href="/login" class="link-secondary ">Login</a></div>
+					</div>
+
+				</div>
+			</form>
+
+			<div class="login100-more" style="background-image: url('images/bg-01.jpg');">
+			</div>
+		</div>
+	</div>
+	</div>
+>>>>>>> 3b680bd76f63bc651f995a47879d8dff9afdffa0
 
 
     <!-- Modal -->

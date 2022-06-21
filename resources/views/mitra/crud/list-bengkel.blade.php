@@ -22,9 +22,17 @@
                         @endif
 
                         <div class="position-relative">
+                            @if(Request::is('list-store'))
                             <h4 class="mb-0">List Bengkel</h4>
+                            @elseif(Request::is('reject-bengkel'))
+                            <h4 class="mb-0">List Reject Bengkel</h4>
+                            @elseif(Request::is('banding-bengkel'))
+                            <h4 class="mb-0">List Banding Bengkel</h4>
+                            @endif
                             <div class="position-absolute top-0 top-0 end-0">
-                                <a href="/store-register" class="btn btn-success">Tambah</a>
+                             @if(Request::is('list-store'))
+                            <a href="/store-register" class="btn btn-danger"><button type="button" class="">+ Tambah</button></a>
+                            @endif
                             </div>
                         </div>
                         <br>
@@ -37,6 +45,9 @@
                                     <th>Nama Bengkel</th>
                                     <th>Alamat Bengkel</th>
                                     <th>No. Telpon</th>
+                                    <th>Kecamatan</th>
+                                    <th>Kota</th>
+                                    <th>Foto</th>
                                     <th>Action</th>
                                 </tr>
                                 @foreach ($stores as $s)
@@ -45,13 +56,19 @@
                                     <td class="pt-3">{{$s->store_name}}</td>
                                     <td class="pt-3">{{$s->address}}</td>
                                     <td class="pt-3">{{$s->phone_store}}</td>
+                                    <td class="pt-3">{{$s->kecamatan->name}}</td>
+                                    <td class="pt-3">{{$s->kecamatan->kota->name}}</td>
+                                    <td class="pt-3">{{$s->store_image}}</td>
                                     <td>
+                                        @if($s->status_activation == 1)
                                         <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Edit</button>
+                                        @elseif($s->status_activation == 2)
+                                        <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#edit-bengkel{{$s->id}}">Banding</button>
+                                        @endif
                                         <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#detail-bengkel{{$s->id}}">Detail</button>
                                         <a href="{{ url('delete-bengkel/'.$s->id.'') }}"><button class="btn bg-gradient-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                     </td>
                                 </tr>
-
 
                                 <!-- Edit List Bengkel -->
                                 <div class="modal fade" id="edit-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -63,7 +80,13 @@
                                                         <h3 class="font-weight-bolder text-info text-gradient">Edit Data Bengkel</h3>
                                                     </div>
                                                     <div class="card-body">
+                                                        @foreach($stores as $s)
+                                                        @if($s->status_activation==1)
                                                         <form role="form text-left" action="/store-update" method="post" enctype="multipart/form-data">
+                                                        @elseif($s->status_activation==2)
+                                                        <form role="form text-left" action="/store-banding" method="post" enctype="multipart/form-data">
+                                                        @endif
+                                                        @endforeach
                                                             @csrf
                                                             <input type="hidden" name="id" class="form-control" placeholder="Id Bengkel" value="{{ $s->id}}">
                                                             {{-- @error('store_name')
@@ -128,6 +151,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!-- Modal Detail -->
                                 <div class="modal fade" id="detail-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
