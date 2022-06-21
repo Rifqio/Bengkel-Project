@@ -25,12 +25,6 @@
 
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group">
-                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Type here...">
-                </div>
-            </div>
             <ul class="navbar-nav justify-content-end">
                 <form action="/logout" method="post">
                     <button type="submit" class="btn btn-danger m-auto"> Logout </button>
@@ -39,4 +33,5 @@
             </ul>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </nav>
