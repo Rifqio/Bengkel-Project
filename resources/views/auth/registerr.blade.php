@@ -13,7 +13,7 @@
 <body>
     <section class="justify-center">
         <div class="flex h-screen lg:my-auto">
-            <div class="hidden lg:block w-1/3 bg-gradient-to-tl from-green-500 to-green-200 shadow-2xl lg:flex">
+            <div class="hidden w-1/3 bg-gradient-to-tl from-green-500 to-green-200 shadow-2xl lg:flex">
                 <div class="m-auto px-10">
                     <img src="/img/account/regis.svg" alt="ini-gambar-regis" class="lg:m-auto w-full p-10" width="80%">
 
@@ -22,15 +22,30 @@
                     <p class="text-center font-light text-white ">With BengkelAE you don’t need to worry about replacing your vehicle spare parts!</p>
                 </div>
             </div>
-            <div class="container justify-center p-20 mx-auto lg:w-2/3 lg:mr-10 lg:my-auto px-40 lg:py-16 ">
+            <div class="container justify-center p-20 mx-auto lg:w-2/3 lg:mr-10 lg:my-auto lg:px-40 lg:py-16 ">
                 <!-- <img src="{{ asset('img/product/G1.png') }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "> -->
-                <img src="/img/account/regis1.png" alt="Gambar-login1" width="10%" class="rounded-xl  mx-auto ">
+                <img src="/img/account/regis.png" alt="Gambar-login1" width="10%" class="rounded-xl  mx-auto ">
 
                 <h1 class="text-center text-3xl font-bold lg:pt-4 text-gray-600">Create Your Free Account !</h1>
                 <p class="text-center text-sm font-light py-1 pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nobis dolorum error voluptatum neque commodi beatae alias eaque ratione sed.</p>
                 <label class="relative block py-2 w-full">
-                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Email ..." type="text" name="search" />
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Name ..." type="text" name="name" />
                 </label>
+                <label class="relative block py-2 w-full">
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Email ..." type="text" name="email" />
+                </label>
+                <label class="relative block py-2 w-full">
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Nomor Induk Kependudukan (NIK)" type="number" name="NIK" minlength="16" />
+                </label>
+                <label class="relative block py-2 w-full">
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Nomor Pokok Wajib Pajak (NPWP)" type="number" name="NPWP" minlength="16" />
+                </label>
+                <div class="flex justify-center py-3">
+                    <div class=" w-full flex">
+                        <label for="formFileSm" class="form-label inline-block text-gray-700 w-[120px] align-middle font-bold self-center">Foto KTP :</label>
+                        <input class="w-full form-control block px-2 py-1 text-sm font-normal text-slate-400 italic bg-white bg-clip-padding border border-solid border-slate-300 rounded transition ease-in-out m-0 focus:text-green-700 focus:bg-white focus:border-green-400 focus:outline-none" id="formFileSm" type="file">
+                    </div>
+                </div>
                 <label class="relative block py-2">
                     <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Password ..." type="password" name="search" />
                 </label>

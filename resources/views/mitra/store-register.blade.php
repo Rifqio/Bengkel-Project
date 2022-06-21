@@ -41,9 +41,9 @@
                             <div class="row">
                                 <div class="col-md-15">
                                     <div class="form-group">
-                                        <label for="name" class="form-control-label  @error('name') is-invalid @enderror">Nama Bengkel</label>
+                                        <label for="name" class="form-control-label  @error('store_name') is-invalid @enderror">Nama Bengkel</label>
                                         <input class="form-control" type="text" name="store_name" placeholder="Nama Bengkel">
-                                        @error('name')
+                                        @error('store_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -53,10 +53,10 @@
                                 <h6>CREDENTIALS</h6>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="brand"
-                                            class="form-control-label @error('brand') is-invalid @enderror">Jam Buka</label>
-                                        <input class="form-control" name="brand" type="time" value="{{ old('brand') }}">
-                                        @error('brand')
+                                        <label for="open"
+                                            class="form-control-label  @error('open') is-invalid @enderror">Jam Buka</label>
+                                        <input class="form-control" name="open" type="time" value="{{ old('open') }}">
+                                        @error('open')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -66,58 +66,52 @@
                                
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="price"
-                                            class="form-control-label @error('price') is-invalid @enderror">Jam Tutup</label>
-                                        <input class="form-control" id="price" name="price" type="time"
-                                            value="{{ old('price') }}">
-                                        @error('price')
+                                        <label for="close"
+                                            class="form-control-label  @error('close') is-invalid @enderror">Jam Tutup</label>
+                                        <input class="form-control" id="close" name="close" type="time"
+                                            value="{{ old('close') }}">
+                                        @error('close')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="brand"
-                                            class="form-control-label @error('brand') is-invalid @enderror">Kecamatan</label>
-                                        <input class="form-control" name="brand" type="text" value="{{ old('brand') }}">
-                                        @error('brand')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
+                                    <select name="id_kecamatan" id="">
+                                        <option value="">Pilih Kecamatan</option>
+                                        @foreach ($kec as $k)
+                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                               
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="price"
-                                            class="form-control-label @error('price') is-invalid @enderror">Kelurahan</label>
-                                        <input class="form-control" id="price" name="price" type="text"
-                                            value="{{ old('price') }}">
-                                        @error('price')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                <br>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3">
+                                        @error('address')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div> 
+                                        @enderror
+                                    </textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="08xxxxxxxxxx"
+                                    name="phone_store" value="{{ old('phone_store') }}">
+                                @error('phone_store')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Toko</label>
-                                    <input class="form-control" type="file" id="formFile">
+                                    <input class="form-control" type="file" id="formFile" name="store_image">
                                 </div>
                             </div>
 

@@ -6,7 +6,11 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
         <div class="row">
+            @if(Request::is('list-bengkel'))
             <h1 class="text-white mb-4">LIST BENGKEL AKTIF</h1>
+            @elseif(Request::is('reject-bengkel'))
+            <h1 class="text-white mb-4">REJECT BENGKEL</h1>
+            @endif
         </div>
     </div>
     
