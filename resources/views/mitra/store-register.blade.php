@@ -24,7 +24,7 @@
         </ul>
         @endif
         <!--Notification-->
-       
+
         <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -33,7 +33,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Add Bengkel</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                                <button type="submit" class="btn btn-success  btn-sm ms-auto">Submit</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -63,7 +63,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="close"
@@ -158,7 +158,7 @@
         <h5>Belum Ada Notifikasi</h5>
     @endforelse
     <!--Kurang Form Input File-->
-    <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data"> 
+    <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="store_name" placeholder="Nama Bengkel"><br>
         <input type="time" name="open" placeholder="Jam Buka"><br>

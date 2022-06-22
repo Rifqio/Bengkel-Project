@@ -120,14 +120,7 @@ class StoreController extends Controller
         }
         return redirect('/list-bengkel');
     }
-    // public function StoreBandingEdit($id)
-    // {
-    //     $store = Store::where('id', $id)->get();
-    //     return view('mitra.reject.update-reject-bengkel', [
-    //         'stores' => $store
-    //     ]);
-    // }
-
+   
     public function StoreBandingUpdate(Request $request)
     {
         // dd($request);

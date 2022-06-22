@@ -62,9 +62,9 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/list-pengajuan-store', 'ListPengajuanStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
-    Route::post('/store-update', 'StoreUpdate');
+    Route::post('/store-update/{id}', 'StoreUpdate');
     Route::get('/store-edit/{id}', 'StoreEdit');
-    Route::post('/store-update', 'StoreUpdate');
+    //Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
     Route::get('bengkel-list', 'bengkel_list');
@@ -142,7 +142,7 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
 
-});  
+});
 
 
 //Google Login Halo
@@ -174,6 +174,7 @@ Route::get('/product', function () {
 Route::get('/registerr', function () {
     return view('auth/registerr');
 });
+
 Route::get('/forget', function () {
     return view('auth/forget');
 });
@@ -182,7 +183,7 @@ Route::get('/user', function () {
     return view('user/dashboard');
 });
 
-// Route login dan register 
+// Route login dan register
 
 Route::get('/register_view_test', function () {
     return view('auth.register_temp');
