@@ -24,7 +24,7 @@
         </ul>
         @endif
         <!--Notification-->
-       
+
         <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -33,7 +33,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Add Bengkel</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                                <button type="submit" class="btn btn-success  btn-sm ms-auto">Submit</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-md-15">
                                     <div class="form-group">
-                                        <label for="name" class="form-control-label  @error('name') is-invalid @enderror">Nama Bengkel</label>
+                                        <label for="name" class="form-control-label  @error('store_name') is-invalid @enderror">Nama Bengkel</label>
                                         <input class="form-control" type="text" name="store_name" placeholder="Nama Bengkel">
                                         @error('name')
                                         <div class="invalid-feedback">
@@ -63,7 +63,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
@@ -79,18 +79,15 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="brand"
-                                            class="form-control-label @error('brand') is-invalid @enderror">Kecamatan</label>
-                                        <input class="form-control" name="brand" type="text" value="{{ old('brand') }}">
-                                        @error('brand')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
+                                    <select name="id_kecamatan" id="">
+                                        <option value="">Pilih Kecamatan</option>
+                                        @foreach ($kec as $k)
+                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                               
+                                <br>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
@@ -107,17 +104,29 @@
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3">
+                                        @error('address')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="08xxxxxxxxxx"
+                                    name="phone_store" value="{{ old('phone_store') }}">
+                                    @error('phone_store')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Toko</label>
-                                    <input class="form-control" type="file" id="formFile">
+                                    <input class="form-control" type="file" id="formFile" name="store_image">
                                 </div>
                             </div>
 
@@ -164,7 +173,7 @@
         <h5>Belum Ada Notifikasi</h5>
     @endforelse
     <!--Kurang Form Input File-->
-    <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data"> 
+    <form action="{{url('store-register')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="store_name" placeholder="Nama Bengkel"><br>
         <input type="time" name="open" placeholder="Jam Buka"><br>

@@ -25,7 +25,7 @@
   <div class="position-relative">
     <div class="min-height-300 bg-success position-absolute w-100"></div>
   </div>
-  @include('mitra.mitrasidebar')
+  @include('mitra.layout.sidebar')
   @yield('content')
 
   <script src="/argon/js/core/popper.min.js"></script>

@@ -1,7 +1,4 @@
 <x-app-layout>
-
-
-
     <div class="relative">
         <div id="show" style="width: 100%; height:500px">
             {{-- Maps Content --}}
@@ -239,7 +236,7 @@
         };
         loadMap('show');
     </script>
-    <script> 
+    <script>
         function fetch_user_data(query = '')
         {
           $.ajax({

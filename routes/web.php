@@ -143,7 +143,7 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
 
-});  
+});
 
 
 //Google Login Halo
@@ -184,7 +184,7 @@ Route::get('/user', function () {
     return view('user/dashboard');
 });
 
-// Route login dan register 
+// Route login dan register
 
 Route::get('/register_view_test', function () {
     return view('auth.register_temp');

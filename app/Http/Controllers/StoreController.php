@@ -105,10 +105,10 @@ class StoreController extends Controller
         if (!$validated) {
             return back()->withErrors($validated);
         }
-        $status = Store::where('status_activation', 0)->get();
-        if ($status) {
+        $status = Store::where('id', $id)->first();
+        if ($status->status_activation == 0) {
             $title = 'Pengajuan Bengkel Ditolak';
-        } else {
+        } else  if ($status->status_activation == 3) {
             $title = 'Banding Bengkel Ditolak';
         }
         $update = Store::where('id', $id)
@@ -120,50 +120,12 @@ class StoreController extends Controller
         if ($update) {
             $data = array('alasan' => request()->alasan, 'title' => $title, 'note' => $note);
             Mail::send('email.store-reject', $data, function ($message) {
-                $message->to(request()->email, 'Bengkel Anda Ditolak')->subject('jjj');
+                $message->to(request()->email, 'Bengkel Anda Ditolak')->subject('Status Aktivasi Bengkel');
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
         }
         return redirect('/list-bengkel');
 
-        // if ($status) {
-        // $update = Store::where('id', $id)
-        //     ->update([
-        //         'note' => $request->alasan,
-        //         'status_activation' => 2, //2 Reject
-        //     ]);
-
-        // if ($update) {
-        //     $data = array('alasan' => request()->alasan, 'title' => 'Pengajuan Bengkel Ditolak', 'note' => $note);
-        //     Mail::send('email.store-reject', $data, function ($message) {
-        //         $message->to(request()->email, 'Bengkel Anda Ditolak')->subject('Pengajuan Bengkel Ditolak');
-        //         $message->from(Auth::user()->email, Auth::user()->name);
-        //     });
-        // }
-        // return redirect('/list-bengkel');
-        // } else {
-        //     $update = Store::where('id', $id)
-        //         ->update([
-        //             'note' => $request->alasan,
-        //             'status_activation' => 2, //2 Reject
-        //         ]);
-
-        //     if ($update) {
-        //         $data = array('alasan' => request()->alasan, 'title' => 'Banding Bengkel Ditolak', 'note' => $note);
-        //         Mail::send('email.store-reject', $data, function ($message) {
-        //             $message->to(request()->email, 'Bengkel Anda Ditolak')->subject('Banding Bengkel Ditolak');
-        //             $message->from(Auth::user()->email, Auth::user()->name);
-        //         });
-        //     }
-        //     return redirect('/list-bengkel');
-        // }
-        // $store = new Store;
-        // $status = $store->getStatus($id);
-        // Test
-        // $status = Store::where('status_activation', '=', '0');\
-        // $status = Store::where('status_activation', '=', '3');
-        // $status = $store()->item
-        // dd($status);
     }
     public function StoreBandingEdit($id)
     {
