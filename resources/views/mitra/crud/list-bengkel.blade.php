@@ -31,8 +31,8 @@
                                 @endif
                                 <div class="position-absolute top-0 end-0">
                                     @if (Request::is('list-store'))
-                                        <a href="/store-register" class="btn btn-danger"><button type="button"
-                                                class="">+ Tambah</button></a>
+                                        <a href="/store-register" class="btn btn-danger">
+                                        + Tambah</a>
                                     @endif
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                             <td class="pt-3">{{ $s->phone_store }}</td>
                                             <td class="pt-3">{{ $s->kecamatan->name }}</td>
                                             <td class="pt-3">{{ $s->kecamatan->kota->name }}</td>
-                                            <td class="pt-3">{{ $s->store_image }}</td>
+                                            <td class="pt-3"><img src='{{asset('store_data/'.$s->id.'/image/'.$s->store_image)}}' alt="no logo" style="max-width: 70px;"></td>
                                             <td>
                                                 @if ($s->status_activation == 1)
                                                     <button type="button" class="btn bg-gradient-warning"
@@ -92,23 +92,17 @@
                                                                     Data Bengkel</h3>
                                                             </div>
                                                             <div class="card-body">
-                                                                @foreach ($stores as $s)
-                                                                    @if ($s->status_activation == 1)
-                                                                        <form role="form text-left" action="/store-update"
-                                                                            method="post" enctype="multipart/form-data">
-                                                                        @elseif($s->status_activation == 2)
-                                                                            <form role="form text-left"
-                                                                                action="/store-banding" method="post"
-                                                                                enctype="multipart/form-data">
-                                                                    @endif
-                                                                @endforeach
+                                                                @if ($s->status_activation == 1)
+                                                                    <form role="form text-left" action="/store-update/{{$s->id}}"
+                                                                    method="post" enctype="multipart/form-data">
+                                                                @elseif($s->status_activation == 2)
+                                                                    <form role="form text-left"
+                                                                    action="/store-banding" method="post"
+                                                                    enctype="multipart/form-data">
+                                                                @endif
                                                                 @csrf
                                                                 <input type="hidden" name="id" class="form-control"
                                                                     placeholder="Id Bengkel" value="{{ $s->id }}">
-                                                                {{-- @error('store_name')
-                                                                <div class="invalid-feedback">
-                                                                {{$message}}
-                                                                </div> @enderror --}}
                                                                 <label>Nama Bengkel</label>
                                                                 <div class="input-group mb-3">
                                                                     <input type="text" name="store_name"
@@ -159,24 +153,19 @@
                                                                         </div>
                                                                     @enderror
                                                                 </div>
+
+                                                                <label>Gambar Bengkel</label>
+                                                                <input class="form-control" type="file" name="store_image">
+
                                                                 <label>Alamat Bengkel</label>
-                                                                <div class="input-group mb-3">
-                                                                    <textarea name="address" cols="30" rows="10" placeholder="Alamat Bengkel"
-                                                                        class="form-control @error('address') is-invalid @enderror">
-                                                                    {{ $s->address }}
-                                                                    @error('address')
-<div class="invalid-feedback">
-                                                                        {{ $message }}
-                                                                    </div>
-@enderror
+                                                                <textarea name="address"
+                                                                    class="form-control">
                                                                 </textarea>
-                                                                </div>
-                                                                <input type="hidden" name="store_image"
-                                                                    value="Dummy"><br>
+
                                                                 <button type="submit"
                                                                     class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update
-                                                                    Data</button>
-
+                                                                    Data
+                                                                </button>
                                                                 </form>
                                                             </div>
                                                         </div>
