@@ -75,8 +75,17 @@ class StoreController extends Controller
 
     public function StoreUpdateStatus()
     {
-        $store = Store::find(request()->id);
-        $store->update(['status_activation' => request()->status]);
+        //echo request()->email;
+        $note = 'Bengkel Anda Sudah Dikaktifkan';
+        $store = Store::find(request()->id)
+            ->update(['status_activation' == 1]);
+        if ($store) {
+            $data = array('title' => 'Bengkel di Non-Aktifkan', 'note' => $note);
+            Mail::send('email.store-non', $data, function ($message) {
+                $message->to(request()->email, 'Bengkel Anda Di Non-Aktifkan')->subject('Bengkel di Non-Aktifkan');
+                $message->from(Auth::user()->email, Auth::user()->name);
+            });
+        }
         return redirect('/list-bengkel');
     }
 
@@ -94,6 +103,8 @@ class StoreController extends Controller
             $title = 'Pengajuan Bengkel Ditolak';
         } else if ($status->status_activation == 3) {
             $title = 'Banding Bengkel Ditolak';
+        } elseif ($status->status_activation == 1) {
+            $title = 'Bengkel Anda di Non-Aktifkan';
         }
         $update = Store::where('id', $id)
             ->update([
@@ -108,19 +119,18 @@ class StoreController extends Controller
             });
         }
         return redirect('/list-bengkel');
-
-        
     }
-    public function StoreBandingEdit($id)
-    {
-        $store = Store::where('id', $id)->get();
-        return view('mitra.reject.update-reject-bengkel', [
-            'stores' => $store
-        ]);
-    }
+    // public function StoreBandingEdit($id)
+    // {
+    //     $store = Store::where('id', $id)->get();
+    //     return view('mitra.reject.update-reject-bengkel', [
+    //         'stores' => $store
+    //     ]);
+    // }
 
     public function StoreBandingUpdate(Request $request)
     {
+        // dd($request);
         $validateData = $request->validate([
             'store_name' => ['required', 'string', 'max:255'],
             'open' => ['required'],
@@ -128,18 +138,19 @@ class StoreController extends Controller
             'address' => ['required', 'string'],
             'phone_store' => ['required'],
             // 'store_image' => ['required', 'string'],
-
-
         ]);
         if (!$validateData) {
             return redirect()->back();
         }
-
         $model = Store::find($request->id);
         $model->update([
-            $request->except(['id', '_token']),
+            'store_name' => $request->store_name,
+            'open' => $request->open,
+            'close' => $request->close,
+            'address' => $request->address,
+            'phone_store' => $request->phone_store,
             'status_activation' => 3
         ]);
-        return redirect('reject-bengkel')->with('success_update', 'Store has been updated');
+        return redirect('banding-bengkel')->with('success_update', 'Store has been updated');
     }
 }

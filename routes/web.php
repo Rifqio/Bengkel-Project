@@ -68,8 +68,6 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
     Route::get('bengkel-list', 'bengkel_list');
-    // Route::get('/list-reject-store', 'ListRejectStore');
-    // Route::get('/list-banding-store', 'StoreBandingList');
 });
 
 //Profile
@@ -93,9 +91,9 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
     Route::get('/list-bengkel', 'StoreView');
     Route::get('/reject-bengkel', 'StoreReject');
     Route::get('/banding-bengkel', 'StoreBanding');
-    Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('/aktif-bengkel', 'StoreUpdateStatus');
     Route::post('/reject-bengkel/{id}', 'RejectBengkel');
-    Route::get('/store-banding/{id}', 'StoreBandingEdit');
+    // Route::get('/store-banding/{id}', 'StoreBandingEdit');
     Route::post('/store-banding', 'StoreBandingUpdate');
 });
 

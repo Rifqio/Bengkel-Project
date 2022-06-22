@@ -36,8 +36,10 @@
                             <tr>
                                 <th>No</th>
                                 <th>Store Name</th>
-                                <th>Phone</th>
                                 <th>Address</th>
+                                <th>Kecamatan</th>
+                                <th>Kota</th>
+                                <th>Tanggal Pengajuan</th>
                                 <th>
                                     <center>Action</center>
                                 </th>
@@ -50,14 +52,20 @@
                                 <td>
                                     {{$s->store_name}}
                                 </td>
-                                <td>
-                                    {{$s->phone_store}}
-                                </td>
                                 <td class="align-middle text-sm">
                                     {{$s->address}}
                                 </td>
                                 <td class="align-middle text-sm">
-                                    @if($s->lat && $s->long != NULL)
+                                    {{$s->kecamatan->name}}
+                                </td>
+                                <td class="align-middle text-sm">
+                                    {{$s->kecamatan->kota->name}}
+                                </td>
+                                <td class="align-middle text-sm">
+                                    {{$s->updated_at}}
+                                </td>
+                                <td class="align-middle text-sm">
+                                    @if($s->lat != NULL && $s->long != NULL)
                                     <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal" data-bs-target="#act{{$s->id}}">
                                         Aktifkan
                                     </button>
@@ -65,10 +73,10 @@
                                     <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#conf{{$s->id}}">
                                         Konfirm
                                     </button>
+                                    @endif
                                     <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#rej{{$s->id}}">
                                         Reject
                                     </button>
-                                    @endif
                                     <button class="btn text-white" style="background-color: red">
                                         Delete
                                     </button>
@@ -157,7 +165,7 @@
                     <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h6 class="modal-title" id="modal-title-default">Non Aktivasi Bengkel</h6>
+                                <h6 class="modal-title" id="modal-title-default">Aktivasi Bengkel</h6>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -169,10 +177,11 @@
                                 <p>NIK : {{$s->users->nik}}</p>
                             </div>
                             <div class="modal-footer">
-                                <form action="{{url('non-aktif')}}" method="POST">
+                                <form action="{{url('aktif-bengkel')}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id" value="{{$s->id}}">
-                                    <input type="hidden" name="status" value="1">
+                                    <input type="hidden" name="status" value="{{ $s->status_activation }}">
+                                    <input type="hidden" name="email" value="{{ $s->users->email }}">
                                     <button type="submit" class="btn bg-gradient-danger">Save changes</button>
                                     <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
                                 </form>
