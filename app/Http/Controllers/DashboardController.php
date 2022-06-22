@@ -61,6 +61,7 @@ class DashboardController extends Controller
     {
 
         $store = Store::where('status_activation', 1)->get();
+        $categories = Category::all();
         $data = [];
         foreach ($store as $s) {
             $data[] = [
@@ -72,6 +73,7 @@ class DashboardController extends Controller
         return view('user.userdashboard', [
             'items' => Item::all(),
             'location' => $data,
+            'categories' => $categories,
             'title' => 'Dashboard'
         ]);
     }

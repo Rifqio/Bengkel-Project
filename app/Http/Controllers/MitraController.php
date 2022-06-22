@@ -30,7 +30,7 @@ class MitraController extends Controller
             return redirect('dashboard');
         }
     }
-
+    
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
@@ -124,22 +124,4 @@ class MitraController extends Controller
         Notification::send($user, new StoreRegister($notif));
         return redirect('store-register');
     }
-
-    // public function bengkel_list()
-    // {
-    //     $mitra = User::find(Auth::user()->id);
-    //     $data =
-    //     DB::table("stores")
-    //     ->join("users", function($join){
-    //         $join->on("stores.id_mitra", "=", "users.id");
-    //     })
-    //     ->select("stores.store_name", "stores.address")
-    //     ->where("users.id", "=", auth()->user()->id)
-    //     ->get();
-    //     // dd($data);
-    //    return view('mitra.bengkelList.index', [
-    //        'data' => $data,
-    //        'mitra' => $mitra
-    //    ]);
-    // }
 }
