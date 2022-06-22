@@ -117,25 +117,23 @@ class MitraController extends Controller
         if (!$validatedData) {
             return redirect('store-register');
         }else{
+            Store::create([
+                'store_name' => request()->store_name,
+                'open' => request()->open,
+                'close' => request()->close,
+                'phone_store' => request()->phone_store,
+                'address' => request()->address,
+                'status_activation' => 0,
+                'id_mitra' => Auth::user()->id,
+                'id_kecamatan' => request()->id_kecamatan,
+                'store_image' => request()->store_image,
+            ]);
             return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
         }
-
-        Store::create([
-            'store_name' => request()->store_name,
-            'open' => request()->open,
-            'close' => request()->close,
-            'phone_store' => request()->phone_store,
-            'address' => request()->address,
-            'status_activation' => 0,
-            'id_mitra' => Auth::user()->id,
-            'id_kecamatan' => request()->id_kecamatan,
-            'store_image' => request()->store_image,
-        ]);
-
-        $notif = 'Pendaftaran Bengkel Sedang Diproses';
-        $user = User::find(1);
-        Notification::send($user, new StoreRegister($notif));
-        return redirect('store-register');
+        // $notif = 'Pendaftaran Bengkel Sedang Diproses';
+        // $user = User::find(1);
+        // Notification::send($user, new StoreRegister($notif));
+        // return redirect('store-register');
     }
 
     // public function jumlah(){
