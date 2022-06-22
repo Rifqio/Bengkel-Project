@@ -24,52 +24,21 @@
                 <a href="/product" class="bg-slate-300 rounded-lg"><button type="button" class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button></a>
             </div>
 
-         
-            <div class="flex flex-wrap justify-center ">
 
+            <div class="flex flex-wrap justify-center ">
+                @foreach($categories as $c)
                 <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
                     <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Brake.svg" alt="" width="30%">
+                        <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Brakes</h1>
-                            <h4 class="group-hover:text-slate-100">The system is designed to use pressure and friction to stop.</h4>
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">{{$c->name}}</h1>
+                            <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
                         </div>
                     </div>
                 </a>
+                @endforeach
 
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-10 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Shock Absorber2.svg" alt="">
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Chassis and Suspension</h1>
-                            <h4 class="group-hover:text-slate-100">Dampen various vibrations generated from the road surface</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 w-[400px] h-[400px] ">
-                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-12 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Gearbox3.svg" alt="">
-
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Drivetrain</h1>
-                            <h4 class="group-hover:text-slate-100">Dampen various vibrations generated from the road surface</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Input-Component4.svg" alt="">
-
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Electronics</h1>
-                            <h4 class="group-hover:text-slate-100">help to keep your car running at its full potential</h4>
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
 
@@ -169,26 +138,26 @@
         </div>
     </footer>
     <!-- Modal -->
-        <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
-                <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-                    <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-                            Bengkel Terdekat
-                        </h5>
-                        <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body relative p-4" id='rekomen'>
+    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
+            <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                    <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+                        Bengkel Terdekat
+                    </h5>
+                    <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body relative p-4" id='rekomen'>
 
-                    </div>
-                    <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                        <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">
-                            Close
-                        </button>
-                    </div>
+                </div>
+                <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                    <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">
+                        Close
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script>
         //Option
