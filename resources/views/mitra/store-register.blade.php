@@ -55,7 +55,7 @@
                                     <div class="form-group">
                                         <label for="brand"
                                             class="form-control-label @error('brand') is-invalid @enderror">Jam Buka</label>
-                                        <input class="form-control" name="brand" type="time" value="{{ old('brand') }}">
+                                        <input class="form-control" name="open" type="time" value="{{ old('brand') }}">
                                         @error('brand')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label for="price"
                                             class="form-control-label @error('price') is-invalid @enderror">Jam Tutup</label>
-                                        <input class="form-control" id="price" name="price" type="time"
+                                        <input class="form-control" id="price" name="close" type="time"
                                             value="{{ old('price') }}">
                                         @error('price')
                                         <div class="invalid-feedback">
@@ -88,7 +88,7 @@
                                 </div>
                                 <br>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
                                             class="form-control-label @error('price') is-invalid @enderror">Kelurahan</label>
@@ -100,16 +100,11 @@
                                         </div>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                                     <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3">
-                                        @error('address')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
                                     </textarea>
                                 </div>
 

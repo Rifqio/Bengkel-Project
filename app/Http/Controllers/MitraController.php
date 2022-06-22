@@ -104,11 +104,15 @@ class MitraController extends Controller
             'close' => 'required',
             'phone_store' => ['required', 'max:12', 'min:11'],
             'address' => 'required',
+            'store_image' => 'required',
         ]);
 
         if (!$validatedData) {
             return redirect('store-register');
         }
+
+        // $name = time()."_".$request->store_image->getClientOriginalName();
+        // $request->profile->move(public_path('data_user/'.Auth::user()->id.'/profile'), $name);
 
         Store::create([
             'store_name' => request()->store_name,
