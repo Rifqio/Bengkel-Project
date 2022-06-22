@@ -175,6 +175,7 @@ Route::get('/product', function () {
 Route::get('/registerr', function () {
     return view('auth/registerr');
 });
+
 Route::get('/forget', function () {
     return view('auth/forget');
 });
