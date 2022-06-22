@@ -193,3 +193,7 @@ Route::get('/register_view_test', function () {
 Route::get('/login_view_test', function () {
     return view('auth.login_temp');
 });
+
+Route::get('/bengkel', function () {
+    return view('user.bengkel');
+});
