@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpController;
@@ -28,8 +29,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/', [DashboardController::class, 'GuestView'])->name('dashboard')->middleware('guest');
 Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
-//Dashboard Route
+// Ajax
+Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
 
+//Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
 
 //Categories Route
@@ -55,10 +58,17 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
+    Route::get('/list-store', 'ListStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
+    Route::post('/store-update', 'StoreUpdate');
+    Route::get('/store-edit/{id}', 'StoreEdit');
+    Route::post('/store-update', 'StoreUpdate');
+    Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
     Route::get('bengkel-list', 'bengkel_list');
+    // Route::get('/list-reject-store', 'ListRejectStore');
+    // Route::get('/list-banding-store', 'StoreBandingList');
 });
 
 //Profile
@@ -68,17 +78,24 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
 });
 
 //Employee
+Route::resource('list-mitra', EmpController::class);
 Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
-    Route::post('list-mitra/{id}/update', 'UpdateDataMitra');
+    Route::post('/update-mitra', 'UpdateDataMitra');
+    Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
 });
 
 //Store Controller
-Route::middleware(['auth', 'verified', 'role:superadmin|employee'])->controller(StoreController::class)->group(function () {
+Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->controller(StoreController::class)->group(function () {
     Route::get('/list-bengkel', 'StoreView');
+    Route::get('/reject-bengkel', 'StoreReject');
+    Route::get('/banding-bengkel', 'StoreBanding');
     Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('/reject-bengkel/{id}', 'RejectBengkel');
+    Route::get('/store-banding/{id}', 'StoreBandingEdit');
+    Route::post('/store-banding', 'StoreBandingUpdate');
 });
 
 //Route Confirmation Email
@@ -125,10 +142,11 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-input-product', 'TestInputProductStore');
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
+
 });
 
 
-//Google Login
+//Google Login Halo
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/redirect', 'redirectToProvider');
     Route::get('/auth/callback', 'handleProviderCallback');
@@ -150,9 +168,28 @@ Route::get('/product', function () {
     return view('user/userproduct');
 });
 
+// Route::get('/login', function () {
+//     return view('auth/loginn');
+// })->name('login');
+
 Route::get('/registerr', function () {
     return view('auth/registerr');
 });
+
 Route::get('/forget', function () {
     return view('auth/forget');
+});
+
+Route::get('/user', function () {
+    return view('user/dashboard');
+});
+
+// Route login dan register
+
+Route::get('/register_view_test', function () {
+    return view('auth.register_temp');
+});
+
+Route::get('/login_view_test', function () {
+    return view('auth.login_temp');
 });
