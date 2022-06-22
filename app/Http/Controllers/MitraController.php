@@ -34,11 +34,21 @@ class MitraController extends Controller
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
-        $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
+        //$non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
         $active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get();
         return view('mitra.crud.list-bengkel', [
             'users' => $users,
             'stores' => $active,
+        ])->with('success_update', 'Store Sudah Tertambah');
+    }
+
+    public function ListPengajuanStore()
+    {
+        $users = User::whereRoleIs(['mitra'])->get();
+        $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
+        return view('mitra.crud.list-bengkel', [
+            'users' => $users,
+            'stores' => $non_active,
         ])->with('success_update', 'Store Sudah Tertambah');
     }
 
@@ -73,13 +83,13 @@ class MitraController extends Controller
             return redirect()->back();
         }
         $old_image = Store::find($id)->store_image;
-        if(isset($request->store_image)){
-            $name = time()."_".$request->store_image->getClientOriginalName();
-            $request->store_image->move(public_path('store_data/'.$id.'/image'), $name);
-            if(File::exists(public_path('store_data/'.$id.'/image/'. $old_image))){
-                unlink('store_data/'.$id.'/image/'.$old_image);
+        if (isset($request->store_image)) {
+            $name = time() . "_" . $request->store_image->getClientOriginalName();
+            $request->store_image->move(public_path('store_data/' . $id . '/image'), $name);
+            if (File::exists(public_path('store_data/' . $id . '/image/' . $old_image))) {
+                unlink('store_data/' . $id . '/image/' . $old_image);
             }
-        }else{
+        } else {
             $name = $old_image;
         }
         Store::find($id)->update([
@@ -122,9 +132,11 @@ class MitraController extends Controller
 
         if (!$validatedData) {
             return redirect('store-register');
+        } else {
+            return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
         }
 
-        $name = time()."_".$request->store_image->getClientOriginalName();
+        $name = time() . "_" . $request->store_image->getClientOriginalName();
 
         Store::create([
             'store_name' => request()->store_name,
@@ -138,7 +150,7 @@ class MitraController extends Controller
             'store_image' => $name,
         ]);
 
-        $request->store_image->move(public_path('store_data/'.DB::getPdo()->lastInsertId().'/image'), $name);
+        $request->store_image->move(public_path('store_data/' . DB::getPdo()->lastInsertId() . '/image'), $name);
         return redirect('store-register');
     }
 }

@@ -15,8 +15,7 @@ class StoreController extends Controller
     public function StoreView()
     {
         $store = Store::where('status_activation', 1)->get();
-        // $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get();
-        // $users = User::whereRoleIs(['mitra'])->get();
+
         if (Auth::user()->hasRole('employee')) {
             $layout = 'admin.list-bengkel-aktif';
         } elseif (Auth::user()->hasRole('superadmin')) {
@@ -26,20 +25,6 @@ class StoreController extends Controller
         return view($layout, [
             'stores' => $store,
         ]);
-        // }elseif(Auth::user()->hasRole('mitra')){
-        //     $layout = 'mitra.crud.list-bengkel';
-        // };
-
-        // if(Auth::user()->hasRole('mitra')){
-        //     return view($layout, [
-        //         'stores' => $store,
-        //         'stores' => $data_condition
-        //     ]);
-        // }else{
-        //     return view($layout, [
-        //         'stores' => $store,
-        //     ]);
-        // }
     }
 
     public function StoreReject()
@@ -91,8 +76,16 @@ class StoreController extends Controller
 
     public function StoreUpdateStatus()
     {
-        $store = Store::find(request()->id);
-        $store->update(['status_activation' => request()->status]);
+        $note = 'Bengkel Anda Sudah Dikaktifkan';
+        $store = Store::find(request()->id)
+            ->update(['status_activation' == 1]);
+        if ($store) {
+            $data = array('title' => 'Bengkel di Non-Aktifkan', 'note' => $note);
+            Mail::send('email.store-non', $data, function ($message) {
+                $message->to(request()->email, 'Bengkel Anda Di Non-Aktifkan')->subject('Bengkel di Non-Aktifkan');
+                $message->from(Auth::user()->email, Auth::user()->name);
+            });
+        }
         return redirect('/list-bengkel');
     }
 
@@ -110,6 +103,8 @@ class StoreController extends Controller
             $title = 'Pengajuan Bengkel Ditolak';
         } else  if ($status->status_activation == 3) {
             $title = 'Banding Bengkel Ditolak';
+        } elseif ($status->status_activation == 1) {
+            $title = 'Bengkel Anda di Non-Aktifkan';
         }
         $update = Store::where('id', $id)
             ->update([
@@ -127,13 +122,7 @@ class StoreController extends Controller
         return redirect('/list-bengkel');
 
     }
-    public function StoreBandingEdit($id)
-    {
-        $store = Store::where('id', $id)->get();
-        return view('mitra.reject.update-reject-bengkel', [
-            'stores' => $store
-        ]);
-    }
+
 
     public function StoreBandingUpdate(Request $request)
     {
@@ -153,7 +142,11 @@ class StoreController extends Controller
 
         $model = Store::find($request->id);
         $model->update([
-            $request->except(['id', '_token']),
+            'store_name' => $request->store_name,
+            'open' => $request->open,
+            'close' => $request->close,
+            'address' => $request->address,
+            'phone_store' => $request->phone_store,
             'status_activation' => 3
         ]);
         return redirect('reject-bengkel')->with('success_update', 'Store has been updated');
