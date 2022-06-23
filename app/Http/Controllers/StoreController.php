@@ -86,7 +86,7 @@ class StoreController extends Controller
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
         }
-        return redirect('/list-bengkel');
+        return redirect('/list-mitra');
     }
 
     public function RejectBengkel($id, Request $request)
