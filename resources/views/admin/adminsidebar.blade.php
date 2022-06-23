@@ -1,7 +1,6 @@
 <head>
     <!-- My Style -->
     <link rel="stylesheet" href="{{ URL::asset('css/style_sidebar.css'); }}">
-    <!-- <link href="{{ URL::asset('js/sidebar.js') }}" rel="script"> -->
 </head>
 <aside class="sidenav w-auto bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">

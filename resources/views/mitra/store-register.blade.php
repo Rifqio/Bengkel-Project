@@ -33,7 +33,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Add Bengkel</p>
-                                <button type="submit" class="btn btn-success  btn-sm ms-auto">Submit</button>
+                               
                             </div>
                         </div>
                         <div class="card-body">
@@ -41,11 +41,8 @@
                             <div class="row">
                                 <div class="col-md-15">
                                     <div class="form-group">
-                                        <label for="name"
-                                            class="form-control-label  @error('store_name') is-invalid @enderror">Nama
-                                            Bengkel</label>
-                                        <input class="form-control" type="text" name="store_name"
-                                            placeholder="Nama Bengkel">
+                                        <label for="name" class="form-control-label  @error('store_name') is-invalid @enderror">Nama Bengkel</label>
+                                        <input class="form-control" type="text" name="store_name" placeholder="Nama Bengkel">
                                         @error('store_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -117,6 +114,7 @@
                                     <label for="formFile" class="form-label">Foto Toko</label>
                                     <input class="form-control" type="file" id="formFile" name="store_image">
                                 </div>
+                                <button type="submit" class="btn btn-success btn-sm ms-auto mt-4">Save</button>
                             </div>
 
                         </div>
