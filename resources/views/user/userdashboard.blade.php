@@ -18,22 +18,22 @@
 
         <div class="container mx-auto justify-center pt-10">
             <div class="flex justify-center">
-                <a href="/product" class="bg-slate-300 rounded-lg"><button type="button" class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button></a>
+                <a href="/sparepart" class="bg-slate-300 rounded-lg"><button type="button" class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button></a>
             </div>
 
 
             <div class="flex flex-wrap justify-center ">
                 @foreach($categories as $c)
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
+                <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
                     <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
                         <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">{{$c->name}}</h1>
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white"> <a href="sparepart/{{ strtolower($c->name) }}"> {{ $c->name }}</a></h1>
                             <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
                         </div>
                     </div>
-                </a>
+                </div>
                 @endforeach
 
             </div>

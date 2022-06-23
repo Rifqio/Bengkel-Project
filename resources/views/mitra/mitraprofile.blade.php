@@ -56,7 +56,10 @@
             <label for="pp" class="form-label">Update Foto Profile</label>
             <input type="file" name="profile" class="form-control" id="pp">
           </div>
-          <button type="submit" class="btn btn-success">Submit</button>
+          <div class="d-grid gap-2 mx-auto">
+            <button class="btn btn-success" type="submit">Submit</button>
+            <a class="btn btn-primary" href="/otp-confirmation" role="button">Update Email/Password</a>
+          </div>
         </form>
       </div>
     </div>

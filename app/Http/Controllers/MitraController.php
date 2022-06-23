@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Item;
+use App\Models\ItemStore;
 use App\Models\User;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -21,12 +23,22 @@ class MitraController extends Controller
     public function create_product()
     {
         if (Auth::user()->hasRole('mitra')) {
+            $category = explode(',', request('category'));
             Item::create([
                 'name' => request('name'),
                 'brand' => request('brand'),
                 'price' => request('price'),
-                'category_id' => request('category'),
+                'category_id' => $category[0],
+                'slug' => strtolower($category[1]),
+                'desc' => request('desc')
             ]);
+            ItemStore::create([
+                'store_id' => request('bengkel'),
+                'item_id' => Item::latest()->first()->id,
+                'price' => request('price'),
+                'user_id' => Auth::id()
+            ]);
+
             return redirect('dashboard');
         }
     }
