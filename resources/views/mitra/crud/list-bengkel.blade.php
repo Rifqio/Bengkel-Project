@@ -20,27 +20,6 @@
                                     </button>
                                 </div>
                             @endif
-
-<main class="main-content position-relative border-radius-lg ">
-    <!-- Navbar -->
-    @include('mitra.layout.navbar')
-    <!-- End Navbar -->
-    <div class="container-fluid py-4">
-        <div class="row mt-4">
-            <div class="col-lg-12 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-header pb-0 p-3">
-                        {{-- Notifikasi Update --}}
-                        @if (session('success_update'))
-                        <div class="alert alert-success text-center mx-auto alert-dismissible fade show" role="alert">
-                            {{ session('success_update') }}
-                            <strong>Success!</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
-
                         <div class="position-relative">
                             @if(Request::is('list-store'))
                             <h4 class="mb-0">List Bengkel</h4>

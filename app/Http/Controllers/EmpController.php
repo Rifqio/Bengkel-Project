@@ -59,16 +59,18 @@ class EmpController extends Controller
     }
 
     public function NonAktifMitra(Request $request){
+        // echo $request;
         $note = 'Anda di Non-Aktifkan, Silahkan Hubungi Customer Service Bengkel AE';
-        $store = User::find(request()->id)
-            ->update(['create_at', Null]);
-        if ($store) {
+        $mitra = User::find($request->id)->update(['created_at' => NULL]);
+        // echo $mitra;
+            // ->update([ `created_at` == NULL]);
+        if ($mitra) {
             $data = array('title' => 'Anda di Non-Aktifkan', 'note' => $note);
             Mail::send('email.mitra-non', $data, function ($message) {
                 $message->to(request()->email, 'Anda Di Non-Aktifkan')->subject('Anda di Non-Aktifkan');
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
         }
-        return redirect('/list-bengkel');
+        return redirect('/list-mitra');
     }
 }

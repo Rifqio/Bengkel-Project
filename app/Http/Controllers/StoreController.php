@@ -75,7 +75,6 @@ class StoreController extends Controller
 
     public function StoreUpdateStatus()
     {
-        //echo request()->email;
         $note = 'Bengkel Anda Sudah Dikaktifkan';
         $store = Store::find(request()->id)
             ->update(['status_activation' == 1]);
@@ -86,7 +85,7 @@ class StoreController extends Controller
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
         }
-        return redirect('/list-mitra');
+        return redirect('/list-bengkel');
     }
 
     public function RejectBengkel($id, Request $request)
@@ -120,7 +119,8 @@ class StoreController extends Controller
         }
         return redirect('/list-bengkel');
     }
-   
+
+
     public function StoreBandingUpdate(Request $request)
     {
         // dd($request);

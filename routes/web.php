@@ -94,7 +94,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
     Route::get('/banding-bengkel', 'StoreBanding');
     Route::post('/aktif-bengkel', 'StoreUpdateStatus');
     Route::post('/reject-bengkel/{id}', 'RejectBengkel');
-    // Route::get('/store-banding/{id}', 'StoreBandingEdit');
+//    Route::get('/store-banding/{id}', 'StoreBandingEdit');
     Route::post('/store-banding', 'StoreBandingUpdate');
 });
 
@@ -192,4 +192,8 @@ Route::get('/register_view_test', function () {
 
 Route::get('/login_view_test', function () {
     return view('auth.login_temp');
+});
+
+Route::get('/bengkel', function () {
+    return view('user.bengkel');
 });
