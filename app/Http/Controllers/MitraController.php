@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Store;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Kota;
 use App\Models\Kecamatan;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Notification;
 
 class MitraController extends Controller
@@ -21,14 +23,23 @@ class MitraController extends Controller
     public function create_product()
     {
         if (Auth::user()->hasRole('mitra')) {
+            $category = explode(',', request('category'));
             Item::create([
                 'name' => request('name'),
                 'brand' => request('brand'),
                 'price' => request('price'),
-                'category_id' => request('category'),
+                'category_id' => $category[0],
+                'slug' => strtolower($category[1]),
+                'desc' => request('desc')
             ]);
             return redirect('dashboard');
         }
+    }
+
+    public function slug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->slug);
+        return response()->json(['slug' => $slug]);
     }
 
     public function ListStore()
