@@ -47,7 +47,7 @@ class MitraController extends Controller
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
-        // $non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
+        //$non_active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 0)->get();
         $active = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 1)->get();
         return view('mitra.crud.list-bengkel', [
             'users' => $users,

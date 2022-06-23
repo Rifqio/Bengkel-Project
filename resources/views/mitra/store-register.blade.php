@@ -41,8 +41,11 @@
                             <div class="row">
                                 <div class="col-md-15">
                                     <div class="form-group">
-                                        <label for="name" class="form-control-label  @error('store_name') is-invalid @enderror">Nama Bengkel</label>
-                                        <input class="form-control" type="text" name="store_name" placeholder="Nama Bengkel">
+                                        <label for="name"
+                                            class="form-control-label  @error('store_name') is-invalid @enderror">Nama
+                                            Bengkel</label>
+                                        <input class="form-control" type="text" name="store_name"
+                                            placeholder="Nama Bengkel">
                                         @error('store_name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -68,7 +71,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="close"
-                                            class="form-control-label  @error('close') is-invalid @enderror">Jam Tutup</label>
+                                            class="form-control-label  @error('close') is-invalid @enderror">Jam
+                                            Tutup</label>
                                         <input class="form-control" id="close" name="close" type="time"
                                             value="{{ old('close') }}">
                                         @error('close')
@@ -88,13 +92,15 @@
                                 </div>
                                 <br>
 
+
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                    <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3">
+                                    <textarea class="form-control" name="address" id="exampleFormControlTextarea1"
+                                        rows="3">
                                         @error('address')
                                         <div class="invalid-feedback">
                                             {{ $message }}
-                                        </div> 
+                                        </div>
                                         @enderror
                                     </textarea>
                                 </div>

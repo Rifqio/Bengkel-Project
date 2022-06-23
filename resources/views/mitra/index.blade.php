@@ -24,15 +24,19 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <a href="list-pengajuan-store"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Pengajuan</p></a>
+                                    <a href="list-pengajuan-store">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Pengajuan
+                                        </p>
+                                    </a>
                                     <h5 class="font-weight-bolder">
-                                   {{ $non_aktif}}
+                                        {{ $non_aktif}}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                <div
+                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                    <i class="ni ni-ruler-pencil text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +60,7 @@
                             <div class="col-4 text-end">
                                 <div
                                     class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="ni ni-briefcase-24 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +84,7 @@
                             <div class="col-4 text-end">
                                 <div
                                     class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="ni ni-bell-55 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -93,15 +97,18 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <a href="/banding-bengkel"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Banding</p></a>
+                                    <a href="/banding-bengkel">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Banding</p>
+                                    </a>
                                     <h5 class="font-weight-bolder">
-                                   {{ $banding}}
+                                        {{ $banding}}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                <div
+                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                    <i class="ni ni-email-83 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -123,8 +130,8 @@
                             </div>
                             <div class="col-4 text-end">
                                 <div
-                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                    class="icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle">
+                                    <i class="ni ni-briefcase-24 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
