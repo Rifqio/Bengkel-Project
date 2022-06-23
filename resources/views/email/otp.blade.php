@@ -7,7 +7,7 @@
 </head>
 <body>
     <center>
-        <h2>Masukkan Kode OTOP</h2>
+        <h2>Masukkan Kode OTP</h2>
     </center>
     <h4 class="text-3xl font-bold underline">
         Nama : {{$otp}}

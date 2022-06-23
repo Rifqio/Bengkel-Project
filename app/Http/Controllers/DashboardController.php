@@ -95,7 +95,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
         if (Auth::user()->hasRole('superadmin')) {
             return view('SuperAdmin.crud.create', [
@@ -103,10 +103,18 @@ class DashboardController extends Controller
             ]);
         } elseif (Auth::user()->hasRole('mitra')) {
             $mitra = User::find(Auth::user()->id);
+            $bengkel = DB::table("stores")
+                ->join("users", function ($join) {
+                    $join->on("stores.id_mitra", "=", "users.id");
+                })
+                ->select("stores.store_name", "stores.id")
+                ->where("users.id", "=", Auth::id())
+                ->get();
             $categories = Category::all();
             return view('mitra.crud.create', [
                 'mitra' => $mitra,
-                'categories' => $categories
+                'categories' => $categories,
+                'bengkel' => $bengkel,
             ]);
         }
     }
