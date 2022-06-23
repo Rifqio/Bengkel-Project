@@ -63,14 +63,12 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/list-pengajuan-store', 'ListPengajuanStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
-    Route::post('/store-update', 'StoreUpdate');
+    Route::post('/store-update/{id}', 'StoreUpdate');
     Route::get('/store-edit/{id}', 'StoreEdit');
-    Route::post('/store-update', 'StoreUpdate');
+    //Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
     Route::get('bengkel-list', 'bengkel_list');
-    // Route::get('/list-reject-store', 'ListRejectStore');
-    // Route::get('/list-banding-store', 'StoreBandingList');
 });
 
 //Profile
@@ -94,9 +92,9 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
     Route::get('/list-bengkel', 'StoreView');
     Route::get('/reject-bengkel', 'StoreReject');
     Route::get('/banding-bengkel', 'StoreBanding');
-    Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('/aktif-bengkel', 'StoreUpdateStatus');
     Route::post('/reject-bengkel/{id}', 'RejectBengkel');
-    Route::get('/store-banding/{id}', 'StoreBandingEdit');
+//    Route::get('/store-banding/{id}', 'StoreBandingEdit');
     Route::post('/store-banding', 'StoreBandingUpdate');
 });
 
@@ -145,7 +143,7 @@ Route::controller(TestController::class)->group(function () {
     Route::post('test-image', 'TestImage');
     Route::get('login-test', 'TestLogin');
 
-});  
+});
 
 
 //Google Login Halo
@@ -177,6 +175,7 @@ Route::get('/product', function () {
 Route::get('/registerr', function () {
     return view('auth/registerr');
 });
+
 Route::get('/forget', function () {
     return view('auth/forget');
 });
@@ -185,7 +184,7 @@ Route::get('/user', function () {
     return view('user/dashboard');
 });
 
-// Route login dan register 
+// Route login dan register
 
 Route::get('/register_view_test', function () {
     return view('auth.register_temp');
@@ -193,4 +192,8 @@ Route::get('/register_view_test', function () {
 
 Route::get('/login_view_test', function () {
     return view('auth.login_temp');
+});
+
+Route::get('/bengkel', function () {
+    return view('user.bengkel');
 });

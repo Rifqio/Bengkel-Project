@@ -52,16 +52,38 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <select class="form-control" name="category">
+                                        <select class="form-control" name="category" id="category">
                                             @foreach ($categories as $category)
-                                                    <option value={{ $category->id }}>{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }},{{ $category->name }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Pilih Bengkel</label>
+                                        <select class="form-control" name="bengkel" id="category">
+                                            @foreach ($bengkel as $b)
+                                                    <option value="{{ $b->id }}">{{ $b->store_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Slug</label>
+                                        <input class="form-control" id="slug" name="slug" type="text" readonly>
+                                    </div>
+                                </div> --}}
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
@@ -75,6 +97,14 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Deskripsi Produk</label>
+                                        <textarea class="form-control" name="desc" id="" cols="20" rows="5"></textarea>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -84,4 +114,13 @@
         </form>
     </div>
 </div>
+<script>
+    // const category = document.querySelector('#category')
+    // const slug = document.querySelector('#slug')
+    // category.addEventListener('change', function(){
+    //     fetch('/dashboard/create/create-slug?slug=' + category.value)
+    //         .then(response => response.json())
+    //         .then(data => slug.value = data.slug)
+    // })
+</script>
 @endsection

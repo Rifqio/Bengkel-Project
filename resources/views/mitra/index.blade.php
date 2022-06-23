@@ -45,14 +45,17 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                   <a href="/list-store"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Active</p></a> 
+                                    <a href="/list-store">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Active</p>
+                                    </a>
                                     <h5 class="font-weight-bolder">
-                                   {{ $aktif}}
+                                        {{ $aktif }}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                <div
+                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -66,14 +69,17 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <a href="/reject-bengkel"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Reject</p></a>
+                                    <a href="/reject-bengkel">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Reject</p>
+                                    </a>
                                     <h5 class="font-weight-bolder">
-                                   {{ $reject}}
+                                        {{ $reject }}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                <div
+                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -112,10 +118,12 @@
                                     <h5 class="font-weight-bolder">
                                         {{ $item }}
                                     </h5>
+                                    </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                <div
+                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                     <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -125,9 +133,9 @@
             </div>
         </div>
 
-
     </div>
 
-    </div>
+
+
 </main>
 @endsection

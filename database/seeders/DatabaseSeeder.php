@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             StoreSeeder::class,
             ItemSeeder::class,
             KotaSeeder::class,
-            KecamatanSeeder::class
+            KecamatanSeeder::class,
         ]);
     }
 }
