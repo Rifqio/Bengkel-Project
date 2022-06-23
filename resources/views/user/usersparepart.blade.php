@@ -41,95 +41,18 @@
         <div class="container mx-auto justify-center">
             <h1 class="py-6 text-6xl text-center font-bold text-green-800">Categories</h1>
             <div class="flex flex-wrap justify-center ">
-
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Brake.svg" alt="" width="30%">
+                @foreach($categories as $c)
+                <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
+                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+                        <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Brakes</h1>
-                            <h4 class="group-hover:text-slate-100">The system is designed to use pressure and friction to stop.</h4>
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white"> <a href="sparepart/{{ strtolower($c->name) }}"> {{ $c->name }}</a></h1>
+                            <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
                         </div>
                     </div>
-                </a>
-
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-10 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Shock Absorber2.svg" alt="">
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Chassis and Suspension</h1>
-                            <h4 class="group-hover:text-slate-100">Dampen various vibrations generated from the road surface</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 w-[400px] h-[400px] ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-12 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Gearbox3.svg" alt="">
-
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Drivetrain</h1>
-                            <h4 class="group-hover:text-slate-100">Dampen various vibrations generated from the road surface</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Input-Component4.svg" alt="">
-
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Electronics</h1>
-                            <h4 class="group-hover:text-slate-100">help to keep your car running at its full potential</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Exhaust-Pipe5.svg" alt="">
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Exhaust</h1>
-                            <h4 class="group-hover:text-slate-100">Find all kinds of exhaust</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-10 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Engine-Oil6.svg" alt="">
-
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Engine Oil</h1>
-                            <h4 class="group-hover:text-slate-100">Find perfect oil for your car</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-10 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Wheel7.svg" alt="">
-
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Wheels and
-                                Tyres</h1>
-                            <h4 class="group-hover:text-slate-100">To help you choose, wheels and tyres</h4>
-                        </div>
-                    </div>
-                </a>
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-50 rounded-3xl px-5 py-12 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="img/sparepart/Toolbox8.svg" alt="">
-                        </div>
-                        <div class="text-center">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">Tools</h1>
-                            <h4 class="group-hover:text-slate-100">Tools for repairing and maintenance your car</h4>
-                        </div>
-                    </div>
-                </a>
-
-
+                </div>
+                @endforeach
 
             </div>
 

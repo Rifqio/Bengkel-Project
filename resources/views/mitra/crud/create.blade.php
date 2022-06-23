@@ -52,12 +52,24 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Category</label>
                                         <select class="form-control" name="category" id="category">
                                             @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}, {{ $category->name }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }},{{ $category->name }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Pilih Bengkel</label>
+                                        <select class="form-control" name="bengkel" id="category">
+                                            @foreach ($bengkel as $b)
+                                                    <option value="{{ $b->id }}">{{ $b->store_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
