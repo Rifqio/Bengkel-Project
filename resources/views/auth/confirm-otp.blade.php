@@ -59,7 +59,7 @@
                     <p class="text-center font-bold text-gray-100 text-2xl py-5 pt-10">OTP Verification Code</p>
                 </div>
             </div>
-            <center><h1>{{$otp}}</h1></center>
+            
             <div class="container justify-center p-20 mx-auto lg:w-2/3 lg:mr-10 lg:my-auto lg:px-40 lg:py-20 my-24">
                 <div class=" "><img src="/img/account/forget1.png" alt="Gambar-login1" width="10%" class="mx-auto pb-3"></div>
 
