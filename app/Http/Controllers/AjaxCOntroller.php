@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kecamatan;
 use App\Models\Store;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,24 @@ class AjaxController extends Controller
             }
         }
         echo $output;
+    }
+
+    public function searchKecamatan(Request $request){
+        $query = $request->get('query');
+        $output = '';
+        if($query != ''){
+            $data = Kecamatan::where('kota_id', $query)->get();
+                $output .= '<option value="">Pilih Kecamatan</option>';
+            foreach($data as $d){
+                $output .= '
+                    <option value="'.$d->id.'">'.$d->name.'</option>
+                ';
+            }
+        }else{
+            $output .= '
+                <option value="">Pilih Kota Dahulu</option>
+            ';
+        }
+        return $output;
     }
 }
