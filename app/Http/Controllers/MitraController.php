@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\Kecamatan;
 use App\Models\ItemStore;
 use App\Models\User;
 use App\Models\Store;
+use App\Models\Kota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\StoreRegister;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Kota;
-use App\Models\Kecamatan;
 use Illuminate\Support\Facades\Notification;
 
 class MitraController extends Controller
 {
+
 
     public function create_product()
     {

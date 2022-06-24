@@ -32,9 +32,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased relative">
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen ">
         @if (Auth::check())
         @livewire('navigation-menu')
         @endif

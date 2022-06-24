@@ -24,34 +24,43 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->hasRole('employee')) {
-            return view('admin.admindashboard');
-        } elseif (Auth::user()->hasRole('superadmin')) {
-            $employe = User::whereRoleIs(['employee'])->get();
-            return view('SuperAdmin.admindashboard', [
-                'employee' => $employe,
-                'total_users' => User::count(),
-                'total_stores' => Store::count(),
-                'total_items' => Item::count(),
-            ]);
-        } elseif (Auth::user()->hasRole('mitra')) {
-            $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
-            $nonaktif = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 0)->get();
-            $aktif = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
-            $reject = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 2)->get();
-            $banding = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 3)->get();
-            $mitra = User::find(Auth::user()->id);
-            return view('mitra.index', [
-                'item' => $data->count(),
-                'non_aktif' => $nonaktif->count(),
-                'aktif' => $aktif->count(),
-                'reject' => $reject->count(),
-                'banding' => $banding->count(),
-                'mitra' => $mitra,
-            ]);
-        } else {
-            return view('user.userdashboard', ['title' => 'Landing Page']);
+        if(Auth::user()->created_at == NULL)
+        {   
+            redirect('/login');
         }
+        else{
+            if (Auth::user()->hasRole('employee')) {
+                return view('admin.admindashboard');
+            } elseif (Auth::user()->hasRole('superadmin')) {
+                $employe = User::whereRoleIs(['employee'])->get();
+                return view('SuperAdmin.admindashboard', [
+                    'employee' => $employe,
+                    'total_users' => User::count(),
+                    'total_stores' => Store::count(),
+                    'total_items' => Item::count(),
+                ]);
+            } elseif (Auth::user()->hasRole('mitra')) {
+                $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
+                $nonaktif = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 0)->get();
+                $aktif = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
+                $reject = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 2)->get();
+                $banding = Store::where('id_mitra', Auth::user()->id)->where('status_activation', 3)->get();
+                $mitra = User::find(Auth::user()->id);
+                return view('mitra.index', [
+                    'item' => $data->count(),
+                    'non_aktif' => $nonaktif->count(),
+                    'aktif' => $aktif->count(),
+                    'reject' => $reject->count(),
+                    'banding' => $banding->count(),
+                    'mitra' => $mitra,
+                ]);
+                
+            }else 
+            {
+                return view('user.userdashboard', ['title' => 'Landing Page']);
+            } 
+        }
+                    
     }
 
     public function profile()

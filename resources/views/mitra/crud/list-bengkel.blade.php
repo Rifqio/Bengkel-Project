@@ -20,21 +20,20 @@
                                     </button>
                                 </div>
                             @endif
-
-                            <div class="position-relative">
-                                @if (Request::is('list-store'))
-                                    <h4 class="mb-0">List Bengkel</h4>
-                                @elseif(Request::is('reject-bengkel'))
-                                    <h4 class="mb-0">List Reject Bengkel</h4>
-                                @elseif(Request::is('banding-bengkel'))
-                                    <h4 class="mb-0">List Banding Bengkel</h4>
-                                @endif
-                                <div class="position-absolute top-0 end-0">
-                                    @if (Request::is('list-store'))
-                                        <a href="/store-register" class="btn btn-danger">
-                                        + Tambah</a>
-                                    @endif
-                                </div>
+                        <div class="position-relative">
+                            @if(Request::is('list-store'))
+                            <h4 class="mb-0">List Bengkel</h4>
+                            @elseif(Request::is('list-pengajuan-store'))
+                            <h4 class="mb-0">List Pengajuan Bengkel</h4>
+                            @elseif(Request::is('reject-bengkel'))
+                            <h4 class="mb-0">List Reject Bengkel</h4>
+                            @elseif(Request::is('banding-bengkel'))
+                            <h4 class="mb-0">List Banding Bengkel</h4>
+                            @endif
+                            <div class="position-absolute top-0 top-0 end-0">
+                             @if(Request::is('list-store'))
+                            <a href="/store-register" class="btn btn-danger"><button type="button" class="">+ Tambah</button></a>
+                            @endif
                             </div>
                             <br>
                         </div>
@@ -262,10 +261,69 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Modal Detail -->
+                                <div class="modal fade" id="detail-bengkel{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail List Bengkel</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nama Bengkel:</label>
+                                                <input type="text" class="form-control" value="{{$s->store_name}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Jam Buka</label>
+                                                <input type="text" class="form-control" value="{{$s->open}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Jam Tutup</label>
+                                                <input type="text" class="form-control" value="{{$s->close}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Alamat Bengkel</label>
+                                                <input type="text" class="form-control" value="{{$s->address}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">No. Telpon</label>
+                                                <input type="text" class="form-control" value="{{$s->phone_store}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Status Aktivasi</label>
+                                                <input type="text" class="form-control" value="{{$s->status_activation}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Gambar Bengkel</label>
+                                                <input type="text" class="form-control" value="{{$s->store_image}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Latitude</label>
+                                                <input type="text" class="form-control" value="{{$s->lat}}" id="recipient-name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Longtiude</label>
+                                                <input type="text" class="form-control" value="{{$s->long}}" id="recipient-name" readonly>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

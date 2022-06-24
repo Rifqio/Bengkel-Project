@@ -67,8 +67,8 @@
                                     </button>
                                 </td>
                             </tr>
-                            <div class="modal fade" id="deactive{{$s->id}}" tabindex="-1" role="dialog"
-                                aria-labelledby="modal-default" aria-hidden="true">
+                            {{-- Modal Non-Aktive --}}
+                            <div class="modal fade" id="deactive{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
