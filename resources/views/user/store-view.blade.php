@@ -30,54 +30,60 @@
     </style>
   </head>
   <body>
-    <!--Profile Bengkel-->
-    <div class="container">  
-        <br><br>
-        <h3>Profile Bengkel</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Pemilik</th>
-                <th scope="col">Nama Bengkel</th>
-                <th scope="col">Telefon Bengkel</th>
-                <th scope="col">Alamat</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{$data->users->name}}</td>
-                <td>{{$data->store_name}}</td>
-                <td>{{$data->phone_store}}</td>
-                <td>{{$data->address}}</td>
-            </tr>
-            </tbody>
-        </table>
-        <br><br>
-        <h3>Data Item Bengkel</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Nama Item</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Category</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach($data->item as $i)
-                    <tr>
-                        <td>{{$i->name}}</td>
-                        <td>{{$i->brand}}</td>
-                        <td>{{$i->price}}</td>
-                        <td>{{$i->category->name}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="bg-success">
+        
+        <!--Profile Bengkel-->
+        <div class="container">
+            <a href="/" class="ni ni-bold-left text-dark text-sm opacity-10"></a>    
+
+            <h2 class="text-light">Maps Directions</h2>
+            <div class="container" id="map" style="width:100%; height:580px;"></div>  
+            <br><br>
+            <h3>Profile Bengkel</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Pemilik</th>
+                    <th scope="col">Nama Bengkel</th>
+                    <th scope="col">Telefon Bengkel</th>
+                    <th scope="col">Alamat</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{$data->users->name}}</td>
+                    <td>{{$data->store_name}}</td>
+                    <td>{{$data->phone_store}}</td>
+                    <td>{{$data->address}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <br><br>
+            <h3>Data Item Bengkel</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nama Item</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach($data->item as $i)
+                        <tr>
+                            <td>{{$i->name}}</td>
+                            <td>{{$i->brand}}</td>
+                            <td>{{$i->price}}</td>
+                            <td>{{$i->category->name}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-    <br>
-    <h2>Maps Directions</h2>
-    <div class="container" id = "map" style = "width:100%; height:580px;"></div> 
+    <!-- <h2>Maps Directions</h2>
+    <div class="container" id = "map" style = "width:100%; height:580px;"></div>  -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

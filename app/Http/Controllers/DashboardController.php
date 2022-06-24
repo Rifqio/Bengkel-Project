@@ -31,7 +31,18 @@ class DashboardController extends Controller
         }
         else{
             if (Auth::user()->hasRole('employee')) {
-                return view('admin.admindashboard');
+                $nonaktif = Store::where('status_activation', 0)->get();
+                $aktif = Store::where('status_activation', 1)->get();
+                $reject = Store::where('status_activation', 2)->get();
+                $banding = Store::where('status_activation', 3)->get();
+                $mitra = User::whereRoleIs(['mitra'])->get();
+                return view('admin.admindashboard',[
+                    'non_aktif' => $nonaktif->count(),
+                    'aktif' => $aktif->count(),
+                    'reject' => $reject->count(),
+                    'banding' => $banding->count(),
+                    'total_mitra' => $mitra->count()
+                ]);
             } elseif (Auth::user()->hasRole('superadmin')) {
                 $employe = User::whereRoleIs(['employee'])->get();
                 return view('SuperAdmin.admindashboard', [
