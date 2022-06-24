@@ -159,6 +159,7 @@
                                                                 <label>Alamat Bengkel</label>
                                                                 <textarea name="address"
                                                                     class="form-control">
+                                                                    {{$s->address}}
                                                                 </textarea>
 
                                                                 <button type="submit"
