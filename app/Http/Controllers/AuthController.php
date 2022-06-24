@@ -26,43 +26,43 @@ class AuthController extends Controller
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:8',
         ]);
-        if(!$valid){
+        if (!$valid) {
             return redirect()->back();
         }
         DB::beginTransaction();
-        try{
+        try {
             $user = User::create([
                 'name' => request()->name,
                 'email' => request()->email,
                 'nik' => request()->nik,
                 'email_verified_at' => Carbon::now()->toDateTimeString(),
-                'password'=> Hash::make(request()->password),
+                'password' => Hash::make(request()->password),
             ]);
             $user->attachRole($request->role);
 
-            $data = array('name'=>request()->name, 'email'=>request()->email, 'password'=> request()->password);
-            Mail::send('email.em-sa-email', $data, function($message) {
-                $message->to(request()->email, 'Test Email')->subject
-                ('Email dan Password Employee');
+            $data = array('name' => request()->name, 'email' => request()->email, 'password' => request()->password);
+            Mail::send('email.em-sa-email', $data, function ($message) {
+                $message->to(request()->email, 'Test Email')->subject('Email dan Password Employee');
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
 
             DB::commit();
 
             return redirect('dashboard/show')->with('success', 'User has been created');
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
             echo 'Error Exception';
         }
     }
 
-    public function UpdateEmployee(Request $request){
+    public function UpdateEmployee(Request $request)
+    {
         $valid = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'nik' => ['required', 'string', 'max:16', 'min:16'],
         ]);
-        if(!$valid){
+        if (!$valid) {
             return redirect()->back();
         }
         $user_data = User::find($request->id);
@@ -100,10 +100,10 @@ class AuthController extends Controller
             //jika user tidak ada maka simpan ke database
             //$user_google menyimpan data google account seperti email, foto, dsb
 
-            if($user != null){
+            if ($user != null) {
                 auth()->login($user, true);
                 return redirect('dashboard');
-            }else{
+            } else {
                 $create = User::Create([
                     'email'             => $user_google->getEmail(),
                     'name'              => $user_google->getName(),
@@ -115,21 +115,21 @@ class AuthController extends Controller
                 auth()->login($create, true);
                 return redirect('/dashboard');
             }
-
         } catch (Exception $e) {
             return redirect('login');
         }
     }
 
-    public function resetEmailPassword(){
+    public function resetEmailPassword()
+    {
         $unique_secret = Auth::user()->email;
         $otp = otp()->digits(6)->expiry(10)->make($unique_secret);
-        session(["otp_reset_email"=>$otp, "unique_secret"=>$unique_secret]);
-        $data = array('otp'=>$otp);
+        session(["otp_reset_email" => $otp, "unique_secret" => $unique_secret]);
+        $data = array('otp' => $otp, 
+                      'name' => Auth::user()->name);
         try {
-            Mail::send('email.otp', $data, function($message) {
-                $message->to(Auth::user()->email, 'Test OTP')->subject
-                ('Masukkan Kode OTP');
+            Mail::send('email.otp', $data, function ($message) {
+                $message->to(Auth::user()->email, 'Test OTP')->subject('Masukkan Kode OTP');
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
             return view('auth.confirm-otp', ['otp' => $otp]);
@@ -138,48 +138,52 @@ class AuthController extends Controller
         }
     }
 
-    public function otpValidation(Request $request){
+    public function otpValidation(Request $request)
+    {
         $unique_secret = Auth::user()->email;
         $otp = $request->otp;
         $valid = Otp::digits(6)->expiry(10)->check($otp, $unique_secret);
-        if($valid){
-            session(["otp_reset_email"=>$otp]);
+        if ($valid) {
+            session(["otp_reset_email" => $otp]);
             return redirect('/update-email-pw');
-        }else{
+        } else {
             echo 'Otp Tidak Valid';
         }
     }
 
-    public function resetEmailPasswordView(){
+    public function resetEmailPasswordView()
+    {
         $unique_secret = Auth::user()->email;
         $otp = session("otp_reset_email");
         $valid = Otp::digits(6)->expiry(10)->check($otp, $unique_secret);
-        if($valid){
+        if ($valid) {
             return view('auth.reset-email-password', ['user' => Auth::user()]);
-        }else{
+        } else {
             echo 'Otp Tidak Valid';
         }
     }
 
-    public function resetEmailPasswordStore(Request $request){
-        if($request->email != Auth::user()->email){
+    public function resetEmailPasswordStore(Request $request)
+    {
+        if ($request->email != Auth::user()->email) {
             $valid = $request->validate([
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required'],
                 'password_confirmation' => ['required', 'same:password'],
             ]);
-        }else{
+        } else {
             $valid = $request->validate([
                 'email' => ['required'],
                 'password' => ['required'],
                 'password_confirmation' => ['required', 'same:password'],
             ]);
         }
-        if(!$valid){
+        if (!$valid) {
             return redirect()->back();
         }
         $user_data = User::find(Auth::user()->id);
-        $user_data->update(['email' => $request->email,
+        $user_data->update([
+            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
         Auth::logout(request()->user());

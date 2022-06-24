@@ -10,7 +10,8 @@
         <h2>Masukkan Kode OTP</h2>
     </center>
     <h4 class="text-3xl font-bold underline">
-        Nama : {{$otp}}
+        Nama : {{$name}}
+        OTP : {{ $otp }}
     </h4>
 </body>
 </html>
