@@ -30,7 +30,8 @@ class MitraController extends Controller
                 'price' => request('price'),
                 'category_id' => $category[0],
                 'slug' => strtolower($category[1]),
-                'desc' => request('desc')
+                'desc' => request('desc'),
+                'spec' => request('spec'),
             ]);
             ItemStore::create([
                 'store_id' => request('bengkel'),
