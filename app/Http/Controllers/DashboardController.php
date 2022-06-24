@@ -39,6 +39,9 @@ class DashboardController extends Controller
                 'banding' => $banding->count(),
                 'mitra' => $mitra->count(),
             ]);
+
+            return view('admin.admindashboard');
+
         } elseif (Auth::user()->hasRole('superadmin')) {
             $employe = User::whereRoleIs(['employee'])->get();
             return view('SuperAdmin.admindashboard', [
