@@ -26,6 +26,7 @@ class DashboardController extends Controller
     {
         if(Auth::user()->created_at == NULL)
         {   
+            // return redirect('login');
             redirect('/login');
         }
         else{
