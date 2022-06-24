@@ -124,6 +124,7 @@ class AuthController extends Controller
     {
         $unique_secret = Auth::user()->email;
         $otp = otp()->digits(6)->expiry(10)->make($unique_secret);
+
         session(["otp_reset_email" => $otp, "unique_secret" => $unique_secret]);
         $data = array('otp' => $otp, 
                       'name' => Auth::user()->name);

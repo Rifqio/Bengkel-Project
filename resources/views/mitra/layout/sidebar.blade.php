@@ -1,4 +1,5 @@
 <head>
+
     <!-- My Style -->
     <link rel="stylesheet" href="{{ URL::asset('css/style_sidebar.css'); }}">
     <!-- <link href="{{ URL::asset('js/sidebar.js') }}" rel="script"> -->
@@ -9,6 +10,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="#">
+
             <!-- Nyoba bagian lipat sidebar -->
             <div class="main-content">
                 <div id="menu-button">
