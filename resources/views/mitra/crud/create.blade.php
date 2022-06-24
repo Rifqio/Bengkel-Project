@@ -97,11 +97,18 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
+                                <hr>
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Deskripsi Produk</label>
                                         <textarea class="form-control" name="desc" id="" cols="20" rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Spesifikasi Produk</label>
+                                        <textarea class="form-control" name="spec" id="" cols="20" rows="5"></textarea>
                                     </div>
                                 </div>
 

@@ -68,17 +68,17 @@
                 </div>
                 <div class="w-[400px] h-[350px] mx-auto lg:hidden"><img src="{{ asset('img/product/G1.png') }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "></div>
                 <div class="bg-gradient-to-l from-green-100 to-green-400 w-1/2 mx-auto rounded-lg lg:hidden  ">
-                    <h5 class="flex justify-center text-sm">CURRENT LOWEST PRICE</h5>
-                    <h3 class="flex justify-center">RP10.0000.000</h2>
+                    <h5 class="flex justify-center text-sm">Average Price</h5>
+                    <h3 class="flex justify-center">{{ $item->price }}</h2>
                 </div>
                 <div class="pt-5">
                     <h1>{{ $item->name }}</h1>
-                    <p>Lorem lorem100 ipsum dolor sit amet consectetur adipisicing elit. Iusto doloribus ut fuga, animi repellat laudantium vero, tenetur quia iure repellendus ullam, dolorem id ipsa dignissimos eveniet ab error placeat. Perspiciatis obcaecati omnis consequatur adipisci officiis delectus velit dolor earum tempora esse modi ullam ad, ipsum illum dolore repellat. Natus repellat dolorem deleniti laboriosam repellendus unde,.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, illo.</p>
                 </div>
                 <div class="flex justify-end py-3 ">
                     <div class="bg-gradient-to-l from-green-100 to-green-400 rounded-l-lg hidden lg:block justify-end w-1/2  lg:space-y-1 space-y-3 lg:absolute lg:bottom-0 lg:right-0">
-                        <h5 class="flex justify-center text-sm">CURRENT LOWEST PRICE</h5>
-                        <h3 class="flex justify-center">RP10.0000.000</h2>
+                        <h5 class="flex justify-center text-sm uppercase">Average Price</h5>
+                        <h3 class="flex justify-center">{{ $item->price }}</h2>
                     </div>
                 </div>
             </div>
@@ -93,47 +93,64 @@
 
     <section id="deskrip" class="bg-gray-200 mt-20">
         <div class="container py-10">
-            <h1 class="py-2">PRODUCT INFORMATION</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At velit dolorum explicabo facilis dignissimos sit ipsam distinctio voluptas tempora id, eaque quis perferendis eius odit iste obcaecati minus! Eos odio veritatis laborum a repellat deleniti omnis molestias voluptates, dolores accusantium magni perferendis sapiente provident ut nam, tempora optio placeat dolorem magnam ipsam. Possimus temporibus facilis ab quam consequuntur nam repellendus perferendis, nesciunt velit ratione a error aperiam officia. Perspiciatis consequatur illum velit soluta recusandae. Veritatis earum molestias, minima incidunt officiis qui? Distinctio mollitia assumenda aspernatur adipisci doloribus deleniti voluptates, dolore harum iusto eos, quos, obcaecati suscipit laboriosam quia repudiandae error.</p>
+            <h1 class="py-2 uppercase">specification</h1>
+            <p>Ukuran: 20cm</p>
+            <p>Manufaktur: USA</p>
 
             <p>{{ $item->desc }}</p>
         </div>
     </section>
 
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Check Available Store
+  </button>
 
-
-
-
-
-
-
-    <section id="data-tables" class="my-10">
-        <div class="container pb-20">
-            <div class="col">
-                <table class="table border table-striped" id="tablee" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Store</th>
-                            <th scope="col">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $d)
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $d->name }}</td>
-                            <td>{{ $d->store_name }}</td>
-                            <td>{{ $d->price }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </section>
+        <div class="modal-body">
+            <section id="data-tables" class="my-10">
+                <div class="container pb-20">
+                    <div class="col">
+                        <table class="table border table-striped" id="tablee" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Store</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $d)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $d->name }}</td>
+                                    <td>{{ $d->store_name }}</td>
+                                    <td>{{ $d->price }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 
