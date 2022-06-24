@@ -113,7 +113,7 @@
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Mitra</p>
                                     </a>
                                     <h5 class="font-weight-bolder">
-                                        {{ $total_mitra}}
+                                        {{ $mitra}}
                                     </h5>
                                 </div>
                             </div>
