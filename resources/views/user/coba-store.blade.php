@@ -13,36 +13,16 @@
             </div>
             <div class="flex justify-center">
                 <div>
-                <button class="inline-block px-6 py-2.5 bg-white text-green-300 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-1  00 hover:shadow-lg focus:bg-green-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Nama Toko</button>
-
-                <!-- Off canva kanan -->
-                    <div class="offcanvas offcanvas-end fixed bottom-0 flex flex-col bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 right-0 border-none w-3/5 md:1/2 lg:w-1/4" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header flex items-center justify-between p-4">
-                            <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasRightLabel">Profil Toko</h5>
-                            <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
-                            <!-- Profil toko dalam off canva -->
-
-                            <div class="flex flex-col shadow-xl">
-                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
-                                        <div class=" text-center">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full w-32 mb-4 mx-auto" alt="Avatar"/>
-                                <h5 class="text-3xl font-semibold leading-tight mb-2">{{$data->users->name}}</h5>
-                                <p class="text-gray-500 text-xl"> {{$data->store_name}}</p>
-                            </div>
-                            <hr class="m-5">
-                            <div>
-                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Telephone :</span>{{$data->phone_store}}</p>
-                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Address :</span>{{$data->address}}</p>
-                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Kecamatan :</span>{{$data->address}}</p>
-                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Kota :</span>{{$data->address}}</p>
-                            </div>
-                                    </div>
-                            </div>
-                        </div>
-                        </div>
+                    <div class="dropdown relative"><a class=" dropdown-toggle px-6 py-3.5 bg-white font-semibold text-md leading-tight  rounded-xl shadow-md hover:bg-slate-200 shadow-lg focus:bg-slate-200 focus:outline-none focus:ring-0 active:bg-slate-400 active:shadow-lg transition duration-150 ease-in-out flex items-center whitespace-nowrap " href="#" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bars mr-2"></i> Filter </a>
+                        <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none " aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Termurah</a>
+                            </li>
+                            <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Terdekat</a>
+                            </li>
+                            <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Terghosting</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -51,14 +31,27 @@
 </section>
 
 
+<div class="py-8 px-8 w-2/5 sm:w-4/5 mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 text-center mt-10  lg:hidden">
+                <img class="block mx-auto w-20 rounded-full sm:mx-0 sm:shrink-0 bg-slate-200" src="" alt="Logo-Bengkel">
+                    <div class="text-center space-y-2 lg:w-1/2 mx-auto w-full">
+                        <div class="space-y-0.5">
+                        <p class="text-lg text-black font-semibold">
+                        {{$data->store_name}}
+                        </p>
+                        <p class="text-slate-500 font-medium">
+                        {{$data->users->name}}
+                        </p>
+                        </div>
+                    </div>
+                    <button class="px-4 py-3.5 text-sm text-green-600 font-semibold rounded-full border border-green-200 hover:text-white hover:bg-green-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">Message</button>
+                </div>
 
-<!-- Tabel Barang -->
-<div class="container mx-auto lg:hidden">
-    <p class="bg-ijo w-1/2 mx-auto text-center rounded-xl shadow-inner mt-10">Data Item Bengkel</p>
+
+<div class="container mx-auto lg:hidden rounded-xl px-2">
     <div class="flex flex-col ">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
+            <div class="overflow-hidden rounded-xl">
                 <table class="min-w-full text-center">
                 <thead class="border-b bg-gray-800">
                     <tr>
@@ -101,17 +94,33 @@
     </div>
 </div>
 
-    <br>
+  
+<br>
     <div class="container mx-auto" >
-        <div class="items-center">
-            <div class=" w-full shadow-xl">
+        <div class="flex items-center">
+            <div class="lg:w-2/5 w-full shadow-xl">
                 <div id = "map" style = "width:100%; height:580px;" ></div>
             </div>
-            <div class="hidden lg:block ml-5 pb-10">
-                <div class="flex flex-col shadow-xl">
+            <div class="hidden lg:block w-3/5 ml-5 pb-10">
+                <!-- <div class="py-8 px-8 max-w-md mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+                 <img class="block mx-auto w-20 rounded-full sm:mx-0 sm:shrink-0 bg-slate-200" src="" alt="Logo-Bengkel">
+                    <div class="text-center space-y-2 sm:text-left w-1/2">
+                        <div class="space-y-0.5">
+                        <p class="text-lg text-black font-semibold">
+                        {{$data->store_name}}
+                        </p>
+                        <p class="text-slate-500 font-medium">
+                        {{$data->users->name}}
+                        </p>
+                        </div>
+                    </div>
+                    <button class="px-4 py-3.5 text-sm text-green-600 font-semibold rounded-full border border-green-200 hover:text-white hover:bg-green-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">Message</button>
+                </div> -->
+
+                <div class="flex flex-col shadow-xl rounded-xl mt-8">
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
-                        <div class="overflow-hidden">
+                        <div class="overflow-hidden rounded-t-xl">
                             <table class="min-w-full text-center">
                             <thead class="border-b bg-gray-800">
                                 <tr>
@@ -152,24 +161,50 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
+        <div class="py-10 px-8 w-full mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 mt-14 flex flex-wrap justify-between border-2 border-green-50">
+                <div class="w-1/6">
+                    <img class="block mx-auto w-20 rounded-full sm:mx-0 sm:shrink-0" src="{{url('./product/G1.png')}}" alt="Logo-Bengkel">
+                </div>
+                <div class="text-center space-y-2 sm:text-left w-1/3">
+                        <div class="space-y-0.5">
+                        <p class="text-lg text-black font-semibold">
+                        {{$data->store_name}}
+                        </p>
+                        </div>
+                </div>
+                <div class="text-center">
+                <p class="text-lg text-black font-semibold">
+                {{$data->users->name}}
+                        </p>
+                </div>
+                <div class="text-center space-y-2 sm:text-left w-1/3 ">
+                        <div class="space-y-0.5">
+                        <p class="text-slate-500 font-medium">
+                        {{$data->address}}
+                        </p>
+                        <p class="text-slate-500 font-medium">
+                        {{$data->phone_store}}
+                        </p>
+                        </div>
+                </div>
+                
+                </div>
     </div> 
-
-
-
     
-
-    <!-- Optional JavaScript; choose one of the two! -->
+    <div class="absolute inset-x-0 bottom-0 -z-10" >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#bbf7d0" fill-opacity="1" d="M0,32L180,128L360,160L540,320L720,224L900,288L1080,256L1260,128L1440,128L1440,320L1260,320L1080,320L900,320L720,320L540,320L360,320L180,320L0,320Z"></path></svg></div>
+  
+    
+   
+    
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+   
     <script>
         var data= {!! json_encode($latlong) !!}
         //Baru
