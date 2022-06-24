@@ -10,7 +10,7 @@
         <h2>Verifikasi Akun Bengkel AE</h2>
     </center>
     <h3>Hello, {{ $name }}</h3>
-    <p>Berikut ini adalah kode OTP anda,untuk selanjutnya anda dapat memasukkan kode  tersebut ke dalam kolom yang disediakan untuk melanjutkan langkah berikutnya</p>
+    <p>Berikut ini adalah kode OTP anda, untuk selanjutnya anda dapat memasukkan kode  tersebut ke dalam kolom yang disediakan untuk melanjutkan langkah berikutnya</p>
     <center>
     <h1 class="text-3xl font-bold underline ">
          {{$otp}}
