@@ -32,13 +32,44 @@
                                     <td class="pt-3">{{$u->name}}</td>
                                     <td class="pt-3">{{$u->roles->first()->display_name}}</td>
                                     <td>
-
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{$u->id}}">Edit</button>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#nonactive{{$u->id}}">Non Aktif</button>
                                         <a href="{{ url('delete-mitra/'.$u->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
                                     </td>
                                 </tr>
+
+                            {{-- Modal Non-Aktive --}}
+                            <div class="modal fade" id="nonactive{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h6 class="modal-title" id="modal-title-default">Non Aktivasi Mitra</h6>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                      </button>
+                                    </div>
+                                    <form action="{{url('non-aktif/'.$u->id)}}" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+                                      <p>Apakah anda yakin untuk nonaktifkan Mitra : "{{$u->name}}"</p>
+                                      <p>Nama Mitra : {{$u->name}}</p>
+                                      <p>Email : {{$u->email}}</p>
+                                      <p>NIK : {{$u->nik}}</p>
+                                      <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <input type="hidden" name="id" value="{{$u->id}}">
+                                    <input type="hidden" name="created_at" value="null">
+                                    <input type="hidden" name="email" value="{{ $u->email }}">
+                                      <button type="submit" class="btn bg-gradient-danger">Save changes</button>
+                                      <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+                                    </form>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
                                 <!--Edit Form-->
-                                <div class="modal fade" id="edit{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                {{-- <div class="modal fade" id="edit{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                                         <div class="modal-content">
                                             <div class="modal-body p-0">
@@ -83,14 +114,14 @@
                                                                 </div>
                                                                 @enderror
                                                             </div>
-                                                            {{-- <label>Password</label>
+                                                            <label>Password</label>
                                                                 <div class="input-group mb-3">
                                                                   <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                                                                 </div>
                                                                 <label>Password Confirmation</label>
                                                                 <div class="input-group mb-3">
                                                                   <input type="password" name="password_confirmation" class="form-control" placeholder="Password Confirmation" aria-label="Password" aria-describedby="password-addon">
-                                                                </div> --}}
+                                                                </div>
                                                             <div class="text-center">
                                                                 <button type="submit" class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update Data</button>
                                                             </div>
@@ -100,7 +131,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 @endforeach
                             </tbody>
                         </table>

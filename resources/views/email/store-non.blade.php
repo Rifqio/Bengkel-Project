@@ -49,7 +49,6 @@
         span:hover {
             background-color: transparent;
         }
-
     </style>
 
     <style>
@@ -184,7 +183,6 @@
 
         td[class="left"] {
             padding: 0px 0 !important;
-
     </style>
 
 </head>
@@ -194,7 +192,6 @@
         div.preheader {
             display: none !important;
         }
-
     </style>
     <div class="preheader" style="font-size: 1px; display: none !important;">Mute videos until you’re ready</div>
     <table id="backgroundTable" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#e1e1e1;">
@@ -261,7 +258,9 @@
                                                                                                 <td style="font-family: Geneva, Tahoma, Verdana, sans-serif; font-size: 16px; line-height: 22px; color: #555555; padding-top: 16px;"
                                                                                                     align="left">
                                                                                                     {{$note}}<br><br>
+                                                                                                    {{--
                                                                                                     <b>{{$alasan}}</b>
+                                                                                                    --}}
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </table>
