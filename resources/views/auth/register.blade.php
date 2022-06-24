@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="/TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
-    <title>Login</title>
+    <title>Register</title>
 </head>
 
 <body>
@@ -74,7 +74,7 @@
                 </form>
                 <div class="flex justify-center">
                     <p>Already have an account?</p>
-                    <a href="" class="text-green-400 hover:text-green-700 active:text-green-800 pl-2">login</a>
+                    <a href="/login" class="text-green-400 hover:text-green-700 active:text-green-800 pl-2">login</a>
                 </div>
 
             </div>
