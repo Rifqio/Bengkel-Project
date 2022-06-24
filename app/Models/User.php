@@ -33,6 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'ktp',
         'email_verified_at',
         'password',
+        'created_at'
     ];
 
     /**

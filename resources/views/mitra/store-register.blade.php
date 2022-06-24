@@ -82,7 +82,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <select name="id_kecamatan" id="">
                                         <option value="">Pilih Kecamatan</option>

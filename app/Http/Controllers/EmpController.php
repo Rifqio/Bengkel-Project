@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Store;
 use App\Models\User;
+use App\Models\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class EmpController extends Controller
 {
@@ -54,5 +56,21 @@ class EmpController extends Controller
         $users = User::find($id);
         $users->delete();
         return redirect('list-mitra')->with('success_update', 'User has been deleted');;
+    }
+
+    public function NonAktifMitra(Request $request){
+        // echo $request;
+        $note = 'Anda di Non-Aktifkan, Silahkan Hubungi Customer Service Bengkel AE';
+        $mitra = User::find($request->id)->update(['created_at' => NULL]);
+        // echo $mitra;
+            // ->update([ `created_at` == NULL]);
+        if ($mitra) {
+            $data = array('title' => 'Anda di Non-Aktifkan', 'note' => $note);
+            Mail::send('email.mitra-non', $data, function ($message) {
+                $message->to(request()->email, 'Anda Di Non-Aktifkan')->subject('Anda di Non-Aktifkan');
+                $message->from(Auth::user()->email, Auth::user()->name);
+            });
+        }
+        return redirect('/list-mitra');
     }
 }
