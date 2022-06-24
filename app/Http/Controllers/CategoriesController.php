@@ -198,26 +198,32 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 7);
         return view('items.index', [
             'items' => $items,
+            'title' => "Wheels"
         ]);
     }
 
     public function wheelsDetails(Item $id)
     {
         $data =
-            DB::table("items")
-            ->join("item_store", function ($join) {
-                $join->on("items.id", "=", "item_store.item_id");
-            })
-            ->join("stores", function ($join) {
-                $join->on("item_store.store_id", "=", "stores.id");
-            })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
-            ->where("items.category_id", "=", 7)
-            ->get();
+        DB::table("items")
+        ->join("item_store", function($join){
+            $join->on("items.id", "=", "item_store.item_id");
+        })
+        ->join("stores", function($join){
+            $join->on("item_store.store_id", "=", "stores.id");
+        })
+        ->join("categories", function($join){
+            $join->on("items.category_id", "=", "categories.id");
+        })
+        ->select("items.name", "stores.store_name", "item_store.price")
+        ->where("items.id", "=", $id->id)
+        ->where("categories.id", "=", 7)
+        ->get();
 
         return view('items.details', [
             'item' => $id,
-            'data' => $data
+            'data' => $data,
+            'title' => 'Wheels Detail'
         ]);
     }
 
