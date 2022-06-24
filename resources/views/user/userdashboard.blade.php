@@ -57,7 +57,7 @@
             <div class="bg-white shadow-lg rounded-xl  ">
                 <div class="p-10 text-center mx-20">
                     <h1 class="font-allison font-semibold text-8xl py-10">Bengkel AE</h1>
-                    <p class="text-xl leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aut aperiam corrupti! Necessitatibus voluptatibus est qui fuga a odio optio aut hic sint, ad reprehenderit ab ut! Reprehenderit, adipisci alias ipsum non voluptatibus quia id magnam laudantium itaque earum odio iure repellendus et voluptatem blanditiis, iste rem? Perferendis consequatur suscipit, quisquam, vitae quidem repellendus pariatur ipsam qui cupiditate excepturi, earum non sunt explicabo nesciunt blanditiis perspiciatis. Similique, sapiente totam repellendus ducimus fuga maiores voluptatum laudantium eaque voluptates deserunt ea odio ipsa aperiam nisi dolores repellat ex facere ullam. Beatae at culpa soluta libero porro rerum! Mollitia animi inventore reiciendis iste!</p>
+                    <p class="text-xl leading-relaxed">Bengkel AE adalah aplikasi berbasis website grati yang dibuat dengan tujuan membantu pegguna menemukan dan mendapatkan informasi seputar bengkel dan sparepart automotif. Kami bermmitra dengan pemilik bengkel untuk mendapatkan onformasi sparepart yang mereka perjual belikan, dan lokasi bengkel tersebut, untuk selanjutnya dipublikasikan kepada pengguna melalui website ini. Website ini menciptakan kemudahan bagi masyarakat pengguna website ini yang memerlukan informasi posisi bengkel terdekat dan informasi perjualbelian sparepart terdekat, karena kami juga membuat komperasi harga spesifikasi dari tiap-tiap sparepart di tiap-tiap bengkel.</p>
                 </div>
             </div>
         </div>

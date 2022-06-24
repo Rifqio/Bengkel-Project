@@ -44,7 +44,6 @@ class MitraController extends Controller
             return redirect('dashboard');
         }
     }
-
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();
