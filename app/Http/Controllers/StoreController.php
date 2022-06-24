@@ -9,6 +9,7 @@ use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\File;
 
 class StoreController extends Controller
 {
@@ -77,7 +78,7 @@ class StoreController extends Controller
     {
         $note = 'Bengkel Anda Sudah Dikaktifkan';
         $store = Store::find(request()->id)
-            ->update(['status_activation' == 1]);
+        ->update(['status_activation' => 1]);
         if ($store) {
             $data = array('title' => 'Bengkel di Non-Aktifkan', 'note' => $note);
             Mail::send('email.store-non', $data, function ($message) {
@@ -123,26 +124,34 @@ class StoreController extends Controller
 
     public function StoreBandingUpdate(Request $request)
     {
-        // dd($request);
         $validateData = $request->validate([
             'store_name' => ['required', 'string', 'max:255'],
             'open' => ['required'],
             'close' => ['required'],
             'address' => ['required', 'string'],
             'phone_store' => ['required'],
-            // 'store_image' => ['required', 'string'],
         ]);
         if (!$validateData) {
             return redirect()->back();
         }
         $model = Store::find($request->id);
+        if(isset($request->store_image)){
+            $name = time() . "_" . $request->store_image->getClientOriginalName();
+            $request->store_image->move(public_path('store_data/' . $request->id . '/image'), $name);
+            if (File::exists(public_path('store_data/' . $request->id . '/image/' . $model->store_image))) {
+                unlink('store_data/' . $request->id . '/image/' . $model->store_image);
+            }
+        }else{
+            $name = $model->store_image;
+        }
         $model->update([
             'store_name' => $request->store_name,
             'open' => $request->open,
             'close' => $request->close,
             'address' => $request->address,
             'phone_store' => $request->phone_store,
-            'status_activation' => 3
+            'status_activation' => 3,
+            'store_image' => $name,
         ]);
         return redirect('banding-bengkel')->with('success_update', 'Store has been updated');
     }
