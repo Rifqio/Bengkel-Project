@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Store;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Reservasi;
 use Carbon\Carbon;
@@ -85,6 +86,7 @@ class TestController extends Controller
     public function otp(){
         $unique_secret = 'mitra@test.test';
         $otp = otp()->digits(6)->expiry(10)->make($unique_secret);
+        
         //session(["otp_reset_email"=>$otp, "unique_secret"=>$unique_secret]);
         dd($otp);
     }

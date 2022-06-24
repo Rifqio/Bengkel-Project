@@ -16,6 +16,12 @@
          {{$otp}}
     </h1>
     </center>
+
+    <h4 class="text-3xl font-bold underline">
+        Nama : {{$name}}
+        OTP : {{ $otp }}
+    </h4>
+
 </body>
 </html>
 

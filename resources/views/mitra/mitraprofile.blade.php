@@ -60,6 +60,7 @@
             <button class="btn btn-success" type="submit">Submit</button>
             <a class="btn btn-primary" href="/otp-confirmation" role="button">Update Email/Password</a>
           </div>
+          
         </form>
       </div>
     </div>
