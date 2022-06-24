@@ -146,8 +146,6 @@ class MitraController extends Controller
 
         if (!$validatedData) {
             return redirect('store-register');
-        } else {
-            return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
         }
 
         $name = time() . "_" . $request->store_image->getClientOriginalName();
@@ -165,6 +163,6 @@ class MitraController extends Controller
         ]);
 
         $request->store_image->move(public_path('store_data/' . DB::getPdo()->lastInsertId() . '/image'), $name);
-        return redirect('store-register');
+        return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
     }
 }
