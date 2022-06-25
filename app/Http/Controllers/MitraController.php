@@ -140,7 +140,7 @@ class MitraController extends Controller
             'store_name' => 'required|max:255',
             'open' => 'required',
             'close' => 'required',
-            'phone_store' => ['required', 'max:12', 'min:11'],
+            'phone_store' => ['required', 'max:14', 'min:11'],
             'address' => 'required',
             'store_image' => 'required',
         ]);
