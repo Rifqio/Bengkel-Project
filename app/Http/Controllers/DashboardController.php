@@ -25,14 +25,13 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('employee')) {
-            $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
+            // return view('admin.admindashboard');
             $nonaktif = Store::where('status_activation', 0)->get();
             $aktif = Store::where('status_activation', 1)->get();
             $reject = Store::where('status_activation', 2)->get();
             $banding = Store::where('status_activation', 3)->get();
-            $mitra = User::find(Auth::user()->id);
+            $mitra = User::whereRoleIs('mitra')->get();
             return view('admin.admindashboard', [
-                'item' => $data->count(),
                 'non_aktif' => $nonaktif->count(),
                 'aktif' => $aktif->count(),
                 'reject' => $reject->count(),
@@ -41,9 +40,10 @@ class DashboardController extends Controller
             ]);
         } elseif (Auth::user()->hasRole('superadmin')) {
             $employe = User::whereRoleIs(['employee'])->get();
+            $total_mitra = User::whereroleis('mitra')->get();
             return view('SuperAdmin.admindashboard', [
-                'employee' => $employe,
-                'total_users' => User::count(),
+                'employee' => $employe->count(),
+                'mitra' => $total_mitra->count(),
                 'total_stores' => Store::count(),
                 'total_items' => Item::count(),
             ]);

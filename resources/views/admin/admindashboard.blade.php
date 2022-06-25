@@ -110,7 +110,7 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <a href="list-mitra">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Stores Mitra</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Mitra</p>
                                     </a>
                                     <h5 class="font-weight-bolder">
                                         {{ $mitra}}
