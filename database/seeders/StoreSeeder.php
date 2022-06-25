@@ -24,7 +24,7 @@ class StoreSeeder extends Seeder
             'kota_id' => 1,
         ]);
         DB::table('stores')->insert([
-            'store_name' => 'Nathan B',
+            'store_name' => 'Bengkel Nathan Abadi',
             'open' => Carbon::now()->toDateTimeString(),
             'close' => Carbon::now()->toDateTimeString(),
             'address' => 'Solo',
@@ -39,7 +39,7 @@ class StoreSeeder extends Seeder
         ]);
 
         DB::table('stores')->insert([
-            'store_name' => 'Nathan C',
+            'store_name' => 'Bengkel Makmur Sentosa',
             'open' => Carbon::now()->toDateTimeString(),
             'close' => Carbon::now()->toDateTimeString(),
             'address' => 'Solo',
