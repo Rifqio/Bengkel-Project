@@ -82,17 +82,30 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <br>
                                 <div class="col-md-6">
-                                    <select name="id_kecamatan" id="">
-                                        <option value="">Pilih Kecamatan</option>
-                                        @foreach ($kec as $k)
-                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                    <label for="kota"
+                                        class="form-control-label">Kabupaten/Kota</label>
+                                    <select name="id_kota" id="kota" class="form-control">
+                                        <option value="">Pilih Kota</option>
+                                        @foreach ($kota as $ko)
+                                            <option value="{{ $ko->id }}">{{ $ko->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <label for="kecamatan"
+                                        class="form-control-label  @error('id_kecamatan') is-invalid @enderror">Kecamatan</label>
+                                    <select name="id_kecamatan" id="kecamatan" class="form-control">
+                                        <option value="">Pilih Kota Dahulu</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 mt-3">
                                 <br>
 
                                 <div class="mb-3">
+
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                                     <textarea class="form-control" name="address" id="exampleFormControlTextarea1"
                                         rows="3">
@@ -114,7 +127,6 @@
                                     </div>
                                     @enderror
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Toko</label>
                                     <input class="form-control" type="file" id="formFile" name="store_image">
@@ -131,4 +143,5 @@
     </div>
 </div>
 @endsection
+
 

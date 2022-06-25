@@ -32,6 +32,7 @@ Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 // Ajax
 Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
+Route::post('/get-kecamatan', [AjaxController::class, 'searchKecamatan']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
