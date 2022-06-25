@@ -1,3 +1,4 @@
+
 {{-- <!doctype html>
 <html lang="en">
   <head>
@@ -37,6 +38,8 @@
     -->
   </body>
 </html> --}}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,12 +60,12 @@
                     <p class="text-center font-bold text-gray-100 text-2xl py-5 pt-10">OTP Verification Code</p>
                 </div>
             </div>
-            <center><h1>{{$otp}}</h1></center>
+            
             <div class="container justify-center p-20 mx-auto lg:w-2/3 lg:mr-10 lg:my-auto lg:px-40 lg:py-20 my-24">
                 <div class=" "><img src="/img/account/forget1.png" alt="Gambar-login1" width="10%" class="mx-auto pb-3"></div>
 
 
-
+                
 
                 <h1 class="text-center text-3xl font-bold py-6 text-gray-600">Masukkan Kode OTP</h1>
                 <p class="text-center text-sm font-light py-1 pb-4 ">Kode OTP sudah dikirimkan pada alamat email anda,selanjutnya anda dapat memasukkan kode OTP tersebut pada kolom yang telah disediakan</p>
@@ -78,7 +81,7 @@
               </div>
                 </form>
                 {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-
+               
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute inset-x-0 bottom-0 lg:hidden">
@@ -89,4 +92,4 @@
 
 </body>
 
-</html> 
+</html>
