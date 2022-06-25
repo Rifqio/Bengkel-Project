@@ -21,9 +21,10 @@ class MitraController extends Controller
 {
 
 
-    public function create_product()
+    public function create_product(Request $request)
     {
         if (Auth::user()->hasRole('mitra')) {
+            $image = time() . "_" . $request->product_image->getClientOriginalName();
             $category = explode(',', request('category'));
             Item::create([
                 'name' => request('name'),
@@ -33,6 +34,7 @@ class MitraController extends Controller
                 'slug' => strtolower($category[1]),
                 'desc' => request('desc'),
                 'spec' => request('spec'),
+                'image' => $image,
             ]);
             ItemStore::create([
                 'store_id' => request('bengkel'),
@@ -44,7 +46,6 @@ class MitraController extends Controller
             return redirect('dashboard');
         }
     }
-
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();

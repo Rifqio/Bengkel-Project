@@ -33,7 +33,7 @@
                             @endif
                             <div class="position-absolute top-0 top-0 end-0">
                              @if(Request::is('list-store'))
-                            <a href="/store-register" class="btn btn-danger"><button type="button" class="">+ Tambah</button></a>
+                            <a href="/store-register" class="btn btn-danger">Tambah</a>
                             @endif
                             </div>
                             <br>
