@@ -8,6 +8,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function Ramsey\Uuid\v1;
+use function Ramsey\Uuid\v6;
+
 class CategoriesController extends Controller
 {
     public function index()
@@ -38,11 +41,10 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 1)
             ->where("items.id", "=", $id->id)
             ->get();
-
         return view('items.details', [
             'item' => $id,
             'data' => $data,
@@ -54,6 +56,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 2);
         return view('items.index', [
             'items' => $items,
+            'title' => "Suspension List"
         ]);
     }
 
@@ -67,7 +70,7 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 2)
             ->where("items.id", "=", $id->id)
             ->get();
@@ -83,6 +86,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 3);
         return view('items.index', [
             'items' => $items,
+            'title' => "Drivetrain List"
         ]);
     }
 
@@ -96,7 +100,7 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 3)
             ->where("items.id", "=", $id->id)
             ->get();
@@ -112,6 +116,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 4);
         return view('items.index', [
             'items' => $items,
+            'title' => "Electronic List"
         ]);
     }
 
@@ -125,7 +130,7 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 4)
             ->where("items.id", "=", $id->id)
             ->get();
@@ -141,6 +146,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 5);
         return view('items.index', [
             'items' => $items,
+            'title' => "Exhaust List"
         ]);
     }
 
@@ -154,7 +160,7 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 5)
             ->where("items.id", "=", $id->id)
             ->get();
@@ -169,7 +175,8 @@ class CategoriesController extends Controller
     {
         $items = Item::get()->where('category_id', '=', 6);
         return view('items.index', [
-            'items' => $items
+            'items' => $items,
+            'title' => "Oil List"
         ]);
     }
 
@@ -183,7 +190,7 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 6)
             ->get();
 
@@ -198,7 +205,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 7);
         return view('items.index', [
             'items' => $items,
-            'title' => "Wheels"
+            'title' => "Wheels List"
         ]);
     }
 
@@ -215,7 +222,7 @@ class CategoriesController extends Controller
         ->join("categories", function($join){
             $join->on("items.category_id", "=", "categories.id");
         })
-        ->select("items.name", "stores.store_name", "item_store.price")
+        ->select("items.name", "stores.store_name", "stores.id", "item_store.price")
         ->where("items.id", "=", $id->id)
         ->where("categories.id", "=", 7)
         ->get();
@@ -232,6 +239,7 @@ class CategoriesController extends Controller
         $items = Item::get()->where('category_id', '=', 8);
         return view('items.index', [
             'items' => $items,
+            'title' => "Tool List"
         ]);
     }
 
@@ -245,7 +253,7 @@ class CategoriesController extends Controller
             ->join("stores", function ($join) {
                 $join->on("item_store.store_id", "=", "stores.id");
             })
-            ->select("items.name", "item_store.price", "stores.store_name", "items.brand")
+            ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 8)
             ->get();
 

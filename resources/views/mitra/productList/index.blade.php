@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>User List</h6>
+                        <h6>Product List</h6>
                         @if (session()->has('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <span class="alert-text"><strong>Success!</strong> {{ session('success') }}</span>
@@ -41,8 +41,11 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ $i->image }}/" class="avatar avatar-sm me-3"
-                                                            alt="user2">
+                                                        @if ( $i->image == null)
+                                                           <img src="/img/product/placeholder.jpg" alt="" class="avatar avatar-sm me-3">
+                                                        @else
+                                                           <img src="{{ asset('storage/'. $i->image) }}" class="avatar avatar-sm me-3">
+                                                        @endif
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $i->name }}</h6>
@@ -57,6 +60,16 @@
                                                 <button type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#info{{$i->id}}">
                                                     Info
                                                 </button>
+
+                                                <a type="button" href="/edit-product/{{ $i->id }}"  class="btn bg-gradient-primary btn-block mb-3">
+                                                    Edit
+                                                </a>
+
+                                                <form action="/delete-product/{{ $i->id }}" action="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn bg-gradient-danger btn-block mb-3">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
 
@@ -71,14 +84,22 @@
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                <form>
+                                                <div>
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">Nama Sparepart:</label>
-                                                        <input type="text" class="form-control" value="{{$i->name}}" id="recipient-name" readonly>
+                                                        <input type="text" class="form-control" value="{{$i->name}}" id="recipient-name" >
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">Brand:</label>
                                                         <input type="text" class="form-control" value="{{$i->brand}}" id="recipient-name" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Kategori:</label>
+                                                        <input type="text" class="form-control" value="{{$i->category->name}}" id="recipient-name" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Foto Produk:</label>
+                                                        <img class="img-thumbnail" src="{{ asset('storage/'. $i->image) }}" alt="">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">Harga:</label>
@@ -88,7 +109,7 @@
                                                         <label for="message-text" class="col-form-label">Deskripsi:</label>
                                                         <textarea class="form-control" id="message-text" readonly>{{$i->desc}}</textarea>
                                                     </div>
-                                                </form>
+                                                </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
