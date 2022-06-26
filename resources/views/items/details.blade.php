@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 
-    
+
     <style>
         /*Overrides for Tailwind CSS */
 
@@ -54,7 +54,7 @@
             /*border-gray-200*/
             background-color: #edf2f7;
             /*bg-gray-200*/
-            
+
         }
 
         /*Row Hover*/
@@ -72,7 +72,7 @@
             /*rounded*/
             border: 1px solid transparent;
             /*border border-transparent*/
-            
+
         }
 
         /*Pagination Buttons - Current selected */
@@ -173,7 +173,7 @@
     <!-- Navbar -->
     <section id="banner" class="bg-gradient-to-r from-green-200 to-green-600 flex justify-center">
         <div class="w-1/5 self-center">
-            <div class="w-[55px] h-[55px] border-2 shadow-sm rounded-lg bg-slate-100  p-2 ml-10"><a href=""><img src="{{ asset('img/arrow.png') }}" alt="" width="" class="object-cover"></a></div>
+            <div class="w-[55px] h-[55px] border-2 shadow-sm rounded-lg bg-slate-100  p-2 ml-10"><a href="../"><img src="{{ asset('img/arrow.png') }}" alt="" width="" class="object-cover"></a></div>
         </div>
         <div class=" px-10 lg:pr-32 py-4 w-full mx-auto">
             <div class="flex border-2 shadow-sm rounded-lg bg-slate-100 justify-center">
@@ -240,12 +240,12 @@
     <!-- Information -->
     <section id="deskrip" class="bg-gray-200 ">
         <div class="container p-10 lg:mx-20  ">
-            <h1 class="py-2 mb-5 uppercase font-bold lg:text-5xl text-3xl font-inconsolata border-b-2 border-gray-500 text-gray-500 w-3/4">Product Information</h1> 
+            <h1 class="py-2 mb-5 uppercase font-bold lg:text-5xl text-3xl font-inconsolata border-b-2 border-gray-500 text-gray-500 w-3/4">Product Information</h1>
             <hr>
-            <p class="py-2">Ukuran: 20cm</p>
-            <p class="py-2">Manufaktur: USA</p>
-
             <p class="py-2">{{ $item->desc }}</p>
+            <div class="border-b-2 border-gray-300 w-3/4"></div>
+            <p class="py-2">{{ $item->spec }}</p>
+
         </div>
     </section>
 

@@ -19,7 +19,7 @@
 
     <Section id="banner" class="bg-ijo relative pb-10 lg:pb-0">
         <div class="w-1/5 self-center absolute ">
-            <div class="w-[55px] h-[55px] border-2 shadow-sm rounded-lg bg-green-100  p-2 m-5 hover:bg-green-500 transition ease-in-out duration-700 active:bg-green-900"><a href=""><img src="{{ asset('img/arrow.png') }}" alt="" width="" class="object-cover"></a></div>
+            <div class="w-[55px] h-[55px] border-2 shadow-sm rounded-lg bg-green-100  p-2 m-5 hover:bg-green-500 transition ease-in-out duration-700 active:bg-green-900"><a href="../"><img src="{{ asset('img/arrow.png') }}" alt="" width="" class="object-cover"></a></div>
         </div>
         <div class="px-24 pt-3">
             <div class="container mx-auto ">
@@ -41,7 +41,8 @@
                         <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white"> <a href="sparepart/{{ strtolower($c->name) }}"> {{ $c->name }}</a></h1>
+                            <img src="/{{ $c->icon_url }}" class="m-auto w-1/2" alt="">
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white"> <a href="/sparepart/{{ strtolower($c->name) }}"> {{ $c->name }}</a></h1>
                             <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
                         </div>
                     </div>

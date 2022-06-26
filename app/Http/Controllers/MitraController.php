@@ -92,16 +92,28 @@ class MitraController extends Controller
     public function SparepartToBengkelView()
     {
         $mitra = User::find(Auth::user()->id);
-        $data = Item::join('item_store', "items.id", "=", "item_store.item_id" )
-                    ->join('stores', "item_store.store_id", "=", "stores.id" )
-                    ->join('users', "stores.id_mitra", "=", "users.id" )
-                    ->where("item_store.user_id", "=", "users.id")
-                    ->select("items.name", "stores.store_name", "stores.address")
-                    ->where("stores.id_mitra", "=", Auth::user()->id)
-                    ->where("stores.status_activation", "=", 1)
-                    ->get();
+        // $test = DB::select("SELECT
+        //                         items.name, items.id
+        //                     FROM
+        //                         items
+        //                     JOIN
+        //                         item_store
+        //                     ON
+        //                         items.id = item_store.item_id
+        //                     JOIN
+        //                         stores
+        //                     ON
+        //                         item_store.store_id = stores.id
+        //                     JOIN
+        //                         users
+        //                     ON
+        //                         stores.id_mitra = users.id AND
+        //                         item_store.user_id = users.id
+        //                     WHERE
+        //                         stores.id_mitra = $auth AND
+        //                         item_store.store_id = 4");
         $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
-        // dd($data);
+        // dd($test);
         return view('mitra.sparepartToBengkel.index',
             [
                 'stores' => $store,
