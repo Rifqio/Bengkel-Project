@@ -192,6 +192,7 @@ class CategoriesController extends Controller
             })
             ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 6)
+            ->where("items.id", "=", $id->id)
             ->get();
 
         return view('items.details', [
@@ -255,6 +256,7 @@ class CategoriesController extends Controller
             })
             ->select("items.name", "item_store.price", "stores.id", "stores.store_name", "items.brand")
             ->where("items.category_id", "=", 8)
+            ->where("items.id", "=", $id->id)
             ->get();
 
         return view('items.details', [

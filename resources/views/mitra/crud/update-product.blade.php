@@ -15,8 +15,7 @@
             {{ session('loginError') }}
         </div>
         @endif
-        <form action="edit-product/{{ $item->id }}" method="POST" enctype="multipart/form-data">
-
+        <form action="/edit-product/{{ $item->id }}" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="row">
@@ -62,9 +61,9 @@
                                         <select class="form-control" name="category" id="category">
                                             @foreach ($categories as $category)
                                                 @if (old('category', $item->category_id) == $category->id)
-                                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }},{{ $category->name }}" selected>{{ $category->name }}</option>
                                                 @else
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }},{{ $category->name }}">{{ $category->name }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -98,6 +97,7 @@
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Produk</label> <br>
+                                    <input type="hidden" name="oldImage" value={{ $item->image }}>
                                     <img class="img-thumbnail col-8" src="{{ asset('storage/'. $item->image) }}" alt="">
                                     <input class="form-control" type="file" id="formFile" name="product_image">
                                 </div>

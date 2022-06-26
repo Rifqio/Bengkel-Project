@@ -26,27 +26,26 @@ class MitraController extends Controller
     public function create_product(CreateProductRequest $request)
     {
 
-            Item::create($request->validated());
-            ItemStore::create([
-                'store_id' => request('bengkel'),
-                'item_id' => Item::latest()->first()->id,
-                'price' => request('price'),
-                'user_id' => Auth::id()
-            ]);
-
-            return redirect('dashboard');
+        Item::create($request->validated());
+        ItemStore::create([
+            'store_id' => request('bengkel'),
+            'item_id' => Item::latest()->first()->id,
+            'price' => request('price'),
+            'user_id' => Auth::id()
+        ]);
+        return redirect('dashboard');
     }
 
     public function edit($id)
     {
         $item = Item::where('id', $id)->first();
         $bengkel = DB::table("stores")
-        ->join("users", function ($join) {
-            $join->on("stores.id_mitra", "=", "users.id");
-        })
-        ->select("stores.store_name", "stores.id")
-        ->where("users.id", "=", Auth::id())
-        ->get();
+            ->join("users", function ($join) {
+                $join->on("stores.id_mitra", "=", "users.id");
+            })
+            ->select("stores.store_name", "stores.id")
+            ->where("users.id", "=", Auth::id())
+            ->get();
         // dd($item);
         return view('mitra.crud.update-product', [
             'item' => $item,
@@ -55,10 +54,9 @@ class MitraController extends Controller
         ]);
     }
 
-    public function update_product(Request $request, Item $item)
+    public function update_product(Request $request, $id)
     {
         $category = explode(',', request('category'));
-
         $data = [
             'name' => request('name'),
             'brand' => request('brand'),
@@ -67,16 +65,17 @@ class MitraController extends Controller
             'slug' => strtolower($category[1]),
             'desc' => request('desc'),
             'spec' => request('spec'),
+            'image' => request()->file('product_image')->store('product_image')
         ];
-        if($request->file('product_image')) {
-            if($request->oldImage){
+        if ($request->file('product_image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $request->file('product_image')->store('product_image');
         }
 
-        Item::where('id', $item->id)->update($data);
-        ItemStore::where('item_id',$item->id)->update([
+        Item::where('id', $id)->update($data);
+        ItemStore::where('item_id', $id)->update([
             'store_id' => request('bengkel'),
             'price' => request('price')
         ]);
@@ -85,9 +84,39 @@ class MitraController extends Controller
 
     public function DeleteProduct($id)
     {
-        Item::destroy($id);
+        Item::where('id', $id)->firstorfail()->delete();
+        // Item::destroy($id);
         return redirect('/dashboard/show')->with('success', 'Post has been deleted');
     }
+
+    public function SparepartToBengkelView()
+    {
+        $mitra = User::find(Auth::user()->id);
+        $items = DB::table("items")
+        ->join("item_store", function($join){
+            $join->on("items.id", "=", "item_store.item_id");
+        })
+        ->join("stores", function($join){
+            $join->on("item_store.store_id", "=", "stores.id");
+        })
+        ->join("users", function($join){
+            $join->on("stores.id_mitra", "=", "users.id")
+            ->where("item_store.user_id", "=", "users.id");
+        })
+        ->select("items.name", "stores.store_name", "stores.address")
+        ->where("stores.id_mitra", "=", Auth::user()->id)
+        ->where("stores.status_activation", "=", 1)
+        ->get();
+        $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
+        // dd($store);
+        return view('mitra.sparepartToBengkel.index',
+            [
+                'stores' => $store,
+                'users' => $mitra,
+            ]
+        );
+    }
+
     public function ListStore()
     {
         $users = User::whereRoleIs(['mitra'])->get();

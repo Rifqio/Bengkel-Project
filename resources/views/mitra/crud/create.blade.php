@@ -100,7 +100,8 @@
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Produk</label>
-                                    <input class="form-control" type="file" id="formFile" name="product_image">
+                                    <img class="img-preview img-fluid" id="img-preview">
+                                    <input class="form-control" onchange="previewImage()" type="file" id="formFile" name="product_image">
                                 </div>
                                 <hr>
                                 <div class="col-md-8">
@@ -128,12 +129,18 @@
     </div>
 </div>
 <script>
-    // const category = document.querySelector('#category')
-    // const slug = document.querySelector('#slug')
-    // category.addEventListener('change', function(){
-    //     fetch('/dashboard/create/create-slug?slug=' + category.value)
-    //         .then(response => response.json())
-    //         .then(data => slug.value = data.slug)
-    // })
+     function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('#img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const ofReader = new FileReader();
+            ofReader.readAsDataURL(image.files[0]);
+
+            ofReader.onload = function(oFREvent){
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
 </script>
 @endsection

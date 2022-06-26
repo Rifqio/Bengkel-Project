@@ -65,7 +65,7 @@
                                                     Edit
                                                 </a>
 
-                                                <form action="/delete-product/{{ $i->id }}" action="POST">
+                                                <form action="{{ url('/delete-product').'/'.$i->id }}" action="POST">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit" class="btn bg-gradient-danger btn-block mb-3">Delete</button>

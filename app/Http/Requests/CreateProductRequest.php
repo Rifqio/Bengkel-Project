@@ -31,7 +31,7 @@ class CreateProductRequest extends FormRequest
             'slug' => 'required',
             'desc' => 'required',
             'spec' => 'required',
-            'image' => 'required|max:2048'
+            'image' => 'required|max:2048',
         ];
     }
     public function prepareForValidation()

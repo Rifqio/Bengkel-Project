@@ -160,8 +160,7 @@ class DashboardController extends Controller
         } elseif (Auth::user()->hasRole('mitra')) {
             $mitra = User::find(Auth::user()->id);
             $store = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
-            return view(
-                'mitra.productList.index',
+            return view('mitra.productList.index',
                 [
                     'data' => $store,
                     'mitra' => $mitra
