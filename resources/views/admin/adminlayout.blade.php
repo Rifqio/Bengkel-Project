@@ -62,26 +62,27 @@
                 }
             })
         }    
-        function get_bengkel_admin(query = '', data) {
+        function get_bengkel_employee(query = '', data) {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ url('/search-bengkel-aktif') }}",
+                url: "{{ url('/search-bengkel-employee') }}",
                 method: 'POST',
                 data: {
                     query: query,
                     status: data,
                 },
                 success: function (response) {
-                    $('#resultbengkelaktif').html(response);
+                    $('#resultbengkelemployee').html(response);
+                    console.log(response);
                 }
             })
         }
-        $(document).on('keyup', '#searchbengkelaktif', function () {
+        $(document).on('keyup', '#searchbengkelaktifemp', function () {
             var word = $(this).val();
             var data = $(this).data('status');
-            get_bengkel_admin(word, data);
+            get_bengkel_employee(word, data);
         });
         $(document).on('keyup', '#searchmitra', function () {
             var word = $(this).val();
