@@ -64,12 +64,7 @@
                                                 <a type="button" href="/edit-product/{{ $i->id }}"  class="btn bg-gradient-primary btn-block mb-3">
                                                     Edit
                                                 </a>
-
-                                                <form action="{{ url('/delete-product').'/'.$i->id }}" action="POST">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button type="submit" class="btn bg-gradient-danger btn-block mb-3">Delete</button>
-                                                </form>
+                                                <a class="btn bg-gradient-danger btn-block mb-3" href="{{ url('/delete-product').'/'.$i->id }}">Delete</a>
                                             </td>
                                         </tr>
 

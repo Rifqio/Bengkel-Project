@@ -92,23 +92,16 @@ class MitraController extends Controller
     public function SparepartToBengkelView()
     {
         $mitra = User::find(Auth::user()->id);
-        $items = DB::table("items")
-        ->join("item_store", function($join){
-            $join->on("items.id", "=", "item_store.item_id");
-        })
-        ->join("stores", function($join){
-            $join->on("item_store.store_id", "=", "stores.id");
-        })
-        ->join("users", function($join){
-            $join->on("stores.id_mitra", "=", "users.id")
-            ->where("item_store.user_id", "=", "users.id");
-        })
-        ->select("items.name", "stores.store_name", "stores.address")
-        ->where("stores.id_mitra", "=", Auth::user()->id)
-        ->where("stores.status_activation", "=", 1)
-        ->get();
+        $data = Item::join('item_store', "items.id", "=", "item_store.item_id" )
+                    ->join('stores', "item_store.store_id", "=", "stores.id" )
+                    ->join('users', "stores.id_mitra", "=", "users.id" )
+                    ->where("item_store.user_id", "=", "users.id")
+                    ->select("items.name", "stores.store_name", "stores.address")
+                    ->where("stores.id_mitra", "=", Auth::user()->id)
+                    ->where("stores.status_activation", "=", 1)
+                    ->get();
         $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
-        // dd($store);
+        // dd($data);
         return view('mitra.sparepartToBengkel.index',
             [
                 'stores' => $store,
