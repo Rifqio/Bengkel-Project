@@ -41,7 +41,6 @@ class DashboardController extends Controller
             ]);
 
             return view('admin.admindashboard');
-
         } elseif (Auth::user()->hasRole('superadmin')) {
             $employe = User::whereRoleIs(['employee'])->get();
             return view('SuperAdmin.admindashboard', [
@@ -156,8 +155,7 @@ class DashboardController extends Controller
         } elseif (Auth::user()->hasRole('mitra')) {
             $mitra = User::find(Auth::user()->id);
             $store = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
-            return view(
-                'mitra.productList.index',
+            return view('mitra.productList.index',
                 [
                     'data' => $store,
                     'mitra' => $mitra
@@ -174,11 +172,13 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('SuperAdmin.crud.edit', [
-            'user' => $user,
-            'roles' => Role::all(),
-        ]);
+        if (Auth()->hasRole('superadmin')) {
+            $user = User::find($id);
+            return view('SuperAdmin.crud.edit', [
+                'user' => $user,
+                'roles' => Role::all(),
+            ]);
+        }
     }
 
     /**
@@ -199,9 +199,11 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Item $item)
     {
-        User::destroy($user->id);
-        return redirect('dashboard')->with('success', 'User has been deleted');
+        if (Auth()->hasRole('superadmin')) {
+            User::destroy($user->id);
+            return redirect('dashboard')->with('success', 'User has been deleted');
+        }
     }
 }
