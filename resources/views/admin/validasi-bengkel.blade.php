@@ -77,9 +77,10 @@
                                     <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#rej{{$s->id}}">
                                         Reject
                                     </button>
-                                    <button class="btn text-white" style="background-color: red">
+                                    <a href= {{ "delete-bengkel/" . $s->id}}><button type="button" class="btn btn-block bg-gradient-danger mb-3"
+                                        onclick="return confirm('Apakah Yakin Ingin Menghapus?')">
                                         Delete
-                                    </button>
+                                    </button></a>
                                     <button type="button" class="btn btn-block bg-gradient-info mb-3" data-bs-toggle="modal" data-bs-target="#detail{{$s->id}}">
                                         Detail
                                     </button>

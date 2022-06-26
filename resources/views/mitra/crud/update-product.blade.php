@@ -15,24 +15,26 @@
             {{ session('loginError') }}
         </div>
         @endif
-        <form action="{{ url('create-product') }}" method="POST" enctype="multipart/form-data">
+        <form action="/edit-product/{{ $item->id }}" method="POST" enctype="multipart/form-data">
+            @method('put')
             @csrf
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Add Product</p>
+                                <p class="mb-0">Edit Product</p>
                                 <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
                             </div>
                         </div>
                         <div class="card-body">
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name"
                                             class="form-control-label  @error('name') is-invalid @enderror">Name</label>
-                                        <input class="form-control" name="name" type="text" value="{{ old('name') }}">
+                                        <input class="form-control" name="name" type="text" value="{{ old('name', $item->name) }}">
                                         @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -44,7 +46,7 @@
                                     <div class="form-group">
                                         <label for="brand"
                                             class="form-control-label @error('brand') is-invalid @enderror">Brand</label>
-                                        <input class="form-control" name="brand" type="text" value="{{ old('brand') }}">
+                                        <input class="form-control" name="brand" type="text" value="{{ old('brand', $item->brand) }}">
                                         @error('brand')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -58,7 +60,11 @@
                                         <label>Category</label>
                                         <select class="form-control" name="category" id="category">
                                             @foreach ($categories as $category)
+                                                @if (old('category', $item->category_id) == $category->id)
+                                                    <option value="{{ $category->id }},{{ $category->name }}" selected>{{ $category->name }}</option>
+                                                @else
                                                     <option value="{{ $category->id }},{{ $category->name }}">{{ $category->name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -75,21 +81,12 @@
                                     </div>
                                 </div>
 
-
-
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Slug</label>
-                                        <input class="form-control" id="slug" name="slug" type="text" readonly>
-                                    </div>
-                                </div> --}}
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
                                             class="form-control-label @error('price') is-invalid @enderror">Price</label>
                                         <input class="form-control" id="price" name="price" type="text"
-                                            value="{{ old('price') }}">
+                                            value="{{ old('price', $item->price) }}">
                                         @error('price')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -99,22 +96,24 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Foto Produk</label>
-                                    <img class="img-preview img-fluid" id="img-preview">
-                                    <input class="form-control" onchange="previewImage()" type="file" id="formFile" name="product_image">
+                                    <label for="formFile" class="form-label">Foto Produk</label> <br>
+                                    <input type="hidden" name="oldImage" value={{ $item->image }}>
+                                    <img class="img-thumbnail col-8" src="{{ asset('storage/'. $item->image) }}" alt="">
+                                    <input class="form-control" type="file" id="formFile" name="product_image">
                                 </div>
                                 <hr>
+
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Deskripsi Produk</label>
-                                        <textarea class="form-control" name="desc" id="" cols="20" rows="5"></textarea>
+                                        <textarea class="form-control" name="desc" id="" cols="20" rows="5">{{ $item->desc }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Spesifikasi Produk</label>
-                                        <textarea class="form-control" name="spec" id="" cols="20" rows="5"></textarea>
+                                        <textarea class="form-control" name="spec" id="" cols="20" rows="5">{{ $item->spec }}</textarea>
                                     </div>
                                 </div>
 
@@ -129,18 +128,12 @@
     </div>
 </div>
 <script>
-     function previewImage() {
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('#img-preview');
-
-            imgPreview.style.display = 'block';
-
-            const ofReader = new FileReader();
-            ofReader.readAsDataURL(image.files[0]);
-
-            ofReader.onload = function(oFREvent){
-                imgPreview.src = oFREvent.target.result;
-            }
-        }
+    // const category = document.querySelector('#category')
+    // const slug = document.querySelector('#slug')
+    // category.addEventListener('change', function(){
+    //     fetch('/dashboard/create/create-slug?slug=' + category.value)
+    //         .then(response => response.json())
+    //         .then(data => slug.value = data.slug)
+    // })
 </script>
 @endsection

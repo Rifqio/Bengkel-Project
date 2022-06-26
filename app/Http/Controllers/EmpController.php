@@ -37,7 +37,18 @@ class EmpController extends Controller
 
     public function ListMitraView()
     {
-        $users = User::whereRoleIs(['mitra'])->get();
+        $date = date('2022-06-05 10:52:33');
+        // $now = Carbon::now();
+        
+        $users = User::whereRoleIs(['mitra'])->where('created_at', $date)->get();
+        return view('admin.listmitra', [
+            'users' => $users,
+        ]);
+    }
+
+    public function ListNonMitra()
+    {
+        $users = User::whereRoleIs(['mitra'])->where('created_at', NULL)->get();
         return view('admin.listmitra', [
             'users' => $users,
         ]);
@@ -82,5 +93,25 @@ class EmpController extends Controller
             });
         }
         return redirect('/list-mitra');
+    }
+
+    public function AktifMitra(Request $request){
+        $note = 'Anda di Aktfikan Kembali, Silahkan Masuk Kembali Menggunakan Akun Sebelumnya';
+        $validasi = $request->validate([
+            'created_at' => ['required']
+        ]);
+
+      if(!$validasi){
+        return('/list-nonmitra');
+      }
+        $mitra= User::find($request->id)->update(['created_at' => $request->created_at]);
+        if($mitra){
+        $data = array('title' => 'Anda di Non-Aktifkan', 'note' => $note);
+        Mail::send('email.mitra-aktif', $data, function ($message){
+            $message->to(request()->email, 'Akun Anda Di Aktifkan')->subject('Akun Anda di Aktifkan');
+            $message->from(Auth::user()->email, Auth::user()->name);
+        });
+    }
+    return redirect('/list-nonmitra');
     }
 }

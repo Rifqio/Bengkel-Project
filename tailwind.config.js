@@ -14,7 +14,10 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-                allison: ['Allison', 'sans-serif']
+                allison: ['Allison', 'sans-serif'],
+                titan: ['Titan One', 'cursive'],
+                inconsolata: ['Inconsolata', 'monospace'],
+                roboto: ['Roboto Mono', 'monospace']
             },
             colors: {
                 'ijo': '#4BC274',
