@@ -69,11 +69,6 @@ class DashboardController extends Controller
         }
     }
 
-    public function profile()
-    {
-        return 'Hello';
-    }
-
     public function GuestView()
     {
 

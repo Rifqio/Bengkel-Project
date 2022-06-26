@@ -24,6 +24,7 @@ class StoreController extends Controller
 
         return view($layout, [
             'stores' => $store,
+            'data' => 1,
         ]);
     }
 
@@ -47,6 +48,7 @@ class StoreController extends Controller
         } else {
             return view($layout, [
                 'stores' => $store,
+                'data' => 2,
             ]);
         }
     }
@@ -70,6 +72,7 @@ class StoreController extends Controller
         } else {
             return view($layout, [
                 'stores' => $store,
+                'data' => 3,
             ]);
         }
     }
