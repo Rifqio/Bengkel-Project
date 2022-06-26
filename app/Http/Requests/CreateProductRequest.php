@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateProductRequest extends FormRequest
 {
@@ -28,6 +29,7 @@ class CreateProductRequest extends FormRequest
             'brand' => 'required',
             'price' => 'required|integer',
             'category_id' => 'required',
+            'user_id' => Auth::user()->id,
             'slug' => 'required',
             'desc' => 'required',
             'spec' => 'required',

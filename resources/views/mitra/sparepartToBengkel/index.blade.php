@@ -85,7 +85,7 @@
                                                   <div class="form-group">
                                                     <select class="form-control" id="exampleFormControlSelect1" name='product'>
                                                         @foreach ($item as $data)
-                                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                                            <option value="{{$data->id}}">{{$data->id}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
