@@ -69,6 +69,7 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
     Route::post('/store-update/{id}', 'StoreUpdate');
+    Route::post('/store-item-insert/{id}', 'StoreInsertItem');
     Route::get('/store-edit/{id}', 'StoreEdit');
     //Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');

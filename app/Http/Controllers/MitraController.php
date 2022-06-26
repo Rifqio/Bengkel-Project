@@ -114,10 +114,17 @@ class MitraController extends Controller
         //                         item_store.store_id = 4");
         $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
         // dd($test);
+        $item = DB::table("item_store")
+        ->join("items", function ($join) {
+            $join->on("item_store.item_id", "=", "items.id");
+        })->where("user_id", "=", Auth::id())
+        ->get();
+        // return $bengkel;
         return view('mitra.sparepartToBengkel.index',
             [
                 'stores' => $store,
                 'users' => $mitra,
+                'item' => $item,
             ]
         );
     }
@@ -241,5 +248,12 @@ class MitraController extends Controller
 
         $request->store_image->move(public_path('store_data/' . DB::getPdo()->lastInsertId() . '/image'), $name);
         return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
+    }
+
+    public function StoreInsertItem(Request $request, $id){
+        $harga = DB::table('item_store')->where('item_id', $request->product)->first();
+        $bengkel = Store::find($id);
+        $bengkel->item()->attach($request->product, ['price' => $harga->price, 'user_id' => Auth::user()->id]);
+        return redirect('/dashboard/show');
     }
 }
