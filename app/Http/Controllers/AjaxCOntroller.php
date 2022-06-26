@@ -174,4 +174,37 @@ class AjaxController extends Controller
         }
         return $output;
     }
+
+    public function searchMitra(Request $request){
+        $query = $request->get('query');
+        $output = '';
+        $no = 1;
+        if($query != ''){
+            $users = User::where('name', 'like', '%'.$query.'%')->whereRoleIs(['mitra'])->get();
+        }else{
+            $users = User::whereRoleIs(['mitra'])->get();
+        }
+        if($users->count()>0){
+            foreach($users as $user){
+                $output .= '
+                <tr class="text-center">
+                    <td class="pt-3">'.$no++.'</td>
+                    <td class="pt-3">'.$user->name.'</td>
+                    <td class="pt-3">'.$user->roles->first()->display_name.'</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#nonactive'.$user->id.'">Non Aktif</button>
+                        <button type="button" class="btn bg-gradient-danger btn-block mb-3"
+                            data-bs-toggle="modal" data-bs-target="#delete'.$user->id.'">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                ';
+            }
+        }else{
+            $output .= 'Data Mitra Tidak Ditemukan';
+        }
+        return $output;
+    }
 }
