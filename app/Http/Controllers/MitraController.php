@@ -25,7 +25,6 @@ class MitraController extends Controller
 
     public function create_product(CreateProductRequest $request)
     {
-
         Item::create($request->validated());
         ItemStore::create([
             'store_id' => request('bengkel'),
@@ -62,7 +61,6 @@ class MitraController extends Controller
             'brand' => request('brand'),
             'price' => request('price'),
             'category_id' => $category[0],
-            'user_id' => Auth::user()->id,
             'slug' => strtolower($category[1]),
             'desc' => request('desc'),
             'spec' => request('spec'),
