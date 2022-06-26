@@ -32,9 +32,13 @@
                                     <td class="pt-3">{{$u->name}}</td>
                                     <td class="pt-3">{{$u->roles->first()->display_name}}</td>
                                     <td>
+                                    @if(Request::is('list-mitra'))
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#nonactive{{$u->id}}">Non Aktif</button>
-                                        <a href="{{ url('delete-mitra/'.$u->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
-                                    </td>
+                                    @elseif(Request::is('list-nonmitra'))
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#active{{$u->id}}">Aktif</button>                                    
+                                    @endif
+                                    <a href="{{ url('delete-mitra/'.$u->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
+                                </td>
                                 </tr>
 
                             {{-- Modal Non-Aktive --}}
@@ -59,6 +63,39 @@
                                     <div class="modal-footer">
                                     <input type="hidden" name="id" value="{{$u->id}}">
                                     <input type="hidden" name="created_at" value="null">
+                                    <input type="hidden" name="email" value="{{ $u->email }}">
+                                      <button type="submit" class="btn bg-gradient-danger">Save changes</button>
+                                      <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+                                    </form>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                            {{-- Modal Aktive --}}
+                            <div class="modal fade" id="active{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h6 class="modal-title" id="modal-title-default">Aktivasi Mitra</h6>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                      </button>
+                                    </div>
+                                    <form action="{{url('aktif/'.$u->id)}}" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+                                      <p>Apakah anda yakin untuk aktifkan Mitra : "{{$u->name}}"</p>
+                                      <p>Nama Mitra : {{$u->name}}</p>
+                                      <p>Email : {{$u->email}}</p>
+                                      <p>NIK : {{$u->nik}}</p>
+                                      <p>Masukkan Created At Mitra</p>
+                                      <input type="date" name="created_at" value="">
+                                      <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <input type="hidden" name="id" value="{{$u->id}}">
+                                    {{-- <input type="date" name="created_at" value=""> --}}
                                     <input type="hidden" name="email" value="{{ $u->email }}">
                                       <button type="submit" class="btn bg-gradient-danger">Save changes</button>
                                       <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>

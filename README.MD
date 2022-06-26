@@ -57,3 +57,10 @@ Note
 
 ## (21 Mei 2022)
 - Menambah fitur komparasi harga
+
+## (20 Juni - 26 Juni 2022)
+- Menambah fitur Upload Edit Gambar Store
+- Reject Store
+- Banding
+- Add Live Search (User, SuperAdmin)
+- Testing Bug

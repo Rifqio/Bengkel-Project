@@ -34,11 +34,14 @@
                                         <th>Action</th>
                                     </tr>
                                     @foreach ($stores as $s)
+
+
+
                                     <tr class="text-center">
                                         <td class="pt-3">{{ $loop->iteration }}</td>
                                         <td class="pt-3">{{ $s->store_name }}</td>
                                         <td class="pt-3">{{ $s->address }}</td>
-                                        {{-- <td class="pt-3">{{ $s->kecamatan->kota->name }}</td> --}}
+                                        <td class="pt-3">{{ $s->kecamatan->kota->name }}</td>
                                         <td>
                                             <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal"
                                                 data-bs-target="#edit-bengkel{{ $s->id }}">Pilih</button>
@@ -68,7 +71,7 @@
                                                     placeholder="Id Bengkel" value="{{ $s->id }}">
                                                 <label>Nama Bengkel</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="store_name"
+                                                    <input type="text" name="store_name" readonly
                                                         class="form-control @error('store_name') is-invalid @enderror"
                                                         placeholder="Nama Bengkel"
                                                         value="{{ $s->store_name }}"
@@ -80,10 +83,16 @@
                                                     @enderror
                                                 </div>
                                                 <label>List Item Tersedia</label>
-                                                <div class="input-group mb-3">
-                                                   <h1>{{ $s->item }}</h1>
-                                                </div>
 
+                                                <div class="input-group mb-3">
+                                                    @foreach ($s->item as $data)
+                                                    @if (old('item[]', $data->id) == $data->id)
+                                                        <input type="checkbox" name="item[]" value="{{ $data->id }}" checked>{{ $data->name }} <br>
+                                                    @else
+                                                        <input type="checkbox" name="item[]" value="{{ $data->id }}">{{ $data->name }} <br>
+                                                    @endif
+                                                    @endforeach
+                                                </div>
 
                                                 <button type="submit"
                                                     class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update
@@ -98,7 +107,6 @@
                             </div>
                         </div>
                     </div>
-
                     @endforeach
                     </tbody>
                     </table>

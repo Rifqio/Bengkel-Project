@@ -92,23 +92,28 @@ class MitraController extends Controller
     public function SparepartToBengkelView()
     {
         $mitra = User::find(Auth::user()->id);
-        $items = DB::table("items")
-        ->join("item_store", function($join){
-            $join->on("items.id", "=", "item_store.item_id");
-        })
-        ->join("stores", function($join){
-            $join->on("item_store.store_id", "=", "stores.id");
-        })
-        ->join("users", function($join){
-            $join->on("stores.id_mitra", "=", "users.id")
-            ->where("item_store.user_id", "=", "users.id");
-        })
-        ->select("items.name", "stores.store_name", "stores.address")
-        ->where("stores.id_mitra", "=", Auth::user()->id)
-        ->where("stores.status_activation", "=", 1)
-        ->get();
+        // $test = DB::select("SELECT
+        //                         items.name, items.id
+        //                     FROM
+        //                         items
+        //                     JOIN
+        //                         item_store
+        //                     ON
+        //                         items.id = item_store.item_id
+        //                     JOIN
+        //                         stores
+        //                     ON
+        //                         item_store.store_id = stores.id
+        //                     JOIN
+        //                         users
+        //                     ON
+        //                         stores.id_mitra = users.id AND
+        //                         item_store.user_id = users.id
+        //                     WHERE
+        //                         stores.id_mitra = $auth AND
+        //                         item_store.store_id = 4");
         $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
-        // dd($store);
+        // dd($test);
         return view('mitra.sparepartToBengkel.index',
             [
                 'stores' => $store,
@@ -147,14 +152,6 @@ class MitraController extends Controller
         ]);
     }
 
-    public function DeleteBengkel($id)
-    {
-
-        $store = Store::find($id);
-        $store->delete();
-        return redirect('list-store')->with('success_update', 'Store Has Been Deleted');
-    }
-
     public function StoreUpdate(Request $request, $id)
     {
         $validateData = $request->validate([
@@ -162,7 +159,7 @@ class MitraController extends Controller
             'open' => ['required'],
             'close' => ['required'],
             'address' => ['required', 'string'],
-            'phone_store' => ['required'],
+            'phone_store' => ['required', 'max:14', 'min:10'],
             'store_image' => ['required'],
         ]);
         if (!$validateData) {
@@ -211,7 +208,7 @@ class MitraController extends Controller
             'store_name' => 'required|max:255',
             'open' => 'required',
             'close' => 'required',
-            'phone_store' => ['required', 'max:14', 'min:11'],
+            'phone_store' => ['required', 'max:14', 'min:10'],
             'address' => 'required',
             'store_image' => 'required',
         ]);

@@ -4,7 +4,7 @@
             {{-- Maps Content --}}
         </div>
 
-        <div class="absolute top-0 mt-5 w-full" style="z-index: 100;">
+        <div class="absolute top-0 mt-5 w-full" style="z-index: 100;" data-aos="fade-down" data-aos-duration="1000"> 
 
             <div class=" mb-0 w-1/3 mx-auto">
                 <input type="text" id="searchbengkel" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
@@ -16,7 +16,7 @@
     </div>
 
 
-    <section id=" card text-center " class="bg-green-500 pb-20">
+    <section id=" card text-center " class="bg-gradient-to-br from-green-300 to-green-600 pb-20" >
 
         <div class="container mx-auto justify-center pt-10">
             <div class="flex justify-center">
@@ -24,9 +24,9 @@
             </div>
 
 
-            <div class="flex flex-wrap justify-center ">
+            <div class="flex flex-wrap justify-center" data-aos="fade-up" data-aos-duration="500" >
                 @foreach($categories as $c)
-                <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
+                <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 " >
                     <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
                         <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
@@ -44,10 +44,10 @@
 
         <div class="container py-20 pb-60 mx-auto">
             <div class="flex flex-wrap xl:flex justify-around">
-                <div>
+                <div data-aos="fade-up-right" data-aos-duration="700">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable" class="bg-blue-400 px-10 py-3 border-2 border-blue-300 text-white font-semibold text-lg  uppercase rounded-lg hover:bg-blue-300  transition ease-in-out shadow-lg mb-10 md:mb-0">Bengkel Terdekat</button>
                 </div>
-                <div>
+                <div data-aos="fade-up-left" data-aos-duration="500">
                     <a href="/login"><button type="button" class="px-10 py-3 border-2 bg-red-600 border-red-500 text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-red-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg">Login / Register Sebagai Mitra</button></a>
                 </div>
             </div>
@@ -69,47 +69,47 @@
             <div class="flex flex-wrap justify-center">
 
                 <div class="xl:flex ">
-                    <div class="pb-10 group"><img src="img/Team/rozy.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
+                    <div class="pb-10 group" data-aos="flip-left" data-aos-duration="1000"><img src="img/Team/rozy.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
                         <p class="text-white font-semibold text-center text-xl align-text-top group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Rozy Nur Fatmala</p>
                     </div>
-                    <div class="pb-10 group"> <img src="img/Team/natan.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-700 shadow-xl ">
+                    <div class="pb-10 group" data-aos="flip-left"  data-aos-delay="300" data-aos-duration="1000"> <img src="img/Team/natan.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-700 shadow-xl ">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Nathan Ari Soetopo</p>
                     </div>
                 </div>
                 <div class="xl:flex">
-                    <div class="pb-5 group"><img src="img/Team/shalom.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="600" data-aos-duration="1000"><img src="img/Team/shalom.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Shallomita Rembulan</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/paksi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="900" data-aos-duration="1000"><img src="img/Team/paksi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Satria Buana Paksi</p>
                     </div>
                 </div>
                 <div class=" md:block xl:flex">
-                    <div class="pb-5 group"><img src="img/Team/syita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="1200" data-aos-duration="1000"><img src="img/Team/syita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Syi'ta Al-Mar'atush S</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/reza.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="1500" data-aos-duration="1000"><img src="img/Team/reza.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Reza Richard M S</p>
                     </div>
                 </div>
                 <div class="xl:flex 2xl:flex lg:block md:flex ">
-                    <div class="pb-5 group"><img src="img/Team/rifqi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="1800" data-aos-duration="1000"><img src="img/Team/rifqi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Rifqi Oktario</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/nizam.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="2100" data-aos-duration="1000"><img src="img/Team/nizam.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Nizamuddin Aulia</p>
                     </div>
                 </div>
                 <div class="flex md:flex sm:block ">
-                    <div class="pb-5 group"><img src="img/Team/samuel.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="2500" data-aos-duration="1000"><img src="img/Team/samuel.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Samuel Steven P H</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/sabila.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="2800" data-aos-duration="1000"><img src="img/Team/sabila.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Sabila Hayati N R</p>
                     </div>
                 </div>
-                <div class="xl:flex ">
-                    <div class="pb-5 group"><img src="img/Team/regita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                <div class="xl:flex" >
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="3000" data-aos-duration="1000"><img src="img/Team/regita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Regita Cahya Wulan</p>
                     </div>
                 </div>
