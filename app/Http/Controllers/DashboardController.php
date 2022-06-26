@@ -172,7 +172,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        if (Auth()->hasRole('superadmin')) {
+        if (Auth::user()->hasRole('superadmin')) {
             $user = User::find($id);
             return view('SuperAdmin.crud.edit', [
                 'user' => $user,

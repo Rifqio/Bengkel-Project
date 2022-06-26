@@ -267,21 +267,6 @@
 @endforeach
 <script>
     var data = {!!json_encode($loc) !!}
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i][0]);
-
-        //marker[i] = new L.marker([data[i][1], data[i][2]], {
-            //win_url: data[i][3],
-            //icon: fontAwesomeIcon,
-        //}).bindPopup("Bengkel " + data[i][0]);
-        //from = marker[i].getLatLng();
-        //to = user.getLatLng();
-        //marker[i].addTo(map);
-        //marker[i].on('click', onClick);
-        //distance[i] = from.distanceTo(to).toFixed(0) / 1000;
-        //namestore[i] = data[i][0];
-        //idstore[i] = data[i][3];
-    }
     navigator.geolocation.getCurrentPosition(getLatLon);
     function getLatLon(position) {
         var latitude = position.coords.latitude;
@@ -294,6 +279,5 @@
             input2.value = longitude;
         }        
     }
-
 </script>
 @endsection
