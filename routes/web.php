@@ -98,6 +98,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
     Route::post('/reject-bengkel/{id}', 'RejectBengkel');
 //    Route::get('/store-banding/{id}', 'StoreBandingEdit');
     Route::post('/store-banding', 'StoreBandingUpdate');
+    Route::get('/pengajuan-bengkel', 'StorePengajuan');
 });
 
 //Route Confirmation Email

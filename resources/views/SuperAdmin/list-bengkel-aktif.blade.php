@@ -12,6 +12,8 @@
             <h1 class="text-white mb-4">REJECT BENGKEL</h1>
             @elseif(Request::is('banding-bengkel'))
             <h1 class="text-white mb-4">BANDING BENGKEL</h1>
+            @elseif(Request::is('pengajuan-bengkel'))
+            <h1 class="text-white mb-4">LIST BENGKEL PENGAJUAN</h1>
             @endif
         </div>
     </div>
@@ -57,53 +59,54 @@
                                         {{ $s->address }}
                                     </td>
                                     <td class="align-middle text-sm">
+                                        @if ($s->status_activation != 0 && $s->status_activation != 2)
                                         <button type="button" class="btn btn-block bg-gradient-danger mb-3"
                                             data-bs-toggle="modal" data-bs-target="#deactive{{ $s->id }}">
                                             Nonaktif
                                         </button>
+                                        @endif
                                         <button type="button" class="btn btn-block bg-gradient-info mb-3"
                                             data-bs-toggle="modal" data-bs-target="#detail{{ $s->id }}">
                                             Detail
                                         </button>
                                     </td>
                                 </tr>
-                                {{-- Deactive --}}
-                                <div class="modal fade" id="deactive{{ $s->id }}" tabindex="-1" role="dialog"
-                                    aria-labelledby="modal-default" aria-hidden="true">
-                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h6 class="modal-title" id="modal-title-default">Non Aktivasi Bengkel
-                                                </h6>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
+                                 {{-- Modal Non-Aktive --}}
+                            <div class="modal fade" id="deactive{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title" id="modal-title-default">Non Aktivasi Bengkel</h6>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <form action="{{url('reject-bengkel/'.$s->id)}}" method="POST">
+                                            @csrf
                                             <div class="modal-body">
-                                                <p>Apakah anda yakin untuk nonaktifkan Bengkel "{{ $s->store_name }}"
-                                                </p>
-                                                <p>Pemilik : {{ $s->users->name }}</p>
-                                                <p>Email : {{ $s->users->email }}</p>
-                                                <p>NIK : {{ $s->users->nik }}</p>
+                                                <p>Apakah anda yakin untuk nonaktifkan Bengkel "{{$s->store_name}}"</p>
+                                                <p>Pemilik : {{$s->users->name}}</p>
+                                                <p>Email : {{$s->users->email}}</p>
+                                                <p>NIK : {{$s->users->nik}}</p>
+                                                <p>Alasan :</p>
+                                                <textarea class="form-control" name="alasan" aria-label="With textarea"
+                                                    required></textarea>
                                                 <br>
-                                                <p>Bengkel Dapat Diaktifkan Melalui Tab Validasi Bengkel atau SuperAdmin
-                                                </p>
                                             </div>
                                             <div class="modal-footer">
-                                                <form action="{{ url('non-aktif') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $s->id }}">
-                                                    <input type="hidden" name="status" value="0">
-                                                    <button type="submit" class="btn bg-gradient-danger">Save
-                                                        changes</button>
-                                                    <button type="button" class="btn btn-link  ml-auto"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                </form>
-                                            </div>
-                                        </div>
+                                                <input type="hidden" name="id" value="{{$s->id}}">
+                                                <input type="hidden" name="status" value="{{ $s->status_activation }}">
+                                                <input type="hidden" name="email" value="{{ $s->users->email }}">
+                                                <button type="submit" class="btn bg-gradient-danger">Save
+                                                    changes</button>
+                                                <button type="button" class="btn btn-link  ml-auto"
+                                                    data-bs-dismiss="modal">Close</button>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
+                </div>
                                 <!-- Modal Detail -->
                                 <div class="modal fade" id="detail{{ $s->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalMessageTitle" aria-hidden="true">

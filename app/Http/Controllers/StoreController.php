@@ -27,6 +27,14 @@ class StoreController extends Controller
         ]);
     }
 
+    public function StorePengajuan(){
+        $non_active = Store::where('status_activation', 0)->get();
+        if(Auth::user()->hasRole('superadmin')){
+            return view('SuperAdmin.list-bengkel-aktif', [
+                'stores' => $non_active
+            ]);
+        }
+    }
     public function StoreReject()
     {
         $store = Store::where('status_activation', 2)->get();

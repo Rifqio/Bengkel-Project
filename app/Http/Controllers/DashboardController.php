@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class DashboardController extends Controller
 {
@@ -24,12 +25,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $nonaktif = Store::where('status_activation', 0)->get();
+        $aktif = Store::where('status_activation', 1)->get();
+        $reject = Store::where('status_activation', 2)->get();
+        $banding = Store::where('status_activation', 3)->get();
+        
         if (Auth::user()->hasRole('employee')) {
-            // return view('admin.admindashboard');
-            $nonaktif = Store::where('status_activation', 0)->get();
-            $aktif = Store::where('status_activation', 1)->get();
-            $reject = Store::where('status_activation', 2)->get();
-            $banding = Store::where('status_activation', 3)->get();
             $mitra = User::whereRoleIs('mitra')->get();
             return view('admin.admindashboard', [
                 'non_aktif' => $nonaktif->count(),
@@ -47,7 +48,10 @@ class DashboardController extends Controller
             return view('SuperAdmin.admindashboard', [
                 'employee' => $employe->count(),
                 'mitra' => $total_mitra->count(),
-                'total_stores' => Store::count(),
+                'non_aktif' => $nonaktif->count(),
+                'aktif' => $aktif->count(),
+                'reject' => $reject->count(),
+                'banding' => $banding->count(),
                 'total_items' => Item::count(),
             ]);
         } elseif (Auth::user()->hasRole('mitra')) {
@@ -151,9 +155,22 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function mitra(User $user)
+    // {
+    //     $users = User::whereRoleIs(['mitra'])->get();
+    //     return view('SuperAdmin.employeeList.index',[
+    //         'user' => $users,
+    //     ]);
+    // }
     public function show(User $user)
     {
-        if (Auth::user()->hasRole('superadmin')) {
+        if(request ('dashboard/mitra')){
+            $users = User::whereRoleIs(['mitra'])->get();
+        return view('SuperAdmin.employeeList.index',[
+            'users' => $users,
+        ]);
+    }else{
+            if (Auth::user()->hasRole('superadmin')) {
             $users = User::whereRoleIs(['employee', 'mitra'])->get();
             return view('SuperAdmin.employeeList.index', [
                 'users' => $users,
@@ -169,7 +186,7 @@ class DashboardController extends Controller
                 ]
             );
         }
-    }
+    }}
 
     /**
      * Show the form for editing the specified resource.
