@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" sizes="76x76" href="/argon/img/apple-icon.png">
     <link rel="icon" type="image/png" href="/argon/img/favicon.png">
     <title>
@@ -25,13 +26,12 @@
     <div class="min-height-300 bg-success position-absolute w-100"></div>
     @include('mitra.layout.sidebar')
     @yield('content')
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="/argon/js/core/popper.min.js"></script>
     <script src="/argon/js/core/bootstrap.min.js"></script>
     <script src="/argon/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/argon/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
           var options = {
@@ -41,6 +41,27 @@
         }
     </script>
     <script src="/argon/js/argon-dashboard.min.js?v=2.0.2"></script>
+    <script>
+      function get_kecamatan(query = '')
+      {
+        $.ajax({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url:"{{ url('/get-kecamatan') }}",
+          method:'POST',
+          data:{query:query},
+          success:function(response)
+          {
+            $('#kecamatan').html(response);
+          }
+        })
+      }
+      $(document).on('change', '#kota', function(){
+        var word = $(this).val();
+        get_kecamatan(word);
+      });
+  </script>
 </body>
 
 </html>

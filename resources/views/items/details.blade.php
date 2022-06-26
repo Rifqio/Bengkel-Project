@@ -198,8 +198,19 @@
                 <div class="flex justify-center  lg:hidden">
                     <h1 class="uppercase font-bold text-4xl pb-5">{{ $item->name }}</h1>
                 </div>
+
                 <div class="w-auto mx-auto lg:hidden pb-7"><img src="{{ asset('img/product/G1.png') }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "></div>
                 <div class="bg-gradient-to-l from-green-100 to-green-400 w-5/6 mx-auto rounded-lg lg:hidden  ">
+
+                @if ( $item->image === null )
+                    <img src="/img/product/placeholder.jpg" alt=""  width="100%" class="rounded-xl items-center mx-auto ">
+                @else
+                <div class="w-[400px] h-[350px] mx-auto lg:hidden">
+                    <img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto ">
+                </div>
+                @endif
+                <div class="bg-gradient-to-l from-green-100 to-green-400 w-1/2 mx-auto rounded-lg lg:hidden  ">
+
                     <h5 class="flex justify-center text-sm">Average Price</h5>
                     <h3 class="flex justify-center">{{ $item->price }}</h2>
                 </div>
@@ -216,7 +227,11 @@
             </div>
             <div class="hidden lg:block shadow-green-200 shadow-lg rounded-r-2xl">
                 <div class="w-[400px] mx-auto">
-                    <img src="{{ asset('img/product/G1.png') }}" alt="Gambar-product" width="100%" class=" items-center mx-auto rounded-r-2xl object-fill ">
+                    @if ( $item->image === null )
+                        <img src="/img/product/placeholder.jpg" alt="" width="100%" class=" items-center mx-auto rounded-r-2xl object-fill " >
+                    @else
+                        <img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class=" items-center mx-auto rounded-r-2xl object-fill ">
+                    @endif
                 </div>
             </div>
         </div>
@@ -233,6 +248,7 @@
             <p class="py-2">{{ $item->desc }}</p>
         </div>
     </section>
+
 
 
     <!-- Trigger Modal -->
@@ -269,10 +285,10 @@
                                         </thead>
                                         <tbody >
                                         @foreach ($data as $d)
-                                            <tr >
+                                            <tr>
                                                 <td class="">{{ $loop->iteration }}</td>
                                                 <td>{{ $d->name }}</td>
-                                                <td>{{ $d->store_name }}</td>
+                                                <td><a href="/store-view/{{ $d->id }}/show">{{ $d->store_name }}</a></td>
                                                 <td class="">{{ $d->price }}</td>
                                             </tr>
                                             @endforeach

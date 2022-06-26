@@ -3,14 +3,7 @@
 <section id="banner" class="bg-gradient-to-r from-green-100 to-green-400 ">
     <div class="px-5 lg:px-36 py-10 flex justify-center items-center">
             <p class="font-semibold text-3xl hidden md:block">BengkelAe</p>
-            <div class="flex border-2 shadow-sm rounded-2xl bg-slate-100 w-1/2 h-[50px] shadow-xl mx-10">
-                <div class="rounded-lg w-full ">
-                    <form action="">
-                        <input type="text" placeholder="Cari sparepart..." class="py-3 border-none rounded-l-2xl w-full bg-slate-100 ring-none focus:ring-0  ">
-                    </form>
-                </div>
-                <div class="content-center py-3 rounded-l-2xl px-2 "><i class="fa-solid fa-magnifying-glass"></i></div>
-            </div>
+                        <livewire:search-item />
             <div class="flex justify-center">
                 <div>
                 <button class="inline-block px-6 py-2.5 bg-white text-green-300 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-1  00 hover:shadow-lg focus:bg-green-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Nama Toko</button>
@@ -28,7 +21,7 @@
                                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                     <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                                         <div class=" text-center">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full w-32 mb-4 mx-auto" alt="Avatar"/>
+                                <img src="{{ asset('store_data/'.$data->id.'/image/'.$data->store_image) }}" class="rounded-full w-32 mb-4 mx-auto" alt="Avatar"/>
                                 <h5 class="text-3xl font-semibold leading-tight mb-2">{{$data->users->name}}</h5>
                                 <p class="text-gray-500 text-xl"> {{$data->store_name}}</p>
                             </div>
@@ -36,8 +29,8 @@
                             <div>
                                 <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Telephone :</span>{{$data->phone_store}}</p>
                                 <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Address :</span>{{$data->address}}</p>
-                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Kecamatan :</span>{{$data->address}}</p>
-                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Kota :</span>{{$data->address}}</p>
+                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Kecamatan :</span>{{$data->kecamatan->name}}</p>
+                                <p class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><span class="text-sm font-semibold px-6 py-4">Kota :</span>{{$data->kecamatan->kota->name}}</p>
                             </div>
                                     </div>
                             </div>
@@ -154,11 +147,11 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 
 
-    
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
