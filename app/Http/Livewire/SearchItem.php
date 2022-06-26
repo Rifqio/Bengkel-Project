@@ -11,6 +11,7 @@ class SearchItem extends Component
 
     public function render()
     {
+
         $item = Item::search($this->term)->paginate(10);
         $data = [
             'item' => $item

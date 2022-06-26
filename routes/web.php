@@ -71,7 +71,11 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     //Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
+    Route::put('edit-product/{id}', 'update_product');
+    Route::get('edit-product/{id}','edit');
     Route::get('bengkel-list', 'bengkel_list');
+    Route::delete('delete-product/{id}','DeleteProduct');
+    Route::get('add-to-bengkel', 'SparepartToBengkelView');
 });
 
 //Profile
