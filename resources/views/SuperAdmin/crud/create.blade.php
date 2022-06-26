@@ -23,12 +23,12 @@
                         <div class="card">
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <p class="mb-0">Create Role</p>
+                                    <p class="mb-0">Create Employee</p>
                                     <!-- <button type="submit" class="btn btn-success btn-sm ms-auto">Save</button> -->
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="text-uppercase text-sm">User Information</p>
+                                <p class="text-uppercase text-sm">Isi Informasi User</p>
                                 <div class="row">
 
                                     <div class="col-md-6">

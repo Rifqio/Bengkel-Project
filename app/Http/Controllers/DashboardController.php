@@ -25,6 +25,21 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('employee')) {
+            $data = DB::table('item_store')->where('user_id', Auth::user()->id)->get();
+            $nonaktif = Store::where('status_activation', 0)->get();
+            $aktif = Store::where('status_activation', 1)->get();
+            $reject = Store::where('status_activation', 2)->get();
+            $banding = Store::where('status_activation', 3)->get();
+            $mitra = User::find(Auth::user()->id);
+            return view('admin.admindashboard', [
+                'item' => $data->count(),
+                'non_aktif' => $nonaktif->count(),
+                'aktif' => $aktif->count(),
+                'reject' => $reject->count(),
+                'banding' => $banding->count(),
+                'mitra' => $mitra->count(),
+            ]);
+
             return view('admin.admindashboard');
         } elseif (Auth::user()->hasRole('superadmin')) {
             $employe = User::whereRoleIs(['employee'])->get();
@@ -145,8 +160,7 @@ class DashboardController extends Controller
         } elseif (Auth::user()->hasRole('mitra')) {
             $mitra = User::find(Auth::user()->id);
             $store = Store::with('item')->where('id_mitra', Auth::user()->id)->get();
-            return view(
-                'mitra.productList.index',
+            return view('mitra.productList.index',
                 [
                     'data' => $store,
                     'mitra' => $mitra
@@ -163,11 +177,13 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('SuperAdmin.crud.edit', [
-            'user' => $user,
-            'roles' => Role::all(),
-        ]);
+        if (Auth()->hasRole('superadmin')) {
+            $user = User::find($id);
+            return view('SuperAdmin.crud.edit', [
+                'user' => $user,
+                'roles' => Role::all(),
+            ]);
+        }
     }
 
     /**
@@ -188,9 +204,11 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Item $item)
     {
-        User::destroy($user->id);
-        return redirect('dashboard')->with('success', 'User has been deleted');
+        if (Auth()->hasRole('superadmin')) {
+            User::destroy($user->id);
+            return redirect('dashboard')->with('success', 'User has been deleted');
+        }
     }
 }

@@ -27,17 +27,17 @@
                 <div class="table-responsive">
                     <table class="table align-items-center ">
                         <tbody>
-                            <tr>
+                            <tr class="text-center">
                                 <th>No</th>
-                                <th>Store Name</th>
-                                <th>owner</th>
+                                <th>Name Bengkel</th>
+                                <th>Pemilik</th>
                                 <th>email</th>
                                 <th>Phone</th>
-                                <th>Address</th>
+                                <th>Alamat</th>
                                 <th>Action</th>
                             </tr>
                             @foreach($stores as $s)
-                                <tr>
+                                <tr class="text-center">
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>

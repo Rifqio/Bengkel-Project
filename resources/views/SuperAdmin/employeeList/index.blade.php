@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h4>USER LIST</h4>
+                        <h4>LIST USER</h4>
                         @if (session()->has('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <span class="alert-text"><strong>Success!</strong> {{ session('success') }}</span>

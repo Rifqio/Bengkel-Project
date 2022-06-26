@@ -24,6 +24,8 @@
                     Banding Bengkel
                     @elseif(Request::is('list-pengajuan-store'))
                     List Pengajuan Store
+                    @elseif(Request::is('add-to-bengkel'))
+                    Tambah Sparepart to Bengkel
                     @endif
                 </li>
             </ol>
@@ -32,8 +34,8 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-
             </div>
+
             <ul class="navbar-nav justify-content-end">
                 <form action="/logout" method="post">
                     <button type="submit" class="btn btn-danger m-auto"> Logout </button>
