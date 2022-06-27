@@ -247,9 +247,8 @@ class MitraController extends Controller
 
     public function StoreInsertItem(Request $request, $id){
         $harga = DB::table('item_store')->where('item_id', $request->product)->first();
-        return $harga->price;
         $bengkel = Store::find($id);
-        $bengkel->item()->attach($request->product, ['price' => $harga->price, 'user_id' => Auth::user()->id]);
+        $bengkel->item()->attach($request->product, ['price' => $harga->price]);
         return redirect('/dashboard/show');
     }
 }
