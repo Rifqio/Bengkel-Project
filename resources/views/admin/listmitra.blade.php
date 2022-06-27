@@ -43,13 +43,13 @@
                                     <td class="pt-3">{{$user->name}}</td>
                                     <td class="pt-3">{{$user->roles->first()->display_name}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#nonactive{{$user->id}}">Non Aktif</button>
-                                        <button type="button" class="btn bg-gradient-danger btn-block mb-3"
-                                            data-bs-toggle="modal" data-bs-target="#delete{{$user->id}}">
-                                            Delete
-                                        </button>
-                                    </td>
+                                    @if(Request::is('list-mitra'))
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#nonactive{{$user->id}}">Non Aktif</button>
+                                    @elseif(Request::is('list-nonmitra'))
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#active{{$user->id}}">Aktif</button>                                    
+                                    @endif
+                                    <a href="{{ url('delete-mitra/'.$user->id.'') }}"><button class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus?')">Delete</button></a>
+                                </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -62,6 +62,68 @@
     </div>
 </main>
 @foreach ($users as $user)
+  {{-- Modal Non-Aktive --}}
+  <div class="modal fade" id="nonactive{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="modal-title-default">Non Aktivasi Mitra</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form action="{{url('non-aktif/'.$user->id)}}" method="POST">
+        @csrf
+        <div class="modal-body">
+          <p>Apakah anda yakin untuk nonaktifkan Mitra : "{{$user->name}}"</p>
+          <p>Nama Mitra : {{$user->name}}</p>
+          <p>Email : {{$user->email}}</p>
+          <p>NIK : {{$user->nik}}</p>
+          <br>
+        </div>
+        <div class="modal-footer">
+        <input type="hidden" name="id" value="{{$user->id}}">
+        <input type="hidden" name="created_at" value="null">
+        <input type="hidden" name="email" value="{{ $user->email }}">
+          <button type="submit" class="btn bg-gradient-danger">Save changes</button>
+          <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+{{-- Modal Aktive --}}
+<div class="modal fade" id="active{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="modal-title-default">Aktivasi Mitra</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form action="{{url('aktif/'.$user->id)}}" method="POST">
+        @csrf
+        <div class="modal-body">
+          <p>Apakah anda yakin untuk aktifkan Mitra : "{{$user->name}}"</p>
+          <p>Nama Mitra : {{$user->name}}</p>
+          <p>Email : {{$user->email}}</p>
+          <p>NIK : {{$user->nik}}</p>
+          <br>
+        </div>
+        <div class="modal-footer">
+        <input type="hidden" name="id" value="{{$user->id}}">
+        {{-- <input type="date" name="created_at" value=""> --}}
+        <input type="hidden" name="email" value="{{ $user->email }}">
+          <button type="submit" class="btn bg-gradient-danger">Save changes</button>
+          <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
 {{-- Modal Non-Aktive --}}
 <div class="modal fade" id="nonactive{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default"
     aria-hidden="true">

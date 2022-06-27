@@ -75,6 +75,10 @@
                                         data-bs-toggle="modal" data-bs-target="#detail{{$s->id}}">
                                         Detail
                                     </button>
+                                    <a href= {{ "delete-bengkel/" . $s->id}}><button type="button" class="btn btn-block bg-gradient-danger mb-3"
+                                        onclick="return confirm('Apakah Yakin Ingin Menghapus?')">
+                                        Delete
+                                    </button></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -88,40 +92,41 @@
     </div>
 </main>
 @foreach ($stores as $s)
-{{-- Deactive --}}
-<div class="modal fade" id="deactive{{ $s->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default"
-    aria-hidden="true">
+  {{-- Modal Non-Aktive --}}
+  <div class="modal fade" id="deactive{{$s->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
     <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title" id="modal-title-default">Non Aktivasi Bengkel
-                </h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <h6 class="modal-title" id="modal-title-default">Non Aktivasi Bengkel</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p>Apakah anda yakin untuk nonaktifkan Bengkel "{{ $s->store_name }}"
-                </p>
-                <p>Pemilik : {{ $s->users->name }}</p>
-                <p>Email : {{ $s->users->email }}</p>
-                <p>NIK : {{ $s->users->nik }}</p>
-                <br>
-                <p>Bengkel Dapat Diaktifkan Melalui Tab Validasi Bengkel atau SuperAdmin
-                </p>
-            </div>
-            <div class="modal-footer">
-                <form action="{{ url('reject-bengkel/'.$s->id) }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="alasan" value="Dinonaktifkan">
-                    <input type="hidden" name="email" value="{{$s->users->email}}">
-                    <input type="hidden" name="status" value="0">
-                    <button type="submit" class="btn bg-gradient-danger">Save changes</button>
-                    <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
-                </form>
-            </div>
+            <form action="{{url('reject-bengkel/'.$s->id)}}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <p>Apakah anda yakin untuk nonaktifkan Bengkel "{{$s->store_name}}"</p>
+                    <p>Pemilik : {{$s->users->name}}</p>
+                    <p>Email : {{$s->users->email}}</p>
+                    <p>NIK : {{$s->users->nik}}</p>
+                    <p>Alasan :</p>
+                    <textarea class="form-control" name="alasan" aria-label="With textarea"
+                        required></textarea>
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" value="{{$s->id}}">
+                    <input type="hidden" name="status" value="{{ $s->status_activation }}">
+                    <input type="hidden" name="email" value="{{ $s->users->email }}">
+                    <button type="submit" class="btn bg-gradient-danger">Save
+                        changes</button>
+                    <button type="button" class="btn btn-link  ml-auto"
+                        data-bs-dismiss="modal">Close</button>
+            </form>
         </div>
     </div>
+</div>
 </div>
 {{-- Modal Detail --}}
 <div class="modal fade" id="detail{{ $s->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle"
