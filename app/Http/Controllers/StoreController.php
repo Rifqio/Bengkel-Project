@@ -28,6 +28,15 @@ class StoreController extends Controller
         ]);
     }
 
+    public function StorePengajuan()
+    {
+        $non_active = Store::where('status_activation', 0)->get();
+        if (Auth::user()->hasRole('superadmin')) {
+            return view('SuperAdmin.list-bengkel-aktif', [
+                'stores' => $non_active
+            ]);
+        }
+    }
     public function StoreReject()
     {
         $store = Store::where('status_activation', 2)->get();
@@ -84,15 +93,30 @@ class StoreController extends Controller
         }
     }
 
+    public function DeleteBengkel($id)
+    {
+
+        $store = Store::find($id);
+        $store->delete();
+        if (Auth::user()->hasrole('mitra')) {
+            return redirect('list-store')->with('success_update', 'Store Has Been Deleted');
+        } elseif (Auth::user()->hasrole('employee')) {
+            return redirect('list-bengkel')->with('success_update', 'Store Has Been Deleted');
+        } elseif (Auth::user()->hasrole('superadmin')) {
+            return redirect('list-bengkel')->with('success_update', 'Store Has Been Deleted');
+        }
+    }
+
     public function StoreUpdateStatus()
     {
-        $note = 'Bengkel Anda Sudah Dikaktifkan';
+        $note = 'Sudah Di Aktifkan';
+        $nama = Store::find(request()->id)->store_name;
         $store = Store::find(request()->id)
-        ->update(['status_activation' => 1]);
+            ->update(['status_activation' => 1]);
         if ($store) {
-            $data = array('title' => 'Bengkel di Non-Aktifkan', 'note' => $note);
+            $data = array('title' => 'Bengkel di Aktifkan', 'nama'=>$nama, 'note' => $note);
             Mail::send('email.store-non', $data, function ($message) {
-                $message->to(request()->email, 'Bengkel Anda Di Non-Aktifkan')->subject('Bengkel di Non-Aktifkan');
+                $message->to(request()->email, 'Bengkel Anda Di Aktifkan')->subject('Bengkel di Aktifkan');
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
         }
@@ -128,7 +152,7 @@ class StoreController extends Controller
                 $message->from(Auth::user()->email, Auth::user()->name);
             });
         }
-        return redirect('/list-bengkel');
+        return redirect('/reject-bengkel');
     }
 
 
@@ -145,13 +169,13 @@ class StoreController extends Controller
             return redirect()->back();
         }
         $model = Store::find($request->id);
-        if(isset($request->store_image)){
+        if (isset($request->store_image)) {
             $name = time() . "_" . $request->store_image->getClientOriginalName();
             $request->store_image->move(public_path('store_data/' . $request->id . '/image'), $name);
             if (File::exists(public_path('store_data/' . $request->id . '/image/' . $model->store_image))) {
                 unlink('store_data/' . $request->id . '/image/' . $model->store_image);
             }
-        }else{
+        } else {
             $name = $model->store_image;
         }
         $model->update([

@@ -257,7 +257,8 @@
                                                                                             <tr>
                                                                                                 <td style="font-family: Geneva, Tahoma, Verdana, sans-serif; font-size: 16px; line-height: 22px; color: #555555; padding-top: 16px;"
                                                                                                     align="left">
-                                                                                                    {{$note}}<br><br>
+                                                                                                    Bengkel Anda Dengan Nama : "{{ $nama }}" {{$note}}<br><br>
+
                                                                                                     {{--
                                                                                                     <b>{{$alasan}}</b>
                                                                                                     --}}
@@ -267,14 +268,14 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td class="button"
+                                                                                    {{-- <td class="button"
                                                                                         style="font-family: Geneva, Tahoma, Verdana, sans-serif; font-size: 16px; padding-top: 26px;"
                                                                                         width="640" align="left">
                                                                                         <a href="http://127.0.0.1:8000/banding-bengkel"
                                                                                             style="background: #0c99d5; color: #fff; text-decoration: none; border: 14px solid #0c99d5; border-left-width: 50px; border-right-width: 50px; text-transform: uppercase; display: inline-block;">
                                                                                             Ajukan Banding
                                                                                         </a>
-                                                                                    </td>
+                                                                                    </td> --}}
                                                                                 </tr>
                                                                             </table>
                                                                         </td>

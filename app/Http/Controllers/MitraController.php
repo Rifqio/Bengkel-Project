@@ -25,7 +25,6 @@ class MitraController extends Controller
 
     public function create_product(CreateProductRequest $request)
     {
-
         Item::create($request->validated());
         ItemStore::create([
             'store_id' => request('bengkel'),
@@ -114,10 +113,13 @@ class MitraController extends Controller
         //                         item_store.store_id = 4");
         $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
         // dd($test);
+        $item = Item::where('user_id', Auth::user()->id)->get();
+        // return $bengkel;
         return view('mitra.sparepartToBengkel.index',
             [
                 'stores' => $store,
                 'users' => $mitra,
+                'item' => $item,
             ]
         );
     }
@@ -152,14 +154,6 @@ class MitraController extends Controller
         ]);
     }
 
-    public function DeleteBengkel($id)
-    {
-
-        $store = Store::find($id);
-        $store->delete();
-        return redirect('list-store')->with('success_update', 'Store Has Been Deleted');
-    }
-
     public function StoreUpdate(Request $request, $id)
     {
         $validateData = $request->validate([
@@ -167,7 +161,7 @@ class MitraController extends Controller
             'open' => ['required'],
             'close' => ['required'],
             'address' => ['required', 'string'],
-            'phone_store' => ['required'],
+            'phone_store' => ['required', 'max:14', 'min:10'],
             'store_image' => ['required'],
         ]);
         if (!$validateData) {
@@ -216,7 +210,7 @@ class MitraController extends Controller
             'store_name' => 'required|max:255',
             'open' => 'required',
             'close' => 'required',
-            'phone_store' => ['required', 'max:14', 'min:11'],
+            'phone_store' => ['required', 'max:14', 'min:10'],
             'address' => 'required',
             'store_image' => 'required',
         ]);
@@ -241,5 +235,12 @@ class MitraController extends Controller
 
         $request->store_image->move(public_path('store_data/' . DB::getPdo()->lastInsertId() . '/image'), $name);
         return redirect('list-pengajuan-store')->with('success_update', 'Store has been added');
+    }
+
+    public function StoreInsertItem(Request $request, $id){
+        $harga = DB::table('item_store')->where('item_id', $request->product)->first();
+        $bengkel = Store::find($id);
+        $bengkel->item()->attach($request->product, ['price' => $harga->price]);
+        return redirect('/dashboard/show');
     }
 }
