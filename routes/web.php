@@ -35,6 +35,8 @@ Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
 Route::post('/get-kecamatan', [AjaxController::class, 'searchKecamatan']);
 Route::post('/search-employee-mitra', [AjaxController::class, 'searchEmployeeMitra']);
 Route::post('/search-bengkel-aktif', [AjaxController::class, 'searchBengkelAktif']);
+Route::post('/search-bengkel-employee', [AjaxController::class, 'searchBengkelEmployee']);
+Route::post('/search-mitra', [AjaxController::class, 'searchMitra']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
@@ -67,8 +69,9 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
     Route::post('/store-update/{id}', 'StoreUpdate');
+    Route::post('/store-item-insert/{id}', 'StoreInsertItem');
     Route::get('/store-edit/{id}', 'StoreEdit');
-    //Route::post('/store-update', 'StoreUpdate');
+    Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
     Route::put('edit-product/{id}', 'update_product');
     Route::get('edit-product/{id}','edit');
@@ -89,7 +92,6 @@ Route::middleware(['auth', 'verified', 'role:employee|superadmin'])->controller(
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
-    Route::get('/list-nonmitra', 'ListNonMitra');
     Route::post('/update-mitra', 'UpdateDataMitra');
     Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
     Route::post('/non-aktif/{id}', 'NonAktifMitra');
@@ -210,3 +212,7 @@ Route::get('/login_view_test', function () {
 Route::get('/bengkel', function () {
     return view('user.bengkel');
 });
+Route::get('/emaill', function () {
+    return view('auth.reset-email-password');
+});
+

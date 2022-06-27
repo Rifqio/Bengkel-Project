@@ -65,8 +65,14 @@ class StoreController extends Controller
     public function StoreBanding()
     {
         $store = Store::where('status_activation', 3)->get();
-        $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 3)->get();
-
+        $data_condition = Store::where("id_mitra", "=", Auth::user()->id)->where('status_activation', 3)
+        ->orderBy('created_at', 'asc')->get();
+        $loc = [];
+        foreach($store as $d){
+            $loc[] = [
+                $d->id,
+            ];
+        }
         if (Auth::user()->hasRole('employee')) {
             $layout = 'admin.validasi-bengkel';
         } elseif (Auth::user()->hasRole('superadmin')) {
@@ -82,6 +88,7 @@ class StoreController extends Controller
             return view($layout, [
                 'stores' => $store,
                 'data' => 3,
+                'loc' => $loc,
             ]);
         }
     }

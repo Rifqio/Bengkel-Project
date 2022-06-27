@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- logo -->
+       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/BAE.png') }}" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <title>Document</title>
+    <title>Categories</title>
 </head>
 
 <body class="relative">
@@ -37,15 +39,17 @@
             <div class="flex flex-wrap justify-center ">
                 @foreach($categories as $c)
                 <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
-                        <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
+                    <a href="/sparepart/{{ strtolower($c->name) }}">
+                        <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+                            <div class="flex justify-center">
+                            </div>
+                            <div class="text-center ">
+                                <img src="/{{ $c->icon_url }}" class="m-auto w-1/2" alt="">
+                                <h1 class="p-3 text-2xl font-bold group-hover:text-white"> {{ $c->name }}</h1>
+                                <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
+                            </div>
                         </div>
-                        <div class="text-center ">
-                            <img src="/{{ $c->icon_url }}" class="m-auto w-1/2" alt="">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white"> <a href="/sparepart/{{ strtolower($c->name) }}"> {{ $c->name }}</a></h1>
-                            <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 @endforeach
 

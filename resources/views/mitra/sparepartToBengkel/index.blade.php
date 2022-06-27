@@ -34,9 +34,6 @@
                                         <th>Action</th>
                                     </tr>
                                     @foreach ($stores as $s)
-
-
-
                                     <tr class="text-center">
                                         <td class="pt-3">{{ $loop->iteration }}</td>
                                         <td class="pt-3">{{ $s->store_name }}</td>
@@ -58,14 +55,16 @@
                                                 <h3 class="font-weight-bolder text-info text-gradient">Tambah Item Ke Bengkel</h3>
                                             </div>
                                             <div class="card-body">
-                                                @if ($s->status_activation == 1)
+                                                {{-- @if ($s->status_activation == 1)
                                                     <form role="form text-left" action="/store-update/{{$s->id}}"
                                                     method="post" enctype="multipart/form-data">
                                                 @elseif($s->status_activation == 2)
                                                     <form role="form text-left"
                                                     action="/store-banding" method="post"
                                                     enctype="multipart/form-data">
-                                                @endif
+                                                @endif --}}
+                                                <form role="form text-left" action="/store-item-insert/{{$s->id}}"
+                                                    method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" class="form-control"
                                                     placeholder="Id Bengkel" value="{{ $s->id }}">
@@ -83,17 +82,13 @@
                                                     @enderror
                                                 </div>
                                                 <label>List Item Tersedia</label>
-
-                                                <div class="input-group mb-3">
-                                                    @foreach ($s->item as $data)
-                                                    @if (old('item[]', $data->id) == $data->id)
-                                                        <input type="checkbox" name="item[]" value="{{ $data->id }}" checked>{{ $data->name }} <br>
-                                                    @else
-                                                        <input type="checkbox" name="item[]" value="{{ $data->id }}">{{ $data->name }} <br>
-                                                    @endif
-                                                    @endforeach
+                                                  <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1" name='product'>
+                                                        @foreach ($item as $data)
+                                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
-
                                                 <button type="submit"
                                                     class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update
                                                     Data

@@ -12,19 +12,19 @@ class EmpController extends Controller
 {
     public function StoreValidationView()
     {
-        $data = Store::where('status_activation', 0)->get();
+        $data = Store::where('status_activation', 0)->orderBy('created_at', 'asc')->get();
         $nonaktif = Store::where('status_activation', 0)->get();
-        $aktif = Store::where('status_activation', 1)->get();
-        $reject = Store::where('status_activation', 2)->get();
-        $banding = Store::where('status_activation', 3)->get();
-        $mitra = User::whereRoleIs(['mitra'])->get();
+        $loc = [];
+        foreach($data as $d){
+            $loc[] = [
+                $d->id,
+            ];
+        }
         return view('admin.validasi-bengkel', [
             'stores' => $data,
             'non_aktif' => $nonaktif->count(),
-            // 'aktif' => $aktif->count(),
-            // 'reject' => $reject->count(),
-            // 'banding' => $banding->count(),
-            // 'total_mitra' => $mitra->count()
+            'data' => 0,
+            'loc' => $loc,
         ]);
     }
 
