@@ -92,6 +92,7 @@ Route::middleware(['auth', 'verified', 'role:employee|superadmin'])->controller(
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
+    Route::get('/list-nonmitra', 'ListNonMitra');
     Route::post('/update-mitra', 'UpdateDataMitra');
     Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
     Route::post('/non-aktif/{id}', 'NonAktifMitra');

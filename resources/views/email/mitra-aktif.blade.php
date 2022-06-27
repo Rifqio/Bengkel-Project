@@ -260,7 +260,7 @@
                                                                                             <tr>
                                                                                                 <td style="font-family: Geneva, Tahoma, Verdana, sans-serif; font-size: 16px; line-height: 22px; color: #555555; padding-top: 16px;"
                                                                                                     align="left">
-                                                                                                    {{$note}}<br><br>
+                                                                                                    Akun Anda Dengan Nama : '{{ $nama }}' {{$note}}<br><br>
                                                                                                     {{-- <b>{{$alasan}}</b> --}}
                                                                                                 </td>
                                                                                             </tr>
