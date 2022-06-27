@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+       <!-- logo -->
+       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/BAE.png') }}" />
     <title> Email/Password Reset</title>
 </head>
 
@@ -29,20 +31,20 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                              <input type="email" value="{{$user->email}}" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <input type="email" value="{{$user->email}}" name="email" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm"  id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                              <input type="password" name="password" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+                              <input type="password" name="password" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Password baru . . ." id="exampleInputEmail2" aria-describedby="emailHelp">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Konfirmasi Password</label>
                             <div class="col-sm-10">
-                              <input type="password" name="password_confirmation" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp">
+                              <input type="password" name="password_confirmation" class="form-control placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-300 focus:ring sm:text-sm" placeholder="Konfirmasi Password . . . " id="exampleInputEmail3" aria-describedby="emailHelp">
                             </div>
                         </div>
                         <div class="py-3">

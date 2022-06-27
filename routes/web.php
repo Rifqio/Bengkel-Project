@@ -207,3 +207,7 @@ Route::get('/login_view_test', function () {
 Route::get('/bengkel', function () {
     return view('user.bengkel');
 });
+Route::get('/emaill', function () {
+    return view('auth.reset-email-password');
+});
+
