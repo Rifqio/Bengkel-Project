@@ -168,7 +168,7 @@
                 </div>
                 <div class="flex justify-end py-3 ">
                     <div class="bg-gradient-to-l from-green-100 to-green-400 rounded-l-lg hidden lg:block justify-end w-1/2  lg:space-y-1 space-y-3 lg:absolute lg:bottom-0 lg:right-0 mb-2 p-2">
-                        <h5 class="flex justify-left text-md uppercase font-semibold pl-2">Current Lowest Price</h5>
+                        <h5 class="flex justify-left text-md uppercase font-semibold pl-2">Average Price</h5>
                         <h3 class="flex justify-left pl-5 ">Rp. {{ $item->price }}</h2>
                     </div>
                 </div>
@@ -186,10 +186,8 @@
         <div class="container p-10 lg:mx-20  ">
             <h1 class="py-2 mb-5 uppercase font-bold lg:text-5xl text-3xl font-inconsolata border-b-2 border-gray-500 text-gray-500 w-3/4">Product Information</h1>
             <hr>
-            <p class="py-2">Ukuran: 20cm</p>
-            <p class="py-2">Manufaktur: USA</p>
-
-            <p class="py-2">{{ $item->desc }}</p>
+            {{!! $item->spec !!}}
+            <p class="pt-2">{{ $item->desc }}</p>
         </div>
     </section>
 

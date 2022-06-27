@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('brand');
-            $table->string('desc')->nullable();
-            $table->string('spec')->nullable();
+            $table->text('desc')->nullable();
+            $table->text('spec')->nullable();
             $table->bigInteger('price');
             $table->string('image')->nullable();
             $table->timestamps();
