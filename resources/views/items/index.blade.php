@@ -16,7 +16,7 @@
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     overflow: hidden;">{{ $item->name }}</h1>
-                    <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4>
+                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
                 </div>
                 <div class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
                     <a href="/sparepart/{{ $item->slug }}/{{ $item->id }}">

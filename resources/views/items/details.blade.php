@@ -162,20 +162,20 @@
                 @else
                     <div class="w-auto mx-auto lg:hidden pb-7"><img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "></div>
                 @endif
-                <div class="bg-gradient-to-l from-green-100 to-green-400 w-5/6 mx-auto rounded-lg lg:hidden  ">
+                {{-- <div class="bg-gradient-to-l from-green-100 to-green-400 w-5/6 mx-auto rounded-lg lg:hidden  ">
                     <h5 class="flex justify-center text-sm">Average Price</h5>
                     <h3 class="flex justify-center">{{ $item->price }}</h2>
-                </div>
+                </div> --}}
                 <div class="p-10 ">
                     <h1 class="text-2xl pb-2 font-semibold">{{ $item->name }}</h1>
                     <p>{!! $item->desc !!} </p>
                 </div>
-                <div class="flex justify-end py-3 ">
+                {{-- <div class="flex justify-end py-3 ">
                     <div class="bg-gradient-to-l from-green-100 to-green-400 rounded-l-lg hidden lg:block justify-end w-1/2  lg:space-y-1 space-y-3 lg:absolute lg:bottom-0 lg:right-0 mb-2 p-2">
                         <h5 class="flex justify-left text-md uppercase font-semibold pl-2">Average Price</h5>
                         <h3 class="flex justify-left pl-5 ">Rp. {{ $item->price }}</h2>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="hidden lg:block shadow-green-200 shadow-lg rounded-r-2xl">
                 <div class="w-[400px] mx-auto">
