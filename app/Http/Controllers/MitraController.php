@@ -152,14 +152,6 @@ class MitraController extends Controller
         ]);
     }
 
-    public function DeleteBengkel($id)
-    {
-
-        $store = Store::find($id);
-        $store->delete();
-        return redirect('list-store')->with('success_update', 'Store Has Been Deleted');
-    }
-
     public function StoreUpdate(Request $request, $id)
     {
         $validateData = $request->validate([
@@ -167,7 +159,7 @@ class MitraController extends Controller
             'open' => ['required'],
             'close' => ['required'],
             'address' => ['required', 'string'],
-            'phone_store' => ['required'],
+            'phone_store' => ['required', 'max:14', 'min:10'],
             'store_image' => ['required'],
         ]);
         if (!$validateData) {
@@ -216,7 +208,7 @@ class MitraController extends Controller
             'store_name' => 'required|max:255',
             'open' => 'required',
             'close' => 'required',
-            'phone_store' => ['required', 'max:14', 'min:11'],
+            'phone_store' => ['required', 'max:14', 'min:10'],
             'address' => 'required',
             'store_image' => 'required',
         ]);
