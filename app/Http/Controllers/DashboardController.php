@@ -149,21 +149,9 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function mitra(User $user)
-    // {
-    //     $users = User::whereRoleIs(['mitra'])->get();
-    //     return view('SuperAdmin.employeeList.index',[
-    //         'user' => $users,
-    //     ]);
-    // }
+    
     public function show(User $user)
     {
-        if(request ('dashboard/mitra')){
-            $users = User::whereRoleIs(['mitra'])->get();
-        return view('SuperAdmin.employeeList.index',[
-            'users' => $users,
-        ]);
-    }else{
             if (Auth::user()->hasRole('superadmin')) {
             $users = User::whereRoleIs(['employee', 'mitra'])->get();
             return view('SuperAdmin.employeeList.index', [
@@ -179,7 +167,7 @@ class DashboardController extends Controller
                 ]
             );
         }
-    }}
+    }
 
     /**
      * Show the form for editing the specified resource.

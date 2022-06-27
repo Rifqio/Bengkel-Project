@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                       <a href="/dashboard/show" class="text-sm mb-0 text-uppercase font-weight-bold">Total Employee</a>
+                                       <a href="/dashboard-employee" class="text-sm mb-0 text-uppercase font-weight-bold">Total Employee</a>
                                         <h5 class="font-weight-bolder">
                                             {{ $employee }}
                                         </h5>
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <a href="/dashboard/mitra"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Mitra</p></a>
+                                        <a href="/dashboard-mitra"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Mitra</p></a>
                                         <h5 class="font-weight-bolder">
                                             {{ $mitra }}
                                         </h5>
