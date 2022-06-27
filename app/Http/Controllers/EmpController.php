@@ -54,6 +54,24 @@ class EmpController extends Controller
         ]);
     }
 
+    public function mitra(User $user)
+    {
+        $users = User::whereRoleIs(['mitra'])->get();
+        // return $users;
+        return view('SuperAdmin.employeeList.index',[
+            'users' => $users,
+        ]);
+    }
+
+    public function employee(User $user)
+    {
+        $users = User::whereRoleIs(['employee'])->get();
+        // return $users;
+        return view('SuperAdmin.employeeList.index',[
+            'users' => $users,
+        ]);
+    }
+    
     public function UpdateDataMitra(Request $request)
     {
         $validateData = $request->validate([

@@ -85,7 +85,7 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
 
 //Employee
 Route::resource('list-mitra', EmpController::class);
-Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
+Route::middleware(['auth', 'verified', 'role:employee|superadmin'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
@@ -94,6 +94,8 @@ Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpControll
     Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
     Route::post('/non-aktif/{id}', 'NonAktifMitra');
     Route::post('/aktif/{id}', 'AktifMitra');
+    Route::get('/dashboard-mitra', 'mitra');
+    Route::get('/dashboard-employee', 'employee');
 });
 
 //Store Controller
