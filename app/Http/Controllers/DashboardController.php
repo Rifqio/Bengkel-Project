@@ -29,8 +29,13 @@ class DashboardController extends Controller
         $aktif = Store::where('status_activation', 1)->get();
         $reject = Store::where('status_activation', 2)->get();
         $banding = Store::where('status_activation', 3)->get();
-        
+
         if (Auth::user()->hasRole('employee')) {
+            $data = DB::table('items')->where('user_id', Auth::user()->id)->get();
+            $nonaktif = Store::where('status_activation', 0)->get();
+            $aktif = Store::where('status_activation', 1)->get();
+            $reject = Store::where('status_activation', 2)->get();
+            $banding = Store::where('status_activation', 3)->get();
             $mitra = User::whereRoleIs('mitra')->get();
             return view('admin.admindashboard', [
                 'non_aktif' => $nonaktif->count(),
@@ -149,7 +154,7 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show(User $user)
     {
             if (Auth::user()->hasRole('superadmin')) {
