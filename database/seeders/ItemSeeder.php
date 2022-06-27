@@ -45,14 +45,12 @@ class ItemSeeder extends Seeder
         DB::table('item_store')->insert([
             'item_id' => 1,
             'store_id' => 1,
-            'user_id' => 3,
             'price' => 200000
         ]);
 
         DB::table('item_store')->insert([
             'item_id' => 1,
             'store_id' => 2,
-            'user_id' => 3,
             'price' => 225000
         ]);
     }
