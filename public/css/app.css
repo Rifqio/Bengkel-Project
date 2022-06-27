@@ -4810,14 +4810,8 @@ textarea.form-control.is-invalid{
 .ml-5{
   margin-left: 1.25rem;
 }
-.mb-28{
-  margin-bottom: 7rem;
-}
-.ml-auto{
-  margin-left: auto;
-}
-.ml-10{
-  margin-left: 2.5rem;
+.mb-5{
+  margin-bottom: 1.25rem;
 }
 .mr-4{
   margin-right: 1rem;
@@ -4828,8 +4822,17 @@ textarea.form-control.is-invalid{
 .-mt-px{
   margin-top: -1px;
 }
-.-mt-6{
-  margin-top: -1.5rem;
+.mt-0{
+  margin-top: 0px;
+}
+.mt-14{
+  margin-top: 3.5rem;
+}
+.ml-auto{
+  margin-left: auto;
+}
+.mb-1{
+  margin-bottom: 0.25rem;
 }
 .ml-px{
   margin-left: 1px;
@@ -5476,6 +5479,10 @@ textarea.form-control.is-invalid{
 }
 .border-gray-500{
   --tw-border-opacity: 1;
+  border-color: rgb(188 240 218 / var(--tw-border-opacity));
+}
+.border-gray-500{
+  --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 .border-slate-300{
@@ -5927,6 +5934,12 @@ textarea.form-control.is-invalid{
 .pl-4{
   padding-left: 1rem;
 }
+.pb-8{
+  padding-bottom: 2rem;
+}
+.pr-2{
+  padding-right: 0.5rem;
+}
 .text-left{
   text-align: left;
 }
@@ -5936,11 +5949,8 @@ textarea.form-control.is-invalid{
 .text-right{
   text-align: right;
 }
-.text-start{
-  text-align: start;
-}
-.text-end{
-  text-align: end;
+.align-baseline{
+  vertical-align: baseline;
 }
 .align-top{
   vertical-align: top;
@@ -6491,6 +6501,9 @@ textarea.form-control.is-invalid{
 }
 .focus\:z-10:focus{
   z-index: 10;
+}
+.focus\:border-none:focus{
+  border-style: none;
 }
 .focus\:border-blue-300:focus{
   --tw-border-opacity: 1;
@@ -7074,6 +7087,13 @@ textarea.form-control.is-invalid{
   .md\:border-l{
     border-left-width: 1px;
   }
+  .md\:p-10{
+    padding: 2.5rem;
+  }
+  .md\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   .md\:py-4{
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -7207,6 +7227,9 @@ textarea.form-control.is-invalid{
     margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
   }
+  .lg\:p-10{
+    padding: 2.5rem;
+  }
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
@@ -7241,11 +7264,17 @@ textarea.form-control.is-invalid{
   .lg\:pb-28{
     padding-bottom: 7rem;
   }
+  .lg\:pb-0{
+    padding-bottom: 0px;
+  }
   .lg\:pr-32{
     padding-right: 8rem;
   }
   .lg\:pt-4{
     padding-top: 1rem;
+  }
+  .lg\:pb-28{
+    padding-bottom: 7rem;
   }
   .lg\:text-left{
     text-align: left;

@@ -35,6 +35,8 @@ Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
 Route::post('/get-kecamatan', [AjaxController::class, 'searchKecamatan']);
 Route::post('/search-employee-mitra', [AjaxController::class, 'searchEmployeeMitra']);
 Route::post('/search-bengkel-aktif', [AjaxController::class, 'searchBengkelAktif']);
+Route::post('/search-bengkel-employee', [AjaxController::class, 'searchBengkelEmployee']);
+Route::post('/search-mitra', [AjaxController::class, 'searchMitra']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
@@ -205,3 +207,7 @@ Route::get('/login_view_test', function () {
 Route::get('/bengkel', function () {
     return view('user.bengkel');
 });
+Route::get('/emaill', function () {
+    return view('auth.reset-email-password');
+});
+

@@ -174,4 +174,112 @@ class AjaxController extends Controller
         }
         return $output;
     }
+
+    public function searchBengkelEmployee(Request  $request){
+        $query = $request->get('query');
+        $status = $request->get('status');
+        $output = '';
+        $no = 1;
+        if($query!=''){
+            $stores = Store::where('store_name', 'like', '%'.$query.'%')->where('status_activation', $status)
+            ->orderBy('created_at', 'ASC')->get();
+        }else{
+            $stores = Store::where('status_activation', $status)->orderBy('created_at', 'ASC')->get();
+        }
+        if($stores->count()>0){
+            foreach($stores as $s){
+                if($s->status == 0){
+                    if($s->lat != NULL && $s->long != NULL){
+                        $button = '
+                        <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal"
+                            data-bs-target="#act'.$s->id.'">
+                            Aktifkan
+                        </button>
+                        ';
+                    }else{
+                        $button = '
+                        <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal"
+                            data-bs-target="#conf'.$s->id.'">
+                            Konfirm
+                        </button>
+                        ';
+                    }
+                }
+                $button .= '
+                    <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal"
+                        data-bs-target="#rej'.$s->id.'">
+                        Reject
+                    </button>
+                    <button class="btn text-white" style="background-color: red">
+                        Delete
+                    </button>
+                    <button type="button" class="btn btn-block bg-gradient-info mb-3"
+                        data-bs-toggle="modal" data-bs-target="#detail'.$s->id.'">
+                        Detail
+                    </button>
+                    ';
+                $output .= '
+                <tr>
+                    <td>
+                        '.$no++.'
+                    </td>
+                    <td>
+                        '.$s->store_name.'
+                    </td>
+                    <td class="align-middle text-sm">
+                        '.$s->address.'
+                    </td>
+                    <td class="align-middle text-sm">
+                        '.$s->kecamatan->name.'
+                    </td>
+                    <td class="align-middle text-sm">
+                        '.$s->kecamatan->kota->name.'
+                    </td>
+                    <td class="align-middle text-sm">
+                        '.$s->updated_at.'
+                    </td>
+                    <td class="align-middle text-sm">
+                        '.$button.'
+                    </td>
+                </tr>
+                ';
+            }
+        }else{
+            $output .= 'Data Tidak Ditemukan';
+        }
+        return $output;
+    }
+
+    public function searchMitra(Request $request){
+        $query = $request->get('query');
+        $output = '';
+        $no = 1;
+        if($query != ''){
+            $users = User::where('name', 'like', '%'.$query.'%')->whereRoleIs(['mitra'])->get();
+        }else{
+            $users = User::whereRoleIs(['mitra'])->get();
+        }
+        if($users->count()>0){
+            foreach($users as $user){
+                $output .= '
+                <tr class="text-center">
+                    <td class="pt-3">'.$no++.'</td>
+                    <td class="pt-3">'.$user->name.'</td>
+                    <td class="pt-3">'.$user->roles->first()->display_name.'</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#nonactive'.$user->id.'">Non Aktif</button>
+                        <button type="button" class="btn bg-gradient-danger btn-block mb-3"
+                            data-bs-toggle="modal" data-bs-target="#delete'.$user->id.'">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                ';
+            }
+        }else{
+            $output .= 'Data Mitra Tidak Ditemukan';
+        }
+        return $output;
+    }
 }

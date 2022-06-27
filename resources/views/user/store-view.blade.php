@@ -1,7 +1,7 @@
 <x-app-layout>
 <!-- Navbar -->
 <section id="banner" class="bg-gradient-to-r from-green-100 to-green-400 ">
-    <div class="px-5 lg:px-36 py-10 flex justify-center items-center">
+    <div class="px-5 lg:px-36 py-10 flex justify-around items-center">
             <p class="font-semibold text-3xl hidden md:block">BengkelAe</p>
                         <livewire:search-item />
             <div class="flex justify-center">

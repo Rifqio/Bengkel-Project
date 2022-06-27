@@ -124,9 +124,10 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <form action="{{ url('non-aktif') }}" method="POST">
+                <form action="{{ url('reject-bengkel/'.$s->id) }}" method="POST">
                     @csrf
-                    <input type="hidden" name="id" value="{{ $s->id }}">
+                    <input type="hidden" name="alasan" value="Dinonaktifkan">
+                    <input type="hidden" name="email" value="{{$s->users->email}}">
                     <input type="hidden" name="status" value="0">
                     <button type="submit" class="btn bg-gradient-danger">Save
                         changes</button>
