@@ -78,6 +78,9 @@ Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraControlle
     Route::get('bengkel-list', 'bengkel_list');
     Route::get('delete-product/{id}','DeleteProduct');
     Route::get('add-to-bengkel', 'SparepartToBengkelView');
+    Route::get('item-management/{id}', 'itemManagementView');
+    Route::post('item-management/{id}/{store_id}', 'itemManagementUpdate');
+    Route::post('item-management-detach/{id}/{store_id}', 'itemManagementDetach');
 });
 
 //Profile
@@ -88,13 +91,17 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
 
 //Employee
 Route::resource('list-mitra', EmpController::class);
-Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
+Route::middleware(['auth', 'verified', 'role:employee|superadmin'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
+    Route::get('/list-nonmitra', 'ListNonMitra');
     Route::post('/update-mitra', 'UpdateDataMitra');
     Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
     Route::post('/non-aktif/{id}', 'NonAktifMitra');
+    Route::post('/aktif/{id}', 'AktifMitra');
+    Route::get('/dashboard-mitra', 'mitra');
+    Route::get('/dashboard-employee', 'employee');
 });
 
 //Store Controller
@@ -106,6 +113,8 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
     Route::post('/reject-bengkel/{id}', 'RejectBengkel');
 //    Route::get('/store-banding/{id}', 'StoreBandingEdit');
     Route::post('/store-banding', 'StoreBandingUpdate');
+    Route::get('/pengajuan-bengkel', 'StorePengajuan');
+    Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
 });
 
 //Route Confirmation Email

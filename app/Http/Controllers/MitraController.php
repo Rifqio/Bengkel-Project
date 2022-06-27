@@ -45,7 +45,6 @@ class MitraController extends Controller
             ->select("stores.store_name", "stores.id")
             ->where("users.id", "=", Auth::id())
             ->get();
-        // dd($item);
         return view('mitra.crud.update-product', [
             'item' => $item,
             'categories' => Category::all(),
@@ -91,30 +90,8 @@ class MitraController extends Controller
     public function SparepartToBengkelView()
     {
         $mitra = User::find(Auth::user()->id);
-        // $test = DB::select("SELECT
-        //                         items.name, items.id
-        //                     FROM
-        //                         items
-        //                     JOIN
-        //                         item_store
-        //                     ON
-        //                         items.id = item_store.item_id
-        //                     JOIN
-        //                         stores
-        //                     ON
-        //                         item_store.store_id = stores.id
-        //                     JOIN
-        //                         users
-        //                     ON
-        //                         stores.id_mitra = users.id AND
-        //                         item_store.user_id = users.id
-        //                     WHERE
-        //                         stores.id_mitra = $auth AND
-        //                         item_store.store_id = 4");
         $store = Store::with('item')->where('id_mitra', Auth::user()->id)->where('status_activation', 1)->get();
-        // dd($test);
         $item = Item::where('user_id', Auth::user()->id)->get();
-        // return $bengkel;
         return view('mitra.sparepartToBengkel.index',
             [
                 'stores' => $store,
@@ -238,9 +215,43 @@ class MitraController extends Controller
     }
 
     public function StoreInsertItem(Request $request, $id){
-        $harga = DB::table('item_store')->where('item_id', $request->product)->first();
-        $bengkel = Store::find($id);
-        $bengkel->item()->attach($request->product, ['price' => $harga->price]);
-        return redirect('/dashboard/show');
+        $count = ItemStore::where('item_id', $request->product)->where('store_id', $id)->get();
+        if($count->count() < 1){
+            $bengkel = Store::find($id);
+            $bengkel->item()->attach($request->product, ['price' => $request->price]);
+            return redirect()->back()->with('success_update', 'Item Ditambahkan');
+        }else{
+            return redirect()->back()->withErrors(['Item Sudah Terdaftar']);
+        }
+    }
+
+    public function itemManagementView($id){
+        $data = Store::with('item')->where('id', $id)->first();
+        return view('mitra.sparepartToBengkel.management-bengkel', [
+            'data' => $data,
+        ]);
+    }
+
+    public function itemManagementUpdate($item, $store, Request $request){
+        $validated = $request->validate([
+            'price' => 'required',
+            'item' => 'required',
+        ]);
+        if(!$validated){
+            return redirect()->back()
+            ->withErrors($validated);
+        }
+        DB::table('item_store')->where('item_id', $item)->where('store_id', $store)->update(
+            [
+                'price' => $request->price,
+            ]
+        );
+        return redirect()->back()->with('success_update', 'Item Diperbaharui');
+    }
+
+    public function itemManagementDetach($item, $store){
+        $bengkel = Store::find($store);
+        $bengkel->item()->detach($item, ['price' => request('price')]);
+        return redirect()->back()->with('success_update', 'Item Dihapus');
     }
 }
