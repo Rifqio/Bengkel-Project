@@ -46,7 +46,7 @@
                                                     @if ( $d->image == null)
                                                     <img src="/img/product/placeholder.jpg" alt=""
                                                         class="avatar avatar-sm me-3">
-                                                    @else
+                                                    @else  
                                                     <img src="{{ asset('storage/'. $d->image) }}"
                                                         class="avatar avatar-sm me-3">
                                                     @endif
