@@ -40,6 +40,28 @@
                                         @enderror
                                     </div>
                                 </div>
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand"
+                                            class="form-control-label @error('brand') is-invalid @enderror">Brand</label>
+                                            <select class="form-control" name="brand">
+                                                <option value="TDR">TDR</option>
+                                                <option value="Honda">Honda</option>
+                                                <option value="Cyclo">Cyclo</option>
+                                                <option value="Yamaha">Yamaha</option>
+                                                <option value="Aspira">Aspira</option>
+                                                <option value="Shell">Shell</option>
+                                                <option value="Yamalube">Yamalube</option>
+                                            </select>
+                                        {{-- <input class="form-control" name="brand" type="text" value="{{ old('brand') }}"> --}}
+                                        @error('brand')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div> --}}
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="brand"
