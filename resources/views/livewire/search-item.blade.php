@@ -9,21 +9,20 @@
                 <line x1="21" y1="21" x2="15" y2="15"></line>
             </svg></div>
         <div class="rounded-lg w-full ">
-
             <form method="get">
                 <input wire:model='term' type="text" placeholder="Search for a part..." class="py-3 border-none rounded-r-lg w-full bg-slate-100  focus:ring-green-500 focus:border-none focus:ring-2 focus:ring-offset-2 ">
-                <div wire:loading>Searching items...</div>
-                <div wire:loading.remove>
+                <div class="z-10" wire:loading>Searching items...</div>
+                <div class="z-10" wire:loading.remove>
                     @if ($term == '')
 
                     @else
                     @if ($item->isEmpty())
-                    <div class="text-gray-500 text-sm">
+                    <div class="text-gray-500 text-sm z-10">
                         No matching result was found.
                     </div>
                     @else
                     @foreach ($item as $i)
-                    <div>
+                    <div class"z-10">
                         <img src="{{ $i->image }}" alt="">
                         <a href="/sparepart/{{ $i->slug }}/{{ $i->id }}" class="text-lg text-gray-900 text-bold">{{ $i->name }}</a>
                     </div>

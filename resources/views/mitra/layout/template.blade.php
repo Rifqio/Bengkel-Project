@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="/argon/img/apple-icon.png">
     <link rel="icon" type="image/png" href="/argon/img/favicon.png">
     <title>
@@ -20,6 +22,11 @@
     <link href="/argon/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/argon/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"]{
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -42,7 +49,7 @@
     </script>
     <script src="/argon/js/argon-dashboard.min.js?v=2.0.2"></script>
     <script>
-      function get_kecamatan(query = '')
+        function get_kecamatan(query = '')
       {
         $.ajax({
           headers: {
@@ -61,7 +68,7 @@
         var word = $(this).val();
         get_kecamatan(word);
       });
-  </script>
+    </script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DataTables </title>
+    <title>Product Details </title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
@@ -157,14 +157,18 @@
                 <div class="flex justify-center  lg:hidden">
                     <h1 class="uppercase font-bold text-4xl pb-5">{{ $item->name }}</h1>
                 </div>
-                <div class="w-auto mx-auto lg:hidden pb-7"><img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "></div>
+                @if ($item->image == null)
+                    <div class="w-auto mx-auto lg:hidden pb-7"><img src="/img/product/placeholder.jpg" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "></div>
+                @else
+                    <div class="w-auto mx-auto lg:hidden pb-7"><img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class="rounded-xl items-center mx-auto "></div>
+                @endif
                 <div class="bg-gradient-to-l from-green-100 to-green-400 w-5/6 mx-auto rounded-lg lg:hidden  ">
                     <h5 class="flex justify-center text-sm">Average Price</h5>
                     <h3 class="flex justify-center">{{ $item->price }}</h2>
                 </div>
                 <div class="p-10 ">
                     <h1 class="text-2xl pb-2 font-semibold">{{ $item->name }}</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. lorem </p>
+                    <p>{!! $item->desc !!} </p>
                 </div>
                 <div class="flex justify-end py-3 ">
                     <div class="bg-gradient-to-l from-green-100 to-green-400 rounded-l-lg hidden lg:block justify-end w-1/2  lg:space-y-1 space-y-3 lg:absolute lg:bottom-0 lg:right-0 mb-2 p-2">
@@ -175,7 +179,11 @@
             </div>
             <div class="hidden lg:block shadow-green-200 shadow-lg rounded-r-2xl">
                 <div class="w-[400px] mx-auto">
-                    <img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class=" items-center mx-auto rounded-r-2xl object-fill ">
+                    @if ($item->image == null)
+                        <img src="/img/product/placeholder.jpg" alt="Gambar-product" width="100%" class=" items-center mx-auto rounded-r-2xl object-fill ">
+                    @else
+                        <img src="{{ asset('storage/'. $item->image) }}" alt="Gambar-product" width="100%" class=" items-center mx-auto rounded-r-2xl object-fill ">
+                    @endif
                 </div>
             </div>
         </div>
@@ -186,8 +194,7 @@
         <div class="container p-10 lg:mx-20  ">
             <h1 class="py-2 mb-5 uppercase font-bold lg:text-5xl text-3xl font-inconsolata border-b-2 border-gray-500 text-gray-500 w-3/4">Product Information</h1>
             <hr>
-            {{!! $item->spec !!}}
-            <p class="pt-2">{{ $item->desc }}</p>
+            {!! $item->spec !!}
         </div>
     </section>
 
@@ -205,7 +212,7 @@
             <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                 <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
                     <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-                        Ini Judul
+                        List Available Store
                     </h5>
                     <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -229,8 +236,8 @@
                                             <tr >
                                                 <td class="">{{ $loop->iteration }}</td>
                                                 <td>{{ $d->name }}</td>
-                                                <td>{{ $d->store_name }}</td>
-                                                <td class="">{{ $d->price }}</td>
+                                                <td><a href="/store-view/{{ $d->id }}/show">{{ $d->store_name }}</a></td>
+                                                <td class="">Rp {{ $d->price }}</td>
                                             </tr>
                                             @endforeach
 
