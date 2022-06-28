@@ -40,7 +40,7 @@
                                 <th>Pemilik</th>
                                 <th>email</th>
                                 <th>Phone</th>
-                                <th>Alamat</th>
+                                <th>Kecamatan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -63,7 +63,7 @@
                                     {{ $s->phone_store }}
                                 </td>
                                 <td class="align-middle text-sm">
-                                    {{ $s->address }}
+                                    {{ $s->kecamatan->name }}
                                 </td>
                                 <td class="align-middle text-sm">
                                     @if(Request::is('list-bengkel'))
@@ -169,6 +169,31 @@
                         <label for="message-text" class="col-form-label">Tanggal
                             Diajukan:</label>
                         <input type="text" class="form-control" value="{{ $s->updated_at }}" id="recipient-name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Lattitude:</label>
+                        <input type="text" class="form-control" value="{{ $s->lat }}" id="recipient-name"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Longtitude</label>
+                        <input type="text" class="form-control" value="{{ $s->long }}" id="recipient-name"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Kecamatan</label>
+                        <input type="text" class="form-control" value="{{ $s->kecamatan->name }}" id="recipient-name"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Kota/Kabupaten</label>
+                        <input type="text" class="form-control" value="{{ $s->kecamatan->kota->name }}" id="recipient-name"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Address</label>
+                        <input type="text" class="form-control" value="{{ $s->address }}" id="recipient-name"
+                            readonly>
                     </div>
                 </form>
             </div>

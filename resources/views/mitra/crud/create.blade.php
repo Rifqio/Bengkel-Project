@@ -58,7 +58,8 @@
                                         <label>Category</label>
                                         <select class="form-control" name="category" id="category">
                                             @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }},{{ $category->name }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }},{{ $category->name }}">{{ $category->name
+                                                }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -69,7 +70,7 @@
                                         <label>Pilih Bengkel</label>
                                         <select class="form-control" name="bengkel" id="category">
                                             @foreach ($bengkel as $b)
-                                                    <option value="{{ $b->id }}">{{ $b->store_name }}</option>
+                                            <option value="{{ $b->id }}">{{ $b->store_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -101,20 +102,25 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Produk</label>
                                     <img class="img-preview img-fluid" id="img-preview">
-                                    <input class="form-control" onchange="previewImage()" type="file" id="formFile" name="product_image">
+                                    <input class="form-control" onchange="previewImage()" type="file" id="formFile"
+                                        name="product_image">
                                 </div>
                                 <hr>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Deskripsi Produk</label>
-                                        <textarea class="form-control" name="desc" id="" cols="20" rows="5"></textarea>
+                                        <input id="body" type="hidden" name="desc">
+                                        <trix-editor input="body"></trix-editor>
+                                        {{-- <textarea class="form-control" name="desc" id="" cols="20" rows="5"></textarea> --}}
                                     </div>
                                 </div>
 
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Spesifikasi Produk</label>
-                                        <textarea class="form-control" name="spec" id="" cols="20" rows="5"></textarea>
+                                        <input id="spec" type="hidden" name="spec">
+                                        <trix-editor input="spec"></trix-editor>
+                                        {{-- <textarea class="form-control" name="spec" id="" cols="20" rows="5"></textarea> --}}
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-sm ms-auto mt-4">Save</button>
@@ -130,7 +136,7 @@
     </div>
 </div>
 <script>
-     function previewImage() {
+    function previewImage() {
             const image = document.querySelector('#image');
             const imgPreview = document.querySelector('#img-preview');
 

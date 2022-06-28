@@ -1,24 +1,23 @@
 @extends('SuperAdmin.adminlayout')
 @section('content')
-<main class="main-content position-relative border-radius-lg ">
-    <!-- Navbar -->
-    @include('SuperAdmin.navbar')
-    <!-- End Navbar -->
-    <div class="container-fluid py-4">
-        <div class="row">
-            <h1 class="text-white mb-4">Welcome, {{ auth()->user()->name }}</h1>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <a href="/dashboard/show">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Employe</p>
-                                    </a>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $employee }}
-                                    </h5>
+    <main class="main-content position-relative border-radius-lg ">
+        <!-- Navbar -->
+        @include('SuperAdmin.navbar')
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <h1 class="text-white mb-4">Welcome, {{ auth()->user()->name }}</h1>
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                       <a href="/dashboard-employee" class="text-sm mb-0 text-uppercase font-weight-bold">Total Employee</a>
+                                        <h5 class="font-weight-bolder">
+                                            {{ $employee }}
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -29,6 +28,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
 
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -43,6 +43,19 @@
                                     <h5 class="font-weight-bolder">
                                         {{ $mitra }}
                                     </h5>
+=======
+                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <a href="/dashboard-mitra"><p class="text-sm mb-0 text-uppercase font-weight-bold">Total Mitra</p></a>
+                                        <h5 class="font-weight-bolder">
+                                            {{ $mitra }}
+                                        </h5>
+                                    </div>
+>>>>>>> 10da35654dfe82967ec6ba234bb4aa11d3c26b70
                                 </div>
                             </div>
                             <div class="col-4 text-end">

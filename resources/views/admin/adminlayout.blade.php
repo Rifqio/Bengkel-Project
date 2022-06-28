@@ -59,15 +59,56 @@
                     status: data,
                 },
                 success: function (response) {
-                    $('#resultbengkelaktif').html(response);
+                  $('#resultbengkelaktif').html(response);
+                }
+            })
+        }        
+        function get_mitra(query = '', data) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('/search-mitra') }}",
+                method: 'POST',
+                data: {
+                    query: query,
+                },
+                success: function (response) {
+                    $('#resultmitra').html(response);
+                }
+            })
+        }    
+        function get_bengkel_employee(query = '', data) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('/search-bengkel-employee') }}",
+                method: 'POST',
+                data: {
+                    query: query,
+                    status: data,
+                },
+                success: function (response) {
+                    $('#resultbengkelemployee').html(response);
+                    console.log(response);
                 }
             })
         }
+        $(document).on('keyup', '#searchbengkelaktifemp', function () {
+            var word = $(this).val();
+            var data = $(this).data('status');
+            get_bengkel_employee(word, data);
+        });
         $(document).on('keyup', '#searchbengkelaktif', function () {
             var word = $(this).val();
             var data = $(this).data('status');
             get_bengkel_admin(word, data);
         });
+        $(document).on('keyup', '#searchmitra', function () {
+            var word = $(this).val();
+            get_mitra(word);
+        });        
     </script>
     <script src="/argon/js/argon-dashboard.min.js?v=2.0.2"></script>
 </body>

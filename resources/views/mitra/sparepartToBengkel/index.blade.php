@@ -21,7 +21,16 @@
                         </div>
                         @endif
                         <div class="position-relative">
-                          <h5>Pilih Bengkel</h5>
+                            <h5>Pilih Bengkel</h5>
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li class="text-white">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center">
@@ -34,9 +43,6 @@
                                         <th>Action</th>
                                     </tr>
                                     @foreach ($stores as $s)
-
-
-
                                     <tr class="text-center">
                                         <td class="pt-3">{{ $loop->iteration }}</td>
                                         <td class="pt-3">{{ $s->store_name }}</td>
@@ -44,60 +50,59 @@
                                         <td class="pt-3">{{ $s->kecamatan->kota->name }}</td>
                                         <td>
                                             <button type="button" class="btn bg-gradient-warning" data-bs-toggle="modal"
-                                                data-bs-target="#edit-bengkel{{ $s->id }}">Pilih</button>
+                                            data-bs-target="#edit-bengkel{{ $s->id }}">Pilih</button>
+                                            <a href="{{url('item-management/'.$s->id.'')}}" class="btn bg-gradient-info">List Item</a>
                                         </td>
                                     </tr>
                         </div>
-                        <div class="modal fade" id="edit-bengkel{{ $s->id }}" tabindex="-1"
-                            role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal fade" id="edit-bengkel{{ $s->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="modal-form" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body p-0">
                                         <div class="card card-plain">
                                             <div class="card-header pb-0 text-left">
-                                                <h3 class="font-weight-bolder text-info text-gradient">Tambah Item Ke Bengkel</h3>
+                                                <h3 class="font-weight-bolder text-info text-gradient">Tambah Item Ke
+                                                    Bengkel</h3>
                                             </div>
                                             <div class="card-body">
-                                                @if ($s->status_activation == 1)
-                                                    <form role="form text-left" action="/store-update/{{$s->id}}"
-                                                    method="post" enctype="multipart/form-data">
-                                                @elseif($s->status_activation == 2)
-                                                    <form role="form text-left"
-                                                    action="/store-banding" method="post"
-                                                    enctype="multipart/form-data">
-                                                @endif
-                                                @csrf
-                                                <input type="hidden" name="id" class="form-control"
-                                                    placeholder="Id Bengkel" value="{{ $s->id }}">
-                                                <label>Nama Bengkel</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" name="store_name" readonly
-                                                        class="form-control @error('store_name') is-invalid @enderror"
-                                                        placeholder="Nama Bengkel"
-                                                        value="{{ $s->store_name }}"
-                                                        class="form-control @error('store_name') is-invalid @enderror">
-                                                    @error('store_name')
+                                                <form role="form text-left" action="/store-item-insert/{{$s->id}}"
+                                                    method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="id" class="form-control"
+                                                        placeholder="Id Bengkel" value="{{ $s->id }}">
+                                                    <label>Nama Bengkel</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="store_name" readonly
+                                                            class="form-control @error('store_name') is-invalid @enderror"
+                                                            placeholder="Nama Bengkel" value="{{ $s->store_name }}"
+                                                            class="form-control @error('store_name') is-invalid @enderror">
+                                                        @error('store_name')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
-                                                    @enderror
-                                                </div>
-                                                <label>List Item Tersedia</label>
-
-                                                <div class="input-group mb-3">
-                                                    @foreach ($s->item as $data)
-                                                    @if (old('item[]', $data->id) == $data->id)
-                                                        <input type="checkbox" name="item[]" value="{{ $data->id }}" checked>{{ $data->name }} <br>
-                                                    @else
-                                                        <input type="checkbox" name="item[]" value="{{ $data->id }}">{{ $data->name }} <br>
-                                                    @endif
-                                                    @endforeach
-                                                </div>
-
-                                                <button type="submit"
-                                                    class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update
-                                                    Data
-                                                </button>
+                                                        @enderror
+                                                    </div>
+                                                    <label>List Item Tersedia</label>
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="exampleFormControlSelect1"
+                                                            name='product'>
+                                                            @foreach ($item as $data)
+                                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <label>Masukkan Harga</label>
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <input type="number" name="price"
+                                                                class="form-control" placeholder="Masukkan Harga">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit"
+                                                        class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">Update
+                                                        Data
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>

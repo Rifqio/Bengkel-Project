@@ -26,15 +26,15 @@
 
             <div class="flex flex-wrap justify-center" data-aos="fade-up" data-aos-duration="500" >
                 @foreach($categories as $c)
-                <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 " >
-                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+              <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 " >
+              <a href="sparepart/{{ strtolower($c->name) }}"> <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
                         <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white"> <a href="sparepart/{{ strtolower($c->name) }}"> {{ $c->name }}</a></h1>
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">  {{ $c->name }}</h1>
                             <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
                         </div>
-                    </div>
+                    </div></a>
                 </div>
                 @endforeach
 
@@ -54,10 +54,10 @@
         </div>
 
         <div class="container mx-auto">
-            <div class="bg-white shadow-lg rounded-xl  ">
-                <div class="p-10 text-center mx-20">
+            <div class="bg-white shadow-lg rounded-xl mx-10 ">
+                <div class="lg:p-10 py-10  text-center mx-20">
                     <h1 class="font-allison font-semibold text-8xl py-10">Bengkel AE</h1>
-                    <p class="text-xl leading-relaxed">Bengkel AE adalah aplikasi berbasis website grati yang dibuat dengan tujuan membantu pegguna menemukan dan mendapatkan informasi seputar bengkel dan sparepart automotif. Kami bermmitra dengan pemilik bengkel untuk mendapatkan onformasi sparepart yang mereka perjual belikan, dan lokasi bengkel tersebut, untuk selanjutnya dipublikasikan kepada pengguna melalui website ini. Website ini menciptakan kemudahan bagi masyarakat pengguna website ini yang memerlukan informasi posisi bengkel terdekat dan informasi perjualbelian sparepart terdekat, karena kami juga membuat komperasi harga spesifikasi dari tiap-tiap sparepart di tiap-tiap bengkel.</p>
+                    <p class="text-xl leading-relaxed ">Bengkel AE adalah aplikasi berbasis website grati yang dibuat dengan tujuan membantu pegguna menemukan dan mendapatkan informasi seputar bengkel dan sparepart automotif. Kami bermmitra dengan pemilik bengkel untuk mendapatkan onformasi sparepart yang mereka perjual belikan, dan lokasi bengkel tersebut, untuk selanjutnya dipublikasikan kepada pengguna melalui website ini. Website ini menciptakan kemudahan bagi masyarakat pengguna website ini yang memerlukan informasi posisi bengkel terdekat dan informasi perjualbelian sparepart terdekat, karena kami juga membuat komperasi harga spesifikasi dari tiap-tiap sparepart di tiap-tiap bengkel.</p>
                 </div>
             </div>
         </div>

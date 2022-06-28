@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateProductRequest extends FormRequest
 {
@@ -28,6 +29,7 @@ class CreateProductRequest extends FormRequest
             'brand' => 'required',
             'price' => 'required|integer',
             'category_id' => 'required',
+            'user_id' => 'required',
             'slug' => 'required',
             'desc' => 'required',
             'spec' => 'required',
@@ -40,7 +42,8 @@ class CreateProductRequest extends FormRequest
         $this->merge([
             'category_id' => $category[0],
             'slug' => strtolower($category[1]),
-            'image' =>request()->file('product_image')->store('product_image')
+            'image' =>request()->file('product_image')->store('product_image'),
+            'user_id' => Auth::user()->id,
         ]);
     }
 }

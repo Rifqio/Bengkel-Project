@@ -40,6 +40,9 @@
 
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- logo -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/BAE.png') }}" />
 </head>
 
 <body class="font-sans antialiased relative">
