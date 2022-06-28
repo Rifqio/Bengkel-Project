@@ -19,7 +19,7 @@ class Item extends Model
 
     public function store()
     {
-        return $this->belongsToMany(Store::class,'item_store','item_id','store_id');
+        return $this->belongsToMany(Store::class,'item_store','item_id','store_id')->withPivot('price');
     }
 
     protected $searchable = [
