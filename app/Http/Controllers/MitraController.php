@@ -32,7 +32,7 @@ class MitraController extends Controller
             'price' => request('price'),
             'user_id' => Auth::id()
         ]);
-        return redirect('dashboard');
+        return redirect('dashboard/show')->with('success', 'Product has been added');
     }
 
     public function edit($id)
@@ -84,7 +84,7 @@ class MitraController extends Controller
     {
         Item::where('id', $id)->firstorfail()->delete();
         // Item::destroy($id);
-        return redirect('/dashboard/show')->with('success', 'Post has been deleted');
+        return redirect('/dashboard/show')->with('success', 'Product has been deleted');
     }
 
     public function SparepartToBengkelView()

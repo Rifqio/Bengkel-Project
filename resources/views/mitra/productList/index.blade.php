@@ -4,6 +4,9 @@
     <!-- Navbar -->
     @include('mitra.layout.navbar')
     <!-- End Navbar -->
+    <style>
+       trix-toolbar { display: none; }
+    </style>
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -121,8 +124,9 @@
                                                             <div class="form-group">
                                                                 <label for="message-text"
                                                                     class="col-form-label">Deskripsi:</label>
-                                                                <textarea class="form-control" id="message-text"
-                                                                    readonly>{{$d->desc}}</textarea>
+                                                                    <div id="blank-toolbar" hidden></div>
+                                                                    <trix-editor toolbar="blank-toolbar">{!! $d->desc !!}</trix-editor>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -145,4 +149,13 @@
 
     </div>
 </main>
+<script>
+    const element = document.querySelector("trix-editor");
+    element.editor.element.setAttribute('contentEditable', false)
+    const actions = {
+        decreaseNestingLevel: false,
+        increaseNestingLevel: false
+    }
+    element.editor.element.editorController.toolbarController.updateActions(actions);
+</script>
 @endsection

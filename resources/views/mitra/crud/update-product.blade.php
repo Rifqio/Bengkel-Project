@@ -106,14 +106,18 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Deskripsi Produk</label>
-                                        <textarea class="form-control" name="desc" id="" cols="20" rows="5">{{ $item->desc }}</textarea>
+                                        <input id="body" type="hidden" name="desc">
+                                        <trix-editor input="body">{!! $item->desc !!}</trix-editor>
+                                        {{-- <textarea class="form-control" name="desc" id="" cols="20" rows="5">{{ $item->desc }}</textarea> --}}
                                     </div>
                                 </div>
 
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Spesifikasi Produk</label>
-                                        <textarea class="form-control" name="spec" id="" cols="20" rows="5">{{ $item->spec }}</textarea>
+                                        <input id="spec" type="hidden" name="spec">
+                                        <trix-editor input="spec">{!! $item->spec !!}</trix-editor>
+                                        {{-- <textarea class="form-control" name="spec" id="" cols="20" rows="5">{!! $item->spec !!}</textarea> --}}
                                     </div>
                                 </div>
 
