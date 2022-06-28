@@ -24,6 +24,8 @@
                     Banding Bengkel
                     @elseif(Request::is('list-pengajuan-store'))
                     List Pengajuan Store
+                    @elseif(Request::is('add-to-bengkel'))
+                    Tambah Sparepart to Bengkel
                     @endif
                 </li>
             </ol>
