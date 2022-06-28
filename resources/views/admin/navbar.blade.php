@@ -19,6 +19,8 @@
                     Bengkel Aktif
                     @elseif(Request::is('list-mitra'))
                     List Mitra
+                    @elseif(Request::is('list-nonmitra'))
+                    List Non-mitra
                     @endif
                 </li>
             </ol>

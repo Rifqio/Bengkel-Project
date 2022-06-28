@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('brand');
             $table->text('desc')->nullable();
             $table->text('spec')->nullable();
-            $table->bigInteger('price');
+            //$table->bigInteger('price');
             $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -38,22 +38,20 @@
                 @endif
                 <div class="table-responsive p-3">
                     <table class="table align-items-center ">
-                        <thead>
-                            <tr>
+                        <tbody>
+                            <tr class="text-center">
                                 <th>No</th>
-                                <th>Store Name</th>
-                                <th>Address</th>
+                                <th>Nama Bengkel</th>
+                                <th>Alamat</th>
                                 <th>Kecamatan</th>
                                 <th>Kota</th>
                                 <th>Tanggal Pengajuan</th>
-                                <th>
-                                    <center>Action</center>
-                                </th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="resultbengkelemployee">
                             @foreach($stores as $s)
-                            <tr>
+                            <tr class="text-center">
                                 <td>
                                     {{$loop->iteration}}
                                 </td>

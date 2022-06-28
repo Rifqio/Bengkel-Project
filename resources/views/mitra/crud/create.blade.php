@@ -23,7 +23,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Add Product</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                                <!-- <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button> -->
                             </div>
                         </div>
                         <div class="card-body">
@@ -123,6 +123,7 @@
                                         {{-- <textarea class="form-control" name="spec" id="" cols="20" rows="5"></textarea> --}}
                                     </div>
                                 </div>
+                                <button type="submit" class="btn btn-success btn-sm ms-auto mt-4">Save</button>
 
 
                             </div>
