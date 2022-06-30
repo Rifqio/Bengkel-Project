@@ -271,7 +271,7 @@
                                                                                     <td class="button"
                                                                                         style="font-family: Geneva, Tahoma, Verdana, sans-serif; font-size: 16px; padding-top: 26px;"
                                                                                         width="640" align="left">
-                                                                                        <a href="https://click.e.mozilla.org/?qs=4efe345e8852f56c999be06eb9393c839773a620030ba42401ec5054f3e0502235fcd9fe9cb5ac8a277444735e0661ebaa26cab1d07aad32"
+                                                                                        <a href="http://127.0.0.1:8000/reject-bengkel"
                                                                                             style="background: #0c99d5; color: #fff; text-decoration: none; border: 14px solid #0c99d5; border-left-width: 50px; border-right-width: 50px; text-transform: uppercase; display: inline-block;">
                                                                                             Ajukan Banding
                                                                                         </a>

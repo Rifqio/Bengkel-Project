@@ -1,9 +1,11 @@
 <x-app-layout>
     <div class="relative">
-        <div id="show" style="width: 100%; height:500px">
+        <div id="show" style="width: 100%; height:500px; z-index:50;">
             {{-- Maps Content --}}
         </div>
-        <div class="absolute top-0 mt-5 w-full" style="; ">
+
+        <div class="absolute top-0 mt-5 w-full" style="z-index: 100;" data-aos="fade-down" data-aos-duration="1000">
+
             <div class=" mb-0 w-1/3 mx-auto">
                 <input type="text" id="searchbengkel" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
             </div>
@@ -14,26 +16,26 @@
     </div>
 
 
-    <section id=" card text-center " class="bg-green-500 pb-20">
+    <section id=" card text-center " class="bg-gradient-to-br from-green-300 to-green-600 pb-20" >
 
         <div class="container mx-auto justify-center pt-10">
             <div class="flex justify-center">
-                <a href="/product" class="bg-slate-300 rounded-lg"><button type="button" class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button></a>
+                <a href="/sparepart" class="bg-slate-300 rounded-lg"><button type="button" class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show All</button></a>
             </div>
 
 
-            <div class="flex flex-wrap justify-center ">
+            <div class="flex flex-wrap justify-center" data-aos="fade-up" data-aos-duration="500" >
                 @foreach($categories as $c)
-                <a href="" class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 ">
-                    <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
+              <div class="w-[400px] h-[400px] p-10 md:w-1/2 lg:w-1/3  xl:w-1/4 " >
+              <a href="sparepart/{{ strtolower($c->name) }}"> <div class="border-2 border-ijo bg-slate-100 rounded-3xl px-5 py-14 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 ">
                         <div class="flex justify-center"><img src="{{$c->icon_url}}" alt="" width="30%">
                         </div>
                         <div class="text-center ">
-                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">{{$c->name}}</h1>
+                            <h1 class="p-3 text-2xl font-bold group-hover:text-white">  {{ $c->name }}</h1>
                             <h4 class="group-hover:text-slate-100">{{$c->description}}</h4>
                         </div>
-                    </div>
-                </a>
+                    </div></a>
+                </div>
                 @endforeach
 
             </div>
@@ -42,20 +44,20 @@
 
         <div class="container py-20 pb-60 mx-auto">
             <div class="flex flex-wrap xl:flex justify-around">
-                <div>
+                <div data-aos="fade-up-right" data-aos-duration="700">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable" class="bg-blue-400 px-10 py-3 border-2 border-blue-300 text-white font-semibold text-lg  uppercase rounded-lg hover:bg-blue-300  transition ease-in-out shadow-lg mb-10 md:mb-0">Bengkel Terdekat</button>
                 </div>
-                <div>
+                <div data-aos="fade-up-left" data-aos-duration="500">
                     <a href="/login"><button type="button" class="px-10 py-3 border-2 bg-red-600 border-red-500 text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-red-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg">Login / Register Sebagai Mitra</button></a>
                 </div>
             </div>
         </div>
 
         <div class="container mx-auto">
-            <div class="bg-white shadow-lg rounded-xl  ">
-                <div class="p-10 text-center mx-20">
+            <div class="bg-white shadow-lg rounded-xl mx-10 ">
+                <div class="lg:p-10 py-10  text-center mx-20">
                     <h1 class="font-allison font-semibold text-8xl py-10">Bengkel AE</h1>
-                    <p class="text-xl leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aut aperiam corrupti! Necessitatibus voluptatibus est qui fuga a odio optio aut hic sint, ad reprehenderit ab ut! Reprehenderit, adipisci alias ipsum non voluptatibus quia id magnam laudantium itaque earum odio iure repellendus et voluptatem blanditiis, iste rem? Perferendis consequatur suscipit, quisquam, vitae quidem repellendus pariatur ipsam qui cupiditate excepturi, earum non sunt explicabo nesciunt blanditiis perspiciatis. Similique, sapiente totam repellendus ducimus fuga maiores voluptatum laudantium eaque voluptates deserunt ea odio ipsa aperiam nisi dolores repellat ex facere ullam. Beatae at culpa soluta libero porro rerum! Mollitia animi inventore reiciendis iste!</p>
+                    <p class="text-xl leading-relaxed ">Bengkel AE adalah aplikasi berbasis website grati yang dibuat dengan tujuan membantu pegguna menemukan dan mendapatkan informasi seputar bengkel dan sparepart automotif. Kami bermmitra dengan pemilik bengkel untuk mendapatkan onformasi sparepart yang mereka perjual belikan, dan lokasi bengkel tersebut, untuk selanjutnya dipublikasikan kepada pengguna melalui website ini. Website ini menciptakan kemudahan bagi masyarakat pengguna website ini yang memerlukan informasi posisi bengkel terdekat dan informasi perjualbelian sparepart terdekat, karena kami juga membuat komperasi harga spesifikasi dari tiap-tiap sparepart di tiap-tiap bengkel.</p>
                 </div>
             </div>
         </div>
@@ -63,47 +65,47 @@
         <div class="container mx-auto py-20">
             <div class="flex flex-wrap justify-center">
                 <div class="xl:flex ">
-                    <div class="pb-10 group"><img src="img/Team/rozy.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
+                    <div class="pb-10 group" data-aos="flip-left" data-aos-duration="1000"><img src="img/Team/rozy.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
                         <p class="text-white font-semibold text-center text-xl align-text-top group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Rozy Nur Fatmala</p>
                     </div>
-                    <div class="pb-10 group"> <img src="img/Team/natan.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-700 shadow-xl ">
+                    <div class="pb-10 group" data-aos="flip-left"  data-aos-delay="300" data-aos-duration="1000"> <img src="img/Team/natan.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-700 shadow-xl ">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Nathan Ari Soetopo</p>
                     </div>
                 </div>
                 <div class="xl:flex">
-                    <div class="pb-5 group"><img src="img/Team/shalom.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="600" data-aos-duration="1000"><img src="img/Team/shalom.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Shallomita Rembulan</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/paksi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="900" data-aos-duration="1000"><img src="img/Team/paksi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Satria Buana Paksi</p>
                     </div>
                 </div>
                 <div class=" md:block xl:flex">
-                    <div class="pb-5 group"><img src="img/Team/syita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="1200" data-aos-duration="1000"><img src="img/Team/syita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Syi'ta Al-Mar'atush S</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/reza.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="1500" data-aos-duration="1000"><img src="img/Team/reza.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Reza Richard M S</p>
                     </div>
                 </div>
                 <div class="xl:flex 2xl:flex lg:block md:flex ">
-                    <div class="pb-5 group"><img src="img/Team/rifqi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="1800" data-aos-duration="1000"><img src="img/Team/rifqi.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Rifqi Oktario</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/nizam.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="2100" data-aos-duration="1000"><img src="img/Team/nizam.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Nizamuddin Aulia</p>
                     </div>
                 </div>
                 <div class="flex md:flex sm:block ">
-                    <div class="pb-5 group"><img src="img/Team/samuel.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="2500" data-aos-duration="1000"><img src="img/Team/samuel.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Samuel Steven P H</p>
                     </div>
-                    <div class="pb-5 group"><img src="img/Team/sabila.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="2800" data-aos-duration="1000"><img src="img/Team/sabila.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Sabila Hayati N R</p>
                     </div>
                 </div>
-                <div class="xl:flex ">
-                    <div class="pb-5 group"><img src="img/Team/regita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                <div class="xl:flex" >
+                    <div class="pb-5 group" data-aos="flip-left"  data-aos-delay="3000" data-aos-duration="1000"><img src="img/Team/regita.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
                         <p class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Regita Cahya Wulan</p>
                     </div>
                 </div>

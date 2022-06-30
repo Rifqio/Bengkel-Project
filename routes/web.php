@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\AjaxController;
@@ -31,6 +32,11 @@ Route::get('/store-view/{id}/show', [DashboardController::class, 'StoreView']);
 
 // Ajax
 Route::post('/search-bengkel-ajax', [AjaxController::class, 'searchStore']);
+Route::post('/get-kecamatan', [AjaxController::class, 'searchKecamatan']);
+Route::post('/search-employee-mitra', [AjaxController::class, 'searchEmployeeMitra']);
+Route::post('/search-bengkel-aktif', [AjaxController::class, 'searchBengkelAktif']);
+Route::post('/search-bengkel-employee', [AjaxController::class, 'searchBengkelEmployee']);
+Route::post('/search-mitra', [AjaxController::class, 'searchMitra']);
 
 //Dashboard Route
 Route::resource('dashboard', DashboardController::class)->except(['destroy', 'store'])->middleware(['auth', 'verified']);
@@ -59,16 +65,22 @@ Route::middleware(['auth', 'verified', 'role:superadmin'])->controller(AuthContr
 //Mitra
 Route::middleware(['auth', 'verified', 'role:mitra'])->controller(MitraController::class)->group(function () {
     Route::get('/list-store', 'ListStore');
+    Route::get('/list-pengajuan-store', 'ListPengajuanStore');
     Route::get('/store-register', 'StoreRegisterView');
     Route::post('/store-register', 'StoreRegisterSubmit');
-    Route::post('/store-update', 'StoreUpdate');
+    Route::post('/store-update/{id}', 'StoreUpdate');
+    Route::post('/store-item-insert/{id}', 'StoreInsertItem');
     Route::get('/store-edit/{id}', 'StoreEdit');
-    Route::post('/store-update', 'StoreUpdate');
     Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
     Route::post('create-product', 'create_product');
+    Route::put('edit-product/{id}', 'update_product');
+    Route::get('edit-product/{id}','edit');
     Route::get('bengkel-list', 'bengkel_list');
-    // Route::get('/list-reject-store', 'ListRejectStore');
-    // Route::get('/list-banding-store', 'StoreBandingList');
+    Route::get('delete-product/{id}','DeleteProduct');
+    Route::get('add-to-bengkel', 'SparepartToBengkelView');
+    Route::get('item-management/{id}', 'itemManagementView');
+    Route::post('item-management/{id}/{store_id}', 'itemManagementUpdate');
+    Route::post('item-management-detach/{id}/{store_id}', 'itemManagementDetach');
 });
 
 //Profile
@@ -79,12 +91,17 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
 
 //Employee
 Route::resource('list-mitra', EmpController::class);
-Route::middleware(['auth', 'verified', 'role:employee'])->controller(EmpController::class)->group(function () {
+Route::middleware(['auth', 'verified', 'role:employee|superadmin'])->controller(EmpController::class)->group(function () {
     Route::get('/validasi-bengkel', 'StoreValidationView');
     Route::post('/validasi-bengkel', 'StoreValidation');
     Route::get('/list-mitra', 'ListMitraView');
+    Route::get('/list-nonmitra', 'ListNonMitra');
     Route::post('/update-mitra', 'UpdateDataMitra');
     Route::get('/delete-mitra/{id}', 'DeleteDataMitra');
+    Route::post('/non-aktif/{id}', 'NonAktifMitra');
+    Route::post('/aktif/{id}', 'AktifMitra');
+    Route::get('/dashboard-mitra', 'mitra');
+    Route::get('/dashboard-employee', 'employee');
 });
 
 //Store Controller
@@ -92,10 +109,12 @@ Route::middleware(['auth', 'verified', 'role:superadmin|employee|mitra'])->contr
     Route::get('/list-bengkel', 'StoreView');
     Route::get('/reject-bengkel', 'StoreReject');
     Route::get('/banding-bengkel', 'StoreBanding');
-    Route::post('/non-aktif', 'StoreUpdateStatus');
+    Route::post('/aktif-bengkel', 'StoreUpdateStatus');
     Route::post('/reject-bengkel/{id}', 'RejectBengkel');
-    Route::get('/store-banding/{id}', 'StoreBandingEdit');
+//    Route::get('/store-banding/{id}', 'StoreBandingEdit');
     Route::post('/store-banding', 'StoreBandingUpdate');
+    Route::get('/pengajuan-bengkel', 'StorePengajuan');
+    Route::get('/delete-bengkel/{id}', 'DeleteBengkel');
 });
 
 //Route Confirmation Email
@@ -193,3 +212,11 @@ Route::get('/register_view_test', function () {
 Route::get('/login_view_test', function () {
     return view('auth.login_temp');
 });
+
+Route::get('/bengkel', function () {
+    return view('user.bengkel');
+});
+Route::get('/emaill', function () {
+    return view('auth.reset-email-password');
+});
+

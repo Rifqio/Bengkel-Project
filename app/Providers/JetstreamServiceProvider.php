@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Hash;
 use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,11 +34,19 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
         Fortify::loginView(function () {
-            return view('auth.loginn');
+            return view('auth.login');
         });
 
         Fortify::registerView(function () {
-            return view('auth.registerr');
+            return view('auth.register');
+        });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+    
+            if ($user && Hash::check($request->password, $user->password) && $user->created_at != NULL) {
+                return $user;
+            }
         });
     }
 

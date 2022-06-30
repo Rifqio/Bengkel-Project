@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use bfinlay\SpreadsheetSeeder\SpreadsheetSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategoriesSeeder::class,
             StoreSeeder::class,
-            ItemSeeder::class,
             KotaSeeder::class,
             KecamatanSeeder::class,
+            SpreadsheetSeeder::class
         ]);
     }
 }

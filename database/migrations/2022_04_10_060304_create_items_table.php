@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,14 +17,20 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('slug');
             $table->string('brand');
-            $table->string('desc')->nullable();
-            $table->bigInteger('price');
+            $table->text('desc')->nullable();
+            $table->text('spec')->nullable();
+            //$table->bigInteger('price');
             $table->string('image')->nullable();
             $table->timestamps();
         });
+
+        DB::statement(
+            'ALTER TABLE items ADD FULLTEXT fulltext_index(name)'
+        );
     }
 
     /**
