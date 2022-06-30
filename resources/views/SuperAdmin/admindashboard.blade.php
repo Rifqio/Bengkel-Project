@@ -28,22 +28,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-            </div>
-
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <a href="/dashboard/mitra">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Mitra</p>
-                                    </a>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $mitra }}
-                                    </h5>
-=======
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                     <div class="card">
                         <div class="card-body p-3">
@@ -55,7 +39,6 @@
                                             {{ $mitra }}
                                         </h5>
                                     </div>
->>>>>>> 10da35654dfe82967ec6ba234bb4aa11d3c26b70
                                 </div>
                             </div>
                             <div class="col-4 text-end">

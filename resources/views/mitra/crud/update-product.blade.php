@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="price"
                                             class="form-control-label @error('price') is-invalid @enderror">Price</label>
@@ -93,7 +93,7 @@
                                         </div>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Foto Produk</label> <br>

@@ -4,7 +4,7 @@
             {{-- Maps Content --}}
         </div>
 
-        <div class="absolute top-0 mt-5 w-full" style="z-index: 100;" data-aos="fade-down" data-aos-duration="1000"> 
+        <div class="absolute top-0 mt-5 w-full" style="z-index: 100;" data-aos="fade-down" data-aos-duration="1000">
 
             <div class=" mb-0 w-1/3 mx-auto">
                 <input type="text" id="searchbengkel" class="form-control block w-full px-10 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding  border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-xl" id="exampleText0" placeholder="Cari Bengkel Terdekat">
@@ -63,11 +63,7 @@
         </div>
 
         <div class="container mx-auto py-20">
-            <div class="text-white font-semibold text-center text-4xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-puls">
-                <h1>Anggota</h1>
-            </div>
             <div class="flex flex-wrap justify-center">
-
                 <div class="xl:flex ">
                     <div class="pb-10 group" data-aos="flip-left" data-aos-duration="1000"><img src="img/Team/rozy.jpg" alt="" class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
                         <p class="text-white font-semibold text-center text-xl align-text-top group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">Rozy Nur Fatmala</p>
@@ -131,19 +127,13 @@
                     </div>
                     <div class="flex p-5 align-middle inline-block">
                         <img src="img/footer/Phone.png" alt="" class="" style="width:10% ;">
-                        <p class="text-white pl-5 my-auto">(0271) 662622</p>
+                        <p class="text-white pl-5 my-auto">+62 8888 8888</p>
                     </div>
                 </div>
                 <div class="w-full my-auto px-32 border-l-4 lg:w-1/2">
-                    <br>
-                    <br>
-                    <p class="text-white ">Jalan Kolonel Sutarto Nomor 150K, Jebres, Surakarta City, Central Java 57126</p>
-                    <br>
-                    <br>
+                    <p class="text-white ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ratione nisi culpa obcaecati nulla tenetur similique voluptates. Aliquid accusamus, reprehenderit asperiores, dolore dolor voluptas sint eum ipsam, ad et quis.</p>
                 </div>
             </div>
-            <p class="text-white ml-4"> © 2022 Bengkel AE . All Rights Reserved</p>
-
         </div>
     </footer>
     <!-- Modal -->
@@ -183,9 +173,7 @@
     </script>
     <script>
         var loadMap = function(id) {
-            var data = {
-                !!json_encode($location) !!
-            }
+            var data = {!!json_encode($location)!!}
             var map = L.map(id, {
                 wheelPxPerZoomLevel: 150
             });
@@ -234,16 +222,13 @@
                             button.type = 'button';
                             button.innerHTML = '<b>' + namestore[i] + '</b><br>' + distance[i] + 'Km';
                             button.style.cssText += 'margin:3px; margin-bottom:10px;';
-                            button.href = '{{ url('
-                            store - view ') }}/' + idstore[i] + '/show';
+                            button.href = '{{ url('store-view') }}/' + idstore[i] + '/show';
                             button.className += "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
                             document.getElementById("rekomen").appendChild(button);
                         }
                     }
-
                     function onClick(e) {
-                        window.location.href = '{{ url('
-                        store - view ') }}/' + this.options.win_url + '/show';
+                        window.location.href = '{{ url('store-view') }}/' + this.options.win_url + '/show';
                     }
                 })
                 .on('locationerror', function(e) {
@@ -254,25 +239,25 @@
         loadMap('show');
     </script>
     <script>
-        function fetch_user_data(query = '') {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url('/search-bengkel-ajax') }}",
-                method: 'POST',
-                data: {
-                    query: query
-                },
-                success: function(response) {
-                    $('#resultbengkel').html(response);
-                    console.log(response);
-                }
-            })
+        function fetch_user_data(query = '')
+        {
+          $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+           url:"{{ url('/search-bengkel-ajax') }}",
+           method:'POST',
+           data:{query:query},
+           success:function(response)
+           {
+            $('#resultbengkel').html(response);
+            console.log(response);
+           }
+          })
         }
-        $(document).on('keyup', '#searchbengkel', function() {
-            var word = $(this).val();
-            fetch_user_data(word);
+        $(document).on('keyup', '#searchbengkel', function(){
+          var word = $(this).val();
+          fetch_user_data(word);
         });
     </script>
 </x-app-layout>

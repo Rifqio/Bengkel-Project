@@ -30,7 +30,7 @@ class MitraController extends Controller
             'store_id' => request('bengkel'),
             'item_id' => Item::latest()->first()->id,
             'price' => request('price'),
-            'user_id' => Auth::id()
+            //'user_id' => Auth::id()
         ]);
         return redirect('dashboard/show')->with('success', 'Product has been added');
     }
@@ -58,7 +58,7 @@ class MitraController extends Controller
         $data = [
             'name' => request('name'),
             'brand' => request('brand'),
-            'price' => request('price'),
+            //'price' => request('price'),
             'category_id' => $category[0],
             'slug' => strtolower($category[1]),
             'desc' => request('desc'),
@@ -73,10 +73,10 @@ class MitraController extends Controller
         }
 
         Item::where('id', $id)->update($data);
-        ItemStore::where('item_id', $id)->update([
-            'store_id' => request('bengkel'),
-            'price' => request('price')
-        ]);
+        // ItemStore::where('item_id', $id)->update([
+        //     'store_id' => request('bengkel'),
+        //     'price' => request('price')
+        // ]);
         return redirect('dashboard');
     }
 
