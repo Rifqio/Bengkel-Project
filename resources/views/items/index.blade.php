@@ -7,7 +7,7 @@
             <img src="/img/product/G1.png" alt="Gambar-product" width="80%">
         </div>
         <div class="text-center ">
-            <h1 class="p-3 text-2xl font-bold group-hover:text-white">{{ $item->name }}</h1>
+            <h1 class="p-3 text-2xl foynt-bold group-hover:text-white">{{ $item->name }}</h1>
             <h4 class="group-hover:text-slate-100">{{ $item->price }}</h4>
         </div>
         <div class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
@@ -19,3 +19,4 @@
 </div>
 @endforeach
 @endsection
+
