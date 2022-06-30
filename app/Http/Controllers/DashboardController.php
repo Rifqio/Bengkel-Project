@@ -82,7 +82,7 @@ class DashboardController extends Controller
     {
 
         $store = Store::where('status_activation', 1)->get();
-        $categories = Category::paginate(4);
+        $categories = Category::paginate(3);
         $data = [];
         foreach ($store as $s) {
             $data[] = [
@@ -91,7 +91,7 @@ class DashboardController extends Controller
                 $s->id,
             ];
         }
-        return view('user.userdashboard', [
+        return view('user.user-dashboard', [
             'items' => Item::all(),
             'location' => $data,
             'categories' => $categories,
