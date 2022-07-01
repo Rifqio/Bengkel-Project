@@ -1,28 +1,8 @@
 <x-app-layout>
-    <style>
-        ::-webkit-scrollbar {
-  width: 20px;   
-}
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb:horizontal{
-        background: #000;
-        border-radius: 10px;
-    }
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:horizontal:hover {
-  background: #fff; 
-}
     </style>
     <div class="relative z-10 bg-white mx-auto justify-center ">
-        <div id="show" style="width: 100%; height:800px; z-index:10;">
+        <div id="show" style="width: 100%; height:700px; z-index:10;">
             {{-- Maps Content --}}
         </div>
 
@@ -40,11 +20,11 @@
         </div>
 
 
-        <div class=" mx-auto z-20 absolute justify-center content-center left-16 right-16">
-            <div class="bg-gradient-to-br from-slate-50 to-slate-300 rounded-xl mx-auto -mt-32">
+        <div class=" mx-auto z-20 absolute justify-center content-center left-16 right-16 ">
+            <div class="bg-gradient-to-br from-slate-50 to-slate-300 rounded-xl mx-auto -mt-40">
                 <section id=" card text-center " class="sm:container pb-20 relative mx-auto ">
 
-                  
+
                         <div class="container mx-auto pt-10">
                             <div class="flex justify-center">
                                 <a href="/sparepart" class="bg-slate-300 rounded-lg"><button type="button"
@@ -73,7 +53,7 @@
                                 @endforeach
 
                             </div>
-                        
+
                     </div>
                 </section>
 
@@ -127,9 +107,9 @@
                     <div class="mx-auto py-6 pt-10">
                         <p class="uppercase text-8xl font-roboto font-extrabold text-center text-[#C7D36F]">
                             Testimoni</p>
-                            <p class="text-center font-inconsolata font-light text-[#929b52] underline">Ini yang di katakan oleh orang orang</p>
+                            <p class="text-center font-inconsolata font-light text-[#929b52] ">Ini yang di katakan oleh orang orang</p>
                     </div>
-                    <hr class="bg-black">
+                    <hr class="bg-[#929b52] mx-24 py-0.5 mb-12">
                     <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
                         <div class="w-full relative flex items-center justify-center">
                             <button aria-label="slide backward"
@@ -333,7 +313,7 @@
                         <section id="card text-center">
                             <div class="container mx-auto justify-center pb-10">
                                 <div class="flex flex-wrap justify-center content-center">
-                                    
+
                                     <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
                                         <div
                                             class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
@@ -594,8 +574,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                  
+
+
                                 </div>
                                 <div class="flex justify-end px-36 -mt-7"><a href="">
                                         <p class="text-lg underline ">see more ...</p>
@@ -613,41 +593,208 @@
                 </div>
 
                 <!-- OUR TEAM -->
-                <div class="pb-20" style="">
-                    <div class="flex overflow-auto .owl-carousel" style="" >
+                <div class="container pb-20 px-10" style="">
+                    {{-- <div class="flex overflow-auto" style="" >
 
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-10 group  min-w-fit" data-aos="flip-left" data-aos-duration="1000"><img
+                            src="img/Team/rozy.jpg" alt=""
+                            class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
+                        <p
+                            class="text-white font-semibold text-center text-xl align-text-top group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                            Rozy Nur Fatmala</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-10 group min-w-fit" data-aos="flip-left" data-aos-delay="300" data-aos-duration="1000">
+                            <img src="img/Team/natan.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-700 shadow-xl ">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Nathan Ari Soetopo</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group  min-w-fit" data-aos="flip-left" data-aos-delay="600" data-aos-duration="1000">
+                            <img src="img/Team/shalom.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Shallomita Rembulan</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group  min-w-fit" data-aos="flip-left" data-aos-delay="900" data-aos-duration="1000">
+                            <img src="img/Team/paksi.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Satria Buana Paksi</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group  min-w-fit" data-aos="flip-left" data-aos-delay="1200" data-aos-duration="1000">
+                            <img src="img/Team/syita.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Syi'ta Al-Mar'atush S</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group  min-w-fit" data-aos="flip-left" data-aos-delay="1500" data-aos-duration="1000">
+                            <img src="img/Team/reza.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Reza Richard M S</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group  min-w-fit data-aos="flip-left" data-aos-delay="1800" data-aos-duration="1000">
+                            <img src="img/Team/rifqi.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Rifqi Oktario</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group  min-w-fit" data-aos="flip-left" data-aos-delay="2100" data-aos-duration="1000">
+                            <img src="img/Team/nizam.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Nizamuddin Aulia</p>
                         </div>
-                        <div> <img src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
+                        <div class="pb-5 group min-w-fit" data-aos="flip-left" data-aos-delay="2500" data-aos-duration="1000">
+                            <img src="img/Team/samuel.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Samuel Steven P H</p>
+                        </div>
+                        <div class="pb-5 group min-w-fit" data-aos="flip-left" data-aos-delay="2800" data-aos-duration="1000">
+                            <img src="img/Team/sabila.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Sabila Hayati N R</p>
+                        </div>
+                        <div class="pb-5 grou min-w-fit" data-aos="flip-left" data-aos-delay="3000" data-aos-duration="1000">
+                            <img src="img/Team/regita.jpg" alt=""
+                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
+                            <p
+                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                Regita Cahya Wulan</p>
                         </div>
 
 
 
+
+                    </div> --}}
+                    <div class="mx-auto pb-6 ">
+                        <p class="uppercase text-6xl font-extrabold text-center text-[#C7D36F]">
+                            our team</p>
                     </div>
-                </div>
+                    <hr class="bg-[#C7D36F] mx-72 py-1">
+
+                    <div class="container mx-auto py-20">
+                        <div class="flex flex-wrap justify-center">
+                            <div class="xl:flex ">
+                                <div class="pb-10 group " data-aos="flip-left" data-aos-duration="1000"><img
+                                        src="img/Team/rozy.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl ">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl align-text-top group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Rozy Nur Fatmala</p>
+                                </div>
+                                <div class="pb-10 group" data-aos="flip-left" data-aos-delay="300" data-aos-duration="1000">
+                                    <img src="img/Team/natan.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-700 shadow-xl ">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Nathan Ari Soetopo</p>
+                                </div>
+                            </div>
+                            <div class="xl:flex">
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="600" data-aos-duration="1000">
+                                    <img src="img/Team/shalom.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Shallomita Rembulan</p>
+                                </div>
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="900" data-aos-duration="1000">
+                                    <img src="img/Team/paksi.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Satria Buana Paksi</p>
+                                </div>
+                            </div>
+                            <div class=" md:block xl:flex">
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="1200" data-aos-duration="1000">
+                                    <img src="img/Team/syita.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Syi'ta Al-Mar'atush S</p>
+                                </div>
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="1500" data-aos-duration="1000">
+                                    <img src="img/Team/reza.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Reza Richard M S</p>
+                                </div>
+                            </div>
+                            <div class="xl:flex 2xl:flex lg:block md:flex ">
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="1800" data-aos-duration="1000">
+                                    <img src="img/Team/rifqi.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Rifqi Oktario</p>
+                                </div>
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="2100" data-aos-duration="1000">
+                                    <img src="img/Team/nizam.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Nizamuddin Aulia</p>
+                                </div>
+                            </div>
+                            <div class="flex md:flex sm:block ">
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="2500" data-aos-duration="1000">
+                                    <img src="img/Team/samuel.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Samuel Steven P H</p>
+                                </div>
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="2800" data-aos-duration="1000">
+                                    <img src="img/Team/sabila.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Sabila Hayati N R</p>
+                                </div>
+                            </div>
+                            <div class="xl:flex">
+                                <div class="pb-5 group" data-aos="flip-left" data-aos-delay="3000" data-aos-duration="1000">
+                                    <img src="img/Team/regita.jpg" alt=""
+                                        class="rounded-full scale-50 group-hover:scale-75 transition ease-in-out duration-500 shadow-xl">
+                                    <p
+                                        class="text-black font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
+                                        Regita Cahya Wulan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+
+               {{-- JOIN US --}}
+               <div class="container mx-auto absolute">
+                    <div class="flex w-2/3 p-10 bg-[#C7D36F] mx-auto -mt-24 rounded-2xl">
+                    <div class="w-2/3 justify-center">
+                        <p class="text-5xl text-right px-10">sign up to join <br> with us</p>
+                    </div>
+                    <div class="w-1/3">
+                        <a href="/login"><button type="button"
+                                class="px-10 py-3 border-2 bg-lime-600 border-lime-500 text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-lime-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg">Login
+                                / Register Sebagai Mitra</button></a>
+                    </div>
+                    </div>
+                    <img src="img/dashboard/bawah.png" alt="" class="absolute ml-32 -mt-16"
+                            style="width:25% ;">
+               </div>
+
             </div>
 
             {{-- <div class="container mx-auto">
@@ -667,124 +814,37 @@
                         </div>
                     </div> --}}
 
-            <div class="container mx-auto py-20">
-                <div class="flex flex-wrap justify-center">
-                    <div class="xl:flex ">
-                        <div class="pb-10 group" data-aos="flip-left" data-aos-duration="1000"><img
-                                src="img/Team/rozy.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl ">
-                            <p
-                                class="text-white font-semibold text-center text-xl align-text-top group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Rozy Nur Fatmala</p>
-                        </div>
-                        <div class="pb-10 group" data-aos="flip-left" data-aos-delay="300" data-aos-duration="1000">
-                            <img src="img/Team/natan.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-700 shadow-xl ">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Nathan Ari Soetopo</p>
-                        </div>
-                    </div>
-                    <div class="xl:flex">
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="600" data-aos-duration="1000">
-                            <img src="img/Team/shalom.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Shallomita Rembulan</p>
-                        </div>
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="900" data-aos-duration="1000">
-                            <img src="img/Team/paksi.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Satria Buana Paksi</p>
-                        </div>
-                    </div>
-                    <div class=" md:block xl:flex">
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="1200" data-aos-duration="1000">
-                            <img src="img/Team/syita.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Syi'ta Al-Mar'atush S</p>
-                        </div>
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="1500" data-aos-duration="1000">
-                            <img src="img/Team/reza.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Reza Richard M S</p>
-                        </div>
-                    </div>
-                    <div class="xl:flex 2xl:flex lg:block md:flex ">
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="1800" data-aos-duration="1000">
-                            <img src="img/Team/rifqi.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Rifqi Oktario</p>
-                        </div>
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="2100" data-aos-duration="1000">
-                            <img src="img/Team/nizam.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Nizamuddin Aulia</p>
-                        </div>
-                    </div>
-                    <div class="flex md:flex sm:block ">
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="2500" data-aos-duration="1000">
-                            <img src="img/Team/samuel.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Samuel Steven P H</p>
-                        </div>
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="2800" data-aos-duration="1000">
-                            <img src="img/Team/sabila.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Sabila Hayati N R</p>
-                        </div>
-                    </div>
-                    <div class="xl:flex">
-                        <div class="pb-5 group" data-aos="flip-left" data-aos-delay="3000" data-aos-duration="1000">
-                            <img src="img/Team/regita.jpg" alt=""
-                                class="rounded-full scale-75 group-hover:scale-90 transition ease-in-out duration-500 shadow-xl">
-                            <p
-                                class="text-white font-semibold text-center text-xl group-hover:scale-110 group-hover:underline transition duration-1000 group-hover:animate-pulse">
-                                Regita Cahya Wulan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </section>
 
-            <footer class="bg-black pt-12 pb-12">
+
+
+            <footer class=" mt-32 pt-32">
                 <div class="container">
                     <div class="flex flex-wrap">
-                        <div class="w-full px-32 mb-12 lg:w-1/2">
+                        <div class="w-full px-32  lg:w-1/2">
                             <div class="flex p-5 align-middle inline-block  ">
                                 <img src="img/footer/Instagram.png" alt="" class=""
                                     style="width:10% ;">
-                                <p class="text-white pl-5 my-auto ">@Bengkel_AE</p>
+                                <p class="text-black pl-5 my-auto ">@Bengkel_AE</p>
                             </div>
                             <div class="flex p-5 align-middle inline-block">
                                 <img src="img/footer/gmail.png" alt="" class="" style="width:10% ;">
-                                <p class="text-white pl-5 my-auto">Bengkel_AE@gmail.com</p>
+                                <p class="text-black pl-5 my-auto">Bengkel_AE@gmail.com</p>
                             </div>
                             <div class="flex p-5 align-middle inline-block">
                                 <img src="img/footer/Phone.png" alt="" class="" style="width:10% ;">
-                                <p class="text-white pl-5 my-auto">+62 8888 8888</p>
+                                <p class="text-black pl-5 my-auto">+62 8888 8888</p>
                             </div>
                         </div>
                         <div class="w-full my-auto px-32 border-l-4 lg:w-1/2">
-                            <p class="text-white ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
+                            <p class="text-black ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
                                 ratione nisi culpa obcaecati nulla tenetur similique voluptates. Aliquid accusamus,
                                 reprehenderit asperiores, dolore dolor voluptas sint eum ipsam, ad et quis.</p>
                         </div>
+                    </div>
+                    <hr class="bg-slate-300 mx-24 py-0.5">
+                    <div class="flex justify-between px-12 py-6">
+                        <p>Support By Digital Monster</p>
+                        <p>CopyRight © 2022 Bengkel Ae</p>
                     </div>
                 </div>
             </footer>
@@ -822,13 +882,15 @@
         </div>
     </div>
     </div>
-    <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".owl-carousel").owlCarousel();
-        });
-    </script>
+
+
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".owl-carousel").owlCarousel();
+            });
+            </script>
     <script>
         let defaultTransform = 0;
 
