@@ -1,6 +1,28 @@
 <x-app-layout>
+    <style>
+        ::-webkit-scrollbar {
+  width: 20px;   
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb:horizontal{
+        background: #000;
+        border-radius: 10px;
+    }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background: #fff; 
+}
+    </style>
     <div class="relative z-10 bg-white mx-auto justify-center ">
-        <div id="show" style="width: 100%; height:500px; z-index:10;">
+        <div id="show" style="width: 100%; height:800px; z-index:10;">
             {{-- Maps Content --}}
         </div>
 
@@ -19,11 +41,11 @@
 
 
         <div class=" mx-auto z-20 absolute justify-center content-center left-16 right-16">
-            <div class="bg-gradient-to-br from-slate-50 to-slate-300 rounded-xl mx-auto">
-                <section id=" card text-center " class="sm:container pb-20 relative ">
+            <div class="bg-gradient-to-br from-slate-50 to-slate-300 rounded-xl mx-auto -mt-32">
+                <section id=" card text-center " class="sm:container pb-20 relative mx-auto ">
 
-                    <div class=" -mt-32 z-20 mx-auto">
-                        <div class="container mx-auto justify-center pt-10">
+                  
+                        <div class="container mx-auto pt-10">
                             <div class="flex justify-center">
                                 <a href="/sparepart" class="bg-slate-300 rounded-lg"><button type="button"
                                         class=" px-10 py-1 border-2 border-slate-400 text-slate-500 font-semibold text-lg  uppercase rounded-lg hover:bg-slate-400  transition ease-in-out shadow-lg duration-500">Show
@@ -34,7 +56,7 @@
                             <div class="flex flex-wrap justify-center" data-aos="fade-up" data-aos-duration="500">
                                 @foreach ($categories as $c)
                                     <div
-                                        class="w-[600px] h-[250px] md:w-1/2 lg:w-1/3  xl:w-1/4   bg-green-300 rounded-3xl px-5 py-8 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 m-10">
+                                        class="w-[600px] h-[250px] md:w-1/2 lg:w-1/3  xl:w-1/4   bg-[#E0DECA] rounded-3xl px-5 py-8 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 m-10">
                                         <a href="sparepart/{{ strtolower($c->name) }}">
                                             <div class=" ">
                                                 <div class="flex justify-center"><img src="{{ $c->icon_url }}"
@@ -51,11 +73,11 @@
                                 @endforeach
 
                             </div>
-                        </div>
+                        
                     </div>
                 </section>
 
-                {{-- TOMBOL --}}
+                <!-- tombol -->
                 <div class="container py-20 pb-60 mx-auto">
                     <div class="flex flex-wrap xl:flex justify-around">
                         <div data-aos="fade-up-right" data-aos-duration="700">
@@ -71,7 +93,7 @@
                     </div>
                 </div>
 
-                <div class="container mx-auto bg-[#FCF9C6] py-20 flex ">
+                <div class="mx-auto bg-[#FCF9C6] py-20 flex w-full ">
                     <div class="w-1/2 mx-auto align-middle self-center p-20 space-y-6">
                         <p class="uppercase font-extrabold text-2xl text-[#C7D36F] text-center ">Bengkel terdekat
                         </p>
@@ -100,11 +122,14 @@
                     </div>
                 </div>
 
+                <!-- TESTIMONI -->
                 <div class="container mx-auto py-16 mt-10">
                     <div class="mx-auto py-6 pt-10">
-                        <p class="uppercase text-6xl font-roboto font-extrabold text-center text-[#C7D36F]">
+                        <p class="uppercase text-8xl font-roboto font-extrabold text-center text-[#C7D36F]">
                             Testimoni</p>
+                            <p class="text-center font-inconsolata font-light text-[#929b52] underline">Ini yang di katakan oleh orang orang</p>
                     </div>
+                    <hr class="bg-black">
                     <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
                         <div class="w-full relative flex items-center justify-center">
                             <button aria-label="slide backward"
@@ -125,7 +150,7 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#C7D36F] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table" class="rounded-xl -ml-16 -mt-4" />
@@ -150,7 +175,7 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#C7D36F] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
@@ -176,7 +201,7 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#C7D36F] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
@@ -202,7 +227,7 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#C7D36F] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
@@ -228,7 +253,7 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#C7D36F] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
@@ -293,40 +318,41 @@
                     </div>
                 </div>
 
-
+                <!-- OUR PRODUCT -->
                 <div class="">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="#FCF9C6" fill-opacity="1"
                             d="M0,288L48,250.7C96,213,192,139,288,144C384,149,480,235,576,245.3C672,256,768,192,864,176C960,160,1056,192,1152,224C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
                         </path>
                     </svg>
-                    <div class="container bg-[#FCF9C6]">
+                    <div class=" bg-[#FCF9C6]">
                         <div class="mx-auto pb-6 ">
                             <p class="uppercase text-6xl font-roboto font-extrabold text-left pl-20 text-[#C7D36F]">
                                 our product</p>
                         </div>
                         <section id="card text-center">
                             <div class="container mx-auto justify-center pb-10">
-                                <div class="flex flex-wrap justify-center ">
-                                    <div class="w-[300px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 px-5">
+                                <div class="flex flex-wrap justify-center content-center">
+                                    
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
                                         <div
-                                            class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 ">
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
                                             <div>
                                                 <div class="flex justify-center">
 
                                                     <img src="{{ asset('img/product/G1.png') }}"
-                                                        class="rounded w-24 h-24" alt="Gambar-product"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
                                                         width="80%">
 
                                                 </div>
-                                                <div class="text-center ">
+                                                <div class="text-center mb-6">
                                                     <h1 class="p-1 text-xl font-bold group-hover:text-white"
                                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                                         REM</h1>
                                                     {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
                                                 </div>
                                                 <div
-                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
                                                     <a href="/">
                                                         <h3 class="uppercase font-bold">show details</h3>
                                                     </a>
@@ -334,25 +360,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="w-[300px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 px-5">
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
                                         <div
-                                            class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 ">
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
                                             <div>
                                                 <div class="flex justify-center">
 
                                                     <img src="{{ asset('img/product/G1.png') }}"
-                                                        class="rounded w-24 h-24" alt="Gambar-product"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
                                                         width="80%">
 
                                                 </div>
-                                                <div class="text-center ">
+                                                <div class="text-center mb-6">
                                                     <h1 class="p-1 text-xl font-bold group-hover:text-white"
                                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                                         REM</h1>
                                                     {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
                                                 </div>
                                                 <div
-                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
                                                     <a href="/">
                                                         <h3 class="uppercase font-bold">show details</h3>
                                                     </a>
@@ -360,25 +386,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="w-[300px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 px-5">
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
                                         <div
-                                            class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 ">
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
                                             <div>
                                                 <div class="flex justify-center">
 
                                                     <img src="{{ asset('img/product/G1.png') }}"
-                                                        class="rounded w-24 h-24" alt="Gambar-product"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
                                                         width="80%">
 
                                                 </div>
-                                                <div class="text-center ">
+                                                <div class="text-center mb-6">
                                                     <h1 class="p-1 text-xl font-bold group-hover:text-white"
                                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                                         REM</h1>
                                                     {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
                                                 </div>
                                                 <div
-                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
                                                     <a href="/">
                                                         <h3 class="uppercase font-bold">show details</h3>
                                                     </a>
@@ -386,25 +412,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="w-[300px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 px-5">
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
                                         <div
-                                            class="justify-items-centercenter px-5 py-8 border-2 border-green-200 bg-slate-50 rounded-l hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 ">
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
                                             <div>
                                                 <div class="flex justify-center">
 
                                                     <img src="{{ asset('img/product/G1.png') }}"
-                                                        class="rounded w-24 h-24" alt="Gambar-product"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
                                                         width="80%">
 
                                                 </div>
-                                                <div class="text-center ">
+                                                <div class="text-center mb-6">
                                                     <h1 class="p-1 text-xl font-bold group-hover:text-white"
                                                         style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                                         REM</h1>
                                                     {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
                                                 </div>
                                                 <div
-                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 mt-5 rounded-full">
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
                                                     <a href="/">
                                                         <h3 class="uppercase font-bold">show details</h3>
                                                     </a>
@@ -412,6 +438,164 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
+                                        <div
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
+                                            <div>
+                                                <div class="flex justify-center">
+
+                                                    <img src="{{ asset('img/product/G1.png') }}"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
+                                                        width="80%">
+
+                                                </div>
+                                                <div class="text-center mb-6">
+                                                    <h1 class="p-1 text-xl font-bold group-hover:text-white"
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        REM</h1>
+                                                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
+                                                </div>
+                                                <div
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
+                                                    <a href="/">
+                                                        <h3 class="uppercase font-bold">show details</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
+                                        <div
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
+                                            <div>
+                                                <div class="flex justify-center">
+
+                                                    <img src="{{ asset('img/product/G1.png') }}"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
+                                                        width="80%">
+
+                                                </div>
+                                                <div class="text-center mb-6">
+                                                    <h1 class="p-1 text-xl font-bold group-hover:text-white"
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        REM</h1>
+                                                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
+                                                </div>
+                                                <div
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
+                                                    <a href="/">
+                                                        <h3 class="uppercase font-bold">show details</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
+                                        <div
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
+                                            <div>
+                                                <div class="flex justify-center">
+
+                                                    <img src="{{ asset('img/product/G1.png') }}"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
+                                                        width="80%">
+
+                                                </div>
+                                                <div class="text-center mb-6">
+                                                    <h1 class="p-1 text-xl font-bold group-hover:text-white"
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        REM</h1>
+                                                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
+                                                </div>
+                                                <div
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
+                                                    <a href="/">
+                                                        <h3 class="uppercase font-bold">show details</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
+                                        <div
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
+                                            <div>
+                                                <div class="flex justify-center">
+
+                                                    <img src="{{ asset('img/product/G1.png') }}"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
+                                                        width="80%">
+
+                                                </div>
+                                                <div class="text-center mb-6">
+                                                    <h1 class="p-1 text-xl font-bold group-hover:text-white"
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        REM</h1>
+                                                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
+                                                </div>
+                                                <div
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
+                                                    <a href="/">
+                                                        <h3 class="uppercase font-bold">show details</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
+                                        <div
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
+                                            <div>
+                                                <div class="flex justify-center">
+
+                                                    <img src="{{ asset('img/product/G1.png') }}"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
+                                                        width="80%">
+
+                                                </div>
+                                                <div class="text-center mb-6">
+                                                    <h1 class="p-1 text-xl font-bold group-hover:text-white"
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        REM</h1>
+                                                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
+                                                </div>
+                                                <div
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
+                                                    <a href="/">
+                                                        <h3 class="uppercase font-bold">show details</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[200px] py-10 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 my-5 mx-auto rounded-3xl">
+                                        <div
+                                            class="w-[200px] justify-items-center py-4 border-2 border-green-200 bg-slate-50 rounded-3xl hover:bg-ijo duration-300 transition ease-in-out shadow-lg group hover:scale-105 mx-auto ">
+                                            <div>
+                                                <div class="flex justify-center">
+
+                                                    <img src="{{ asset('img/product/G1.png') }}"
+                                                        class="rounded-2xl w-32 h-24" alt="Gambar-product"
+                                                        width="80%">
+
+                                                </div>
+                                                <div class="text-center mb-6">
+                                                    <h1 class="p-1 text-xl font-bold group-hover:text-white"
+                                                        style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                        REM</h1>
+                                                    {{-- <h4 class="group-hover:text-slate-100">Rp {{ $item->price }}</h4> --}}
+                                                </div>
+                                                <div
+                                                    class="flex justify-center items-center bg-ijo group-hover:bg-white duration-500 transition ease-in-out hover:scale-105 my-5 rounded-full mx-5">
+                                                    <a href="/">
+                                                        <h3 class="uppercase font-bold">show details</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                  
                                 </div>
                                 <div class="flex justify-end px-36 -mt-7"><a href="">
                                         <p class="text-lg underline ">see more ...</p>
@@ -421,16 +605,16 @@
 
 
                     </div>
-                    <div class="rotate-180"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <div class="rotate-180 -mt-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                             <path fill="#FCF9C6" fill-opacity="1"
                                 d="M0,288L48,250.7C96,213,192,139,288,144C384,149,480,235,576,245.3C672,256,768,192,864,176C960,160,1056,192,1152,224C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
                             </path>
                         </svg></div>
                 </div>
 
-
-                <div class="container pb-20">
-                    <div class="owl-carousel overflow-clip" style="display:flex ">
+                <!-- OUR TEAM -->
+                <div class="pb-20" style="">
+                    <div class="flex overflow-auto .owl-carousel" style="" >
 
                         <div> <img src="img/Team/rozy.jpg" alt=""
                                 class="rounded-full scale-75  transition ease-in-out duration-500 shadow-xl max-w-xl ">
