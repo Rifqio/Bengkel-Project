@@ -110,7 +110,7 @@
                     </div>
                     <hr class="bg-teal-500 mx-24 py-0.5 mb-12">
                     <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
-                        <div class="w-full relative flex items-center justify-center">
+                        <div class="w-full relative flex items-center justify-center" data-aos="fade-left"  data-aos-delay="" data-aos-duration="800">
                             <button aria-label="slide backward"
                                 class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer bg-white rounded-full p-2"
                                 id="prev">
@@ -299,18 +299,18 @@
 
                 <!-- OUR PRODUCT -->
                 <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d1fae5" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d1fae5" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" ></path></svg>
                     <img src="img/dashboard/tengahh.svg" alt="" class="absolute right-0 -mt-40 mr-20"
-                            style="width:15% ;">
+                            style="width:15% ;" data-aos="fade-down"  data-aos-delay="300" data-aos-duration="800">
                     <div class=" bg-emerald-100">
-                        <div class=" pb-6 z-30"> 
-                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-44">
-                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-56 my-2">
-                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-72">
-                            <p class="uppercase text-8xl font-roboto font-extrabold text-left pl-20 text-teal-500 z-30 ">
+                        <div class=" pb-6 z-30">
+                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-44" data-aos="fade-right"  data-aos-delay="300" data-aos-duration="800">
+                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-56 my-2" data-aos="fade-right"  data-aos-delay="600" data-aos-duration="800">
+                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-72" data-aos="fade-right"  data-aos-delay="900" data-aos-duration="800">
+                            <p class="uppercase text-8xl font-roboto font-extrabold text-left pl-20 text-teal-500 z-30 " data-aos="fade-right"  data-aos-delay="300" data-aos-duration="800">
                                 our product</p>
                         </div>
-                        <section id="card text-center">
+                        <section id="card text-center" data-aos="fade-up"  data-aos-delay="300" data-aos-duration="800">
                             <div class="container mx-auto justify-center pb-10">
                                 <div class="flex flex-wrap justify-center content-center">
 
@@ -678,10 +678,11 @@
 
                     </div>  -->
                     <div class="mx-auto pb-6 ">
-                        <p class="uppercase text-6xl font-extrabold text-center text-teal-500">
+                        <p class="text-center font-inconsolata font-light text-teal-500 "data-aos="fade-up"  data-aos-duration="800">This is</p>
+                        <p class="uppercase text-6xl font-extrabold text-center text-teal-500" data-aos="fade-up"  data-aos-duration="800" data-aos-delay="300">
                             our team</p>
                     </div>
-                    <hr class="bg-teal-500 mx-72 py-1">
+                    <hr class="bg-teal-500 mx-72 py-1" data-aos="fade-up"  data-aos-duration="800" data-aos-delay="600">
 
                     <div class="container mx-auto py-20">
                         <div class="flex flex-wrap justify-center ">
@@ -781,7 +782,7 @@
 
                     <!--Content before waves-->
                     <div class="inner-header flex">
-                        
+
                     </div>
 
                     <!--Waves Container-->
@@ -805,7 +806,7 @@
 
                     <!--Content starts-->
                     <div class="content flex bg-teal-500">
-                        
+
 
 
                     </div>
@@ -814,11 +815,11 @@
                <div class="container mx-auto absolute left-0 right-0 ">
                     <div class="flex w-2/3 p-10 bg-emerald-50 mx-auto -mt-24 rounded-2xl shadow-xl">
                         <div class="w-2/3 justify-center">
-                            <p class="text-5xl text-right px-10 uppercase">sign up to join <br> with us</p>
+                            <p class="text-3xl text-right px-10 uppercase md:text-5xl">sign up to join <br> with us</p>
                         </div>
                         <div class="w-1/3 items-center my-auto">
                             <a href="/login"><button type="button"
-                                    class="px-10 py-3 border-2 bg-white border-teal-500 text-emerald-500 hover:text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-teal-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg content-center self-center">Login
+                                    class="px-10 py-3 border-2 bg-white border-teal-500 text-emerald-500 hover:text-white font-semibold text-sm lg:text-lg leading-tight uppercase rounded-lg hover:bg-teal-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg content-center self-center">Login
                                     / Register Sebagai Mitra</button></a>
                         </div>
                         </div>
@@ -828,7 +829,7 @@
 
             </div>
 
-           
+
             <footer class=" pt-72">
     <div class="container mx-auto">
         <div class="flex flex-wrap">
@@ -860,9 +861,9 @@
         </div>
     </div>
 </footer>
-    
-               
-          
+
+
+
 
              <!-- <div class="container mx-auto">
                         <div class="bg-white shadow-lg rounded-xl mx-10 ">
@@ -884,7 +885,7 @@
 
 
 
-            
+
             <!-- Modal -->
             <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                 id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel"
