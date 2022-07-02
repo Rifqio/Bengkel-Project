@@ -21,7 +21,7 @@
 
 
         <div class=" mx-auto z-20 absolute justify-center content-center left-16 right-16 ">
-            <div class="bg-gradient-to-br from-slate-50 to-slate-300 rounded-xl mx-auto -mt-40">
+            <div class="bg-gradient-to-br from-slate-50 to-slate-300 rounded-xl mx-auto -mt-40 shadow-2xl">
                 <section id=" card text-center " class="sm:container pb-20 relative mx-auto ">
 
 
@@ -36,14 +36,14 @@
                             <div class="flex flex-wrap justify-center" data-aos="fade-up" data-aos-duration="500">
                                 @foreach ($categories as $c)
                                     <div
-                                        class="w-[600px] h-[250px] md:w-1/2 lg:w-1/3  xl:w-1/4   bg-[#E0DECA] rounded-3xl px-5 py-8 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 m-10">
+                                        class="w-[600px] h-[250px] md:w-1/2 lg:w-1/3  xl:w-1/4   bg-emerald-100 rounded-3xl px-5 py-8 hover:bg-ijo duration-500 transition ease-in-out shadow-lg group hover:scale-105 m-10">
                                         <a href="sparepart/{{ strtolower($c->name) }}">
                                             <div class=" ">
                                                 <div class="flex justify-center"><img src="{{ $c->icon_url }}"
-                                                        alt="" width="30%">
+                                                        alt="" width="30%" class="fill-teal-500">
                                                 </div>
                                                 <div class="text-center ">
-                                                    <h1 class="p-3 text-2xl font-bold group-hover:text-white">
+                                                    <h1 class="p-3 text-2xl font-bold group-hover:text-white ">
                                                         {{ $c->name }}</h1>
                                                     <h4 class="group-hover:text-slate-100">{{ $c->description }}</h4>
                                                 </div>
@@ -59,7 +59,7 @@
 
                 <!-- tombol -->
                 <div class="container py-20 pb-60 mx-auto">
-                    <div class="flex flex-wrap xl:flex justify-around">
+                    <div class="flex flex xl:flex justify-around">
                         <div data-aos="fade-up-right" data-aos-duration="700">
                             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"
                                 class="bg-blue-400 px-10 py-3 border-2 border-blue-300 text-white font-semibold text-lg  uppercase rounded-lg hover:bg-blue-300  transition ease-in-out shadow-lg mb-10 md:mb-0">Bengkel
@@ -73,25 +73,24 @@
                     </div>
                 </div>
 
-                <div class="mx-auto bg-[#FCF9C6] py-20 flex w-full ">
+                <div class="mx-auto bg-emerald-100 py-20 flex w-full ">
                     <div class="w-1/2 mx-auto align-middle self-center p-20 space-y-6">
-                        <p class="uppercase font-extrabold text-2xl text-[#C7D36F] text-center ">Bengkel terdekat
+                        <p class="uppercase font-extrabold text-4xl text-teal-500 text-center " data-aos="fade-right" data-aos-duration="800">Bengkel terdekat
                         </p>
-                        <p class="align-middle text-md text-center space-y-2">Kita memiliki Fitur untuk mendapatkan
+                        <p class="align-middle text-md font-bold text-center space-y-2 " data-aos="fade-right"  data-aos-delay="300" data-aos-duration="800">Kita memiliki Fitur untuk mendapatkan
                             begnkel terdekat
                             Website ini menciptakan kemudahan bagi masyarakat pengguna website ini yang memerlukan
                             <br> informasi posisi bengkel terdekat dan informasi perjual belian sparepart terdekat.
 
                         </p>
-                        <div class="mx-auto flex justify-center">
+                        <div class="mx-auto flex justify-center " data-aos="fade-right"  data-aos-delay="600" data-aos-duration="800">
                             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"
-                                class="bg-black fill-lime-300 px-10 py-3 border-2 border-lime-300 text-white font-semibold text-lg  uppercase rounded-lg hover:bg-lime-300 shadow-xl  transition ease-in-out shadow-lg mb-10 md:mb-0 duration-700">Bengkel
-                                Terdekat</button>
+                                class="bg-white px-10 py-3 border-2  border-teal-500 text-emerald-800 font-bold text-lg  uppercase rounded-lg hover:bg-teal-500 hover:text-white transition ease-in-out shadow-lg mb-10 md:mb-0 duration-700">Bengkel Terdekat</button>
                         </div>
                     </div>
-                    <div class="bg-[#E0DECA] rounded-l-xl w-1/2  self-center text-right h-full relative py-16">
-                        <h1 class="font-allison font-semibold text-6xl -mt-10 pr-5 ">Bengkel AE</h1>
-                        <p class="text-sm leading-relaxed p-5">Bengkel AE adalah aplikasi berbasis website grati
+                    <div class="bg-emerald-300 rounded-l-xl w-1/2  self-center text-right h-full relative py-16" data-aos="fade-left" data-aos-duration="800">
+                        <h1 class="font-allison font-bold text-6xl -mt-10 pr-10 py-2 " data-aos="fade-left"  data-aos-delay="300" data-aos-duration="800">Bengkel AE</h1>
+                        <p class="text-sm p-5 font-bold" data-aos="fade-left"  data-aos-delay="300" data-aos-duration="800">Bengkel AE adalah aplikasi berbasis website grati
                             yang
                             dibuat dengan tujuan membantu pegguna menemukan dan mendapatkan informasi seputar
                             bengkel dan sparepart automotif. Kami bermmitra dengan pemilik bengkel untuk mendapatkan
@@ -103,13 +102,13 @@
                 </div>
 
                 <!-- TESTIMONI -->
-                <div class="container mx-auto py-16 mt-10">
+                <div class="container mx-auto pt-24 mt-10">
                     <div class="mx-auto py-6 pt-10">
-                        <p class="uppercase text-8xl font-roboto font-extrabold text-center text-[#C7D36F]">
+                        <p class="text-center font-inconsolata font-light text-teal-500 "data-aos="fade-up"  data-aos-duration="800">Ini yang di katakan oleh orang orang</p>
+                        <p class="uppercase text-8xl font-roboto font-extrabold text-center text-teal-500" data-aos="fade-up"  data-aos-delay="300" data-aos-duration="800">
                             Testimoni</p>
-                            <p class="text-center font-inconsolata font-light text-[#929b52] ">Ini yang di katakan oleh orang orang</p>
                     </div>
-                    <hr class="bg-[#929b52] mx-24 py-0.5 mb-12">
+                    <hr class="bg-teal-500 mx-24 py-0.5 mb-12">
                     <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
                         <div class="w-full relative flex items-center justify-center">
                             <button aria-label="slide backward"
@@ -130,16 +129,16 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-emerald-100 shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table" class="rounded-xl -ml-16 -mt-4" />
                                                 <h2
-                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">
+                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-black dark:text-gray-900">
                                                     Catalog 1</h2>
                                                 <div class=" items-end pb-6">
                                                     <h3
-                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">
+                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-black dark:text-gray-900">
                                                         Minimal Interior</h3>
                                                 </div>
                                             </div>
@@ -155,17 +154,17 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-emerald-100 shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
                                                     class="rounded-xl -ml-16 -mt-4" />
                                                 <h2
-                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">
+                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-black dark:text-gray-900">
                                                     Catalog 1</h2>
                                                 <div class=" items-end pb-6">
                                                     <h3
-                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">
+                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-black dark:text-gray-900">
                                                         Minimal Interior</h3>
                                                 </div>
                                             </div>
@@ -181,17 +180,17 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-emerald-100 shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
                                                     class="rounded-xl -ml-16 -mt-4" />
                                                 <h2
-                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">
+                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-black dark:text-gray-900">
                                                     Catalog 1</h2>
                                                 <div class=" items-end pb-6">
                                                     <h3
-                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">
+                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-black dark:text-gray-900">
                                                         Minimal Interior</h3>
                                                 </div>
                                             </div>
@@ -207,17 +206,17 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-emerald-100 shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
                                                     class="rounded-xl -ml-16 -mt-4" />
                                                 <h2
-                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">
+                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-black dark:text-gray-900">
                                                     Catalog 1</h2>
                                                 <div class=" items-end pb-6">
                                                     <h3
-                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">
+                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-black dark:text-gray-900">
                                                         Minimal Interior</h3>
                                                 </div>
                                             </div>
@@ -233,17 +232,17 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#FCF9C6] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-emerald-100 shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
                                                     class="rounded-xl -ml-16 -mt-4" />
                                                 <h2
-                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">
+                                                    class="lg:text-xl leading-4 text-base lg:leading-5 text-black dark:text-gray-900">
                                                     Catalog 1</h2>
                                                 <div class=" items-end pb-6">
                                                     <h3
-                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">
+                                                        class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-black dark:text-gray-900">
                                                         Minimal Interior</h3>
                                                 </div>
                                             </div>
@@ -259,7 +258,7 @@
                                         <img src="img/product/G1.png" alt="black chair and white table"
                                             class="object-cover object-center w-full h-72 rounded-xl " />
                                         <div
-                                            class="bg-[#C7D36F] shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
+                                            class="bg-teal-500 shadow-2xl  absolute w-full h-full p-6 flex rounded-xl">
                                             <div class="w-1/3">
                                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                                                     alt="black chair and white table"
@@ -299,15 +298,16 @@
                 </div>
 
                 <!-- OUR PRODUCT -->
-                <div class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                        <path fill="#FCF9C6" fill-opacity="1"
-                            d="M0,288L48,250.7C96,213,192,139,288,144C384,149,480,235,576,245.3C672,256,768,192,864,176C960,160,1056,192,1152,224C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                        </path>
-                    </svg>
-                    <div class=" bg-[#FCF9C6]">
-                        <div class="mx-auto pb-6 ">
-                            <p class="uppercase text-6xl font-roboto font-extrabold text-left pl-20 text-[#C7D36F]">
+                <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d1fae5" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                    <img src="img/dashboard/tengahh.svg" alt="" class="absolute right-0 -mt-40 mr-20"
+                            style="width:15% ;">
+                    <div class=" bg-emerald-100">
+                        <div class=" pb-6 z-30"> 
+                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-44">
+                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-56 my-2">
+                            <hr class="bg-teal-500 text-left font-inconsolata font-light py-0.5 mr-72 w-72">
+                            <p class="uppercase text-8xl font-roboto font-extrabold text-left pl-20 text-teal-500 z-30 ">
                                 our product</p>
                         </div>
                         <section id="card text-center">
@@ -580,21 +580,20 @@
                                 <div class="flex justify-end px-36 -mt-7"><a href="">
                                         <p class="text-lg underline ">see more ...</p>
                                     </a></div>
-                            </div>
+                                    <hr class="bg-teal-500 text-right font-inconsolata font-light py-0.5 ml-72 w-72 right-0 absolute mt-10">
+                                    <hr class="bg-teal-500 text-right font-inconsolata font-light py-0.5 ml-72 w-56 my-2 right-0 absolute">
+                                    <hr class="bg-teal-500 text-right font-inconsolata font-light py-0.5 ml-72 w-44 right-0 absolute">
+                                </div>
                         </section>
 
 
                     </div>
-                    <div class="rotate-180 -mt-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                            <path fill="#FCF9C6" fill-opacity="1"
-                                d="M0,288L48,250.7C96,213,192,139,288,144C384,149,480,235,576,245.3C672,256,768,192,864,176C960,160,1056,192,1152,224C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                            </path>
-                        </svg></div>
+                    <div class="rotate-180 -mt-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d1fae5" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg></div>
                 </div>
 
                 <!-- OUR TEAM -->
-                <div class="container pb-20 px-10" style="">
-                    {{-- <div class="flex overflow-auto" style="" >
+                <div class="container pb-20 px-10 mx-auto " style="">
+                    <!-- <div class="flex overflow-auto" style="" >
 
                         <div class="pb-10 group  min-w-fit" data-aos="flip-left" data-aos-duration="1000"><img
                             src="img/Team/rozy.jpg" alt=""
@@ -677,15 +676,15 @@
 
 
 
-                    </div> --}}
+                    </div>  -->
                     <div class="mx-auto pb-6 ">
-                        <p class="uppercase text-6xl font-extrabold text-center text-[#C7D36F]">
+                        <p class="uppercase text-6xl font-extrabold text-center text-teal-500">
                             our team</p>
                     </div>
-                    <hr class="bg-[#C7D36F] mx-72 py-1">
+                    <hr class="bg-teal-500 mx-72 py-1">
 
                     <div class="container mx-auto py-20">
-                        <div class="flex flex-wrap justify-center">
+                        <div class="flex flex-wrap justify-center ">
                             <div class="xl:flex ">
                                 <div class="pb-10 group " data-aos="flip-left" data-aos-duration="1000"><img
                                         src="img/Team/rozy.jpg" alt=""
@@ -778,26 +777,94 @@
                         </div>
                     </div>
                </div>
+               <div class="header ">
 
-               {{-- JOIN US --}}
-               <div class="container mx-auto absolute">
-                    <div class="flex w-2/3 p-10 bg-[#C7D36F] mx-auto -mt-24 rounded-2xl">
-                    <div class="w-2/3 justify-center">
-                        <p class="text-5xl text-right px-10">sign up to join <br> with us</p>
+                    <!--Content before waves-->
+                    <div class="inner-header flex">
+                        
                     </div>
-                    <div class="w-1/3">
-                        <a href="/login"><button type="button"
-                                class="px-10 py-3 border-2 bg-lime-600 border-lime-500 text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-lime-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg">Login
-                                / Register Sebagai Mitra</button></a>
+
+                    <!--Waves Container-->
+                    <div>
+                        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                            <defs>
+                                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                            </defs>
+                            <g class="parallax">
+                                <use xlink:href="#gentle-wave" x="48" y="0" fill="" class="fill-teal-100"/>
+                                <use xlink:href="#gentle-wave" x="48" y="3" fill="" class="fill-teal-200" />
+                                <use xlink:href="#gentle-wave" x="48" y="5" fill="" class="fill-teal-300"/>
+                                <use xlink:href="#gentle-wave" x="48" y="7" fill="#d1fae5" />
+                            </g>
+                        </svg>
                     </div>
+                    <!--Waves end-->
+
                     </div>
-                    <img src="img/dashboard/bawah.png" alt="" class="absolute ml-32 -mt-16"
+                    <!--Header ends-->
+
+                    <!--Content starts-->
+                    <div class="content flex bg-teal-500">
+                        
+
+
+                    </div>
+
+               <!-- JOIN US  -->
+               <div class="container mx-auto absolute left-0 right-0 ">
+                    <div class="flex w-2/3 p-10 bg-emerald-50 mx-auto -mt-24 rounded-2xl shadow-xl">
+                        <div class="w-2/3 justify-center">
+                            <p class="text-5xl text-right px-10 uppercase">sign up to join <br> with us</p>
+                        </div>
+                        <div class="w-1/3 items-center my-auto">
+                            <a href="/login"><button type="button"
+                                    class="px-10 py-3 border-2 bg-white border-teal-500 text-emerald-500 hover:text-white font-semibold text-lg leading-tight uppercase rounded-lg hover:bg-teal-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg content-center self-center">Login
+                                    / Register Sebagai Mitra</button></a>
+                        </div>
+                        </div>
+                        <img src="img/dashboard/bawah.png" alt="" class="absolute ml-32 -mt-16"
                             style="width:25% ;">
-               </div>
+                </div>
 
             </div>
 
-            {{-- <div class="container mx-auto">
+           
+            <footer class=" pt-72">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap">
+            <div class="w-full px-32  lg:w-1/2 py-2">
+                <div class="flex px-5 py-2.5 align-middle inline-block  ">
+                    <img src="img/footer/Instagram.png" alt="" class=""
+                        style="width:5% ;">
+                    <p class="text-black pl-5 my-auto font-roboto font-medium">@Bengkel_AE</p>
+                </div>
+                <div class="flex px-5 py-2.5 align-middle inline-block">
+                    <img src="img/footer/gmail.png" alt="" class="" style="width:5% ;">
+                    <p class="text-black pl-5 my-auto font-roboto font-medium">Bengkel_AE@gmail.com</p>
+                </div>
+                <div class="flex px-5 py-2.5 align-middle inline-block">
+                    <img src="img/footer/Phone.png" alt="" class="" style="width:5% ;">
+                    <p class="text-black pl-5 my-auto font-roboto font-medium">+62 8888 8888</p>
+                </div>
+            </div>
+            <div class="w-full my-auto px-32 border-l-4 lg:w-1/2">
+                <p class="text-black ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
+                    ratione nisi culpa obcaecati nulla tenetur similique voluptates. Aliquid accusamus,
+                    reprehenderit asperiores, dolore dolor voluptas sint eum ipsam, ad et quis.</p>
+            </div>
+        </div>
+        <hr class="bg-slate-300 mx-24 py-0.5">
+        <div class="flex justify-between px-12 py-6">
+            <p>Support By Digital Monster</p>
+            <p>CopyRight © 2022 Bengkel Ae</p>
+        </div>
+    </div>
+</footer>
+    
+               
+          
+
+             <!-- <div class="container mx-auto">
                         <div class="bg-white shadow-lg rounded-xl mx-10 ">
                             <div class="lg:p-10 py-10  text-center mx-20">
                                 <h1 class="font-allison font-semibold text-8xl py-10">Bengkel AE</h1>
@@ -812,42 +879,12 @@
                                     sparepart di tiap-tiap bengkel.</p>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>  -->
 
 
 
 
-            <footer class=" mt-32 pt-32">
-                <div class="container">
-                    <div class="flex flex-wrap">
-                        <div class="w-full px-32  lg:w-1/2">
-                            <div class="flex p-5 align-middle inline-block  ">
-                                <img src="img/footer/Instagram.png" alt="" class=""
-                                    style="width:10% ;">
-                                <p class="text-black pl-5 my-auto ">@Bengkel_AE</p>
-                            </div>
-                            <div class="flex p-5 align-middle inline-block">
-                                <img src="img/footer/gmail.png" alt="" class="" style="width:10% ;">
-                                <p class="text-black pl-5 my-auto">Bengkel_AE@gmail.com</p>
-                            </div>
-                            <div class="flex p-5 align-middle inline-block">
-                                <img src="img/footer/Phone.png" alt="" class="" style="width:10% ;">
-                                <p class="text-black pl-5 my-auto">+62 8888 8888</p>
-                            </div>
-                        </div>
-                        <div class="w-full my-auto px-32 border-l-4 lg:w-1/2">
-                            <p class="text-black ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
-                                ratione nisi culpa obcaecati nulla tenetur similique voluptates. Aliquid accusamus,
-                                reprehenderit asperiores, dolore dolor voluptas sint eum ipsam, ad et quis.</p>
-                        </div>
-                    </div>
-                    <hr class="bg-slate-300 mx-24 py-0.5">
-                    <div class="flex justify-between px-12 py-6">
-                        <p>Support By Digital Monster</p>
-                        <p>CopyRight © 2022 Bengkel Ae</p>
-                    </div>
-                </div>
-            </footer>
+            
             <!-- Modal -->
             <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                 id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel"
