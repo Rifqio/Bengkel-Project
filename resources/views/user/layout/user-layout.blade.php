@@ -18,7 +18,8 @@
     <link href="/argon/css/nucleo-svg.css" rel="stylesheet" />
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.
+        "></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
         <!--Map-->
         <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />

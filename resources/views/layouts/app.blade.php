@@ -43,6 +43,11 @@
 
     <!-- logo -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/BAE.png') }}" />
+
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/wave.css') }}">
 </head>
 
 <body class="font-sans antialiased relative">
