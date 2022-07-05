@@ -1,7 +1,12 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin:0;
+
 }
 
 h1 {
@@ -82,7 +87,7 @@ p {
   0% {
    transform: translate3d(-90px,0,0);
   }
-  100% { 
+  100% {
     transform: translate3d(85px,0,0);
   }
 }

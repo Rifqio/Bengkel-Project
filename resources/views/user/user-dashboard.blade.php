@@ -1,6 +1,4 @@
 <x-app-layout>
-
-    </style>
     <div class="relative z-10 bg-white mx-auto justify-center ">
         <div id="show" style="width: 100%; height:700px; z-index:10;">
             {{-- Maps Content --}}
@@ -57,7 +55,7 @@
                     </div>
                 </section>
 
-                <!-- tombol -->
+                <!-- tombol
                 <div class="container py-20 pb-60 mx-auto">
                     <div class="flex flex xl:flex justify-around">
                         <div data-aos="fade-up-right" data-aos-duration="700">
@@ -71,9 +69,9 @@
                                     / Register Sebagai Mitra</button></a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="mx-auto bg-emerald-100 py-20 flex w-full ">
+                <div class="mx-auto bg-emerald-100 py-20 flex w-full " id="bengkel">
                     <div class="w-1/2 mx-auto align-middle self-center p-20 space-y-6">
                         <p class="uppercase font-extrabold text-4xl text-teal-500 text-center " data-aos="fade-right" data-aos-duration="800">Bengkel terdekat
                         </p>
@@ -101,8 +99,25 @@
                     </div>
                 </div>
 
+
+                 <!-- JOIN US  -->
+               <div class="container mx-auto  py-24" id="login">
+                <div class="flex w-2/3 p-10 bg-emerald-50 mx-auto  rounded-2xl shadow-xl " data-aos="fade-up"  data-aos-duration="500">
+                    <div class="w-2/3 justify-center" data-aos="fade-up" data-aos-delay="150"  data-aos-duration="800">
+                        <p class="text-3xl text-right px-10 uppercase md:text-5xl">sign up to join <br> with us</p>
+                    </div>
+                    <div class="w-1/3 items-center my-auto" data-aos="fade-up" data-aos-delay="450"  data-aos-duration="800">
+                        <a href="/login"><button type="button"
+                                class="px-10 py-3 border-2 bg-white border-teal-500 text-emerald-500 hover:text-white font-semibold text-sm lg:text-lg leading-tight uppercase rounded-lg hover:bg-teal-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg content-center self-center">Login
+                                / Register Sebagai Mitra</button></a>
+                    </div>
+                    </div>
+                    <img src="img/dashboard/bawah.png" alt="" class="absolute ml-32 -mt-16"
+                        style="width:25% ;" data-aos="fade-up" data-aos-delay="300"  data-aos-duration="800">
+            </div>
+
                 <!-- TESTIMONI -->
-                <div class="container mx-auto pt-24 mt-10">
+                {{-- <div class="container mx-auto pt-24 mt-10">
                     <div class="mx-auto py-6 pt-10">
                         <p class="text-center font-inconsolata font-light text-teal-500 "data-aos="fade-up"  data-aos-duration="800">Ini yang di katakan oleh orang orang</p>
                         <p class="uppercase text-8xl font-roboto font-extrabold text-center text-teal-500" data-aos="fade-up"  data-aos-delay="300" data-aos-duration="800">
@@ -295,10 +310,10 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- OUR PRODUCT -->
-                <div class="relative">
+               <!-- <div class="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d1fae5" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" ></path></svg>
                     <img src="img/dashboard/tengahh.svg" alt="" class="absolute right-0 -mt-40 mr-20"
                             style="width:15% ;" data-aos="fade-down"  data-aos-delay="300" data-aos-duration="800">
@@ -589,10 +604,10 @@
 
                     </div>
                     <div class="rotate-180 -mt-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d1fae5" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg></div>
-                </div>
+                </div> -->
 
                 <!-- OUR TEAM -->
-                <div class="container pb-20 px-10 mx-auto " style="">
+                <div class="container px-10 mx-auto mt-24" style="" id="team">
                     <!-- <div class="flex overflow-auto" style="" >
 
                         <div class="pb-10 group  min-w-fit" data-aos="flip-left" data-aos-duration="1000"><img
@@ -811,47 +826,40 @@
 
                     </div>
 
-               <!-- JOIN US  -->
-               <div class="container mx-auto absolute left-0 right-0 ">
-                    <div class="flex w-2/3 p-10 bg-emerald-50 mx-auto -mt-24 rounded-2xl shadow-xl">
-                        <div class="w-2/3 justify-center">
-                            <p class="text-3xl text-right px-10 uppercase md:text-5xl">sign up to join <br> with us</p>
-                        </div>
-                        <div class="w-1/3 items-center my-auto">
-                            <a href="/login"><button type="button"
-                                    class="px-10 py-3 border-2 bg-white border-teal-500 text-emerald-500 hover:text-white font-semibold text-sm lg:text-lg leading-tight uppercase rounded-lg hover:bg-teal-500 focus:outline-none focus:ring-0 transition  ease-in-out shadow-lg content-center self-center">Login
-                                    / Register Sebagai Mitra</button></a>
-                        </div>
-                        </div>
-                        <img src="img/dashboard/bawah.png" alt="" class="absolute ml-32 -mt-16"
-                            style="width:25% ;">
-                </div>
+
 
             </div>
 
 
-            <footer class=" pt-72">
+            <footer class=" pt-24">
     <div class="container mx-auto">
-        <div class="flex flex-wrap">
-            <div class="w-full px-32  lg:w-1/2 py-2">
-                <div class="flex px-5 py-2.5 align-middle inline-block  ">
+        <div class=" w-full flex flex-wrap justify-center">
+            <div class="w-1/4 py-2 ">
+                <div class="flex py-2.5 align-middle inline-block  ">
                     <img src="img/footer/Instagram.png" alt="" class=""
                         style="width:5% ;">
                     <p class="text-black pl-5 my-auto font-roboto font-medium">@Bengkel_AE</p>
                 </div>
-                <div class="flex px-5 py-2.5 align-middle inline-block">
+                <div class="flex py-4 align-middle inline-block">
                     <img src="img/footer/gmail.png" alt="" class="" style="width:5% ;">
                     <p class="text-black pl-5 my-auto font-roboto font-medium">Bengkel_AE@gmail.com</p>
                 </div>
-                <div class="flex px-5 py-2.5 align-middle inline-block">
+                <div class="flex py-2.5 align-middle inline-block">
                     <img src="img/footer/Phone.png" alt="" class="" style="width:5% ;">
                     <p class="text-black pl-5 my-auto font-roboto font-medium">+62 8888 8888</p>
                 </div>
             </div>
-            <div class="w-full my-auto px-32 border-l-4 lg:w-1/2">
-                <p class="text-black ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
-                    ratione nisi culpa obcaecati nulla tenetur similique voluptates. Aliquid accusamus,
-                    reprehenderit asperiores, dolore dolor voluptas sint eum ipsam, ad et quis.</p>
+            <div class="w-1/5 mx px-3 text-center self-center mb-10">
+                <p class="font-bold text-xl pb-2">About Us</p>
+                <p class="py-4"><a href="#login">Login</a></p>
+                <p class="pb-4"><a href="#bengkel">Bengkel terdekat</a></p>
+                <p class="pb-4"><a href="#team">Our Team</a></p>
+            </div>
+            <div class=" px-5 border-l-4 lg:w-1/3 ">
+                <p class="text-black pl-10"> Website ini menciptakan kemudahan bagi masyarakat pengguna website ini yang
+                    memerlukan informasi posisi bengkel terdekat dan informasi perjualbelian sparepart
+                    terdekat, karena kami juga membuat komperasi harga spesifikasi dari tiap-tiap
+                    sparepart di tiap-tiap bengkel.</p>
             </div>
         </div>
         <hr class="bg-slate-300 mx-24 py-0.5">
